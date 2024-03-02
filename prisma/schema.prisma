@@ -8,4 +8,12 @@ datasource db {
 }
 model user{
   user_id   Int   @id @default(autoincrement())  
+  first_name  String  @db.VarChar(100) 
+  last_name  String @db.VarChar(100) 
+  username  String @db.VarChar(100) 
+  image    String @db.Text 
+  phone_number String @db.VarChar(12) 
+  id_card String @db.VarChar(17) 
+  email String @db.VarChar(255)
+  password String @db.VarChar(20)
 }
