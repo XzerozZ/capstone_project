@@ -16,4 +16,24 @@ model user{
   id_card String @db.VarChar(17) 
   email String @db.VarChar(255)
   password String @db.VarChar(20)
+  ratings   rating[]
+  contact   contact[]
+
 }
+model rating{
+  rating_id   Int   @id @default(autoincrement())
+  user_id     Int
+  friendly_rating   Float   @default(0.0)
+  efficiency_rating Float   @default(0.0)
+  accuracy_rating   Float   @default(0.0)
+  user    user    @relation(fields: [user_id], references: [user_id])
+}
+model contact{
+  contact_id  Int   @id @default(autoincrement())
+  user_id     Int
+  facebook    String  @db.Text
+  instagram   String  @db.Text
+  linkedin    String  @db.Text
+  user    user    @relation(fields: [user_id], references: [user_id])
+}
+
