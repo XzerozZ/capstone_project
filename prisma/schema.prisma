@@ -11,22 +11,27 @@ model user{
   first_name  String  @db.VarChar(100) 
   last_name  String @db.VarChar(100) 
   username  String @db.VarChar(100) 
-  image    String @db.Text 
+  image    String? @db.Text 
   phone_number String @db.VarChar(12) 
   id_card String @db.VarChar(17) 
   email String @db.VarChar(255)
-  password String @db.VarChar(20)
+  password String @db.VarChar(255)
   ratings   rating[]
   contact   contact[]
-
+  experience  experience[]
+  user_career user_career[]
+  history history[]
+  bookmark bookmark[]
 }
 model rating{
   rating_id   Int   @id @default(autoincrement())
+  employer_id Int
   user_id     Int
   friendly_rating   Float   @default(0.0)
   efficiency_rating Float   @default(0.0)
   accuracy_rating   Float   @default(0.0)
   user    user    @relation(fields: [user_id], references: [user_id])
+  employer  employer    @relation(fields: [employer_id],references: [employer_id])
 }
 model contact{
   contact_id  Int   @id @default(autoincrement())
@@ -36,4 +41,83 @@ model contact{
   linkedin    String  @db.Text
   user    user    @relation(fields: [user_id], references: [user_id])
 }
-
+model category{
+  category_id   Int  @id @default(autoincrement())
+  name    String    @db.Text
+  experiences experience[]
+  job_exp job_exp[]
+}
+model experience{
+  user_id   Int
+  category_id   Int
+  user   user   @relation(fields: [user_id], references: [user_id])
+  category  category    @relation(fields: [category_id],references: [category_id])
+  @@unique([user_id,category_id])
+}
+model career{
+  career_id Int  @id @default(autoincrement())
+  name  String    @db.Text
+  user_career user_career[]
+}
+model user_career{
+  user_id   Int
+  career_id   Int
+  user   user   @relation(fields: [user_id], references: [user_id])
+  career   career   @relation(fields: [career_id], references: [career_id])
+  @@unique([user_id,career_id])
+}
+model job{
+  job_id   Int  @id @default(autoincrement())
+  title   String    @db.Text
+  description String    @db.Text
+  budget   Int
+  type   String  @db.VarChar(9) 
+  posted_date  DateTime @default(now())
+  submitted_date  DateTime?
+  status    String    @db.VarChar(6)  @default("Open")
+  history history[]
+  job_exp job_exp[]
+  bookmark bookmark[]
+  post  post[]
+}
+model history{
+  user_id   Int
+  job_id   Int
+  user   user   @relation(fields: [user_id], references: [user_id])
+  job   job   @relation(fields: [job_id], references: [job_id])
+  status  String  @db.Text  @default("Considering")
+  @@unique([user_id,job_id])
+}
+model job_exp{
+  job_id   Int
+  category_id   Int
+  job   job   @relation(fields: [job_id], references: [job_id])
+  category  category    @relation(fields: [category_id],references: [category_id])
+  @@unique([job_id,category_id])
+}
+model bookmark{
+  user_id   Int
+  job_id   Int
+  user   user   @relation(fields: [user_id], references: [user_id])
+  job   job   @relation(fields: [job_id], references: [job_id])
+  @@unique([user_id,job_id])
+}
+model employer{
+  employer_id  Int  @id @default(autoincrement())
+  first_name  String  @db.VarChar(100) 
+  last_name  String @db.VarChar(100) 
+  username  String @db.VarChar(100) 
+  image    String? @db.Text 
+  phone_number String @db.VarChar(12) 
+  email String @db.VarChar(255)
+  password String @db.VarChar(20)
+  post  post[]
+  ratings   rating[]
+}
+model post{
+  employer_id  Int
+  job_id   Int
+  employer  employer    @relation(fields: [employer_id],references: [employer_id])
+  job   job   @relation(fields: [job_id], references: [job_id])
+  @@unique([employer_id,job_id])
+}
