@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { hashPassword } from '../hashpassword';
 import { formatPhoneNumber, formatIdcard } from '../format';
 
-export async function postRegister(request : Request) {
+export async function Post(request : Request) {
     const prisma = new PrismaClient();
     try {
         const requestBody = request.body as Record<string, any>;

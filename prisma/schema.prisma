@@ -14,7 +14,7 @@ model user{
   image    String? @db.Text 
   phone_number String @db.VarChar(12) 
   id_card String @db.VarChar(17) 
-  email String @db.VarChar(255)
+  email String @db.VarChar(255) @unique
   password String @db.VarChar(255)
   ratings   rating[]
   contact   contact[]
