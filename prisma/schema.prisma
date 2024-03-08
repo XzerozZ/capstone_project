@@ -27,10 +27,12 @@ model rating{
   rating_id   Int   @id @default(autoincrement())
   employer_id Int
   user_id     Int
+  job_id      Int
   friendly_rating   Float   @default(0.0)
   efficiency_rating Float   @default(0.0)
   accuracy_rating   Float   @default(0.0)
   user    user    @relation(fields: [user_id], references: [user_id])
+  job     job     @relation(fields: [job_id], references: [job_id])
   employer  employer    @relation(fields: [employer_id],references: [employer_id])
 }
 model contact{
@@ -77,6 +79,7 @@ model job{
   status    String    @db.VarChar(6)  @default("Open")
   history history[]
   job_exp job_exp[]
+  rating  rating[]
   bookmark bookmark[]
   post  post[]
 }
