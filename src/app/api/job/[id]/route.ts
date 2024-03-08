@@ -1,6 +1,6 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
-
+// http://localhost:3000/api/job/[id]
 export async function GET(request: Request, { params }: { params: { id: string } }) {
     const prisma = new PrismaClient();
     try {
@@ -24,9 +24,10 @@ export async function GET(request: Request, { params }: { params: { id: string }
         } else {
             return new Response(JSON.stringify({ error: 'Job not found' }), { status: 404 });
         }
-    } catch (error) {
-        console.error('Error:', error);
+    } catch(error){
         await prisma.$disconnect();
-        return new Response(JSON.stringify({ error: 'Internal server error' }), { status: 500 });
+        return Response.json({
+            error
+        }, {status:500})
     }
 }

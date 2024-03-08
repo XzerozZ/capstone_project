@@ -41,22 +41,25 @@ export async function POST(request: Request) {
       });
       await prisma.$disconnect();
       return Response.json(newjob)
-    } catch (error) {
-      console.error('Error:', error);
+    } catch(error){
       await prisma.$disconnect();
-      return new Response(JSON.stringify({ error: 'Invalid request data' }), { status: 400 });
-    }
+      return Response.json({
+          error
+      }, {status:500})
+  }
 }
+//http://localhost:3000/api/job
 export async function GET() {
   const prisma = new PrismaClient();
   try {
     const jobs = await prisma.job.findMany()
     await prisma.$disconnect();
     return Response.json(jobs)
-  } catch (error) {
-    console.error('Error:', error);
+  } catch(error){
     await prisma.$disconnect();
-    return new Response(JSON.stringify({ error: 'Invalid request data' }), { status: 400 });
+    return Response.json({
+        error
+    }, {status:500})
   }
 }
 

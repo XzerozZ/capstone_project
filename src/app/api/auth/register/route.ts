@@ -1,32 +1,33 @@
+import bcrypt from 'bcrypt';
 import { PrismaClient } from '@prisma/client';
-import jwt from 'jsonwebtoken';
-import { hashPassword } from '../hashpassword';
-import { formatPhoneNumber, formatIdcard } from '../format';
-
-export async function Post(request : Request) {
+import { formatIdcard , formatPhoneNumber } from '../format';
+export async function POST(req : Request){
     const prisma = new PrismaClient();
-    try {
-        const requestBody = request.body as Record<string, any>;
-        const { first_name, last_name, username, image, phone_number, id_card, email, password } = requestBody;
-        const oneDay = 24 * 60 * 60 * 1000;
-        const newUser = await prisma.user.create({
-            data: {
+    try{
+        const { first_name,last_name,username,phone_number,id_card,email, password } = await req.json()
+        const hashedPassword = bcrypt.hashSync(password, 10)
+        const newuser = await prisma.user.create({
+            data:{
                 first_name,
                 last_name,
                 username,
-                image,
-                phone_number: await formatPhoneNumber(phone_number),
-                id_card: await formatIdcard(id_card),
+                phone_number : await formatPhoneNumber(phone_number),
+                id_card : await formatIdcard(id_card),
                 email,
-                password: await hashPassword(password)
+                password : hashedPassword
             }
-        });
-        const token = jwt.sign({ userId: newUser.user_id }, process.env.JWT_SECRET!);
-        const cookieHeaderValue = `token=${token}; Max-Age=${oneDay};`;
-        return Response.json(newUser);
-    } catch (error) {
-        Response.json({ error: 'Internal server error' });
-    } finally {
+        })
         await prisma.$disconnect();
+        return Response.json({
+            message : " create account successfully ",
+            data : {
+                newuser 
+            }
+        })
+    } catch(error){
+        await prisma.$disconnect();
+        return Response.json({
+            error
+        }, {status:500})
     }
 }
