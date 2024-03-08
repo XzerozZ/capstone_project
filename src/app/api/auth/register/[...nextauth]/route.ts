@@ -12,10 +12,12 @@ export const authOptions: NextAuthOptions = {
             credentials: {
                 email: {
                     label: 'Email',
-                    type: 'email'
-                }
+                    type: 'email',
+                    placeholder: 'john@email.com'
+                },
+                password: { label: 'Password', type: 'password' }
             },
-            authorize: function (credentials: Record<"email", string> | undefined, req: Pick<RequestInternal, "body" | "query" | "headers" | "method">): Awaitable<User | null> {
+            authorize: function (credentials: Record<"email" | "password", string> | undefined, req: Pick<RequestInternal, "body" | "query" | "headers" | "method">): Awaitable<User | null> {
                 throw new Error("Function not implemented.");
             }
         })
