@@ -1,15 +1,16 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
+
 //http://localhost:3000/api/history
-export async function POST(request: Request) {
+//POST
+export async function POST( req : Request ) {
     const prisma = new PrismaClient();
     try{
-        const data = await request.json();
-        const {user_id, job_id} = data;
+        const formData = await req.formData();
         const history =  await prisma.history.create({
             data:{
-                user_id,
-                job_id
+                user_id : parseInt(formData.get('user_id') as string),
+                job_id : parseInt(formData.get('job_id') as string)
             },
         })
         await prisma.$disconnect();
@@ -21,19 +22,4 @@ export async function POST(request: Request) {
             error
         }, {status:500})
     }
-}
-//http://localhost:3000/api/history
-export async function GET() {
-    const prisma = new PrismaClient();
-    try {
-      const histories = await prisma.history.findMany()
-      await prisma.$disconnect();
-      return Response.json(histories)
-    } catch(error){
-      await prisma.$disconnect();
-      return Response.json({
-          error
-      }, {status:500})
-    }
-  }
-  
+} 
