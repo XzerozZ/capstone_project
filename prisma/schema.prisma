@@ -108,11 +108,11 @@ model bookmark{
 }
 model company{
   company_id          Int        @id @default(autoincrement())
-  name                String     @db.VarChar(100) 
+  name                String     @db.Text 
   image               String?    @db.Text 
   phone_number        String     @db.VarChar(12) 
   email               String     @db.VarChar(255) @unique
-  password            String     @db.VarChar(20)
+  password            String     @db.VarChar(255)
   post                post[]
   ratings             rating[]
 }

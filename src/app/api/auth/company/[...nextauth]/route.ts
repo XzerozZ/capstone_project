@@ -23,19 +23,19 @@ export const authOptions: NextAuthOptions = {
         if (!credentials?.email || !credentials.password) {
           return null
         }
-        const company = await prisma.company.findUnique({
+        const com = await prisma.company.findUnique({
           where: {
             email: credentials.email
           }
         })
 
-        if (!company) {
+        if (!com) {
           return null
         }
 
         const isPasswordValid = await compare(
           credentials.password,
-          company.password
+          com.password
         )
 
         if (!isPasswordValid) {
@@ -43,9 +43,9 @@ export const authOptions: NextAuthOptions = {
         }
 
         return {
-          id: company.company_id + '',
-          email: company.email,
-          name: company.name,
+          id: com.company_id + '',
+          email: com.email,
+          name: com.name,
           randomKey: 'Chaos_Ancient_Gear_Giant'
         }
       }
@@ -56,7 +56,7 @@ export const authOptions: NextAuthOptions = {
       console.log('Session Callback', { session, token })
       return {
         ...session,
-        user: {
+        company: {
           ...session.user,
           id: token.id,
           randomKey: token.randomKey
@@ -66,11 +66,11 @@ export const authOptions: NextAuthOptions = {
     jwt: ({ token, user }) => {
       console.log('JWT Callback', { token, user })
       if (user) {
-        const u = user as unknown as any
+        const c = user as unknown as any
         return {
           ...token,
-          id: u.id,
-          randomKey: u.randomKey
+          id: c.id,
+          randomKey: c.randomKey
         }
       }
       return token
