@@ -36,7 +36,7 @@ export default function Register(){
                 <div className="flex items-center justify-center flex-wrap flex-col mt-[100px]"> {/* Margin top ให้ component เด้งลงมา */}
                     <h1 className="text-5xl font-bold">Welcome to</h1>
                     <form className="flex w-[50%] flex-wrap flex-col" onSubmit={onSubmit}> {/* Forms Box */}
-                        <div className="flex justify-between my-[2.5vh] h-[7vh]"> {/* Name / Lastname box */}
+                        <div className="flex justify-between my-[2.5vh] h-[8vh]"> {/* Name / Lastname box */}
                             <div className="flex flex-col w-[40%]"> {/* Name box */}
                                 <label className="text-[1rem]">Name</label>
                                 <input type="text" name="name" 
@@ -44,6 +44,7 @@ export default function Register(){
                                     className="border-solid 
                                     border-[#E2E1E5] border-2 h-[100%] rounded-md"
                                     onChange={onChange}
+                                    value={regData.name}
                                     required
                                 />
                             </div>
@@ -54,11 +55,12 @@ export default function Register(){
                                     className="border-solid 
                                     border-[#E2E1E5] border-2 h-[100%] rounded-md"
                                     onChange={onChange}
+                                    value={regData.lastname}
                                     required
                                 />
                             </div>
                         </div>
-                        <div className="flex justify-between my-[2.5vh] h-[7vh]"> {/* Display name(Username) / Email box */}
+                        <div className="flex justify-between my-[2.5vh] h-[8vh]"> {/* Display name(Username) / Email box */}
                             <div className="flex flex-col w-[40%]"> {/* Display name(Username) box */}
                                 <label className="text-[1rem]">Display name</label>
                                 <input type="text" name="username" 
@@ -66,6 +68,7 @@ export default function Register(){
                                     className="border-solid 
                                     border-[#E2E1E5] border-2 h-[100%] rounded-md"
                                     onChange={onChange}
+                                    value={regData.username}
                                     required
                                 />
                             </div>
@@ -76,11 +79,12 @@ export default function Register(){
                                     className="border-solid 
                                     border-[#E2E1E5] border-2 h-[100%] rounded-md"
                                     onChange={onChange}
+                                    value={regData.email}
                                     required
                                 />
                             </div>
                         </div>
-                        <div className="flex justify-between my-[2.5vh] h-[7vh]"> {/* Password box */}
+                        <div className="flex justify-between my-[2.5vh] h-[8vh]"> {/* Password box */}
                             <div className="w-full flex flex-col">
                                 <label className="text-[1rem]">Password</label>
                                 <input type="password" name="password" 
@@ -88,11 +92,12 @@ export default function Register(){
                                     className="border-solid 
                                     border-[#E2E1E5] border-2 h-[100%] rounded-md"
                                     onChange={onChange}
+                                    value={regData.password}
                                     required
                                 />
                             </div>
                         </div>
-                        <div className="flex justify-between my-[2.5vh] h-[7vh]"> {/* Confirmed password box */}
+                        <div className="flex justify-between my-[2.5vh] h-[8vh]"> {/* Confirmed password box */}
                             <div className="w-full flex flex-col">
                                 <label className="text-[1rem]">Confirmed password</label>
                                 <input type="password" name="confirmedPassword" 
@@ -100,11 +105,12 @@ export default function Register(){
                                     className="border-solid 
                                     border-[#E2E1E5] border-2 h-[100%] rounded-md"
                                     onChange={onChange}
+                                    value={regData.confirmedPassword}
                                     required
                                 />
                             </div>
                         </div>
-                        <div className="flex mt-[2.5vh] mb-[4vh] h-[7vh]"> {/* Role box */}
+                        <div className="flex mt-[2.5vh] mb-[4vh] h-[8vh]"> {/* Role box */}
                             <div className="flex flex-col w-[40%]">
                                 <label className="text-[1rem]">Role</label>
                                 <select name="role" 
@@ -112,6 +118,7 @@ export default function Register(){
                                     className="border-solid 
                                     border-[#E2E1E5] border-2 h-[100%] rounded-md"
                                     onChange={onChange} 
+                                    value={regData.role}
                                     required
                                     >
                                     <option disabled hidden selected value=""> -- select a role -- </option> {/* กล่องเริ่มต้นบอกให้กรอก role */}

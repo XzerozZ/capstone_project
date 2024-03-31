@@ -51,7 +51,7 @@ export default function Navbar(){
                         </div> 
                     : 
                         <div className="flex">
-                            <Link href="/">
+                            <Link href="/pages/profile/freelancer">
                                 <Image 
                                     src={MockLogo}
                                     width={60}
