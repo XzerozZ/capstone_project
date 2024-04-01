@@ -25,7 +25,7 @@ export default function Navbar(){
                     </Link>
                     <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[17px] px-4 py-3.5" href="/">Find freelancers</Link>
                     <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[17px] px-4 py-3.5" href="/">Find jobs</Link>
-                    <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[17px] px-4 py-3.5" href="/">Post a job</Link>
+                    <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[17px] px-4 py-3.5" href="/pages/profile/company">Post a job</Link>
                 </div>
                 <div className="gap-[15px] fixed pt-[70px] pb-5 px-5 inset-0 md:flex md:static md:p-0">
                     <Link href="/">
