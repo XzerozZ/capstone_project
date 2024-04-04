@@ -23,9 +23,9 @@ export default function Navbar(){
                             alt=""
                         />
                     </Link>
-                    <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[17px] px-4 py-3.5" href="/">Find freelancers</Link>
-                    <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[17px] px-4 py-3.5" href="/">Find jobs</Link>
-                    <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[17px] px-4 py-3.5" href="/pages/profile/company">Post a job</Link>
+                    <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[12px] md:text-[17px] px-4 py-3.5" href="/">Find freelancers</Link>
+                    <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[12px] md:text-[17px] px-4 py-3.5" href="/">Find jobs</Link>
+                    <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[12px] md:text-[17px] px-4 py-3.5" href="/pages/profile/company">Post a job</Link>
                 </div>
                 <div className="gap-[15px] fixed pt-[70px] pb-5 px-5 inset-0 md:flex md:static md:p-0">
                     <Link href="/">
@@ -36,7 +36,7 @@ export default function Navbar(){
                             alt=""
                         />
                     </Link>
-                    <Link href="/">
+                    <Link href="/pages/status/freelancer">
                         <Image 
                             src={MockLogo}
                             width={60}
@@ -46,8 +46,8 @@ export default function Navbar(){
                     </Link>
                     {!logIn ? 
                         <div className="flex">
-                            <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[17px] px-4 py-3.5" href="/pages/register">Sign up</Link>
-                            <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[17px] px-4 py-3.5" href="/" onClick={toggleLogin}>Log in</Link>
+                            <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[12px] md:text-[17px] px-4 py-3.5" href="/pages/register">Sign up</Link>
+                            <Link className="float-left block text-[#f2f2f2] text-center no-underline text-[12px] md:text-[17px] px-4 py-3.5" href="/" onClick={toggleLogin}>Log in</Link>
                         </div> 
                     : 
                         <div className="flex">
