@@ -7,24 +7,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model user{
-  user_id       Int     @id @default(autoincrement())  
-  first_name    String  @db.VarChar(100) 
-  last_name     String  @db.VarChar(100) 
-  username      String  @db.VarChar(100) 
-  image         String? @db.Text 
-  phone_number  String  @db.VarChar(12) 
-  id_card       String  @db.VarChar(17) 
-  email         String  @db.VarChar(255) @unique
-  password      String  @db.VarChar(255)
-  role          String  @db.VarChar @default("user")
-  ratings       rating[]
+  user_id       Int              @id @default(autoincrement())  
+  first_name    String           @db.VarChar(100) 
+  last_name     String           @db.VarChar(100) 
+  username      String           @db.VarChar(100) 
+  image         String?          @db.Text 
+  phone_number  String           @db.VarChar(12) 
+  id_card       String           @db.VarChar(17) 
+  email         String           @db.VarChar(255) @unique
+  password      String           @db.VarChar(255)
+  role          String           @db.VarChar @default("user")
+  rating_user   rating_user[]
+  rating_com    rating_com[]
   contact       contact[]
   experience    experience[]
   user_career   user_career[]
   history       history[]
   bookmark      bookmark[]
 }
-model rating{
+model rating_user{
   rating_id           Int        @id @default(autoincrement())
   company_id          Int
   user_id             Int
@@ -32,6 +33,16 @@ model rating{
   friendly_rating     Float      @default(0.0)
   efficiency_rating   Float      @default(0.0)
   accuracy_rating     Float      @default(0.0)
+  user                user       @relation(fields: [user_id], references: [user_id])
+  job                 job        @relation(fields: [job_id], references: [job_id])
+  company             company    @relation(fields: [company_id],references: [company_id])
+}
+model rating_com{
+  rating_id           Int        @id @default(autoincrement())
+  company_id          Int
+  user_id             Int
+  job_id              Int
+  rating              Float      @default(0.0)
   user                user       @relation(fields: [user_id], references: [user_id])
   job                 job        @relation(fields: [job_id], references: [job_id])
   company             company    @relation(fields: [company_id],references: [company_id])
@@ -80,7 +91,8 @@ model job{
   status              String     @db.VarChar(6)  @default("Open")
   history             history[]
   job_exp             job_exp[]
-  rating              rating[]
+  rating_user         rating_user[]
+  rating_com          rating_com[]
   bookmark            bookmark[]
   post                post[]
 }
@@ -114,7 +126,8 @@ model company{
   email               String     @db.VarChar(255) @unique
   password            String     @db.VarChar(255)
   post                post[]
-  ratings             rating[]
+  rating_user         rating_user[]
+  rating_com          rating_com[]
 }
 model post{
   company_id          Int
