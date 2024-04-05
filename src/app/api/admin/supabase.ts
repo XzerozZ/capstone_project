@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import { v4 as uuid } from "uuid";
-import { Supabase } from "@/app/interface/interface";
+import { Supabase } from "@/app/api/interface/interface";
 
 const supabaseConfig : Supabase = {
     supabaseUrl : process.env.SUPABASE_URL || '' ,
