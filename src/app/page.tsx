@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Navbar from  "@/components/Navbar";
 import CategoryBox from "./components/CategoryBox";
-import JobBox from "./components/JobBox";
+import JobRecommend from "./components/JobRecommend";
+import ReactDOM from "react-dom/client";
 
 export default function Home() {
   return (
@@ -23,16 +24,15 @@ export default function Home() {
           </div>
           <div className="flex"> {/* Recommended result box */}
             <div>{"<"}</div>
-            <JobBox/>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <JobRecommend/>
+            <JobRecommend/>
+            <JobRecommend/>
+            <JobRecommend/>
+            <JobRecommend/>
+            <JobRecommend/>
             <p>{">"}</p>
           </div>
-        </div> 
-
+        </div>
         <div className="w-full my-10 px-20 flex flex-col"> {/* Category */}
           <p className="text-3xl font-bold text-black self-start">Categories of service</p>
           <div className="grid grid-cols-3 gap-10 px-10 py-5"> {/* Category box */}

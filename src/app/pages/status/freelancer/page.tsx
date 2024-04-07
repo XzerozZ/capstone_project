@@ -22,29 +22,29 @@ export default function Home() {
                     status:"applying"
                   };
   const MockData2 = {role:"Freelancer",
-                  src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
-                  job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-                  details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
-                  budget:"2000", work_type:"Web Dev....", 
-                  post_date:"12/12/2566", 
-                  status:"in-progress"
-                };
+                    src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
+                    job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+                    details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
+                    budget:"2000", work_type:"Web Dev....", 
+                    post_date:"12/12/2566", 
+                    status:"in-progress"
+                  };
   const MockData3 = {role:"Freelancer",
-                src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
-                job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-                details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
-                budget:"2000", work_type:"Web Dev....", 
-                post_date:"12/12/2566", 
-                status:"handed-in"
-              };
+                    src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
+                    job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+                    details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
+                    budget:"2000", work_type:"Web Dev....", 
+                    post_date:"12/12/2566", 
+                    status:"handed-in"
+                  };
   const MockData4 = {role:"Freelancer",
-              src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
-              job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-              details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
-              budget:"2000", work_type:"Web Dev....", 
-              post_date:"12/12/2566", 
-              status:"completed"
-            };
+                    src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
+                    job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+                    details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
+                    budget:"2000", work_type:"Web Dev....", 
+                    post_date:"12/12/2566", 
+                    status:"completed"
+                  };
   const MockData = [MockData1, MockData2, MockData3, MockData4]; {/* ลอง MockData */}
 
 

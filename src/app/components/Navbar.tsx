@@ -12,7 +12,7 @@ export default function Navbar(){
         setLogIn(!logIn);
     }
     return(
-        <div className="overflow-hidden bg-[#6400A1] fixed w-full top-0">
+        <div className="overflow-hidden bg-[#6400A1] fixed w-full top-0"> {/* ไม่ Responsive, ตวามกว้างจอน้อยกว่า 768 px = เละ */}
             <div className="flex justify-between px-0 py-1">
                 <div className="gap-[15px] fixed pt-[70px] pb-5 px-5 inset-0 md:flex md:static md:p-0">
                     <Link href="/">
@@ -42,6 +42,7 @@ export default function Navbar(){
                             width={60}
                             height={7.5}
                             alt=""
+                            className="mix-blend-multiply"
                         />
                     </Link>
                     {!logIn ? 
