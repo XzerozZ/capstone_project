@@ -32,7 +32,7 @@ export async function POST(req : Request){
                 last_name : formData.get('last_name') as string,
                 username : formData.get('username') as string,
                 phone_number : formData.get('phone_number') as string, // 1234567890
-                id_card : formData.get('id_card') as string,
+                id_card : formData.get('id_card') as string, // 1234567891234
                 email : formData.get('email') as string,
                 password : formData.get('password') as string,
                 role : formData.get('role') as string,
