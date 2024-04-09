@@ -9,7 +9,8 @@ export async function GET(req : Request,{ params }: { params: { id: string } }){
                 user_id: parseInt(params.id)
             },
             include : {
-                rating_user : true
+                rating_user : true,
+                contact : true
             }
         });
         await prisma.$disconnect();

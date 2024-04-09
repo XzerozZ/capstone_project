@@ -8,6 +8,11 @@ export async function POST(req : Request){
     const prisma = new PrismaClient();
     try{
         const formData = await req.formData();
+        const contactData = {
+            facebook: formData.get('facebook') as string,
+            instagram: formData.get('instagram') as string,
+            linkedin: formData.get('linkedin') as string
+        };
         let image: string | null = null;
         for await (const [name,value] of formData.entries()){
             if(name === 'image' && value instanceof File){
@@ -36,13 +41,24 @@ export async function POST(req : Request){
                 email : formData.get('email') as string,
                 password : formData.get('password') as string,
                 role : formData.get('role') as string,
+            },
+        });
+        const newContact = await prisma.contact.create({
+            data: {
+                ...contactData,
+                user: {
+                    connect: {
+                        user_id: newuser.user_id
+                    }
+                }
             }
-        })
+        });
         await prisma.$disconnect();
         return Response.json({
             message : " create account successfully ",
             data : {
-                newuser 
+                newuser,
+                newContact
             }
         })
     } catch(error){

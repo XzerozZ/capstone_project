@@ -112,6 +112,7 @@ model job_exp{
   @@unique([job_id,category_id])
 }
 model bookmark{
+  book_id             Int        @id @default(autoincrement())
   user_id             Int
   job_id              Int
   user                user       @relation(fields: [user_id], references: [user_id])
