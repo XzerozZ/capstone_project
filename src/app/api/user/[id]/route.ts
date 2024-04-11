@@ -14,7 +14,7 @@ export async function GET(req : Request,{ params }: { params: { id: string } }){
             }
         });
         await prisma.$disconnect();
-       if (userid) {
+        if (userid) {
             const f_rating = userid.rating_user.map(r => r.friendly_rating);
             const e_rating = userid.rating_user.map(r => r.efficiency_rating);
             const a_rating = userid.rating_user.map(r => r.accuracy_rating);
@@ -24,11 +24,11 @@ export async function GET(req : Request,{ params }: { params: { id: string } }){
             const averageRating = (averageRating_a + averageRating_e + averageRating_f) / 3
             const userwithData = { ...userid , averageRating_f , averageRating_e , averageRating_a , averageRating}
             return Response.json(userwithData);
-       } else {
-        return Response.json({
-            message : "Didn't found this User"
-        })
-    }
+        } else {
+            return Response.json({
+                message : "Didn't found this User"
+            })
+        }
     }
     catch(error){
         return new Response(

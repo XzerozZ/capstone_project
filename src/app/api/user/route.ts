@@ -24,16 +24,16 @@ export async function PUT( req : Request){
                 user_id : id
             }
         });
-        if(!existingContact) {
+        if (!existingContact) {
             return Response.json({
                 message : "Contact not found"
             })
         }
         if(formData.has('first_name')) {
-            existingUser.first_name = formData.get('first_name') as string
+            existingUser.first_name = formData.get('first_name') as string;
         }
         if(formData.has('last_name')) {
-            existingUser.last_name = formData.get('last_name') as string
+            existingUser.last_name = formData.get('last_name') as string;
         }
         if(formData.has('username')) {
             existingUser.username = formData.get('username') as string;
