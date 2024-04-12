@@ -26,7 +26,7 @@ export default function WorkStatus({props} : any){ /* {props.role, src, props.jo
                         <div className="flex flex-col pr-5"> {/* ข้อมูลเพิ่มเติมต่าง ๆ */}
                             <MoreDetails display="รายละเอียด:" info={props.details}/>
                             <MoreDetails display="งบประมาณ:" info={props.budget} extra="บาท"/>
-                            <MoreDetails display="ประเภท:" info={props.work_type}/>
+                            <MoreDetails display="ประเภท:" info={props.categories}/>
                             <MoreDetails display="วันที่โพสต์:" info={props.post_date}/>
                             <button className="md:text-[1.2vw] text-[1.7vw] self-end border-solid border-[1px] border-black rounded-2xl leading-7" onClick={toggleMore}>กดเพื่อลดรายละเอียด</button>
                         </div>

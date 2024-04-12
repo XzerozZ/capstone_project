@@ -17,7 +17,7 @@ export default function Home() {
                     src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
                     job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
                     details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
-                    budget:"2000", work_type:"Web Dev....", 
+                    budget:"2000", categories:"Web Dev....", 
                     post_date:"12/12/2566", 
                     status:"applying"
                   };
@@ -25,7 +25,7 @@ export default function Home() {
                     src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
                     job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
                     details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
-                    budget:"2000", work_type:"Web Dev....", 
+                    budget:"2000", categories:"Web Dev....", 
                     post_date:"12/12/2566", 
                     status:"in-progress"
                   };
@@ -33,7 +33,7 @@ export default function Home() {
                     src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
                     job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
                     details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
-                    budget:"2000", work_type:"Web Dev....", 
+                    budget:"2000", categories:"Web Dev....", 
                     post_date:"12/12/2566", 
                     status:"handed-in"
                   };
@@ -41,7 +41,7 @@ export default function Home() {
                     src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
                     job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
                     details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
-                    budget:"2000", work_type:"Web Dev....", 
+                    budget:"2000", categories:"Web Dev....", 
                     post_date:"12/12/2566", 
                     status:"completed"
                   };
@@ -72,7 +72,7 @@ export default function Home() {
                     src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
                     job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
                     details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
-                    budget:"2000", work_type:"Web Dev....", 
+                    budget:"2000", categories:"Web Dev....", 
                     post_date:"12/12/2566", 
                     status:"applying"
                   }}/>*/}
