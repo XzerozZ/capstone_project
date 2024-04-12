@@ -22,15 +22,17 @@ export default function Home() {
               </select>
             </div>
           </div>
-          <div className="flex"> {/* Recommended result box */}
+          <div className="flex justify-center">
             <div>{"<"}</div>
-            <JobRecommend/>
-            <JobRecommend/>
-            <JobRecommend/>
-            <JobRecommend/>
-            <JobRecommend/>
-            <JobRecommend/>
-            <p>{">"}</p>
+            <div className="grid overflow-x-auto grid-flow-col auto-cols-auto gap-[5rem]"> 
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+            </div>
+            <div>{">"}</div>
           </div>
         </div>
         <div className="w-full my-10 px-20 flex flex-col"> {/* Category */}
@@ -56,8 +58,17 @@ export default function Home() {
               </select>
             </div>
           </div>
-          <div> {/* Find Jobs result box */}
-              
+          <div className="flex justify-center">
+            <div>{"<"}</div>
+            <div className="grid overflow-x-auto grid-flow-col auto-cols-auto gap-[5rem]"> {/* ใช้ร่วมกันตอนนี้, แก้ไขได้ */}
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+            </div>
+            <div>{">"}</div>
           </div>
           <div className="flex flex-row-reverse pr-10"> {/*  Show more button */}
             <a className="text-sm" href="/">View more</a>
@@ -73,7 +84,20 @@ export default function Home() {
 
 
 
-      { /* Original Nextjs page
+      { /* 
+      <div>{"<"}</div>
+      <JobRecommend/>
+      <JobRecommend/>
+      <JobRecommend/>
+      <JobRecommend/>
+      <JobRecommend/>
+      <JobRecommend/>
+      <p>{">"}</p>
+      
+      
+      
+      
+      Original Nextjs page
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;

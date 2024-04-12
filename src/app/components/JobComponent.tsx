@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link"; // react-router-dom
 
 export default function JobComponent({props}: any){
     const [hover, setHover] = useState(false); {/* display information when hovered*/}
@@ -31,15 +31,16 @@ export default function JobComponent({props}: any){
                 <div className="flex flex-col"> {/* Jobs details */}
                     <div className="flex"> {/* category, interaction (ติดต่อสมัครงาน, อ่านเพิ่มเติม) */}
                         <div className="flex flex-wrap w-[70%]">
-                            {props.type.map((category: any)=> // แสดงประเภทของงาน
+                            {props.categories.map((category: any)=> // แสดงประเภทของงาน
                                 <p className="text-base">{category}</p>)
                             }
                         </div>
                         {hover && 
                             <div className="flex flex-col w-[25%] text-center">
                                 <p className="text-lg hover:text-[#18A800] text-black">ติดต่อสมัครงาน</p> {/* กดแล้วส่งสถานะว่าสมัครเข้าทำงานนั้น ๆ */}
-                                <Link className="bg-[#FEFFE1] font-bold" to={{pathname:"/pages/jobs/details"}} state={props}>อ่านรายละเอียดเพิ่มเติม</Link>  {/* Bug here:
+                                <Link className="bg-[#FEFFE1] font-bold" href="/pages/jobs/details">อ่านรายละเอียดเพิ่มเติม</Link>  {/* Bug here:
                                     TypeError: Cannot destructure property 'basename' of 'react__WEBPACK_IMPORTED_MODULE_0__.useContext(...)' as it is null. / ส่งไปยังหน้าข้อมูลเต็มของงาน  */}
+                                    {/*to={{pathname:"/pages/jobs/details"}} state={props}*/}
                             </div>
                         }
                     </div> 
