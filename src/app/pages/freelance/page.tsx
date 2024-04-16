@@ -68,7 +68,7 @@ export default function Freelance(){
     return(
         <main className="flex min-h-screen flex-col items-center justify-between">
             <Navbar/>
-            <div className="w-[100%] mt-[68px] flex flex-col"> {/* Padding top ตามความสูง Navbar */}
+            <div className="w-full mt-[68px] flex flex-col"> {/* Padding top ตามความสูง Navbar */}
                 <div className="flex border-solid border-black border-2">
                     <div className="grid overflow-x-auto grid-flow-col auto-cols-auto gap-[5rem] w-[80%]">
                         {/* หมวดงานทั้งหมด */}

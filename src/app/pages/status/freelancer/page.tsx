@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Navbar from  "@/components/Navbar";
 import CategoryBox from "@/components/CategoryBox";
-import WorkStatus from "@/app/components/WorkStatus";
+import WorkStatusBox from "@/app/components/WorkStatusBox";
 import { useState } from "react";
 
 
@@ -68,7 +68,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex mx-auto items-center justify-center flex-wrap flex-col w-[80%]"> {/* ใส่ Mock Data */}
-          {/*<WorkStatus props= {{role:"Freelancer",
+          {/*<WorkStatusBox props= {{role:"Freelancer",
                     src:"https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg",
                     job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
                     details:"Lorem ipsum dolor sit amet. Est atque dicta cum perferendis temporibus ut numquam quam eos quaerat tenetur quo tenetur exercitationem in incidunt vitae et aliquid consequatur! Et reiciendis reprehenderit sit reiciendis voluptatem", 
@@ -77,7 +77,7 @@ export default function Home() {
                     status:"applying"
                   }}/>*/}
           {MockData.map((props)=> 
-            <WorkStatus props={props}></WorkStatus>
+            <WorkStatusBox props={props}></WorkStatusBox>
           )}
         </div>
       </div>

@@ -2,7 +2,7 @@ import { useState } from "react"
 import MoreDetails from "./MoreDetails";
 
 
-export default function WorkStatus({props} : any){ /* {props.role, src, props.job, details, budget, work_type, post_date, props.status} */
+export default function WorkStatusBox({props} : any){ /* {props.role, src, props.job, details, budget, work_type, post_date, props.status} */
 
     const [moreDetails, setMoreDetails] = useState(false);
 
