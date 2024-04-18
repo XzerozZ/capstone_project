@@ -10,7 +10,17 @@ export async function GET(req : Request,{ params }: { params: { id: string } }){
             },
             include : {
                 rating_user : true,
-                contact : true
+                contact : true,
+                experience : {
+                    include: {
+                        category: true
+                    }
+                },
+                user_career : {
+                    include: {
+                        career: true
+                    }
+                }
             }
         });
         await prisma.$disconnect();
@@ -22,7 +32,9 @@ export async function GET(req : Request,{ params }: { params: { id: string } }){
             const averageRating_e = e_rating.length > 0 ? e_rating.reduce((a,b) => a + b) / e_rating.length : 0;
             const averageRating_a = a_rating.length > 0 ? a_rating.reduce((a,b) => a + b) / a_rating.length : 0;
             const averageRating = (averageRating_a + averageRating_e + averageRating_f) / 3
-            const userwithData = { ...userid , averageRating_f , averageRating_e , averageRating_a , averageRating}
+            const categories = userid.experience.map(exp => exp.category.name);
+            const careers = userid.user_career.map(car => car.career.name);
+            const userwithData = { ...userid , categories , careers ,  averageRating_f , averageRating_e , averageRating_a , averageRating}
             return Response.json(userwithData);
         } else {
             return Response.json({
