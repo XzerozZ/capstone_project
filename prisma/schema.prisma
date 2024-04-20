@@ -16,9 +16,12 @@ model user{
   id_card       String           @db.VarChar(17) 
   email         String           @db.VarChar(255) @unique
   password      String           @db.VarChar(255)
-  role          String           @db.VarChar @default("user")
-  rating_user   rating_user[]
-  rating_com    rating_com[]
+  role          String           @db.VarChar 
+  post          post[]
+  rating_user1  rating_user[]    @relation("ratings_given")
+  rating_users2 rating_user[]    @relation("ratings_received")
+  rating_com1   rating_com[]     @relation("ratings_com_given")
+  rating_com2   rating_com[]     @relation("ratings_com_received")
   contact       contact[]
   experience    experience[]
   user_career   user_career[]
@@ -27,25 +30,25 @@ model user{
 }
 model rating_user{
   rating_id           Int        @id @default(autoincrement())
-  company_id          Int
-  user_id             Int
+  user_id1            Int
+  user_id2            Int
   job_id              Int
   friendly_rating     Float      @default(0.0)
   efficiency_rating   Float      @default(0.0)
   accuracy_rating     Float      @default(0.0)
-  user                user       @relation(fields: [user_id], references: [user_id])
+  user1               user       @relation("ratings_given", fields: [user_id1],references: [user_id])
+  user2               user       @relation("ratings_received", fields: [user_id2],references: [user_id])
   job                 job        @relation(fields: [job_id], references: [job_id])
-  company             company    @relation(fields: [company_id],references: [company_id])
 }
 model rating_com{
   rating_id           Int        @id @default(autoincrement())
-  company_id          Int
-  user_id             Int
+  user_id1            Int
+  user_id2            Int
   job_id              Int
   rating              Float      @default(0.0)
-  user                user       @relation(fields: [user_id], references: [user_id])
+  user1               user       @relation("ratings_com_given", fields: [user_id1],references: [user_id])
+  user2               user       @relation("ratings_com_received", fields: [user_id2],references: [user_id])
   job                 job        @relation(fields: [job_id], references: [job_id])
-  company             company    @relation(fields: [company_id],references: [company_id])
 }
 model contact{
   contact_id          Int        @id @default(autoincrement())
@@ -119,21 +122,10 @@ model bookmark{
   job                 job        @relation(fields: [job_id], references: [job_id])
   @@unique([user_id,job_id])
 }
-model company{
-  company_id          Int        @id @default(autoincrement())
-  name                String     @db.Text 
-  image               String?    @db.Text 
-  phone_number        String     @db.VarChar(12) 
-  email               String     @db.VarChar(255) @unique
-  password            String     @db.VarChar(255)
-  post                post[]
-  rating_user         rating_user[]
-  rating_com          rating_com[]
-}
 model post{
-  company_id          Int
+  user_id             Int
   job_id              Int
-  company             company    @relation(fields: [company_id],references: [company_id])
+  user                user       @relation(fields: [user_id],references: [user_id])
   job                 job        @relation(fields: [job_id], references: [job_id])
-  @@unique([company_id,job_id])
+  @@unique([user_id,job_id])
 }

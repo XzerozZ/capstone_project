@@ -2,68 +2,88 @@
 import { PrismaClient } from '@prisma/client';
 
 //http://localhost:3000/api/job
-export async function POST( req : Request ) {
-    const prisma = new PrismaClient();
-    try {
+export async function POST( req: Request ) {
+  const prisma = new PrismaClient();
+  try {
       const formData = await req.formData();
       const id = parseInt(formData.get('id') as string);
-      const categoryIds: number[] = [];
-      for await (const [name,value] of formData.entries()){
-        if (name === 'category'){
-          const categoryName = value as string;
-                let category = await prisma.category.findFirst({
-                    where: {
-                        name: categoryName
-                    }
-                });
-                if (!category) {
-                    category = await prisma.category.create({
-                        data: {
-                            name: categoryName
-                        }
-                    });
-            }
-         }
-         const newjob = await prisma.job.create({
-          data: {
-            title : formData.get('title') as string,
-            description : formData.get('description') as string,
-            budget : parseInt(formData.get('budget') as string),
-            type : formData.get('type') as string,
-            job_exp: {
-              create: categoryIds.map(category_id => ({
-                category: { 
-                  connect: { 
-                    category_id 
-                  } 
-                }
-              }))
-            },
-            post: {
-              create: {
-                company_id : id
+      const user = await prisma.user.findUnique({
+          where: {
+              user_id: id
+          }
+      });
+
+      if (!user || user.role !== "company") {
+          return Response.json({
+              message: "You don't have permission to perform this action"
+          });
+      }
+
+      const categoryNames: string[] = [];
+      for await (const [name, value] of formData.entries()) {
+          if (name === 'category') {
+              categoryNames.push(value as string);
+          }
+      }
+
+      const categories = await Promise.all(categoryNames.map(async (categoryName) => {
+          let category = await prisma.category.findFirst({
+              where: {
+                  name: categoryName
               }
-            }
+          });
+          if (!category) {
+              category = await prisma.category.create({
+                  data: {
+                      name: categoryName
+                  }
+              });
+          }
+          return category;
+      }));
+
+      const categoryIds = categories.map(category => category.category_id);
+
+      const newjob = await prisma.job.create({
+          data: {
+              title: formData.get('title') as string,
+              description: formData.get('description') as string,
+              budget: parseInt(formData.get('budget') as string),
+              type: formData.get('type') as string,
+              job_exp: {
+                  create: categoryIds.map(category_id => ({
+                      category: {
+                          connect: {
+                              category_id
+                          }
+                      }
+                  }))
+              },
+              post: {
+                  create: {
+                      user_id: id
+                  }
+              }
           },
           include: {
-            job_exp: true,
-            post : {
-              include : {
-                company : true
+              job_exp: true,
+              post: {
+                  include: {
+                      user: true
+                  }
               }
-            }
           },
-        });
-        await prisma.$disconnect();
-        return Response.json(newjob)
-      } 
-    }catch(error){
+      });
+      await prisma.$disconnect();
+      return Response.json(newjob);
+  } catch (error) {
       await prisma.$disconnect();
       return Response.json({
           error
-      }, {status:500})
+      }, { status: 500 });
   }
 }
+
 
 export async function GET() {
   const prisma = new PrismaClient();

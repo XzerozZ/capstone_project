@@ -4,6 +4,31 @@ import bcrypt from 'bcrypt';
 import { formatPhoneNumber } from "../auth/format";
 import { upLoadIMG } from "../admin/supabase";
 
+export async function GET() {
+    const prisma = new PrismaClient();
+    try{
+        const comid = await prisma.user.findMany({
+            where : {
+                role : 'user'
+            }
+        });
+        await prisma.$disconnect();
+        return Response.json(
+            comid
+        )
+    }
+    catch(error){
+        return new Response(
+            JSON.stringify({
+                error: "SERVER ERROR"
+            }),
+            {
+                status: 404
+            }
+        );
+    }
+}
+
 export async function PUT( req : Request){
     const prisma = new PrismaClient();
     try {
@@ -25,9 +50,14 @@ export async function PUT( req : Request){
             }
         });
         if (!existingContact) {
-            return Response.json({
-                message : "Contact not found"
-            })
+            existingContact = await prisma.contact.create({
+                data: {
+                    user_id: id,
+                    facebook : formData.get('facebook') as string,
+                    instagram : formData.get('instagram') as string,
+                    linkedin : formData.get('linkedin') as string
+                }
+            });
         }
         if(formData.has('first_name')) {
             existingUser.first_name = formData.get('first_name') as string;
