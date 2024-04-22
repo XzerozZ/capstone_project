@@ -1,28 +1,27 @@
 import numpy as np
 from sentence_transformers import SentenceTransformer
 import pandas as pd
-from flask import Flask, request, jsonify
-from prisma import Prisma 
+from fastapi import FastAPI, HTTPException
+from prisma import Prisma
 from scipy.spatial.distance import pdist
 
-# Load your SentenceTransformer model
-model = SentenceTransformer('distilbert-base-nli-mean-tokens')
-app = Flask(__name__)
+app = FastAPI()
 
-@app.route('/api/process_data', methods=['POST'])
-def process_data():
+@app.post('/api/process_data')
+async def process_data(data: dict):
     prisma = Prisma()
     prisma.connect()
+    model = SentenceTransformer('distilbert-base-nli-mean-tokens')
     print('Processing data...')
     try:
-        data = request.get_json()
         if not data:
-            return jsonify({'error': 'No JSON data provided'}), 400
+            raise HTTPException(status_code=400, detail='No JSON data provided')
 
         user = data.get('freelance_data')
 
         if user is None:
-            return jsonify({'error': 'Input data not found or not valid'}), 400
+            raise HTTPException(status_code=400, detail='Input data not found or not valid')
+        
         user_data = prisma.user.find_unique(
             where = {
                 "user_id": int(user)
@@ -41,7 +40,7 @@ def process_data():
                 "status": "Open"
             }
         )
-        job_descriptions = [jobs.description for job in jobs]
+        job_descriptions = [job.description for job in jobs]
     
         embedded_data_jobs = model.encode(job_descriptions, show_progress_bar=True)
         embedded_data_freelance = model.encode(user_exp, show_progress_bar=True)
@@ -61,10 +60,11 @@ def process_data():
             exp_recom = [job_descriptions[idx] for idx in recomm]
             recommendations_dict[user_exp[i]] = exp_recom
 
-        return jsonify(recommendations_dict), 200
+        return recommendations_dict
 
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == '__main__':
-    app.run(debug=False, host='localhost', port=4000)
+    import uvicorn
+    uvicorn.run(app, host='localhost', port=4000)

@@ -134,20 +134,20 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.Rating_userScalarFieldEnum = {
   rating_id: 'rating_id',
-  user_id1: 'user_id1',
-  user_id2: 'user_id2',
   job_id: 'job_id',
   friendly_rating: 'friendly_rating',
   efficiency_rating: 'efficiency_rating',
-  accuracy_rating: 'accuracy_rating'
+  accuracy_rating: 'accuracy_rating',
+  user_id1: 'user_id1',
+  user_id2: 'user_id2'
 };
 
 exports.Prisma.Rating_comScalarFieldEnum = {
   rating_id: 'rating_id',
-  user_id1: 'user_id1',
-  user_id2: 'user_id2',
   job_id: 'job_id',
-  rating: 'rating'
+  rating: 'rating',
+  user_id1: 'user_id1',
+  user_id2: 'user_id2'
 };
 
 exports.Prisma.ContactScalarFieldEnum = {
@@ -201,14 +201,14 @@ exports.Prisma.Job_expScalarFieldEnum = {
 };
 
 exports.Prisma.BookmarkScalarFieldEnum = {
-  book_id: 'book_id',
   user_id: 'user_id',
-  job_id: 'job_id'
+  job_id: 'job_id',
+  book_id: 'book_id'
 };
 
 exports.Prisma.PostScalarFieldEnum = {
-  user_id: 'user_id',
-  job_id: 'job_id'
+  job_id: 'job_id',
+  user_id: 'user_id'
 };
 
 exports.Prisma.SortOrder = {

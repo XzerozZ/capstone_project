@@ -1141,16 +1141,16 @@ class userOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the user create method"""
     user_id: _int
     image: Optional[_str]
-    post: 'postCreateManyNestedWithoutRelationsInput'
-    rating_user1: 'rating_userCreateManyNestedWithoutRelationsInput'
-    rating_users2: 'rating_userCreateManyNestedWithoutRelationsInput'
-    rating_com1: 'rating_comCreateManyNestedWithoutRelationsInput'
-    rating_com2: 'rating_comCreateManyNestedWithoutRelationsInput'
+    bookmark: 'bookmarkCreateManyNestedWithoutRelationsInput'
     contact: 'contactCreateManyNestedWithoutRelationsInput'
     experience: 'experienceCreateManyNestedWithoutRelationsInput'
-    user_career: 'user_careerCreateManyNestedWithoutRelationsInput'
     history: 'historyCreateManyNestedWithoutRelationsInput'
-    bookmark: 'bookmarkCreateManyNestedWithoutRelationsInput'
+    post: 'postCreateManyNestedWithoutRelationsInput'
+    rating_com1: 'rating_comCreateManyNestedWithoutRelationsInput'
+    rating_com2: 'rating_comCreateManyNestedWithoutRelationsInput'
+    rating_user1: 'rating_userCreateManyNestedWithoutRelationsInput'
+    rating_users2: 'rating_userCreateManyNestedWithoutRelationsInput'
+    user_career: 'user_careerCreateManyNestedWithoutRelationsInput'
 
 
 class userCreateInput(userOptionalCreateInput):
@@ -1230,16 +1230,16 @@ class userUpdateInput(TypedDict, total=False):
     email: _str
     password: _str
     role: _str
-    post: 'postUpdateManyWithoutRelationsInput'
-    rating_user1: 'rating_userUpdateManyWithoutRelationsInput'
-    rating_users2: 'rating_userUpdateManyWithoutRelationsInput'
-    rating_com1: 'rating_comUpdateManyWithoutRelationsInput'
-    rating_com2: 'rating_comUpdateManyWithoutRelationsInput'
+    bookmark: 'bookmarkUpdateManyWithoutRelationsInput'
     contact: 'contactUpdateManyWithoutRelationsInput'
     experience: 'experienceUpdateManyWithoutRelationsInput'
-    user_career: 'user_careerUpdateManyWithoutRelationsInput'
     history: 'historyUpdateManyWithoutRelationsInput'
-    bookmark: 'bookmarkUpdateManyWithoutRelationsInput'
+    post: 'postUpdateManyWithoutRelationsInput'
+    rating_com1: 'rating_comUpdateManyWithoutRelationsInput'
+    rating_com2: 'rating_comUpdateManyWithoutRelationsInput'
+    rating_user1: 'rating_userUpdateManyWithoutRelationsInput'
+    rating_users2: 'rating_userUpdateManyWithoutRelationsInput'
+    user_career: 'user_careerUpdateManyWithoutRelationsInput'
 
 
 class userUpdateManyMutationInput(TypedDict, total=False):
@@ -1409,74 +1409,74 @@ class userListRelationFilter(TypedDict, total=False):
 
 class userInclude(TypedDict, total=False):
     """user relational arguments"""
-    post: Union[bool, 'FindManypostArgsFromuser']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuser']
     contact: Union[bool, 'FindManycontactArgsFromuser']
     experience: Union[bool, 'FindManyexperienceArgsFromuser']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromuser']
     history: Union[bool, 'FindManyhistoryArgsFromuser']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuser']
+    post: Union[bool, 'FindManypostArgsFromuser']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromuser']
 
 
     
 
 class userIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
-    post: Union[bool, 'FindManypostArgsFromuserRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromuserRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromuserRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromuserRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromuserRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromuserRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromuserRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromuserRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromuserRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive1']
+    post: Union[bool, 'FindManypostArgsFromuserRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromuserRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromuserRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromuserRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromuserRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromuserRecursive1']
 
 
 class userIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
-    post: Union[bool, 'FindManypostArgsFromuserRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromuserRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromuserRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromuserRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromuserRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromuserRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromuserRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromuserRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromuserRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive2']
+    post: Union[bool, 'FindManypostArgsFromuserRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromuserRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromuserRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromuserRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromuserRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromuserRecursive2']
 
 
 class userIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
-    post: Union[bool, 'FindManypostArgsFromuserRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromuserRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromuserRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromuserRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromuserRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromuserRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromuserRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromuserRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromuserRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive3']
+    post: Union[bool, 'FindManypostArgsFromuserRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromuserRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromuserRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromuserRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromuserRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromuserRecursive3']
 
 
 class userIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
-    post: Union[bool, 'FindManypostArgsFromuserRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromuserRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromuserRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromuserRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromuserRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromuserRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromuserRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromuserRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromuserRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive4']
+    post: Union[bool, 'FindManypostArgsFromuserRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromuserRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromuserRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromuserRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromuserRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromuserRecursive4']
 
 
 class userIncludeFromuserRecursive4(TypedDict, total=False):
@@ -1566,30 +1566,30 @@ class FindManyuserArgsFromuserRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
+    job: Union[bool, 'jobArgsFromuserRecursive1']
     user1: Union[bool, 'userArgsFromuserRecursive1']
     user2: Union[bool, 'userArgsFromuserRecursive1']
-    job: Union[bool, 'jobArgsFromuserRecursive1']
 
 
 class rating_userIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
+    job: Union[bool, 'jobArgsFromuserRecursive2']
     user1: Union[bool, 'userArgsFromuserRecursive2']
     user2: Union[bool, 'userArgsFromuserRecursive2']
-    job: Union[bool, 'jobArgsFromuserRecursive2']
 
 
 class rating_userIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
+    job: Union[bool, 'jobArgsFromuserRecursive3']
     user1: Union[bool, 'userArgsFromuserRecursive3']
     user2: Union[bool, 'userArgsFromuserRecursive3']
-    job: Union[bool, 'jobArgsFromuserRecursive3']
 
 
 class rating_userIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
+    job: Union[bool, 'jobArgsFromuserRecursive4']
     user1: Union[bool, 'userArgsFromuserRecursive4']
     user2: Union[bool, 'userArgsFromuserRecursive4']
-    job: Union[bool, 'jobArgsFromuserRecursive4']
 
 
 class rating_userIncludeFromuserRecursive4(TypedDict, total=False):
@@ -1679,30 +1679,30 @@ class FindManyrating_userArgsFromuserRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
+    job: Union[bool, 'jobArgsFromuserRecursive1']
     user1: Union[bool, 'userArgsFromuserRecursive1']
     user2: Union[bool, 'userArgsFromuserRecursive1']
-    job: Union[bool, 'jobArgsFromuserRecursive1']
 
 
 class rating_comIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
+    job: Union[bool, 'jobArgsFromuserRecursive2']
     user1: Union[bool, 'userArgsFromuserRecursive2']
     user2: Union[bool, 'userArgsFromuserRecursive2']
-    job: Union[bool, 'jobArgsFromuserRecursive2']
 
 
 class rating_comIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
+    job: Union[bool, 'jobArgsFromuserRecursive3']
     user1: Union[bool, 'userArgsFromuserRecursive3']
     user2: Union[bool, 'userArgsFromuserRecursive3']
-    job: Union[bool, 'jobArgsFromuserRecursive3']
 
 
 class rating_comIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
+    job: Union[bool, 'jobArgsFromuserRecursive4']
     user1: Union[bool, 'userArgsFromuserRecursive4']
     user2: Union[bool, 'userArgsFromuserRecursive4']
-    job: Union[bool, 'jobArgsFromuserRecursive4']
 
 
 class rating_comIncludeFromuserRecursive4(TypedDict, total=False):
@@ -2006,26 +2006,26 @@ class FindManycategoryArgsFromuserRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive1']
     category: Union[bool, 'categoryArgsFromuserRecursive1']
+    user: Union[bool, 'userArgsFromuserRecursive1']
 
 
 class experienceIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive2']
     category: Union[bool, 'categoryArgsFromuserRecursive2']
+    user: Union[bool, 'userArgsFromuserRecursive2']
 
 
 class experienceIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive3']
     category: Union[bool, 'categoryArgsFromuserRecursive3']
+    user: Union[bool, 'userArgsFromuserRecursive3']
 
 
 class experienceIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive4']
     category: Union[bool, 'categoryArgsFromuserRecursive4']
+    user: Union[bool, 'userArgsFromuserRecursive4']
 
 
 class experienceIncludeFromuserRecursive4(TypedDict, total=False):
@@ -2220,26 +2220,26 @@ class FindManycareerArgsFromuserRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive1']
     career: Union[bool, 'careerArgsFromuserRecursive1']
+    user: Union[bool, 'userArgsFromuserRecursive1']
 
 
 class user_careerIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive2']
     career: Union[bool, 'careerArgsFromuserRecursive2']
+    user: Union[bool, 'userArgsFromuserRecursive2']
 
 
 class user_careerIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive3']
     career: Union[bool, 'careerArgsFromuserRecursive3']
+    user: Union[bool, 'userArgsFromuserRecursive3']
 
 
 class user_careerIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive4']
     career: Union[bool, 'careerArgsFromuserRecursive4']
+    user: Union[bool, 'userArgsFromuserRecursive4']
 
 
 class user_careerIncludeFromuserRecursive4(TypedDict, total=False):
@@ -2329,42 +2329,42 @@ class FindManyuser_careerArgsFromuserRecursive4(TypedDict, total=False):
 
 class jobIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromuserRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromuserRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromuserRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromuserRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive1']
     post: Union[bool, 'FindManypostArgsFromuserRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromuserRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromuserRecursive1']
 
 
 class jobIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromuserRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromuserRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromuserRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromuserRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive2']
     post: Union[bool, 'FindManypostArgsFromuserRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromuserRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromuserRecursive2']
 
 
 class jobIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromuserRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromuserRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromuserRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromuserRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive3']
     post: Union[bool, 'FindManypostArgsFromuserRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromuserRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromuserRecursive3']
 
 
 class jobIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromuserRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromuserRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromuserRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromuserRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuserRecursive4']
     post: Union[bool, 'FindManypostArgsFromuserRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromuserRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromuserRecursive4']
 
 
 class jobIncludeFromuserRecursive4(TypedDict, total=False):
@@ -2454,26 +2454,26 @@ class FindManyjobArgsFromuserRecursive4(TypedDict, total=False):
 
 class historyIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive1']
     job: Union[bool, 'jobArgsFromuserRecursive1']
+    user: Union[bool, 'userArgsFromuserRecursive1']
 
 
 class historyIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive2']
     job: Union[bool, 'jobArgsFromuserRecursive2']
+    user: Union[bool, 'userArgsFromuserRecursive2']
 
 
 class historyIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive3']
     job: Union[bool, 'jobArgsFromuserRecursive3']
+    user: Union[bool, 'userArgsFromuserRecursive3']
 
 
 class historyIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive4']
     job: Union[bool, 'jobArgsFromuserRecursive4']
+    user: Union[bool, 'userArgsFromuserRecursive4']
 
 
 class historyIncludeFromuserRecursive4(TypedDict, total=False):
@@ -2563,26 +2563,26 @@ class FindManyhistoryArgsFromuserRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
-    job: Union[bool, 'jobArgsFromuserRecursive1']
     category: Union[bool, 'categoryArgsFromuserRecursive1']
+    job: Union[bool, 'jobArgsFromuserRecursive1']
 
 
 class job_expIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
-    job: Union[bool, 'jobArgsFromuserRecursive2']
     category: Union[bool, 'categoryArgsFromuserRecursive2']
+    job: Union[bool, 'jobArgsFromuserRecursive2']
 
 
 class job_expIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
-    job: Union[bool, 'jobArgsFromuserRecursive3']
     category: Union[bool, 'categoryArgsFromuserRecursive3']
+    job: Union[bool, 'jobArgsFromuserRecursive3']
 
 
 class job_expIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
-    job: Union[bool, 'jobArgsFromuserRecursive4']
     category: Union[bool, 'categoryArgsFromuserRecursive4']
+    job: Union[bool, 'jobArgsFromuserRecursive4']
 
 
 class job_expIncludeFromuserRecursive4(TypedDict, total=False):
@@ -2672,26 +2672,26 @@ class FindManyjob_expArgsFromuserRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive1']
     job: Union[bool, 'jobArgsFromuserRecursive1']
+    user: Union[bool, 'userArgsFromuserRecursive1']
 
 
 class bookmarkIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive2']
     job: Union[bool, 'jobArgsFromuserRecursive2']
+    user: Union[bool, 'userArgsFromuserRecursive2']
 
 
 class bookmarkIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive3']
     job: Union[bool, 'jobArgsFromuserRecursive3']
+    user: Union[bool, 'userArgsFromuserRecursive3']
 
 
 class bookmarkIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive4']
     job: Union[bool, 'jobArgsFromuserRecursive4']
+    user: Union[bool, 'userArgsFromuserRecursive4']
 
 
 class bookmarkIncludeFromuserRecursive4(TypedDict, total=False):
@@ -2781,26 +2781,26 @@ class FindManybookmarkArgsFromuserRecursive4(TypedDict, total=False):
 
 class postIncludeFromuser(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive1']
     job: Union[bool, 'jobArgsFromuserRecursive1']
+    user: Union[bool, 'userArgsFromuserRecursive1']
 
 
 class postIncludeFromuserRecursive1(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive2']
     job: Union[bool, 'jobArgsFromuserRecursive2']
+    user: Union[bool, 'userArgsFromuserRecursive2']
 
 
 class postIncludeFromuserRecursive2(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive3']
     job: Union[bool, 'jobArgsFromuserRecursive3']
+    user: Union[bool, 'userArgsFromuserRecursive3']
 
 
 class postIncludeFromuserRecursive3(TypedDict, total=False):
     """Relational arguments for user"""
-    user: Union[bool, 'userArgsFromuserRecursive4']
     job: Union[bool, 'jobArgsFromuserRecursive4']
+    user: Union[bool, 'userArgsFromuserRecursive4']
 
 
 class postIncludeFromuserRecursive4(TypedDict, total=False):
@@ -2906,16 +2906,16 @@ class userWhereInput(TypedDict, total=False):
     email: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     role: Union[_str, 'types.StringFilter']
-    post: 'postListRelationFilter'
-    rating_user1: 'rating_userListRelationFilter'
-    rating_users2: 'rating_userListRelationFilter'
-    rating_com1: 'rating_comListRelationFilter'
-    rating_com2: 'rating_comListRelationFilter'
+    bookmark: 'bookmarkListRelationFilter'
     contact: 'contactListRelationFilter'
     experience: 'experienceListRelationFilter'
-    user_career: 'user_careerListRelationFilter'
     history: 'historyListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
+    post: 'postListRelationFilter'
+    rating_com1: 'rating_comListRelationFilter'
+    rating_com2: 'rating_comListRelationFilter'
+    rating_user1: 'rating_userListRelationFilter'
+    rating_users2: 'rating_userListRelationFilter'
+    user_career: 'user_careerListRelationFilter'
 
     # should be noted that AND and NOT should be Union['userWhereInputRecursive1', List['userWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -2936,16 +2936,16 @@ class userWhereInputRecursive1(TypedDict, total=False):
     email: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     role: Union[_str, 'types.StringFilter']
-    post: 'postListRelationFilter'
-    rating_user1: 'rating_userListRelationFilter'
-    rating_users2: 'rating_userListRelationFilter'
-    rating_com1: 'rating_comListRelationFilter'
-    rating_com2: 'rating_comListRelationFilter'
+    bookmark: 'bookmarkListRelationFilter'
     contact: 'contactListRelationFilter'
     experience: 'experienceListRelationFilter'
-    user_career: 'user_careerListRelationFilter'
     history: 'historyListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
+    post: 'postListRelationFilter'
+    rating_com1: 'rating_comListRelationFilter'
+    rating_com2: 'rating_comListRelationFilter'
+    rating_user1: 'rating_userListRelationFilter'
+    rating_users2: 'rating_userListRelationFilter'
+    user_career: 'user_careerListRelationFilter'
 
     # should be noted that AND and NOT should be Union['userWhereInputRecursive2', List['userWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -2966,16 +2966,16 @@ class userWhereInputRecursive2(TypedDict, total=False):
     email: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     role: Union[_str, 'types.StringFilter']
-    post: 'postListRelationFilter'
-    rating_user1: 'rating_userListRelationFilter'
-    rating_users2: 'rating_userListRelationFilter'
-    rating_com1: 'rating_comListRelationFilter'
-    rating_com2: 'rating_comListRelationFilter'
+    bookmark: 'bookmarkListRelationFilter'
     contact: 'contactListRelationFilter'
     experience: 'experienceListRelationFilter'
-    user_career: 'user_careerListRelationFilter'
     history: 'historyListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
+    post: 'postListRelationFilter'
+    rating_com1: 'rating_comListRelationFilter'
+    rating_com2: 'rating_comListRelationFilter'
+    rating_user1: 'rating_userListRelationFilter'
+    rating_users2: 'rating_userListRelationFilter'
+    user_career: 'user_careerListRelationFilter'
 
     # should be noted that AND and NOT should be Union['userWhereInputRecursive3', List['userWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -2996,16 +2996,16 @@ class userWhereInputRecursive3(TypedDict, total=False):
     email: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     role: Union[_str, 'types.StringFilter']
-    post: 'postListRelationFilter'
-    rating_user1: 'rating_userListRelationFilter'
-    rating_users2: 'rating_userListRelationFilter'
-    rating_com1: 'rating_comListRelationFilter'
-    rating_com2: 'rating_comListRelationFilter'
+    bookmark: 'bookmarkListRelationFilter'
     contact: 'contactListRelationFilter'
     experience: 'experienceListRelationFilter'
-    user_career: 'user_careerListRelationFilter'
     history: 'historyListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
+    post: 'postListRelationFilter'
+    rating_com1: 'rating_comListRelationFilter'
+    rating_com2: 'rating_comListRelationFilter'
+    rating_user1: 'rating_userListRelationFilter'
+    rating_users2: 'rating_userListRelationFilter'
+    user_career: 'user_careerListRelationFilter'
 
     # should be noted that AND and NOT should be Union['userWhereInputRecursive4', List['userWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -3026,16 +3026,16 @@ class userWhereInputRecursive4(TypedDict, total=False):
     email: Union[_str, 'types.StringFilter']
     password: Union[_str, 'types.StringFilter']
     role: Union[_str, 'types.StringFilter']
-    post: 'postListRelationFilter'
-    rating_user1: 'rating_userListRelationFilter'
-    rating_users2: 'rating_userListRelationFilter'
-    rating_com1: 'rating_comListRelationFilter'
-    rating_com2: 'rating_comListRelationFilter'
+    bookmark: 'bookmarkListRelationFilter'
     contact: 'contactListRelationFilter'
     experience: 'experienceListRelationFilter'
-    user_career: 'user_careerListRelationFilter'
     history: 'historyListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
+    post: 'postListRelationFilter'
+    rating_com1: 'rating_comListRelationFilter'
+    rating_com2: 'rating_comListRelationFilter'
+    rating_user1: 'rating_userListRelationFilter'
+    rating_users2: 'rating_userListRelationFilter'
+    user_career: 'user_careerListRelationFilter'
 
 
 
@@ -3262,16 +3262,16 @@ userKeys = Literal[
     'email',
     'password',
     'role',
-    'post',
-    'rating_user1',
-    'rating_users2',
-    'rating_com1',
-    'rating_com2',
+    'bookmark',
     'contact',
     'experience',
-    'user_career',
     'history',
-    'bookmark',
+    'post',
+    'rating_com1',
+    'rating_com2',
+    'rating_user1',
+    'rating_users2',
+    'user_career',
 ]
 userScalarFieldKeys = Literal[
     'user_id',
@@ -3288,16 +3288,16 @@ userScalarFieldKeys = Literal[
 userScalarFieldKeysT = TypeVar('userScalarFieldKeysT', bound=userScalarFieldKeys)
 
 userRelationalFieldKeys = Literal[
-        'post',
-        'rating_user1',
-        'rating_users2',
-        'rating_com1',
-        'rating_com2',
+        'bookmark',
         'contact',
         'experience',
-        'user_career',
         'history',
-        'bookmark',
+        'post',
+        'rating_com1',
+        'rating_com2',
+        'rating_user1',
+        'rating_users2',
+        'user_career',
     ]
 
 # rating_user types
@@ -3305,15 +3305,15 @@ userRelationalFieldKeys = Literal[
 class rating_userOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the rating_user create method"""
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     friendly_rating: _float
     efficiency_rating: _float
     accuracy_rating: _float
+    user_id1: _int
+    user_id2: _int
+    job: 'jobCreateNestedWithoutRelationsInput'
     user1: 'userCreateNestedWithoutRelationsInput'
     user2: 'userCreateNestedWithoutRelationsInput'
-    job: 'jobCreateNestedWithoutRelationsInput'
 
 
 class rating_userCreateInput(rating_userOptionalCreateInput):
@@ -3326,12 +3326,12 @@ class rating_userCreateInput(rating_userOptionalCreateInput):
 class rating_userOptionalCreateWithoutRelationsInput(TypedDict, total=False):
     """Optional arguments to the rating_user create method, without relations"""
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     friendly_rating: _float
     efficiency_rating: _float
     accuracy_rating: _float
+    user_id1: _int
+    user_id2: _int
 
 
 class rating_userCreateWithoutRelationsInput(rating_userOptionalCreateWithoutRelationsInput):
@@ -3365,9 +3365,9 @@ class rating_userUpdateInput(TypedDict, total=False):
     friendly_rating: Union[AtomicFloatInput, _float]
     efficiency_rating: Union[AtomicFloatInput, _float]
     accuracy_rating: Union[AtomicFloatInput, _float]
+    job: 'jobUpdateOneWithoutRelationsInput'
     user1: 'userUpdateOneWithoutRelationsInput'
     user2: 'userUpdateOneWithoutRelationsInput'
-    job: 'jobUpdateOneWithoutRelationsInput'
 
 
 class rating_userUpdateManyMutationInput(TypedDict, total=False):
@@ -3418,22 +3418,6 @@ _rating_user_rating_id_OrderByInput = TypedDict(
     total=True
 )
 
-_rating_user_user_id1_OrderByInput = TypedDict(
-    '_rating_user_user_id1_OrderByInput',
-    {
-        'user_id1': 'SortOrder',
-    },
-    total=True
-)
-
-_rating_user_user_id2_OrderByInput = TypedDict(
-    '_rating_user_user_id2_OrderByInput',
-    {
-        'user_id2': 'SortOrder',
-    },
-    total=True
-)
-
 _rating_user_job_id_OrderByInput = TypedDict(
     '_rating_user_job_id_OrderByInput',
     {
@@ -3466,14 +3450,30 @@ _rating_user_accuracy_rating_OrderByInput = TypedDict(
     total=True
 )
 
+_rating_user_user_id1_OrderByInput = TypedDict(
+    '_rating_user_user_id1_OrderByInput',
+    {
+        'user_id1': 'SortOrder',
+    },
+    total=True
+)
+
+_rating_user_user_id2_OrderByInput = TypedDict(
+    '_rating_user_user_id2_OrderByInput',
+    {
+        'user_id2': 'SortOrder',
+    },
+    total=True
+)
+
 rating_userOrderByInput = Union[
     '_rating_user_rating_id_OrderByInput',
-    '_rating_user_user_id1_OrderByInput',
-    '_rating_user_user_id2_OrderByInput',
     '_rating_user_job_id_OrderByInput',
     '_rating_user_friendly_rating_OrderByInput',
     '_rating_user_efficiency_rating_OrderByInput',
     '_rating_user_accuracy_rating_OrderByInput',
+    '_rating_user_user_id1_OrderByInput',
+    '_rating_user_user_id2_OrderByInput',
 ]
 
 
@@ -3504,67 +3504,67 @@ class rating_userListRelationFilter(TypedDict, total=False):
 
 class rating_userInclude(TypedDict, total=False):
     """rating_user relational arguments"""
+    job: Union[bool, 'jobArgsFromrating_user']
     user1: Union[bool, 'userArgsFromrating_user']
     user2: Union[bool, 'userArgsFromrating_user']
-    job: Union[bool, 'jobArgsFromrating_user']
 
 
     
 
 class userIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    post: Union[bool, 'FindManypostArgsFromrating_userRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromrating_userRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromrating_userRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_userRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromrating_userRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive1']
+    post: Union[bool, 'FindManypostArgsFromrating_userRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_userRecursive1']
 
 
 class userIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    post: Union[bool, 'FindManypostArgsFromrating_userRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromrating_userRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromrating_userRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_userRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromrating_userRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive2']
+    post: Union[bool, 'FindManypostArgsFromrating_userRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_userRecursive2']
 
 
 class userIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    post: Union[bool, 'FindManypostArgsFromrating_userRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromrating_userRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromrating_userRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_userRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromrating_userRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive3']
+    post: Union[bool, 'FindManypostArgsFromrating_userRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_userRecursive3']
 
 
 class userIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    post: Union[bool, 'FindManypostArgsFromrating_userRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromrating_userRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromrating_userRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_userRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromrating_userRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive4']
+    post: Union[bool, 'FindManypostArgsFromrating_userRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_userRecursive4']
 
 
 class userIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -3654,30 +3654,30 @@ class FindManyuserArgsFromrating_userRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    job: Union[bool, 'jobArgsFromrating_userRecursive1']
     user1: Union[bool, 'userArgsFromrating_userRecursive1']
     user2: Union[bool, 'userArgsFromrating_userRecursive1']
-    job: Union[bool, 'jobArgsFromrating_userRecursive1']
 
 
 class rating_userIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    job: Union[bool, 'jobArgsFromrating_userRecursive2']
     user1: Union[bool, 'userArgsFromrating_userRecursive2']
     user2: Union[bool, 'userArgsFromrating_userRecursive2']
-    job: Union[bool, 'jobArgsFromrating_userRecursive2']
 
 
 class rating_userIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    job: Union[bool, 'jobArgsFromrating_userRecursive3']
     user1: Union[bool, 'userArgsFromrating_userRecursive3']
     user2: Union[bool, 'userArgsFromrating_userRecursive3']
-    job: Union[bool, 'jobArgsFromrating_userRecursive3']
 
 
 class rating_userIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    job: Union[bool, 'jobArgsFromrating_userRecursive4']
     user1: Union[bool, 'userArgsFromrating_userRecursive4']
     user2: Union[bool, 'userArgsFromrating_userRecursive4']
-    job: Union[bool, 'jobArgsFromrating_userRecursive4']
 
 
 class rating_userIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -3767,30 +3767,30 @@ class FindManyrating_userArgsFromrating_userRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    job: Union[bool, 'jobArgsFromrating_userRecursive1']
     user1: Union[bool, 'userArgsFromrating_userRecursive1']
     user2: Union[bool, 'userArgsFromrating_userRecursive1']
-    job: Union[bool, 'jobArgsFromrating_userRecursive1']
 
 
 class rating_comIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    job: Union[bool, 'jobArgsFromrating_userRecursive2']
     user1: Union[bool, 'userArgsFromrating_userRecursive2']
     user2: Union[bool, 'userArgsFromrating_userRecursive2']
-    job: Union[bool, 'jobArgsFromrating_userRecursive2']
 
 
 class rating_comIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    job: Union[bool, 'jobArgsFromrating_userRecursive3']
     user1: Union[bool, 'userArgsFromrating_userRecursive3']
     user2: Union[bool, 'userArgsFromrating_userRecursive3']
-    job: Union[bool, 'jobArgsFromrating_userRecursive3']
 
 
 class rating_comIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    job: Union[bool, 'jobArgsFromrating_userRecursive4']
     user1: Union[bool, 'userArgsFromrating_userRecursive4']
     user2: Union[bool, 'userArgsFromrating_userRecursive4']
-    job: Union[bool, 'jobArgsFromrating_userRecursive4']
 
 
 class rating_comIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -4094,26 +4094,26 @@ class FindManycategoryArgsFromrating_userRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive1']
     category: Union[bool, 'categoryArgsFromrating_userRecursive1']
+    user: Union[bool, 'userArgsFromrating_userRecursive1']
 
 
 class experienceIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive2']
     category: Union[bool, 'categoryArgsFromrating_userRecursive2']
+    user: Union[bool, 'userArgsFromrating_userRecursive2']
 
 
 class experienceIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive3']
     category: Union[bool, 'categoryArgsFromrating_userRecursive3']
+    user: Union[bool, 'userArgsFromrating_userRecursive3']
 
 
 class experienceIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive4']
     category: Union[bool, 'categoryArgsFromrating_userRecursive4']
+    user: Union[bool, 'userArgsFromrating_userRecursive4']
 
 
 class experienceIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -4308,26 +4308,26 @@ class FindManycareerArgsFromrating_userRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive1']
     career: Union[bool, 'careerArgsFromrating_userRecursive1']
+    user: Union[bool, 'userArgsFromrating_userRecursive1']
 
 
 class user_careerIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive2']
     career: Union[bool, 'careerArgsFromrating_userRecursive2']
+    user: Union[bool, 'userArgsFromrating_userRecursive2']
 
 
 class user_careerIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive3']
     career: Union[bool, 'careerArgsFromrating_userRecursive3']
+    user: Union[bool, 'userArgsFromrating_userRecursive3']
 
 
 class user_careerIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive4']
     career: Union[bool, 'careerArgsFromrating_userRecursive4']
+    user: Union[bool, 'userArgsFromrating_userRecursive4']
 
 
 class user_careerIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -4417,42 +4417,42 @@ class FindManyuser_careerArgsFromrating_userRecursive4(TypedDict, total=False):
 
 class jobIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromrating_userRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromrating_userRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive1']
     post: Union[bool, 'FindManypostArgsFromrating_userRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive1']
 
 
 class jobIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromrating_userRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromrating_userRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive2']
     post: Union[bool, 'FindManypostArgsFromrating_userRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive2']
 
 
 class jobIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromrating_userRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromrating_userRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive3']
     post: Union[bool, 'FindManypostArgsFromrating_userRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive3']
 
 
 class jobIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromrating_userRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromrating_userRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_userRecursive4']
     post: Union[bool, 'FindManypostArgsFromrating_userRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_userRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_userRecursive4']
 
 
 class jobIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -4542,26 +4542,26 @@ class FindManyjobArgsFromrating_userRecursive4(TypedDict, total=False):
 
 class historyIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive1']
     job: Union[bool, 'jobArgsFromrating_userRecursive1']
+    user: Union[bool, 'userArgsFromrating_userRecursive1']
 
 
 class historyIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive2']
     job: Union[bool, 'jobArgsFromrating_userRecursive2']
+    user: Union[bool, 'userArgsFromrating_userRecursive2']
 
 
 class historyIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive3']
     job: Union[bool, 'jobArgsFromrating_userRecursive3']
+    user: Union[bool, 'userArgsFromrating_userRecursive3']
 
 
 class historyIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive4']
     job: Union[bool, 'jobArgsFromrating_userRecursive4']
+    user: Union[bool, 'userArgsFromrating_userRecursive4']
 
 
 class historyIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -4651,26 +4651,26 @@ class FindManyhistoryArgsFromrating_userRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    job: Union[bool, 'jobArgsFromrating_userRecursive1']
     category: Union[bool, 'categoryArgsFromrating_userRecursive1']
+    job: Union[bool, 'jobArgsFromrating_userRecursive1']
 
 
 class job_expIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    job: Union[bool, 'jobArgsFromrating_userRecursive2']
     category: Union[bool, 'categoryArgsFromrating_userRecursive2']
+    job: Union[bool, 'jobArgsFromrating_userRecursive2']
 
 
 class job_expIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    job: Union[bool, 'jobArgsFromrating_userRecursive3']
     category: Union[bool, 'categoryArgsFromrating_userRecursive3']
+    job: Union[bool, 'jobArgsFromrating_userRecursive3']
 
 
 class job_expIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    job: Union[bool, 'jobArgsFromrating_userRecursive4']
     category: Union[bool, 'categoryArgsFromrating_userRecursive4']
+    job: Union[bool, 'jobArgsFromrating_userRecursive4']
 
 
 class job_expIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -4760,26 +4760,26 @@ class FindManyjob_expArgsFromrating_userRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive1']
     job: Union[bool, 'jobArgsFromrating_userRecursive1']
+    user: Union[bool, 'userArgsFromrating_userRecursive1']
 
 
 class bookmarkIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive2']
     job: Union[bool, 'jobArgsFromrating_userRecursive2']
+    user: Union[bool, 'userArgsFromrating_userRecursive2']
 
 
 class bookmarkIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive3']
     job: Union[bool, 'jobArgsFromrating_userRecursive3']
+    user: Union[bool, 'userArgsFromrating_userRecursive3']
 
 
 class bookmarkIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive4']
     job: Union[bool, 'jobArgsFromrating_userRecursive4']
+    user: Union[bool, 'userArgsFromrating_userRecursive4']
 
 
 class bookmarkIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -4869,26 +4869,26 @@ class FindManybookmarkArgsFromrating_userRecursive4(TypedDict, total=False):
 
 class postIncludeFromrating_user(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive1']
     job: Union[bool, 'jobArgsFromrating_userRecursive1']
+    user: Union[bool, 'userArgsFromrating_userRecursive1']
 
 
 class postIncludeFromrating_userRecursive1(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive2']
     job: Union[bool, 'jobArgsFromrating_userRecursive2']
+    user: Union[bool, 'userArgsFromrating_userRecursive2']
 
 
 class postIncludeFromrating_userRecursive2(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive3']
     job: Union[bool, 'jobArgsFromrating_userRecursive3']
+    user: Union[bool, 'userArgsFromrating_userRecursive3']
 
 
 class postIncludeFromrating_userRecursive3(TypedDict, total=False):
     """Relational arguments for rating_user"""
-    user: Union[bool, 'userArgsFromrating_userRecursive4']
     job: Union[bool, 'jobArgsFromrating_userRecursive4']
+    user: Union[bool, 'userArgsFromrating_userRecursive4']
 
 
 class postIncludeFromrating_userRecursive4(TypedDict, total=False):
@@ -4985,15 +4985,15 @@ FindFirstrating_userArgs = FindManyrating_userArgsFromrating_user
 class rating_userWhereInput(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     friendly_rating: Union[_float, 'types.FloatFilter']
     efficiency_rating: Union[_float, 'types.FloatFilter']
     accuracy_rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['rating_userWhereInputRecursive1', List['rating_userWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -5005,15 +5005,15 @@ class rating_userWhereInput(TypedDict, total=False):
 class rating_userWhereInputRecursive1(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     friendly_rating: Union[_float, 'types.FloatFilter']
     efficiency_rating: Union[_float, 'types.FloatFilter']
     accuracy_rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['rating_userWhereInputRecursive2', List['rating_userWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -5025,15 +5025,15 @@ class rating_userWhereInputRecursive1(TypedDict, total=False):
 class rating_userWhereInputRecursive2(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     friendly_rating: Union[_float, 'types.FloatFilter']
     efficiency_rating: Union[_float, 'types.FloatFilter']
     accuracy_rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['rating_userWhereInputRecursive3', List['rating_userWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -5045,15 +5045,15 @@ class rating_userWhereInputRecursive2(TypedDict, total=False):
 class rating_userWhereInputRecursive3(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     friendly_rating: Union[_float, 'types.FloatFilter']
     efficiency_rating: Union[_float, 'types.FloatFilter']
     accuracy_rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['rating_userWhereInputRecursive4', List['rating_userWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -5065,15 +5065,15 @@ class rating_userWhereInputRecursive3(TypedDict, total=False):
 class rating_userWhereInputRecursive4(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     friendly_rating: Union[_float, 'types.FloatFilter']
     efficiency_rating: Union[_float, 'types.FloatFilter']
     accuracy_rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
 
 
@@ -5085,12 +5085,12 @@ class rating_userWhereInputRecursive4(TypedDict, total=False):
 class rating_userScalarWhereWithAggregatesInput(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     friendly_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     efficiency_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     accuracy_rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['rating_userScalarWhereWithAggregatesInputRecursive1']
     OR: List['rating_userScalarWhereWithAggregatesInputRecursive1']
@@ -5100,12 +5100,12 @@ class rating_userScalarWhereWithAggregatesInput(TypedDict, total=False):
 class rating_userScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     friendly_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     efficiency_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     accuracy_rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['rating_userScalarWhereWithAggregatesInputRecursive2']
     OR: List['rating_userScalarWhereWithAggregatesInputRecursive2']
@@ -5115,12 +5115,12 @@ class rating_userScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False
 class rating_userScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     friendly_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     efficiency_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     accuracy_rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['rating_userScalarWhereWithAggregatesInputRecursive3']
     OR: List['rating_userScalarWhereWithAggregatesInputRecursive3']
@@ -5130,12 +5130,12 @@ class rating_userScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False
 class rating_userScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     friendly_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     efficiency_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     accuracy_rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['rating_userScalarWhereWithAggregatesInputRecursive4']
     OR: List['rating_userScalarWhereWithAggregatesInputRecursive4']
@@ -5145,23 +5145,23 @@ class rating_userScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False
 class rating_userScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
     """rating_user arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     friendly_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     efficiency_rating: Union[_float, 'types.FloatWithAggregatesFilter']
     accuracy_rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
 
 
 class rating_userGroupByOutput(TypedDict, total=False):
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     friendly_rating: _float
     efficiency_rating: _float
     accuracy_rating: _float
+    user_id1: _int
+    user_id2: _int
     _sum: 'rating_userSumAggregateOutput'
     _avg: 'rating_userAvgAggregateOutput'
     _min: 'rating_userMinAggregateOutput'
@@ -5172,34 +5172,34 @@ class rating_userGroupByOutput(TypedDict, total=False):
 class rating_userAvgAggregateOutput(TypedDict, total=False):
     """rating_user output for aggregating averages"""
     rating_id: float
-    user_id1: float
-    user_id2: float
     job_id: float
     friendly_rating: float
     efficiency_rating: float
     accuracy_rating: float
+    user_id1: float
+    user_id2: float
 
 
 class rating_userSumAggregateOutput(TypedDict, total=False):
     """rating_user output for aggregating sums"""
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     friendly_rating: _float
     efficiency_rating: _float
     accuracy_rating: _float
+    user_id1: _int
+    user_id2: _int
 
 
 class rating_userScalarAggregateOutput(TypedDict, total=False):
     """rating_user output including scalar fields"""
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     friendly_rating: _float
     efficiency_rating: _float
     accuracy_rating: _float
+    user_id1: _int
+    user_id2: _int
 
 
 rating_userMinAggregateOutput = rating_userScalarAggregateOutput
@@ -5209,34 +5209,34 @@ rating_userMaxAggregateOutput = rating_userScalarAggregateOutput
 class rating_userMaxAggregateInput(TypedDict, total=False):
     """rating_user input for aggregating by max"""
     rating_id: bool
-    user_id1: bool
-    user_id2: bool
     job_id: bool
     friendly_rating: bool
     efficiency_rating: bool
     accuracy_rating: bool
+    user_id1: bool
+    user_id2: bool
 
 
 class rating_userMinAggregateInput(TypedDict, total=False):
     """rating_user input for aggregating by min"""
     rating_id: bool
-    user_id1: bool
-    user_id2: bool
     job_id: bool
     friendly_rating: bool
     efficiency_rating: bool
     accuracy_rating: bool
+    user_id1: bool
+    user_id2: bool
 
 
 class rating_userNumberAggregateInput(TypedDict, total=False):
     """rating_user input for aggregating numbers"""
     rating_id: bool
-    user_id1: bool
-    user_id2: bool
     job_id: bool
     friendly_rating: bool
     efficiency_rating: bool
     accuracy_rating: bool
+    user_id1: bool
+    user_id2: bool
 
 
 rating_userAvgAggregateInput = rating_userNumberAggregateInput
@@ -5247,12 +5247,12 @@ rating_userCountAggregateInput = TypedDict(
     'rating_userCountAggregateInput',
     {
         'rating_id': bool,
-        'user_id1': bool,
-        'user_id2': bool,
         'job_id': bool,
         'friendly_rating': bool,
         'efficiency_rating': bool,
         'accuracy_rating': bool,
+        'user_id1': bool,
+        'user_id2': bool,
         '_all': bool,
     },
     total=False,
@@ -5262,12 +5262,12 @@ rating_userCountAggregateOutput = TypedDict(
     'rating_userCountAggregateOutput',
     {
         'rating_id': int,
-        'user_id1': int,
-        'user_id2': int,
         'job_id': int,
         'friendly_rating': int,
         'efficiency_rating': int,
         'accuracy_rating': int,
+        'user_id1': int,
+        'user_id2': int,
         '_all': int,
     },
     total=False,
@@ -5276,31 +5276,31 @@ rating_userCountAggregateOutput = TypedDict(
 
 rating_userKeys = Literal[
     'rating_id',
-    'user_id1',
-    'user_id2',
     'job_id',
     'friendly_rating',
     'efficiency_rating',
     'accuracy_rating',
+    'user_id1',
+    'user_id2',
+    'job',
     'user1',
     'user2',
-    'job',
 ]
 rating_userScalarFieldKeys = Literal[
     'rating_id',
-    'user_id1',
-    'user_id2',
     'job_id',
     'friendly_rating',
     'efficiency_rating',
     'accuracy_rating',
+    'user_id1',
+    'user_id2',
 ]
 rating_userScalarFieldKeysT = TypeVar('rating_userScalarFieldKeysT', bound=rating_userScalarFieldKeys)
 
 rating_userRelationalFieldKeys = Literal[
+        'job',
         'user1',
         'user2',
-        'job',
     ]
 
 # rating_com types
@@ -5308,13 +5308,13 @@ rating_userRelationalFieldKeys = Literal[
 class rating_comOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the rating_com create method"""
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     rating: _float
+    user_id1: _int
+    user_id2: _int
+    job: 'jobCreateNestedWithoutRelationsInput'
     user1: 'userCreateNestedWithoutRelationsInput'
     user2: 'userCreateNestedWithoutRelationsInput'
-    job: 'jobCreateNestedWithoutRelationsInput'
 
 
 class rating_comCreateInput(rating_comOptionalCreateInput):
@@ -5327,10 +5327,10 @@ class rating_comCreateInput(rating_comOptionalCreateInput):
 class rating_comOptionalCreateWithoutRelationsInput(TypedDict, total=False):
     """Optional arguments to the rating_com create method, without relations"""
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     rating: _float
+    user_id1: _int
+    user_id2: _int
 
 
 class rating_comCreateWithoutRelationsInput(rating_comOptionalCreateWithoutRelationsInput):
@@ -5362,9 +5362,9 @@ class rating_comUpdateInput(TypedDict, total=False):
     """Optional arguments for updating a record"""
     rating_id: Union[AtomicIntInput, _int]
     rating: Union[AtomicFloatInput, _float]
+    job: 'jobUpdateOneWithoutRelationsInput'
     user1: 'userUpdateOneWithoutRelationsInput'
     user2: 'userUpdateOneWithoutRelationsInput'
-    job: 'jobUpdateOneWithoutRelationsInput'
 
 
 class rating_comUpdateManyMutationInput(TypedDict, total=False):
@@ -5413,22 +5413,6 @@ _rating_com_rating_id_OrderByInput = TypedDict(
     total=True
 )
 
-_rating_com_user_id1_OrderByInput = TypedDict(
-    '_rating_com_user_id1_OrderByInput',
-    {
-        'user_id1': 'SortOrder',
-    },
-    total=True
-)
-
-_rating_com_user_id2_OrderByInput = TypedDict(
-    '_rating_com_user_id2_OrderByInput',
-    {
-        'user_id2': 'SortOrder',
-    },
-    total=True
-)
-
 _rating_com_job_id_OrderByInput = TypedDict(
     '_rating_com_job_id_OrderByInput',
     {
@@ -5445,12 +5429,28 @@ _rating_com_rating_OrderByInput = TypedDict(
     total=True
 )
 
+_rating_com_user_id1_OrderByInput = TypedDict(
+    '_rating_com_user_id1_OrderByInput',
+    {
+        'user_id1': 'SortOrder',
+    },
+    total=True
+)
+
+_rating_com_user_id2_OrderByInput = TypedDict(
+    '_rating_com_user_id2_OrderByInput',
+    {
+        'user_id2': 'SortOrder',
+    },
+    total=True
+)
+
 rating_comOrderByInput = Union[
     '_rating_com_rating_id_OrderByInput',
-    '_rating_com_user_id1_OrderByInput',
-    '_rating_com_user_id2_OrderByInput',
     '_rating_com_job_id_OrderByInput',
     '_rating_com_rating_OrderByInput',
+    '_rating_com_user_id1_OrderByInput',
+    '_rating_com_user_id2_OrderByInput',
 ]
 
 
@@ -5481,67 +5481,67 @@ class rating_comListRelationFilter(TypedDict, total=False):
 
 class rating_comInclude(TypedDict, total=False):
     """rating_com relational arguments"""
+    job: Union[bool, 'jobArgsFromrating_com']
     user1: Union[bool, 'userArgsFromrating_com']
     user2: Union[bool, 'userArgsFromrating_com']
-    job: Union[bool, 'jobArgsFromrating_com']
 
 
     
 
 class userIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    post: Union[bool, 'FindManypostArgsFromrating_comRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromrating_comRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromrating_comRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_comRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromrating_comRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive1']
+    post: Union[bool, 'FindManypostArgsFromrating_comRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_comRecursive1']
 
 
 class userIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    post: Union[bool, 'FindManypostArgsFromrating_comRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromrating_comRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromrating_comRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_comRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromrating_comRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive2']
+    post: Union[bool, 'FindManypostArgsFromrating_comRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_comRecursive2']
 
 
 class userIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    post: Union[bool, 'FindManypostArgsFromrating_comRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromrating_comRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromrating_comRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_comRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromrating_comRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive3']
+    post: Union[bool, 'FindManypostArgsFromrating_comRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_comRecursive3']
 
 
 class userIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    post: Union[bool, 'FindManypostArgsFromrating_comRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromrating_comRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromrating_comRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_comRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromrating_comRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive4']
+    post: Union[bool, 'FindManypostArgsFromrating_comRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromrating_comRecursive4']
 
 
 class userIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -5631,30 +5631,30 @@ class FindManyuserArgsFromrating_comRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    job: Union[bool, 'jobArgsFromrating_comRecursive1']
     user1: Union[bool, 'userArgsFromrating_comRecursive1']
     user2: Union[bool, 'userArgsFromrating_comRecursive1']
-    job: Union[bool, 'jobArgsFromrating_comRecursive1']
 
 
 class rating_userIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    job: Union[bool, 'jobArgsFromrating_comRecursive2']
     user1: Union[bool, 'userArgsFromrating_comRecursive2']
     user2: Union[bool, 'userArgsFromrating_comRecursive2']
-    job: Union[bool, 'jobArgsFromrating_comRecursive2']
 
 
 class rating_userIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    job: Union[bool, 'jobArgsFromrating_comRecursive3']
     user1: Union[bool, 'userArgsFromrating_comRecursive3']
     user2: Union[bool, 'userArgsFromrating_comRecursive3']
-    job: Union[bool, 'jobArgsFromrating_comRecursive3']
 
 
 class rating_userIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    job: Union[bool, 'jobArgsFromrating_comRecursive4']
     user1: Union[bool, 'userArgsFromrating_comRecursive4']
     user2: Union[bool, 'userArgsFromrating_comRecursive4']
-    job: Union[bool, 'jobArgsFromrating_comRecursive4']
 
 
 class rating_userIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -5744,30 +5744,30 @@ class FindManyrating_userArgsFromrating_comRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    job: Union[bool, 'jobArgsFromrating_comRecursive1']
     user1: Union[bool, 'userArgsFromrating_comRecursive1']
     user2: Union[bool, 'userArgsFromrating_comRecursive1']
-    job: Union[bool, 'jobArgsFromrating_comRecursive1']
 
 
 class rating_comIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    job: Union[bool, 'jobArgsFromrating_comRecursive2']
     user1: Union[bool, 'userArgsFromrating_comRecursive2']
     user2: Union[bool, 'userArgsFromrating_comRecursive2']
-    job: Union[bool, 'jobArgsFromrating_comRecursive2']
 
 
 class rating_comIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    job: Union[bool, 'jobArgsFromrating_comRecursive3']
     user1: Union[bool, 'userArgsFromrating_comRecursive3']
     user2: Union[bool, 'userArgsFromrating_comRecursive3']
-    job: Union[bool, 'jobArgsFromrating_comRecursive3']
 
 
 class rating_comIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    job: Union[bool, 'jobArgsFromrating_comRecursive4']
     user1: Union[bool, 'userArgsFromrating_comRecursive4']
     user2: Union[bool, 'userArgsFromrating_comRecursive4']
-    job: Union[bool, 'jobArgsFromrating_comRecursive4']
 
 
 class rating_comIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -6071,26 +6071,26 @@ class FindManycategoryArgsFromrating_comRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive1']
     category: Union[bool, 'categoryArgsFromrating_comRecursive1']
+    user: Union[bool, 'userArgsFromrating_comRecursive1']
 
 
 class experienceIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive2']
     category: Union[bool, 'categoryArgsFromrating_comRecursive2']
+    user: Union[bool, 'userArgsFromrating_comRecursive2']
 
 
 class experienceIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive3']
     category: Union[bool, 'categoryArgsFromrating_comRecursive3']
+    user: Union[bool, 'userArgsFromrating_comRecursive3']
 
 
 class experienceIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive4']
     category: Union[bool, 'categoryArgsFromrating_comRecursive4']
+    user: Union[bool, 'userArgsFromrating_comRecursive4']
 
 
 class experienceIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -6285,26 +6285,26 @@ class FindManycareerArgsFromrating_comRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive1']
     career: Union[bool, 'careerArgsFromrating_comRecursive1']
+    user: Union[bool, 'userArgsFromrating_comRecursive1']
 
 
 class user_careerIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive2']
     career: Union[bool, 'careerArgsFromrating_comRecursive2']
+    user: Union[bool, 'userArgsFromrating_comRecursive2']
 
 
 class user_careerIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive3']
     career: Union[bool, 'careerArgsFromrating_comRecursive3']
+    user: Union[bool, 'userArgsFromrating_comRecursive3']
 
 
 class user_careerIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive4']
     career: Union[bool, 'careerArgsFromrating_comRecursive4']
+    user: Union[bool, 'userArgsFromrating_comRecursive4']
 
 
 class user_careerIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -6394,42 +6394,42 @@ class FindManyuser_careerArgsFromrating_comRecursive4(TypedDict, total=False):
 
 class jobIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromrating_comRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromrating_comRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive1']
     post: Union[bool, 'FindManypostArgsFromrating_comRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive1']
 
 
 class jobIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromrating_comRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromrating_comRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive2']
     post: Union[bool, 'FindManypostArgsFromrating_comRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive2']
 
 
 class jobIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromrating_comRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromrating_comRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive3']
     post: Union[bool, 'FindManypostArgsFromrating_comRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive3']
 
 
 class jobIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromrating_comRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromrating_comRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromrating_comRecursive4']
     post: Union[bool, 'FindManypostArgsFromrating_comRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromrating_comRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromrating_comRecursive4']
 
 
 class jobIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -6519,26 +6519,26 @@ class FindManyjobArgsFromrating_comRecursive4(TypedDict, total=False):
 
 class historyIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive1']
     job: Union[bool, 'jobArgsFromrating_comRecursive1']
+    user: Union[bool, 'userArgsFromrating_comRecursive1']
 
 
 class historyIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive2']
     job: Union[bool, 'jobArgsFromrating_comRecursive2']
+    user: Union[bool, 'userArgsFromrating_comRecursive2']
 
 
 class historyIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive3']
     job: Union[bool, 'jobArgsFromrating_comRecursive3']
+    user: Union[bool, 'userArgsFromrating_comRecursive3']
 
 
 class historyIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive4']
     job: Union[bool, 'jobArgsFromrating_comRecursive4']
+    user: Union[bool, 'userArgsFromrating_comRecursive4']
 
 
 class historyIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -6628,26 +6628,26 @@ class FindManyhistoryArgsFromrating_comRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    job: Union[bool, 'jobArgsFromrating_comRecursive1']
     category: Union[bool, 'categoryArgsFromrating_comRecursive1']
+    job: Union[bool, 'jobArgsFromrating_comRecursive1']
 
 
 class job_expIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    job: Union[bool, 'jobArgsFromrating_comRecursive2']
     category: Union[bool, 'categoryArgsFromrating_comRecursive2']
+    job: Union[bool, 'jobArgsFromrating_comRecursive2']
 
 
 class job_expIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    job: Union[bool, 'jobArgsFromrating_comRecursive3']
     category: Union[bool, 'categoryArgsFromrating_comRecursive3']
+    job: Union[bool, 'jobArgsFromrating_comRecursive3']
 
 
 class job_expIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    job: Union[bool, 'jobArgsFromrating_comRecursive4']
     category: Union[bool, 'categoryArgsFromrating_comRecursive4']
+    job: Union[bool, 'jobArgsFromrating_comRecursive4']
 
 
 class job_expIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -6737,26 +6737,26 @@ class FindManyjob_expArgsFromrating_comRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive1']
     job: Union[bool, 'jobArgsFromrating_comRecursive1']
+    user: Union[bool, 'userArgsFromrating_comRecursive1']
 
 
 class bookmarkIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive2']
     job: Union[bool, 'jobArgsFromrating_comRecursive2']
+    user: Union[bool, 'userArgsFromrating_comRecursive2']
 
 
 class bookmarkIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive3']
     job: Union[bool, 'jobArgsFromrating_comRecursive3']
+    user: Union[bool, 'userArgsFromrating_comRecursive3']
 
 
 class bookmarkIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive4']
     job: Union[bool, 'jobArgsFromrating_comRecursive4']
+    user: Union[bool, 'userArgsFromrating_comRecursive4']
 
 
 class bookmarkIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -6846,26 +6846,26 @@ class FindManybookmarkArgsFromrating_comRecursive4(TypedDict, total=False):
 
 class postIncludeFromrating_com(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive1']
     job: Union[bool, 'jobArgsFromrating_comRecursive1']
+    user: Union[bool, 'userArgsFromrating_comRecursive1']
 
 
 class postIncludeFromrating_comRecursive1(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive2']
     job: Union[bool, 'jobArgsFromrating_comRecursive2']
+    user: Union[bool, 'userArgsFromrating_comRecursive2']
 
 
 class postIncludeFromrating_comRecursive2(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive3']
     job: Union[bool, 'jobArgsFromrating_comRecursive3']
+    user: Union[bool, 'userArgsFromrating_comRecursive3']
 
 
 class postIncludeFromrating_comRecursive3(TypedDict, total=False):
     """Relational arguments for rating_com"""
-    user: Union[bool, 'userArgsFromrating_comRecursive4']
     job: Union[bool, 'jobArgsFromrating_comRecursive4']
+    user: Union[bool, 'userArgsFromrating_comRecursive4']
 
 
 class postIncludeFromrating_comRecursive4(TypedDict, total=False):
@@ -6962,13 +6962,13 @@ FindFirstrating_comArgs = FindManyrating_comArgsFromrating_com
 class rating_comWhereInput(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['rating_comWhereInputRecursive1', List['rating_comWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -6980,13 +6980,13 @@ class rating_comWhereInput(TypedDict, total=False):
 class rating_comWhereInputRecursive1(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['rating_comWhereInputRecursive2', List['rating_comWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -6998,13 +6998,13 @@ class rating_comWhereInputRecursive1(TypedDict, total=False):
 class rating_comWhereInputRecursive2(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['rating_comWhereInputRecursive3', List['rating_comWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -7016,13 +7016,13 @@ class rating_comWhereInputRecursive2(TypedDict, total=False):
 class rating_comWhereInputRecursive3(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['rating_comWhereInputRecursive4', List['rating_comWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -7034,13 +7034,13 @@ class rating_comWhereInputRecursive3(TypedDict, total=False):
 class rating_comWhereInputRecursive4(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntFilter']
-    user_id1: Union[_int, 'types.IntFilter']
-    user_id2: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
     rating: Union[_float, 'types.FloatFilter']
+    user_id1: Union[_int, 'types.IntFilter']
+    user_id2: Union[_int, 'types.IntFilter']
+    job: 'jobRelationFilter'
     user1: 'userRelationFilter'
     user2: 'userRelationFilter'
-    job: 'jobRelationFilter'
 
 
 
@@ -7052,10 +7052,10 @@ class rating_comWhereInputRecursive4(TypedDict, total=False):
 class rating_comScalarWhereWithAggregatesInput(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['rating_comScalarWhereWithAggregatesInputRecursive1']
     OR: List['rating_comScalarWhereWithAggregatesInputRecursive1']
@@ -7065,10 +7065,10 @@ class rating_comScalarWhereWithAggregatesInput(TypedDict, total=False):
 class rating_comScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['rating_comScalarWhereWithAggregatesInputRecursive2']
     OR: List['rating_comScalarWhereWithAggregatesInputRecursive2']
@@ -7078,10 +7078,10 @@ class rating_comScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False)
 class rating_comScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['rating_comScalarWhereWithAggregatesInputRecursive3']
     OR: List['rating_comScalarWhereWithAggregatesInputRecursive3']
@@ -7091,10 +7091,10 @@ class rating_comScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False)
 class rating_comScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['rating_comScalarWhereWithAggregatesInputRecursive4']
     OR: List['rating_comScalarWhereWithAggregatesInputRecursive4']
@@ -7104,19 +7104,19 @@ class rating_comScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False)
 class rating_comScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
     """rating_com arguments for searching"""
     rating_id: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
-    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
     rating: Union[_float, 'types.FloatWithAggregatesFilter']
+    user_id1: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id2: Union[_int, 'types.IntWithAggregatesFilter']
 
 
 
 class rating_comGroupByOutput(TypedDict, total=False):
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     rating: _float
+    user_id1: _int
+    user_id2: _int
     _sum: 'rating_comSumAggregateOutput'
     _avg: 'rating_comAvgAggregateOutput'
     _min: 'rating_comMinAggregateOutput'
@@ -7127,28 +7127,28 @@ class rating_comGroupByOutput(TypedDict, total=False):
 class rating_comAvgAggregateOutput(TypedDict, total=False):
     """rating_com output for aggregating averages"""
     rating_id: float
-    user_id1: float
-    user_id2: float
     job_id: float
     rating: float
+    user_id1: float
+    user_id2: float
 
 
 class rating_comSumAggregateOutput(TypedDict, total=False):
     """rating_com output for aggregating sums"""
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     rating: _float
+    user_id1: _int
+    user_id2: _int
 
 
 class rating_comScalarAggregateOutput(TypedDict, total=False):
     """rating_com output including scalar fields"""
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     rating: _float
+    user_id1: _int
+    user_id2: _int
 
 
 rating_comMinAggregateOutput = rating_comScalarAggregateOutput
@@ -7158,28 +7158,28 @@ rating_comMaxAggregateOutput = rating_comScalarAggregateOutput
 class rating_comMaxAggregateInput(TypedDict, total=False):
     """rating_com input for aggregating by max"""
     rating_id: bool
-    user_id1: bool
-    user_id2: bool
     job_id: bool
     rating: bool
+    user_id1: bool
+    user_id2: bool
 
 
 class rating_comMinAggregateInput(TypedDict, total=False):
     """rating_com input for aggregating by min"""
     rating_id: bool
-    user_id1: bool
-    user_id2: bool
     job_id: bool
     rating: bool
+    user_id1: bool
+    user_id2: bool
 
 
 class rating_comNumberAggregateInput(TypedDict, total=False):
     """rating_com input for aggregating numbers"""
     rating_id: bool
-    user_id1: bool
-    user_id2: bool
     job_id: bool
     rating: bool
+    user_id1: bool
+    user_id2: bool
 
 
 rating_comAvgAggregateInput = rating_comNumberAggregateInput
@@ -7190,10 +7190,10 @@ rating_comCountAggregateInput = TypedDict(
     'rating_comCountAggregateInput',
     {
         'rating_id': bool,
-        'user_id1': bool,
-        'user_id2': bool,
         'job_id': bool,
         'rating': bool,
+        'user_id1': bool,
+        'user_id2': bool,
         '_all': bool,
     },
     total=False,
@@ -7203,10 +7203,10 @@ rating_comCountAggregateOutput = TypedDict(
     'rating_comCountAggregateOutput',
     {
         'rating_id': int,
-        'user_id1': int,
-        'user_id2': int,
         'job_id': int,
         'rating': int,
+        'user_id1': int,
+        'user_id2': int,
         '_all': int,
     },
     total=False,
@@ -7215,27 +7215,27 @@ rating_comCountAggregateOutput = TypedDict(
 
 rating_comKeys = Literal[
     'rating_id',
-    'user_id1',
-    'user_id2',
     'job_id',
     'rating',
+    'user_id1',
+    'user_id2',
+    'job',
     'user1',
     'user2',
-    'job',
 ]
 rating_comScalarFieldKeys = Literal[
     'rating_id',
-    'user_id1',
-    'user_id2',
     'job_id',
     'rating',
+    'user_id1',
+    'user_id2',
 ]
 rating_comScalarFieldKeysT = TypeVar('rating_comScalarFieldKeysT', bound=rating_comScalarFieldKeys)
 
 rating_comRelationalFieldKeys = Literal[
+        'job',
         'user1',
         'user2',
-        'job',
     ]
 
 # contact types
@@ -7423,58 +7423,58 @@ class contactInclude(TypedDict, total=False):
 
 class userIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
-    post: Union[bool, 'FindManypostArgsFromcontactRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcontactRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcontactRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcontactRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcontactRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromcontactRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromcontactRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcontactRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromcontactRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive1']
+    post: Union[bool, 'FindManypostArgsFromcontactRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcontactRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcontactRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcontactRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcontactRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcontactRecursive1']
 
 
 class userIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
-    post: Union[bool, 'FindManypostArgsFromcontactRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcontactRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcontactRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcontactRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcontactRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromcontactRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromcontactRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcontactRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromcontactRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive2']
+    post: Union[bool, 'FindManypostArgsFromcontactRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcontactRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcontactRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcontactRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcontactRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcontactRecursive2']
 
 
 class userIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
-    post: Union[bool, 'FindManypostArgsFromcontactRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcontactRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcontactRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcontactRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcontactRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromcontactRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromcontactRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcontactRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromcontactRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive3']
+    post: Union[bool, 'FindManypostArgsFromcontactRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcontactRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcontactRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcontactRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcontactRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcontactRecursive3']
 
 
 class userIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
-    post: Union[bool, 'FindManypostArgsFromcontactRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcontactRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcontactRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcontactRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcontactRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromcontactRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromcontactRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcontactRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromcontactRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive4']
+    post: Union[bool, 'FindManypostArgsFromcontactRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcontactRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcontactRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcontactRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcontactRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcontactRecursive4']
 
 
 class userIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -7564,30 +7564,30 @@ class FindManyuserArgsFromcontactRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
+    job: Union[bool, 'jobArgsFromcontactRecursive1']
     user1: Union[bool, 'userArgsFromcontactRecursive1']
     user2: Union[bool, 'userArgsFromcontactRecursive1']
-    job: Union[bool, 'jobArgsFromcontactRecursive1']
 
 
 class rating_userIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
+    job: Union[bool, 'jobArgsFromcontactRecursive2']
     user1: Union[bool, 'userArgsFromcontactRecursive2']
     user2: Union[bool, 'userArgsFromcontactRecursive2']
-    job: Union[bool, 'jobArgsFromcontactRecursive2']
 
 
 class rating_userIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
+    job: Union[bool, 'jobArgsFromcontactRecursive3']
     user1: Union[bool, 'userArgsFromcontactRecursive3']
     user2: Union[bool, 'userArgsFromcontactRecursive3']
-    job: Union[bool, 'jobArgsFromcontactRecursive3']
 
 
 class rating_userIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
+    job: Union[bool, 'jobArgsFromcontactRecursive4']
     user1: Union[bool, 'userArgsFromcontactRecursive4']
     user2: Union[bool, 'userArgsFromcontactRecursive4']
-    job: Union[bool, 'jobArgsFromcontactRecursive4']
 
 
 class rating_userIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -7677,30 +7677,30 @@ class FindManyrating_userArgsFromcontactRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
+    job: Union[bool, 'jobArgsFromcontactRecursive1']
     user1: Union[bool, 'userArgsFromcontactRecursive1']
     user2: Union[bool, 'userArgsFromcontactRecursive1']
-    job: Union[bool, 'jobArgsFromcontactRecursive1']
 
 
 class rating_comIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
+    job: Union[bool, 'jobArgsFromcontactRecursive2']
     user1: Union[bool, 'userArgsFromcontactRecursive2']
     user2: Union[bool, 'userArgsFromcontactRecursive2']
-    job: Union[bool, 'jobArgsFromcontactRecursive2']
 
 
 class rating_comIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
+    job: Union[bool, 'jobArgsFromcontactRecursive3']
     user1: Union[bool, 'userArgsFromcontactRecursive3']
     user2: Union[bool, 'userArgsFromcontactRecursive3']
-    job: Union[bool, 'jobArgsFromcontactRecursive3']
 
 
 class rating_comIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
+    job: Union[bool, 'jobArgsFromcontactRecursive4']
     user1: Union[bool, 'userArgsFromcontactRecursive4']
     user2: Union[bool, 'userArgsFromcontactRecursive4']
-    job: Union[bool, 'jobArgsFromcontactRecursive4']
 
 
 class rating_comIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -8004,26 +8004,26 @@ class FindManycategoryArgsFromcontactRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive1']
     category: Union[bool, 'categoryArgsFromcontactRecursive1']
+    user: Union[bool, 'userArgsFromcontactRecursive1']
 
 
 class experienceIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive2']
     category: Union[bool, 'categoryArgsFromcontactRecursive2']
+    user: Union[bool, 'userArgsFromcontactRecursive2']
 
 
 class experienceIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive3']
     category: Union[bool, 'categoryArgsFromcontactRecursive3']
+    user: Union[bool, 'userArgsFromcontactRecursive3']
 
 
 class experienceIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive4']
     category: Union[bool, 'categoryArgsFromcontactRecursive4']
+    user: Union[bool, 'userArgsFromcontactRecursive4']
 
 
 class experienceIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -8218,26 +8218,26 @@ class FindManycareerArgsFromcontactRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive1']
     career: Union[bool, 'careerArgsFromcontactRecursive1']
+    user: Union[bool, 'userArgsFromcontactRecursive1']
 
 
 class user_careerIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive2']
     career: Union[bool, 'careerArgsFromcontactRecursive2']
+    user: Union[bool, 'userArgsFromcontactRecursive2']
 
 
 class user_careerIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive3']
     career: Union[bool, 'careerArgsFromcontactRecursive3']
+    user: Union[bool, 'userArgsFromcontactRecursive3']
 
 
 class user_careerIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive4']
     career: Union[bool, 'careerArgsFromcontactRecursive4']
+    user: Union[bool, 'userArgsFromcontactRecursive4']
 
 
 class user_careerIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -8327,42 +8327,42 @@ class FindManyuser_careerArgsFromcontactRecursive4(TypedDict, total=False):
 
 class jobIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromcontactRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcontactRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcontactRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcontactRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive1']
     post: Union[bool, 'FindManypostArgsFromcontactRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcontactRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcontactRecursive1']
 
 
 class jobIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromcontactRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcontactRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcontactRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcontactRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive2']
     post: Union[bool, 'FindManypostArgsFromcontactRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcontactRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcontactRecursive2']
 
 
 class jobIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromcontactRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcontactRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcontactRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcontactRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive3']
     post: Union[bool, 'FindManypostArgsFromcontactRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcontactRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcontactRecursive3']
 
 
 class jobIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromcontactRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcontactRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcontactRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcontactRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcontactRecursive4']
     post: Union[bool, 'FindManypostArgsFromcontactRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcontactRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcontactRecursive4']
 
 
 class jobIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -8452,26 +8452,26 @@ class FindManyjobArgsFromcontactRecursive4(TypedDict, total=False):
 
 class historyIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive1']
     job: Union[bool, 'jobArgsFromcontactRecursive1']
+    user: Union[bool, 'userArgsFromcontactRecursive1']
 
 
 class historyIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive2']
     job: Union[bool, 'jobArgsFromcontactRecursive2']
+    user: Union[bool, 'userArgsFromcontactRecursive2']
 
 
 class historyIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive3']
     job: Union[bool, 'jobArgsFromcontactRecursive3']
+    user: Union[bool, 'userArgsFromcontactRecursive3']
 
 
 class historyIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive4']
     job: Union[bool, 'jobArgsFromcontactRecursive4']
+    user: Union[bool, 'userArgsFromcontactRecursive4']
 
 
 class historyIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -8561,26 +8561,26 @@ class FindManyhistoryArgsFromcontactRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
-    job: Union[bool, 'jobArgsFromcontactRecursive1']
     category: Union[bool, 'categoryArgsFromcontactRecursive1']
+    job: Union[bool, 'jobArgsFromcontactRecursive1']
 
 
 class job_expIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
-    job: Union[bool, 'jobArgsFromcontactRecursive2']
     category: Union[bool, 'categoryArgsFromcontactRecursive2']
+    job: Union[bool, 'jobArgsFromcontactRecursive2']
 
 
 class job_expIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
-    job: Union[bool, 'jobArgsFromcontactRecursive3']
     category: Union[bool, 'categoryArgsFromcontactRecursive3']
+    job: Union[bool, 'jobArgsFromcontactRecursive3']
 
 
 class job_expIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
-    job: Union[bool, 'jobArgsFromcontactRecursive4']
     category: Union[bool, 'categoryArgsFromcontactRecursive4']
+    job: Union[bool, 'jobArgsFromcontactRecursive4']
 
 
 class job_expIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -8670,26 +8670,26 @@ class FindManyjob_expArgsFromcontactRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive1']
     job: Union[bool, 'jobArgsFromcontactRecursive1']
+    user: Union[bool, 'userArgsFromcontactRecursive1']
 
 
 class bookmarkIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive2']
     job: Union[bool, 'jobArgsFromcontactRecursive2']
+    user: Union[bool, 'userArgsFromcontactRecursive2']
 
 
 class bookmarkIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive3']
     job: Union[bool, 'jobArgsFromcontactRecursive3']
+    user: Union[bool, 'userArgsFromcontactRecursive3']
 
 
 class bookmarkIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive4']
     job: Union[bool, 'jobArgsFromcontactRecursive4']
+    user: Union[bool, 'userArgsFromcontactRecursive4']
 
 
 class bookmarkIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -8779,26 +8779,26 @@ class FindManybookmarkArgsFromcontactRecursive4(TypedDict, total=False):
 
 class postIncludeFromcontact(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive1']
     job: Union[bool, 'jobArgsFromcontactRecursive1']
+    user: Union[bool, 'userArgsFromcontactRecursive1']
 
 
 class postIncludeFromcontactRecursive1(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive2']
     job: Union[bool, 'jobArgsFromcontactRecursive2']
+    user: Union[bool, 'userArgsFromcontactRecursive2']
 
 
 class postIncludeFromcontactRecursive2(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive3']
     job: Union[bool, 'jobArgsFromcontactRecursive3']
+    user: Union[bool, 'userArgsFromcontactRecursive3']
 
 
 class postIncludeFromcontactRecursive3(TypedDict, total=False):
     """Relational arguments for contact"""
-    user: Union[bool, 'userArgsFromcontactRecursive4']
     job: Union[bool, 'jobArgsFromcontactRecursive4']
+    user: Union[bool, 'userArgsFromcontactRecursive4']
 
 
 class postIncludeFromcontactRecursive4(TypedDict, total=False):
@@ -9299,58 +9299,58 @@ class categoryInclude(TypedDict, total=False):
 
 class userIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
-    post: Union[bool, 'FindManypostArgsFromcategoryRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromcategoryRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromcategoryRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcategoryRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromcategoryRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive1']
+    post: Union[bool, 'FindManypostArgsFromcategoryRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcategoryRecursive1']
 
 
 class userIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
-    post: Union[bool, 'FindManypostArgsFromcategoryRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromcategoryRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromcategoryRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcategoryRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromcategoryRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive2']
+    post: Union[bool, 'FindManypostArgsFromcategoryRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcategoryRecursive2']
 
 
 class userIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
-    post: Union[bool, 'FindManypostArgsFromcategoryRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromcategoryRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromcategoryRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcategoryRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromcategoryRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive3']
+    post: Union[bool, 'FindManypostArgsFromcategoryRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcategoryRecursive3']
 
 
 class userIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
-    post: Union[bool, 'FindManypostArgsFromcategoryRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromcategoryRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromcategoryRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcategoryRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromcategoryRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive4']
+    post: Union[bool, 'FindManypostArgsFromcategoryRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcategoryRecursive4']
 
 
 class userIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -9440,30 +9440,30 @@ class FindManyuserArgsFromcategoryRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
+    job: Union[bool, 'jobArgsFromcategoryRecursive1']
     user1: Union[bool, 'userArgsFromcategoryRecursive1']
     user2: Union[bool, 'userArgsFromcategoryRecursive1']
-    job: Union[bool, 'jobArgsFromcategoryRecursive1']
 
 
 class rating_userIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
+    job: Union[bool, 'jobArgsFromcategoryRecursive2']
     user1: Union[bool, 'userArgsFromcategoryRecursive2']
     user2: Union[bool, 'userArgsFromcategoryRecursive2']
-    job: Union[bool, 'jobArgsFromcategoryRecursive2']
 
 
 class rating_userIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
+    job: Union[bool, 'jobArgsFromcategoryRecursive3']
     user1: Union[bool, 'userArgsFromcategoryRecursive3']
     user2: Union[bool, 'userArgsFromcategoryRecursive3']
-    job: Union[bool, 'jobArgsFromcategoryRecursive3']
 
 
 class rating_userIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
+    job: Union[bool, 'jobArgsFromcategoryRecursive4']
     user1: Union[bool, 'userArgsFromcategoryRecursive4']
     user2: Union[bool, 'userArgsFromcategoryRecursive4']
-    job: Union[bool, 'jobArgsFromcategoryRecursive4']
 
 
 class rating_userIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -9553,30 +9553,30 @@ class FindManyrating_userArgsFromcategoryRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
+    job: Union[bool, 'jobArgsFromcategoryRecursive1']
     user1: Union[bool, 'userArgsFromcategoryRecursive1']
     user2: Union[bool, 'userArgsFromcategoryRecursive1']
-    job: Union[bool, 'jobArgsFromcategoryRecursive1']
 
 
 class rating_comIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
+    job: Union[bool, 'jobArgsFromcategoryRecursive2']
     user1: Union[bool, 'userArgsFromcategoryRecursive2']
     user2: Union[bool, 'userArgsFromcategoryRecursive2']
-    job: Union[bool, 'jobArgsFromcategoryRecursive2']
 
 
 class rating_comIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
+    job: Union[bool, 'jobArgsFromcategoryRecursive3']
     user1: Union[bool, 'userArgsFromcategoryRecursive3']
     user2: Union[bool, 'userArgsFromcategoryRecursive3']
-    job: Union[bool, 'jobArgsFromcategoryRecursive3']
 
 
 class rating_comIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
+    job: Union[bool, 'jobArgsFromcategoryRecursive4']
     user1: Union[bool, 'userArgsFromcategoryRecursive4']
     user2: Union[bool, 'userArgsFromcategoryRecursive4']
-    job: Union[bool, 'jobArgsFromcategoryRecursive4']
 
 
 class rating_comIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -9880,26 +9880,26 @@ class FindManycategoryArgsFromcategoryRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive1']
     category: Union[bool, 'categoryArgsFromcategoryRecursive1']
+    user: Union[bool, 'userArgsFromcategoryRecursive1']
 
 
 class experienceIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive2']
     category: Union[bool, 'categoryArgsFromcategoryRecursive2']
+    user: Union[bool, 'userArgsFromcategoryRecursive2']
 
 
 class experienceIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive3']
     category: Union[bool, 'categoryArgsFromcategoryRecursive3']
+    user: Union[bool, 'userArgsFromcategoryRecursive3']
 
 
 class experienceIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive4']
     category: Union[bool, 'categoryArgsFromcategoryRecursive4']
+    user: Union[bool, 'userArgsFromcategoryRecursive4']
 
 
 class experienceIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -10094,26 +10094,26 @@ class FindManycareerArgsFromcategoryRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive1']
     career: Union[bool, 'careerArgsFromcategoryRecursive1']
+    user: Union[bool, 'userArgsFromcategoryRecursive1']
 
 
 class user_careerIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive2']
     career: Union[bool, 'careerArgsFromcategoryRecursive2']
+    user: Union[bool, 'userArgsFromcategoryRecursive2']
 
 
 class user_careerIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive3']
     career: Union[bool, 'careerArgsFromcategoryRecursive3']
+    user: Union[bool, 'userArgsFromcategoryRecursive3']
 
 
 class user_careerIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive4']
     career: Union[bool, 'careerArgsFromcategoryRecursive4']
+    user: Union[bool, 'userArgsFromcategoryRecursive4']
 
 
 class user_careerIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -10203,42 +10203,42 @@ class FindManyuser_careerArgsFromcategoryRecursive4(TypedDict, total=False):
 
 class jobIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromcategoryRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcategoryRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive1']
     post: Union[bool, 'FindManypostArgsFromcategoryRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive1']
 
 
 class jobIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromcategoryRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcategoryRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive2']
     post: Union[bool, 'FindManypostArgsFromcategoryRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive2']
 
 
 class jobIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromcategoryRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcategoryRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive3']
     post: Union[bool, 'FindManypostArgsFromcategoryRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive3']
 
 
 class jobIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromcategoryRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcategoryRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcategoryRecursive4']
     post: Union[bool, 'FindManypostArgsFromcategoryRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcategoryRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcategoryRecursive4']
 
 
 class jobIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -10328,26 +10328,26 @@ class FindManyjobArgsFromcategoryRecursive4(TypedDict, total=False):
 
 class historyIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive1']
     job: Union[bool, 'jobArgsFromcategoryRecursive1']
+    user: Union[bool, 'userArgsFromcategoryRecursive1']
 
 
 class historyIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive2']
     job: Union[bool, 'jobArgsFromcategoryRecursive2']
+    user: Union[bool, 'userArgsFromcategoryRecursive2']
 
 
 class historyIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive3']
     job: Union[bool, 'jobArgsFromcategoryRecursive3']
+    user: Union[bool, 'userArgsFromcategoryRecursive3']
 
 
 class historyIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive4']
     job: Union[bool, 'jobArgsFromcategoryRecursive4']
+    user: Union[bool, 'userArgsFromcategoryRecursive4']
 
 
 class historyIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -10437,26 +10437,26 @@ class FindManyhistoryArgsFromcategoryRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
-    job: Union[bool, 'jobArgsFromcategoryRecursive1']
     category: Union[bool, 'categoryArgsFromcategoryRecursive1']
+    job: Union[bool, 'jobArgsFromcategoryRecursive1']
 
 
 class job_expIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
-    job: Union[bool, 'jobArgsFromcategoryRecursive2']
     category: Union[bool, 'categoryArgsFromcategoryRecursive2']
+    job: Union[bool, 'jobArgsFromcategoryRecursive2']
 
 
 class job_expIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
-    job: Union[bool, 'jobArgsFromcategoryRecursive3']
     category: Union[bool, 'categoryArgsFromcategoryRecursive3']
+    job: Union[bool, 'jobArgsFromcategoryRecursive3']
 
 
 class job_expIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
-    job: Union[bool, 'jobArgsFromcategoryRecursive4']
     category: Union[bool, 'categoryArgsFromcategoryRecursive4']
+    job: Union[bool, 'jobArgsFromcategoryRecursive4']
 
 
 class job_expIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -10546,26 +10546,26 @@ class FindManyjob_expArgsFromcategoryRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive1']
     job: Union[bool, 'jobArgsFromcategoryRecursive1']
+    user: Union[bool, 'userArgsFromcategoryRecursive1']
 
 
 class bookmarkIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive2']
     job: Union[bool, 'jobArgsFromcategoryRecursive2']
+    user: Union[bool, 'userArgsFromcategoryRecursive2']
 
 
 class bookmarkIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive3']
     job: Union[bool, 'jobArgsFromcategoryRecursive3']
+    user: Union[bool, 'userArgsFromcategoryRecursive3']
 
 
 class bookmarkIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive4']
     job: Union[bool, 'jobArgsFromcategoryRecursive4']
+    user: Union[bool, 'userArgsFromcategoryRecursive4']
 
 
 class bookmarkIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -10655,26 +10655,26 @@ class FindManybookmarkArgsFromcategoryRecursive4(TypedDict, total=False):
 
 class postIncludeFromcategory(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive1']
     job: Union[bool, 'jobArgsFromcategoryRecursive1']
+    user: Union[bool, 'userArgsFromcategoryRecursive1']
 
 
 class postIncludeFromcategoryRecursive1(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive2']
     job: Union[bool, 'jobArgsFromcategoryRecursive2']
+    user: Union[bool, 'userArgsFromcategoryRecursive2']
 
 
 class postIncludeFromcategoryRecursive2(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive3']
     job: Union[bool, 'jobArgsFromcategoryRecursive3']
+    user: Union[bool, 'userArgsFromcategoryRecursive3']
 
 
 class postIncludeFromcategoryRecursive3(TypedDict, total=False):
     """Relational arguments for category"""
-    user: Union[bool, 'userArgsFromcategoryRecursive4']
     job: Union[bool, 'jobArgsFromcategoryRecursive4']
+    user: Union[bool, 'userArgsFromcategoryRecursive4']
 
 
 class postIncludeFromcategoryRecursive4(TypedDict, total=False):
@@ -10980,8 +10980,8 @@ class experienceOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the experience create method"""
     user_id: _int
     category_id: _int
-    user: 'userCreateNestedWithoutRelationsInput'
     category: 'categoryCreateNestedWithoutRelationsInput'
+    user: 'userCreateNestedWithoutRelationsInput'
 
 
 class experienceCreateInput(experienceOptionalCreateInput):
@@ -11033,8 +11033,8 @@ experienceWhereUniqueInput = _experienceCompounduser_id_category_idKey
 
 class experienceUpdateInput(TypedDict, total=False):
     """Optional arguments for updating a record"""
-    user: 'userUpdateOneWithoutRelationsInput'
     category: 'categoryUpdateOneWithoutRelationsInput'
+    user: 'userUpdateOneWithoutRelationsInput'
 
 
 class experienceUpdateManyMutationInput(TypedDict, total=False):
@@ -11122,66 +11122,66 @@ class experienceListRelationFilter(TypedDict, total=False):
 
 class experienceInclude(TypedDict, total=False):
     """experience relational arguments"""
-    user: Union[bool, 'userArgsFromexperience']
     category: Union[bool, 'categoryArgsFromexperience']
+    user: Union[bool, 'userArgsFromexperience']
 
 
     
 
 class userIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
-    post: Union[bool, 'FindManypostArgsFromexperienceRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromexperienceRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromexperienceRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromexperienceRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromexperienceRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive1']
+    post: Union[bool, 'FindManypostArgsFromexperienceRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromexperienceRecursive1']
 
 
 class userIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
-    post: Union[bool, 'FindManypostArgsFromexperienceRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromexperienceRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromexperienceRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromexperienceRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromexperienceRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive2']
+    post: Union[bool, 'FindManypostArgsFromexperienceRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromexperienceRecursive2']
 
 
 class userIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
-    post: Union[bool, 'FindManypostArgsFromexperienceRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromexperienceRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromexperienceRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromexperienceRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromexperienceRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive3']
+    post: Union[bool, 'FindManypostArgsFromexperienceRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromexperienceRecursive3']
 
 
 class userIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
-    post: Union[bool, 'FindManypostArgsFromexperienceRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromexperienceRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromexperienceRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromexperienceRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromexperienceRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive4']
+    post: Union[bool, 'FindManypostArgsFromexperienceRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromexperienceRecursive4']
 
 
 class userIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -11271,30 +11271,30 @@ class FindManyuserArgsFromexperienceRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
+    job: Union[bool, 'jobArgsFromexperienceRecursive1']
     user1: Union[bool, 'userArgsFromexperienceRecursive1']
     user2: Union[bool, 'userArgsFromexperienceRecursive1']
-    job: Union[bool, 'jobArgsFromexperienceRecursive1']
 
 
 class rating_userIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
+    job: Union[bool, 'jobArgsFromexperienceRecursive2']
     user1: Union[bool, 'userArgsFromexperienceRecursive2']
     user2: Union[bool, 'userArgsFromexperienceRecursive2']
-    job: Union[bool, 'jobArgsFromexperienceRecursive2']
 
 
 class rating_userIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
+    job: Union[bool, 'jobArgsFromexperienceRecursive3']
     user1: Union[bool, 'userArgsFromexperienceRecursive3']
     user2: Union[bool, 'userArgsFromexperienceRecursive3']
-    job: Union[bool, 'jobArgsFromexperienceRecursive3']
 
 
 class rating_userIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
+    job: Union[bool, 'jobArgsFromexperienceRecursive4']
     user1: Union[bool, 'userArgsFromexperienceRecursive4']
     user2: Union[bool, 'userArgsFromexperienceRecursive4']
-    job: Union[bool, 'jobArgsFromexperienceRecursive4']
 
 
 class rating_userIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -11384,30 +11384,30 @@ class FindManyrating_userArgsFromexperienceRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
+    job: Union[bool, 'jobArgsFromexperienceRecursive1']
     user1: Union[bool, 'userArgsFromexperienceRecursive1']
     user2: Union[bool, 'userArgsFromexperienceRecursive1']
-    job: Union[bool, 'jobArgsFromexperienceRecursive1']
 
 
 class rating_comIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
+    job: Union[bool, 'jobArgsFromexperienceRecursive2']
     user1: Union[bool, 'userArgsFromexperienceRecursive2']
     user2: Union[bool, 'userArgsFromexperienceRecursive2']
-    job: Union[bool, 'jobArgsFromexperienceRecursive2']
 
 
 class rating_comIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
+    job: Union[bool, 'jobArgsFromexperienceRecursive3']
     user1: Union[bool, 'userArgsFromexperienceRecursive3']
     user2: Union[bool, 'userArgsFromexperienceRecursive3']
-    job: Union[bool, 'jobArgsFromexperienceRecursive3']
 
 
 class rating_comIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
+    job: Union[bool, 'jobArgsFromexperienceRecursive4']
     user1: Union[bool, 'userArgsFromexperienceRecursive4']
     user2: Union[bool, 'userArgsFromexperienceRecursive4']
-    job: Union[bool, 'jobArgsFromexperienceRecursive4']
 
 
 class rating_comIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -11711,26 +11711,26 @@ class FindManycategoryArgsFromexperienceRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive1']
     category: Union[bool, 'categoryArgsFromexperienceRecursive1']
+    user: Union[bool, 'userArgsFromexperienceRecursive1']
 
 
 class experienceIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive2']
     category: Union[bool, 'categoryArgsFromexperienceRecursive2']
+    user: Union[bool, 'userArgsFromexperienceRecursive2']
 
 
 class experienceIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive3']
     category: Union[bool, 'categoryArgsFromexperienceRecursive3']
+    user: Union[bool, 'userArgsFromexperienceRecursive3']
 
 
 class experienceIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive4']
     category: Union[bool, 'categoryArgsFromexperienceRecursive4']
+    user: Union[bool, 'userArgsFromexperienceRecursive4']
 
 
 class experienceIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -11925,26 +11925,26 @@ class FindManycareerArgsFromexperienceRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive1']
     career: Union[bool, 'careerArgsFromexperienceRecursive1']
+    user: Union[bool, 'userArgsFromexperienceRecursive1']
 
 
 class user_careerIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive2']
     career: Union[bool, 'careerArgsFromexperienceRecursive2']
+    user: Union[bool, 'userArgsFromexperienceRecursive2']
 
 
 class user_careerIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive3']
     career: Union[bool, 'careerArgsFromexperienceRecursive3']
+    user: Union[bool, 'userArgsFromexperienceRecursive3']
 
 
 class user_careerIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive4']
     career: Union[bool, 'careerArgsFromexperienceRecursive4']
+    user: Union[bool, 'userArgsFromexperienceRecursive4']
 
 
 class user_careerIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -12034,42 +12034,42 @@ class FindManyuser_careerArgsFromexperienceRecursive4(TypedDict, total=False):
 
 class jobIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromexperienceRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromexperienceRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive1']
     post: Union[bool, 'FindManypostArgsFromexperienceRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive1']
 
 
 class jobIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromexperienceRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromexperienceRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive2']
     post: Union[bool, 'FindManypostArgsFromexperienceRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive2']
 
 
 class jobIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromexperienceRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromexperienceRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive3']
     post: Union[bool, 'FindManypostArgsFromexperienceRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive3']
 
 
 class jobIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromexperienceRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromexperienceRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromexperienceRecursive4']
     post: Union[bool, 'FindManypostArgsFromexperienceRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromexperienceRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromexperienceRecursive4']
 
 
 class jobIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -12159,26 +12159,26 @@ class FindManyjobArgsFromexperienceRecursive4(TypedDict, total=False):
 
 class historyIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive1']
     job: Union[bool, 'jobArgsFromexperienceRecursive1']
+    user: Union[bool, 'userArgsFromexperienceRecursive1']
 
 
 class historyIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive2']
     job: Union[bool, 'jobArgsFromexperienceRecursive2']
+    user: Union[bool, 'userArgsFromexperienceRecursive2']
 
 
 class historyIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive3']
     job: Union[bool, 'jobArgsFromexperienceRecursive3']
+    user: Union[bool, 'userArgsFromexperienceRecursive3']
 
 
 class historyIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive4']
     job: Union[bool, 'jobArgsFromexperienceRecursive4']
+    user: Union[bool, 'userArgsFromexperienceRecursive4']
 
 
 class historyIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -12268,26 +12268,26 @@ class FindManyhistoryArgsFromexperienceRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
-    job: Union[bool, 'jobArgsFromexperienceRecursive1']
     category: Union[bool, 'categoryArgsFromexperienceRecursive1']
+    job: Union[bool, 'jobArgsFromexperienceRecursive1']
 
 
 class job_expIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
-    job: Union[bool, 'jobArgsFromexperienceRecursive2']
     category: Union[bool, 'categoryArgsFromexperienceRecursive2']
+    job: Union[bool, 'jobArgsFromexperienceRecursive2']
 
 
 class job_expIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
-    job: Union[bool, 'jobArgsFromexperienceRecursive3']
     category: Union[bool, 'categoryArgsFromexperienceRecursive3']
+    job: Union[bool, 'jobArgsFromexperienceRecursive3']
 
 
 class job_expIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
-    job: Union[bool, 'jobArgsFromexperienceRecursive4']
     category: Union[bool, 'categoryArgsFromexperienceRecursive4']
+    job: Union[bool, 'jobArgsFromexperienceRecursive4']
 
 
 class job_expIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -12377,26 +12377,26 @@ class FindManyjob_expArgsFromexperienceRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive1']
     job: Union[bool, 'jobArgsFromexperienceRecursive1']
+    user: Union[bool, 'userArgsFromexperienceRecursive1']
 
 
 class bookmarkIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive2']
     job: Union[bool, 'jobArgsFromexperienceRecursive2']
+    user: Union[bool, 'userArgsFromexperienceRecursive2']
 
 
 class bookmarkIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive3']
     job: Union[bool, 'jobArgsFromexperienceRecursive3']
+    user: Union[bool, 'userArgsFromexperienceRecursive3']
 
 
 class bookmarkIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive4']
     job: Union[bool, 'jobArgsFromexperienceRecursive4']
+    user: Union[bool, 'userArgsFromexperienceRecursive4']
 
 
 class bookmarkIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -12486,26 +12486,26 @@ class FindManybookmarkArgsFromexperienceRecursive4(TypedDict, total=False):
 
 class postIncludeFromexperience(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive1']
     job: Union[bool, 'jobArgsFromexperienceRecursive1']
+    user: Union[bool, 'userArgsFromexperienceRecursive1']
 
 
 class postIncludeFromexperienceRecursive1(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive2']
     job: Union[bool, 'jobArgsFromexperienceRecursive2']
+    user: Union[bool, 'userArgsFromexperienceRecursive2']
 
 
 class postIncludeFromexperienceRecursive2(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive3']
     job: Union[bool, 'jobArgsFromexperienceRecursive3']
+    user: Union[bool, 'userArgsFromexperienceRecursive3']
 
 
 class postIncludeFromexperienceRecursive3(TypedDict, total=False):
     """Relational arguments for experience"""
-    user: Union[bool, 'userArgsFromexperienceRecursive4']
     job: Union[bool, 'jobArgsFromexperienceRecursive4']
+    user: Union[bool, 'userArgsFromexperienceRecursive4']
 
 
 class postIncludeFromexperienceRecursive4(TypedDict, total=False):
@@ -12603,8 +12603,8 @@ class experienceWhereInput(TypedDict, total=False):
     """experience arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     category: 'categoryRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['experienceWhereInputRecursive1', List['experienceWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -12617,8 +12617,8 @@ class experienceWhereInputRecursive1(TypedDict, total=False):
     """experience arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     category: 'categoryRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['experienceWhereInputRecursive2', List['experienceWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -12631,8 +12631,8 @@ class experienceWhereInputRecursive2(TypedDict, total=False):
     """experience arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     category: 'categoryRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['experienceWhereInputRecursive3', List['experienceWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -12645,8 +12645,8 @@ class experienceWhereInputRecursive3(TypedDict, total=False):
     """experience arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     category: 'categoryRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['experienceWhereInputRecursive4', List['experienceWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -12659,8 +12659,8 @@ class experienceWhereInputRecursive4(TypedDict, total=False):
     """experience arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     category: 'categoryRelationFilter'
+    user: 'userRelationFilter'
 
 
 
@@ -12794,8 +12794,8 @@ experienceCountAggregateOutput = TypedDict(
 experienceKeys = Literal[
     'user_id',
     'category_id',
-    'user',
     'category',
+    'user',
 ]
 experienceScalarFieldKeys = Literal[
     'user_id',
@@ -12804,8 +12804,8 @@ experienceScalarFieldKeys = Literal[
 experienceScalarFieldKeysT = TypeVar('experienceScalarFieldKeysT', bound=experienceScalarFieldKeys)
 
 experienceRelationalFieldKeys = Literal[
-        'user',
         'category',
+        'user',
     ]
 
 # career types
@@ -12956,58 +12956,58 @@ class careerInclude(TypedDict, total=False):
 
 class userIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
-    post: Union[bool, 'FindManypostArgsFromcareerRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcareerRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcareerRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcareerRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcareerRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromcareerRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromcareerRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcareerRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromcareerRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive1']
+    post: Union[bool, 'FindManypostArgsFromcareerRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcareerRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcareerRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcareerRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcareerRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcareerRecursive1']
 
 
 class userIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
-    post: Union[bool, 'FindManypostArgsFromcareerRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcareerRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcareerRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcareerRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcareerRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromcareerRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromcareerRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcareerRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromcareerRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive2']
+    post: Union[bool, 'FindManypostArgsFromcareerRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcareerRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcareerRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcareerRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcareerRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcareerRecursive2']
 
 
 class userIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
-    post: Union[bool, 'FindManypostArgsFromcareerRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcareerRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcareerRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcareerRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcareerRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromcareerRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromcareerRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcareerRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromcareerRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive3']
+    post: Union[bool, 'FindManypostArgsFromcareerRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcareerRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcareerRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcareerRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcareerRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcareerRecursive3']
 
 
 class userIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
-    post: Union[bool, 'FindManypostArgsFromcareerRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromcareerRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromcareerRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromcareerRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromcareerRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromcareerRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromcareerRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromcareerRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromcareerRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive4']
+    post: Union[bool, 'FindManypostArgsFromcareerRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromcareerRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromcareerRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromcareerRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromcareerRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromcareerRecursive4']
 
 
 class userIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -13097,30 +13097,30 @@ class FindManyuserArgsFromcareerRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
+    job: Union[bool, 'jobArgsFromcareerRecursive1']
     user1: Union[bool, 'userArgsFromcareerRecursive1']
     user2: Union[bool, 'userArgsFromcareerRecursive1']
-    job: Union[bool, 'jobArgsFromcareerRecursive1']
 
 
 class rating_userIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
+    job: Union[bool, 'jobArgsFromcareerRecursive2']
     user1: Union[bool, 'userArgsFromcareerRecursive2']
     user2: Union[bool, 'userArgsFromcareerRecursive2']
-    job: Union[bool, 'jobArgsFromcareerRecursive2']
 
 
 class rating_userIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
+    job: Union[bool, 'jobArgsFromcareerRecursive3']
     user1: Union[bool, 'userArgsFromcareerRecursive3']
     user2: Union[bool, 'userArgsFromcareerRecursive3']
-    job: Union[bool, 'jobArgsFromcareerRecursive3']
 
 
 class rating_userIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
+    job: Union[bool, 'jobArgsFromcareerRecursive4']
     user1: Union[bool, 'userArgsFromcareerRecursive4']
     user2: Union[bool, 'userArgsFromcareerRecursive4']
-    job: Union[bool, 'jobArgsFromcareerRecursive4']
 
 
 class rating_userIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -13210,30 +13210,30 @@ class FindManyrating_userArgsFromcareerRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
+    job: Union[bool, 'jobArgsFromcareerRecursive1']
     user1: Union[bool, 'userArgsFromcareerRecursive1']
     user2: Union[bool, 'userArgsFromcareerRecursive1']
-    job: Union[bool, 'jobArgsFromcareerRecursive1']
 
 
 class rating_comIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
+    job: Union[bool, 'jobArgsFromcareerRecursive2']
     user1: Union[bool, 'userArgsFromcareerRecursive2']
     user2: Union[bool, 'userArgsFromcareerRecursive2']
-    job: Union[bool, 'jobArgsFromcareerRecursive2']
 
 
 class rating_comIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
+    job: Union[bool, 'jobArgsFromcareerRecursive3']
     user1: Union[bool, 'userArgsFromcareerRecursive3']
     user2: Union[bool, 'userArgsFromcareerRecursive3']
-    job: Union[bool, 'jobArgsFromcareerRecursive3']
 
 
 class rating_comIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
+    job: Union[bool, 'jobArgsFromcareerRecursive4']
     user1: Union[bool, 'userArgsFromcareerRecursive4']
     user2: Union[bool, 'userArgsFromcareerRecursive4']
-    job: Union[bool, 'jobArgsFromcareerRecursive4']
 
 
 class rating_comIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -13537,26 +13537,26 @@ class FindManycategoryArgsFromcareerRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive1']
     category: Union[bool, 'categoryArgsFromcareerRecursive1']
+    user: Union[bool, 'userArgsFromcareerRecursive1']
 
 
 class experienceIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive2']
     category: Union[bool, 'categoryArgsFromcareerRecursive2']
+    user: Union[bool, 'userArgsFromcareerRecursive2']
 
 
 class experienceIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive3']
     category: Union[bool, 'categoryArgsFromcareerRecursive3']
+    user: Union[bool, 'userArgsFromcareerRecursive3']
 
 
 class experienceIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive4']
     category: Union[bool, 'categoryArgsFromcareerRecursive4']
+    user: Union[bool, 'userArgsFromcareerRecursive4']
 
 
 class experienceIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -13751,26 +13751,26 @@ class FindManycareerArgsFromcareerRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive1']
     career: Union[bool, 'careerArgsFromcareerRecursive1']
+    user: Union[bool, 'userArgsFromcareerRecursive1']
 
 
 class user_careerIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive2']
     career: Union[bool, 'careerArgsFromcareerRecursive2']
+    user: Union[bool, 'userArgsFromcareerRecursive2']
 
 
 class user_careerIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive3']
     career: Union[bool, 'careerArgsFromcareerRecursive3']
+    user: Union[bool, 'userArgsFromcareerRecursive3']
 
 
 class user_careerIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive4']
     career: Union[bool, 'careerArgsFromcareerRecursive4']
+    user: Union[bool, 'userArgsFromcareerRecursive4']
 
 
 class user_careerIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -13860,42 +13860,42 @@ class FindManyuser_careerArgsFromcareerRecursive4(TypedDict, total=False):
 
 class jobIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromcareerRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcareerRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcareerRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcareerRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive1']
     post: Union[bool, 'FindManypostArgsFromcareerRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcareerRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcareerRecursive1']
 
 
 class jobIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromcareerRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcareerRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcareerRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcareerRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive2']
     post: Union[bool, 'FindManypostArgsFromcareerRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcareerRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcareerRecursive2']
 
 
 class jobIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromcareerRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcareerRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcareerRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcareerRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive3']
     post: Union[bool, 'FindManypostArgsFromcareerRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcareerRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcareerRecursive3']
 
 
 class jobIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromcareerRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromcareerRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromcareerRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromcareerRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromcareerRecursive4']
     post: Union[bool, 'FindManypostArgsFromcareerRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromcareerRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromcareerRecursive4']
 
 
 class jobIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -13985,26 +13985,26 @@ class FindManyjobArgsFromcareerRecursive4(TypedDict, total=False):
 
 class historyIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive1']
     job: Union[bool, 'jobArgsFromcareerRecursive1']
+    user: Union[bool, 'userArgsFromcareerRecursive1']
 
 
 class historyIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive2']
     job: Union[bool, 'jobArgsFromcareerRecursive2']
+    user: Union[bool, 'userArgsFromcareerRecursive2']
 
 
 class historyIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive3']
     job: Union[bool, 'jobArgsFromcareerRecursive3']
+    user: Union[bool, 'userArgsFromcareerRecursive3']
 
 
 class historyIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive4']
     job: Union[bool, 'jobArgsFromcareerRecursive4']
+    user: Union[bool, 'userArgsFromcareerRecursive4']
 
 
 class historyIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -14094,26 +14094,26 @@ class FindManyhistoryArgsFromcareerRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
-    job: Union[bool, 'jobArgsFromcareerRecursive1']
     category: Union[bool, 'categoryArgsFromcareerRecursive1']
+    job: Union[bool, 'jobArgsFromcareerRecursive1']
 
 
 class job_expIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
-    job: Union[bool, 'jobArgsFromcareerRecursive2']
     category: Union[bool, 'categoryArgsFromcareerRecursive2']
+    job: Union[bool, 'jobArgsFromcareerRecursive2']
 
 
 class job_expIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
-    job: Union[bool, 'jobArgsFromcareerRecursive3']
     category: Union[bool, 'categoryArgsFromcareerRecursive3']
+    job: Union[bool, 'jobArgsFromcareerRecursive3']
 
 
 class job_expIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
-    job: Union[bool, 'jobArgsFromcareerRecursive4']
     category: Union[bool, 'categoryArgsFromcareerRecursive4']
+    job: Union[bool, 'jobArgsFromcareerRecursive4']
 
 
 class job_expIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -14203,26 +14203,26 @@ class FindManyjob_expArgsFromcareerRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive1']
     job: Union[bool, 'jobArgsFromcareerRecursive1']
+    user: Union[bool, 'userArgsFromcareerRecursive1']
 
 
 class bookmarkIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive2']
     job: Union[bool, 'jobArgsFromcareerRecursive2']
+    user: Union[bool, 'userArgsFromcareerRecursive2']
 
 
 class bookmarkIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive3']
     job: Union[bool, 'jobArgsFromcareerRecursive3']
+    user: Union[bool, 'userArgsFromcareerRecursive3']
 
 
 class bookmarkIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive4']
     job: Union[bool, 'jobArgsFromcareerRecursive4']
+    user: Union[bool, 'userArgsFromcareerRecursive4']
 
 
 class bookmarkIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -14312,26 +14312,26 @@ class FindManybookmarkArgsFromcareerRecursive4(TypedDict, total=False):
 
 class postIncludeFromcareer(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive1']
     job: Union[bool, 'jobArgsFromcareerRecursive1']
+    user: Union[bool, 'userArgsFromcareerRecursive1']
 
 
 class postIncludeFromcareerRecursive1(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive2']
     job: Union[bool, 'jobArgsFromcareerRecursive2']
+    user: Union[bool, 'userArgsFromcareerRecursive2']
 
 
 class postIncludeFromcareerRecursive2(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive3']
     job: Union[bool, 'jobArgsFromcareerRecursive3']
+    user: Union[bool, 'userArgsFromcareerRecursive3']
 
 
 class postIncludeFromcareerRecursive3(TypedDict, total=False):
     """Relational arguments for career"""
-    user: Union[bool, 'userArgsFromcareerRecursive4']
     job: Union[bool, 'jobArgsFromcareerRecursive4']
+    user: Union[bool, 'userArgsFromcareerRecursive4']
 
 
 class postIncludeFromcareerRecursive4(TypedDict, total=False):
@@ -14630,8 +14630,8 @@ class user_careerOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the user_career create method"""
     user_id: _int
     career_id: _int
-    user: 'userCreateNestedWithoutRelationsInput'
     career: 'careerCreateNestedWithoutRelationsInput'
+    user: 'userCreateNestedWithoutRelationsInput'
 
 
 class user_careerCreateInput(user_careerOptionalCreateInput):
@@ -14683,8 +14683,8 @@ user_careerWhereUniqueInput = _user_careerCompounduser_id_career_idKey
 
 class user_careerUpdateInput(TypedDict, total=False):
     """Optional arguments for updating a record"""
-    user: 'userUpdateOneWithoutRelationsInput'
     career: 'careerUpdateOneWithoutRelationsInput'
+    user: 'userUpdateOneWithoutRelationsInput'
 
 
 class user_careerUpdateManyMutationInput(TypedDict, total=False):
@@ -14772,66 +14772,66 @@ class user_careerListRelationFilter(TypedDict, total=False):
 
 class user_careerInclude(TypedDict, total=False):
     """user_career relational arguments"""
-    user: Union[bool, 'userArgsFromuser_career']
     career: Union[bool, 'careerArgsFromuser_career']
+    user: Union[bool, 'userArgsFromuser_career']
 
 
     
 
 class userIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
-    post: Union[bool, 'FindManypostArgsFromuser_careerRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromuser_careerRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromuser_careerRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromuser_careerRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromuser_careerRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive1']
+    post: Union[bool, 'FindManypostArgsFromuser_careerRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromuser_careerRecursive1']
 
 
 class userIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
-    post: Union[bool, 'FindManypostArgsFromuser_careerRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromuser_careerRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromuser_careerRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromuser_careerRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromuser_careerRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive2']
+    post: Union[bool, 'FindManypostArgsFromuser_careerRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromuser_careerRecursive2']
 
 
 class userIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
-    post: Union[bool, 'FindManypostArgsFromuser_careerRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromuser_careerRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromuser_careerRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromuser_careerRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromuser_careerRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive3']
+    post: Union[bool, 'FindManypostArgsFromuser_careerRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromuser_careerRecursive3']
 
 
 class userIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
-    post: Union[bool, 'FindManypostArgsFromuser_careerRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromuser_careerRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromuser_careerRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromuser_careerRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromuser_careerRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive4']
+    post: Union[bool, 'FindManypostArgsFromuser_careerRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromuser_careerRecursive4']
 
 
 class userIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -14921,30 +14921,30 @@ class FindManyuserArgsFromuser_careerRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
+    job: Union[bool, 'jobArgsFromuser_careerRecursive1']
     user1: Union[bool, 'userArgsFromuser_careerRecursive1']
     user2: Union[bool, 'userArgsFromuser_careerRecursive1']
-    job: Union[bool, 'jobArgsFromuser_careerRecursive1']
 
 
 class rating_userIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
+    job: Union[bool, 'jobArgsFromuser_careerRecursive2']
     user1: Union[bool, 'userArgsFromuser_careerRecursive2']
     user2: Union[bool, 'userArgsFromuser_careerRecursive2']
-    job: Union[bool, 'jobArgsFromuser_careerRecursive2']
 
 
 class rating_userIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
+    job: Union[bool, 'jobArgsFromuser_careerRecursive3']
     user1: Union[bool, 'userArgsFromuser_careerRecursive3']
     user2: Union[bool, 'userArgsFromuser_careerRecursive3']
-    job: Union[bool, 'jobArgsFromuser_careerRecursive3']
 
 
 class rating_userIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
+    job: Union[bool, 'jobArgsFromuser_careerRecursive4']
     user1: Union[bool, 'userArgsFromuser_careerRecursive4']
     user2: Union[bool, 'userArgsFromuser_careerRecursive4']
-    job: Union[bool, 'jobArgsFromuser_careerRecursive4']
 
 
 class rating_userIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -15034,30 +15034,30 @@ class FindManyrating_userArgsFromuser_careerRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
+    job: Union[bool, 'jobArgsFromuser_careerRecursive1']
     user1: Union[bool, 'userArgsFromuser_careerRecursive1']
     user2: Union[bool, 'userArgsFromuser_careerRecursive1']
-    job: Union[bool, 'jobArgsFromuser_careerRecursive1']
 
 
 class rating_comIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
+    job: Union[bool, 'jobArgsFromuser_careerRecursive2']
     user1: Union[bool, 'userArgsFromuser_careerRecursive2']
     user2: Union[bool, 'userArgsFromuser_careerRecursive2']
-    job: Union[bool, 'jobArgsFromuser_careerRecursive2']
 
 
 class rating_comIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
+    job: Union[bool, 'jobArgsFromuser_careerRecursive3']
     user1: Union[bool, 'userArgsFromuser_careerRecursive3']
     user2: Union[bool, 'userArgsFromuser_careerRecursive3']
-    job: Union[bool, 'jobArgsFromuser_careerRecursive3']
 
 
 class rating_comIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
+    job: Union[bool, 'jobArgsFromuser_careerRecursive4']
     user1: Union[bool, 'userArgsFromuser_careerRecursive4']
     user2: Union[bool, 'userArgsFromuser_careerRecursive4']
-    job: Union[bool, 'jobArgsFromuser_careerRecursive4']
 
 
 class rating_comIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -15361,26 +15361,26 @@ class FindManycategoryArgsFromuser_careerRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive1']
     category: Union[bool, 'categoryArgsFromuser_careerRecursive1']
+    user: Union[bool, 'userArgsFromuser_careerRecursive1']
 
 
 class experienceIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive2']
     category: Union[bool, 'categoryArgsFromuser_careerRecursive2']
+    user: Union[bool, 'userArgsFromuser_careerRecursive2']
 
 
 class experienceIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive3']
     category: Union[bool, 'categoryArgsFromuser_careerRecursive3']
+    user: Union[bool, 'userArgsFromuser_careerRecursive3']
 
 
 class experienceIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive4']
     category: Union[bool, 'categoryArgsFromuser_careerRecursive4']
+    user: Union[bool, 'userArgsFromuser_careerRecursive4']
 
 
 class experienceIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -15575,26 +15575,26 @@ class FindManycareerArgsFromuser_careerRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive1']
     career: Union[bool, 'careerArgsFromuser_careerRecursive1']
+    user: Union[bool, 'userArgsFromuser_careerRecursive1']
 
 
 class user_careerIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive2']
     career: Union[bool, 'careerArgsFromuser_careerRecursive2']
+    user: Union[bool, 'userArgsFromuser_careerRecursive2']
 
 
 class user_careerIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive3']
     career: Union[bool, 'careerArgsFromuser_careerRecursive3']
+    user: Union[bool, 'userArgsFromuser_careerRecursive3']
 
 
 class user_careerIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive4']
     career: Union[bool, 'careerArgsFromuser_careerRecursive4']
+    user: Union[bool, 'userArgsFromuser_careerRecursive4']
 
 
 class user_careerIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -15684,42 +15684,42 @@ class FindManyuser_careerArgsFromuser_careerRecursive4(TypedDict, total=False):
 
 class jobIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromuser_careerRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromuser_careerRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive1']
     post: Union[bool, 'FindManypostArgsFromuser_careerRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive1']
 
 
 class jobIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromuser_careerRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromuser_careerRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive2']
     post: Union[bool, 'FindManypostArgsFromuser_careerRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive2']
 
 
 class jobIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromuser_careerRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromuser_careerRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive3']
     post: Union[bool, 'FindManypostArgsFromuser_careerRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive3']
 
 
 class jobIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromuser_careerRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromuser_careerRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromuser_careerRecursive4']
     post: Union[bool, 'FindManypostArgsFromuser_careerRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromuser_careerRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromuser_careerRecursive4']
 
 
 class jobIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -15809,26 +15809,26 @@ class FindManyjobArgsFromuser_careerRecursive4(TypedDict, total=False):
 
 class historyIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive1']
     job: Union[bool, 'jobArgsFromuser_careerRecursive1']
+    user: Union[bool, 'userArgsFromuser_careerRecursive1']
 
 
 class historyIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive2']
     job: Union[bool, 'jobArgsFromuser_careerRecursive2']
+    user: Union[bool, 'userArgsFromuser_careerRecursive2']
 
 
 class historyIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive3']
     job: Union[bool, 'jobArgsFromuser_careerRecursive3']
+    user: Union[bool, 'userArgsFromuser_careerRecursive3']
 
 
 class historyIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive4']
     job: Union[bool, 'jobArgsFromuser_careerRecursive4']
+    user: Union[bool, 'userArgsFromuser_careerRecursive4']
 
 
 class historyIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -15918,26 +15918,26 @@ class FindManyhistoryArgsFromuser_careerRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
-    job: Union[bool, 'jobArgsFromuser_careerRecursive1']
     category: Union[bool, 'categoryArgsFromuser_careerRecursive1']
+    job: Union[bool, 'jobArgsFromuser_careerRecursive1']
 
 
 class job_expIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
-    job: Union[bool, 'jobArgsFromuser_careerRecursive2']
     category: Union[bool, 'categoryArgsFromuser_careerRecursive2']
+    job: Union[bool, 'jobArgsFromuser_careerRecursive2']
 
 
 class job_expIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
-    job: Union[bool, 'jobArgsFromuser_careerRecursive3']
     category: Union[bool, 'categoryArgsFromuser_careerRecursive3']
+    job: Union[bool, 'jobArgsFromuser_careerRecursive3']
 
 
 class job_expIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
-    job: Union[bool, 'jobArgsFromuser_careerRecursive4']
     category: Union[bool, 'categoryArgsFromuser_careerRecursive4']
+    job: Union[bool, 'jobArgsFromuser_careerRecursive4']
 
 
 class job_expIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -16027,26 +16027,26 @@ class FindManyjob_expArgsFromuser_careerRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive1']
     job: Union[bool, 'jobArgsFromuser_careerRecursive1']
+    user: Union[bool, 'userArgsFromuser_careerRecursive1']
 
 
 class bookmarkIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive2']
     job: Union[bool, 'jobArgsFromuser_careerRecursive2']
+    user: Union[bool, 'userArgsFromuser_careerRecursive2']
 
 
 class bookmarkIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive3']
     job: Union[bool, 'jobArgsFromuser_careerRecursive3']
+    user: Union[bool, 'userArgsFromuser_careerRecursive3']
 
 
 class bookmarkIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive4']
     job: Union[bool, 'jobArgsFromuser_careerRecursive4']
+    user: Union[bool, 'userArgsFromuser_careerRecursive4']
 
 
 class bookmarkIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -16136,26 +16136,26 @@ class FindManybookmarkArgsFromuser_careerRecursive4(TypedDict, total=False):
 
 class postIncludeFromuser_career(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive1']
     job: Union[bool, 'jobArgsFromuser_careerRecursive1']
+    user: Union[bool, 'userArgsFromuser_careerRecursive1']
 
 
 class postIncludeFromuser_careerRecursive1(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive2']
     job: Union[bool, 'jobArgsFromuser_careerRecursive2']
+    user: Union[bool, 'userArgsFromuser_careerRecursive2']
 
 
 class postIncludeFromuser_careerRecursive2(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive3']
     job: Union[bool, 'jobArgsFromuser_careerRecursive3']
+    user: Union[bool, 'userArgsFromuser_careerRecursive3']
 
 
 class postIncludeFromuser_careerRecursive3(TypedDict, total=False):
     """Relational arguments for user_career"""
-    user: Union[bool, 'userArgsFromuser_careerRecursive4']
     job: Union[bool, 'jobArgsFromuser_careerRecursive4']
+    user: Union[bool, 'userArgsFromuser_careerRecursive4']
 
 
 class postIncludeFromuser_careerRecursive4(TypedDict, total=False):
@@ -16253,8 +16253,8 @@ class user_careerWhereInput(TypedDict, total=False):
     """user_career arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     career_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     career: 'careerRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['user_careerWhereInputRecursive1', List['user_careerWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -16267,8 +16267,8 @@ class user_careerWhereInputRecursive1(TypedDict, total=False):
     """user_career arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     career_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     career: 'careerRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['user_careerWhereInputRecursive2', List['user_careerWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -16281,8 +16281,8 @@ class user_careerWhereInputRecursive2(TypedDict, total=False):
     """user_career arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     career_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     career: 'careerRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['user_careerWhereInputRecursive3', List['user_careerWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -16295,8 +16295,8 @@ class user_careerWhereInputRecursive3(TypedDict, total=False):
     """user_career arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     career_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     career: 'careerRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['user_careerWhereInputRecursive4', List['user_careerWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -16309,8 +16309,8 @@ class user_careerWhereInputRecursive4(TypedDict, total=False):
     """user_career arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     career_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
     career: 'careerRelationFilter'
+    user: 'userRelationFilter'
 
 
 
@@ -16444,8 +16444,8 @@ user_careerCountAggregateOutput = TypedDict(
 user_careerKeys = Literal[
     'user_id',
     'career_id',
-    'user',
     'career',
+    'user',
 ]
 user_careerScalarFieldKeys = Literal[
     'user_id',
@@ -16454,8 +16454,8 @@ user_careerScalarFieldKeys = Literal[
 user_careerScalarFieldKeysT = TypeVar('user_careerScalarFieldKeysT', bound=user_careerScalarFieldKeys)
 
 user_careerRelationalFieldKeys = Literal[
-        'user',
         'career',
+        'user',
     ]
 
 # job types
@@ -16466,12 +16466,12 @@ class jobOptionalCreateInput(TypedDict, total=False):
     posted_date: datetime.datetime
     submitted_date: Optional[datetime.datetime]
     status: _str
+    bookmark: 'bookmarkCreateManyNestedWithoutRelationsInput'
     history: 'historyCreateManyNestedWithoutRelationsInput'
     job_exp: 'job_expCreateManyNestedWithoutRelationsInput'
-    rating_user: 'rating_userCreateManyNestedWithoutRelationsInput'
-    rating_com: 'rating_comCreateManyNestedWithoutRelationsInput'
-    bookmark: 'bookmarkCreateManyNestedWithoutRelationsInput'
     post: 'postCreateManyNestedWithoutRelationsInput'
+    rating_com: 'rating_comCreateManyNestedWithoutRelationsInput'
+    rating_user: 'rating_userCreateManyNestedWithoutRelationsInput'
 
 
 class jobCreateInput(jobOptionalCreateInput):
@@ -16532,12 +16532,12 @@ class jobUpdateInput(TypedDict, total=False):
     posted_date: datetime.datetime
     submitted_date: Optional[datetime.datetime]
     status: _str
+    bookmark: 'bookmarkUpdateManyWithoutRelationsInput'
     history: 'historyUpdateManyWithoutRelationsInput'
     job_exp: 'job_expUpdateManyWithoutRelationsInput'
-    rating_user: 'rating_userUpdateManyWithoutRelationsInput'
-    rating_com: 'rating_comUpdateManyWithoutRelationsInput'
-    bookmark: 'bookmarkUpdateManyWithoutRelationsInput'
     post: 'postUpdateManyWithoutRelationsInput'
+    rating_com: 'rating_comUpdateManyWithoutRelationsInput'
+    rating_user: 'rating_userUpdateManyWithoutRelationsInput'
 
 
 class jobUpdateManyMutationInput(TypedDict, total=False):
@@ -16687,70 +16687,70 @@ class jobListRelationFilter(TypedDict, total=False):
 
 class jobInclude(TypedDict, total=False):
     """job relational arguments"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjob']
     history: Union[bool, 'FindManyhistoryArgsFromjob']
     job_exp: Union[bool, 'FindManyjob_expArgsFromjob']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromjob']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromjob']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjob']
     post: Union[bool, 'FindManypostArgsFromjob']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromjob']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromjob']
 
 
     
 
 class userIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
-    post: Union[bool, 'FindManypostArgsFromjobRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromjobRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromjobRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromjobRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromjobRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromjobRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromjobRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromjobRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromjobRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive1']
+    post: Union[bool, 'FindManypostArgsFromjobRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromjobRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromjobRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromjobRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromjobRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromjobRecursive1']
 
 
 class userIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
-    post: Union[bool, 'FindManypostArgsFromjobRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromjobRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromjobRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromjobRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromjobRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromjobRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromjobRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromjobRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromjobRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive2']
+    post: Union[bool, 'FindManypostArgsFromjobRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromjobRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromjobRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromjobRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromjobRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromjobRecursive2']
 
 
 class userIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
-    post: Union[bool, 'FindManypostArgsFromjobRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromjobRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromjobRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromjobRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromjobRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromjobRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromjobRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromjobRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromjobRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive3']
+    post: Union[bool, 'FindManypostArgsFromjobRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromjobRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromjobRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromjobRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromjobRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromjobRecursive3']
 
 
 class userIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
-    post: Union[bool, 'FindManypostArgsFromjobRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromjobRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromjobRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromjobRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromjobRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromjobRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromjobRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromjobRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromjobRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive4']
+    post: Union[bool, 'FindManypostArgsFromjobRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromjobRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromjobRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromjobRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromjobRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromjobRecursive4']
 
 
 class userIncludeFromjobRecursive4(TypedDict, total=False):
@@ -16840,30 +16840,30 @@ class FindManyuserArgsFromjobRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
+    job: Union[bool, 'jobArgsFromjobRecursive1']
     user1: Union[bool, 'userArgsFromjobRecursive1']
     user2: Union[bool, 'userArgsFromjobRecursive1']
-    job: Union[bool, 'jobArgsFromjobRecursive1']
 
 
 class rating_userIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
+    job: Union[bool, 'jobArgsFromjobRecursive2']
     user1: Union[bool, 'userArgsFromjobRecursive2']
     user2: Union[bool, 'userArgsFromjobRecursive2']
-    job: Union[bool, 'jobArgsFromjobRecursive2']
 
 
 class rating_userIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
+    job: Union[bool, 'jobArgsFromjobRecursive3']
     user1: Union[bool, 'userArgsFromjobRecursive3']
     user2: Union[bool, 'userArgsFromjobRecursive3']
-    job: Union[bool, 'jobArgsFromjobRecursive3']
 
 
 class rating_userIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
+    job: Union[bool, 'jobArgsFromjobRecursive4']
     user1: Union[bool, 'userArgsFromjobRecursive4']
     user2: Union[bool, 'userArgsFromjobRecursive4']
-    job: Union[bool, 'jobArgsFromjobRecursive4']
 
 
 class rating_userIncludeFromjobRecursive4(TypedDict, total=False):
@@ -16953,30 +16953,30 @@ class FindManyrating_userArgsFromjobRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
+    job: Union[bool, 'jobArgsFromjobRecursive1']
     user1: Union[bool, 'userArgsFromjobRecursive1']
     user2: Union[bool, 'userArgsFromjobRecursive1']
-    job: Union[bool, 'jobArgsFromjobRecursive1']
 
 
 class rating_comIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
+    job: Union[bool, 'jobArgsFromjobRecursive2']
     user1: Union[bool, 'userArgsFromjobRecursive2']
     user2: Union[bool, 'userArgsFromjobRecursive2']
-    job: Union[bool, 'jobArgsFromjobRecursive2']
 
 
 class rating_comIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
+    job: Union[bool, 'jobArgsFromjobRecursive3']
     user1: Union[bool, 'userArgsFromjobRecursive3']
     user2: Union[bool, 'userArgsFromjobRecursive3']
-    job: Union[bool, 'jobArgsFromjobRecursive3']
 
 
 class rating_comIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
+    job: Union[bool, 'jobArgsFromjobRecursive4']
     user1: Union[bool, 'userArgsFromjobRecursive4']
     user2: Union[bool, 'userArgsFromjobRecursive4']
-    job: Union[bool, 'jobArgsFromjobRecursive4']
 
 
 class rating_comIncludeFromjobRecursive4(TypedDict, total=False):
@@ -17280,26 +17280,26 @@ class FindManycategoryArgsFromjobRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive1']
     category: Union[bool, 'categoryArgsFromjobRecursive1']
+    user: Union[bool, 'userArgsFromjobRecursive1']
 
 
 class experienceIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive2']
     category: Union[bool, 'categoryArgsFromjobRecursive2']
+    user: Union[bool, 'userArgsFromjobRecursive2']
 
 
 class experienceIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive3']
     category: Union[bool, 'categoryArgsFromjobRecursive3']
+    user: Union[bool, 'userArgsFromjobRecursive3']
 
 
 class experienceIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive4']
     category: Union[bool, 'categoryArgsFromjobRecursive4']
+    user: Union[bool, 'userArgsFromjobRecursive4']
 
 
 class experienceIncludeFromjobRecursive4(TypedDict, total=False):
@@ -17494,26 +17494,26 @@ class FindManycareerArgsFromjobRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive1']
     career: Union[bool, 'careerArgsFromjobRecursive1']
+    user: Union[bool, 'userArgsFromjobRecursive1']
 
 
 class user_careerIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive2']
     career: Union[bool, 'careerArgsFromjobRecursive2']
+    user: Union[bool, 'userArgsFromjobRecursive2']
 
 
 class user_careerIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive3']
     career: Union[bool, 'careerArgsFromjobRecursive3']
+    user: Union[bool, 'userArgsFromjobRecursive3']
 
 
 class user_careerIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive4']
     career: Union[bool, 'careerArgsFromjobRecursive4']
+    user: Union[bool, 'userArgsFromjobRecursive4']
 
 
 class user_careerIncludeFromjobRecursive4(TypedDict, total=False):
@@ -17603,42 +17603,42 @@ class FindManyuser_careerArgsFromjobRecursive4(TypedDict, total=False):
 
 class jobIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromjobRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromjobRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromjobRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromjobRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive1']
     post: Union[bool, 'FindManypostArgsFromjobRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromjobRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromjobRecursive1']
 
 
 class jobIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromjobRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromjobRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromjobRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromjobRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive2']
     post: Union[bool, 'FindManypostArgsFromjobRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromjobRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromjobRecursive2']
 
 
 class jobIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromjobRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromjobRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromjobRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromjobRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive3']
     post: Union[bool, 'FindManypostArgsFromjobRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromjobRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromjobRecursive3']
 
 
 class jobIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromjobRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromjobRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromjobRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromjobRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjobRecursive4']
     post: Union[bool, 'FindManypostArgsFromjobRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromjobRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromjobRecursive4']
 
 
 class jobIncludeFromjobRecursive4(TypedDict, total=False):
@@ -17728,26 +17728,26 @@ class FindManyjobArgsFromjobRecursive4(TypedDict, total=False):
 
 class historyIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive1']
     job: Union[bool, 'jobArgsFromjobRecursive1']
+    user: Union[bool, 'userArgsFromjobRecursive1']
 
 
 class historyIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive2']
     job: Union[bool, 'jobArgsFromjobRecursive2']
+    user: Union[bool, 'userArgsFromjobRecursive2']
 
 
 class historyIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive3']
     job: Union[bool, 'jobArgsFromjobRecursive3']
+    user: Union[bool, 'userArgsFromjobRecursive3']
 
 
 class historyIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive4']
     job: Union[bool, 'jobArgsFromjobRecursive4']
+    user: Union[bool, 'userArgsFromjobRecursive4']
 
 
 class historyIncludeFromjobRecursive4(TypedDict, total=False):
@@ -17837,26 +17837,26 @@ class FindManyhistoryArgsFromjobRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
-    job: Union[bool, 'jobArgsFromjobRecursive1']
     category: Union[bool, 'categoryArgsFromjobRecursive1']
+    job: Union[bool, 'jobArgsFromjobRecursive1']
 
 
 class job_expIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
-    job: Union[bool, 'jobArgsFromjobRecursive2']
     category: Union[bool, 'categoryArgsFromjobRecursive2']
+    job: Union[bool, 'jobArgsFromjobRecursive2']
 
 
 class job_expIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
-    job: Union[bool, 'jobArgsFromjobRecursive3']
     category: Union[bool, 'categoryArgsFromjobRecursive3']
+    job: Union[bool, 'jobArgsFromjobRecursive3']
 
 
 class job_expIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
-    job: Union[bool, 'jobArgsFromjobRecursive4']
     category: Union[bool, 'categoryArgsFromjobRecursive4']
+    job: Union[bool, 'jobArgsFromjobRecursive4']
 
 
 class job_expIncludeFromjobRecursive4(TypedDict, total=False):
@@ -17946,26 +17946,26 @@ class FindManyjob_expArgsFromjobRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive1']
     job: Union[bool, 'jobArgsFromjobRecursive1']
+    user: Union[bool, 'userArgsFromjobRecursive1']
 
 
 class bookmarkIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive2']
     job: Union[bool, 'jobArgsFromjobRecursive2']
+    user: Union[bool, 'userArgsFromjobRecursive2']
 
 
 class bookmarkIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive3']
     job: Union[bool, 'jobArgsFromjobRecursive3']
+    user: Union[bool, 'userArgsFromjobRecursive3']
 
 
 class bookmarkIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive4']
     job: Union[bool, 'jobArgsFromjobRecursive4']
+    user: Union[bool, 'userArgsFromjobRecursive4']
 
 
 class bookmarkIncludeFromjobRecursive4(TypedDict, total=False):
@@ -18055,26 +18055,26 @@ class FindManybookmarkArgsFromjobRecursive4(TypedDict, total=False):
 
 class postIncludeFromjob(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive1']
     job: Union[bool, 'jobArgsFromjobRecursive1']
+    user: Union[bool, 'userArgsFromjobRecursive1']
 
 
 class postIncludeFromjobRecursive1(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive2']
     job: Union[bool, 'jobArgsFromjobRecursive2']
+    user: Union[bool, 'userArgsFromjobRecursive2']
 
 
 class postIncludeFromjobRecursive2(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive3']
     job: Union[bool, 'jobArgsFromjobRecursive3']
+    user: Union[bool, 'userArgsFromjobRecursive3']
 
 
 class postIncludeFromjobRecursive3(TypedDict, total=False):
     """Relational arguments for job"""
-    user: Union[bool, 'userArgsFromjobRecursive4']
     job: Union[bool, 'jobArgsFromjobRecursive4']
+    user: Union[bool, 'userArgsFromjobRecursive4']
 
 
 class postIncludeFromjobRecursive4(TypedDict, total=False):
@@ -18178,12 +18178,12 @@ class jobWhereInput(TypedDict, total=False):
     posted_date: Union[datetime.datetime, 'types.DateTimeFilter']
     submitted_date: Union[None, datetime.datetime, 'types.DateTimeFilter']
     status: Union[_str, 'types.StringFilter']
+    bookmark: 'bookmarkListRelationFilter'
     history: 'historyListRelationFilter'
     job_exp: 'job_expListRelationFilter'
-    rating_user: 'rating_userListRelationFilter'
-    rating_com: 'rating_comListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
     post: 'postListRelationFilter'
+    rating_com: 'rating_comListRelationFilter'
+    rating_user: 'rating_userListRelationFilter'
 
     # should be noted that AND and NOT should be Union['jobWhereInputRecursive1', List['jobWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -18202,12 +18202,12 @@ class jobWhereInputRecursive1(TypedDict, total=False):
     posted_date: Union[datetime.datetime, 'types.DateTimeFilter']
     submitted_date: Union[None, datetime.datetime, 'types.DateTimeFilter']
     status: Union[_str, 'types.StringFilter']
+    bookmark: 'bookmarkListRelationFilter'
     history: 'historyListRelationFilter'
     job_exp: 'job_expListRelationFilter'
-    rating_user: 'rating_userListRelationFilter'
-    rating_com: 'rating_comListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
     post: 'postListRelationFilter'
+    rating_com: 'rating_comListRelationFilter'
+    rating_user: 'rating_userListRelationFilter'
 
     # should be noted that AND and NOT should be Union['jobWhereInputRecursive2', List['jobWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -18226,12 +18226,12 @@ class jobWhereInputRecursive2(TypedDict, total=False):
     posted_date: Union[datetime.datetime, 'types.DateTimeFilter']
     submitted_date: Union[None, datetime.datetime, 'types.DateTimeFilter']
     status: Union[_str, 'types.StringFilter']
+    bookmark: 'bookmarkListRelationFilter'
     history: 'historyListRelationFilter'
     job_exp: 'job_expListRelationFilter'
-    rating_user: 'rating_userListRelationFilter'
-    rating_com: 'rating_comListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
     post: 'postListRelationFilter'
+    rating_com: 'rating_comListRelationFilter'
+    rating_user: 'rating_userListRelationFilter'
 
     # should be noted that AND and NOT should be Union['jobWhereInputRecursive3', List['jobWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -18250,12 +18250,12 @@ class jobWhereInputRecursive3(TypedDict, total=False):
     posted_date: Union[datetime.datetime, 'types.DateTimeFilter']
     submitted_date: Union[None, datetime.datetime, 'types.DateTimeFilter']
     status: Union[_str, 'types.StringFilter']
+    bookmark: 'bookmarkListRelationFilter'
     history: 'historyListRelationFilter'
     job_exp: 'job_expListRelationFilter'
-    rating_user: 'rating_userListRelationFilter'
-    rating_com: 'rating_comListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
     post: 'postListRelationFilter'
+    rating_com: 'rating_comListRelationFilter'
+    rating_user: 'rating_userListRelationFilter'
 
     # should be noted that AND and NOT should be Union['jobWhereInputRecursive4', List['jobWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -18274,12 +18274,12 @@ class jobWhereInputRecursive4(TypedDict, total=False):
     posted_date: Union[datetime.datetime, 'types.DateTimeFilter']
     submitted_date: Union[None, datetime.datetime, 'types.DateTimeFilter']
     status: Union[_str, 'types.StringFilter']
+    bookmark: 'bookmarkListRelationFilter'
     history: 'historyListRelationFilter'
     job_exp: 'job_expListRelationFilter'
-    rating_user: 'rating_userListRelationFilter'
-    rating_com: 'rating_comListRelationFilter'
-    bookmark: 'bookmarkListRelationFilter'
     post: 'postListRelationFilter'
+    rating_com: 'rating_comListRelationFilter'
+    rating_user: 'rating_userListRelationFilter'
 
 
 
@@ -18485,12 +18485,12 @@ jobKeys = Literal[
     'posted_date',
     'submitted_date',
     'status',
+    'bookmark',
     'history',
     'job_exp',
-    'rating_user',
-    'rating_com',
-    'bookmark',
     'post',
+    'rating_com',
+    'rating_user',
 ]
 jobScalarFieldKeys = Literal[
     'job_id',
@@ -18505,12 +18505,12 @@ jobScalarFieldKeys = Literal[
 jobScalarFieldKeysT = TypeVar('jobScalarFieldKeysT', bound=jobScalarFieldKeys)
 
 jobRelationalFieldKeys = Literal[
+        'bookmark',
         'history',
         'job_exp',
-        'rating_user',
-        'rating_com',
-        'bookmark',
         'post',
+        'rating_com',
+        'rating_user',
     ]
 
 # history types
@@ -18519,9 +18519,9 @@ class historyOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the history create method"""
     user_id: _int
     job_id: _int
-    user: 'userCreateNestedWithoutRelationsInput'
-    job: 'jobCreateNestedWithoutRelationsInput'
     status: _str
+    job: 'jobCreateNestedWithoutRelationsInput'
+    user: 'userCreateNestedWithoutRelationsInput'
 
 
 class historyCreateInput(historyOptionalCreateInput):
@@ -18574,9 +18574,9 @@ historyWhereUniqueInput = _historyCompounduser_id_job_idKey
 
 class historyUpdateInput(TypedDict, total=False):
     """Optional arguments for updating a record"""
-    user: 'userUpdateOneWithoutRelationsInput'
-    job: 'jobUpdateOneWithoutRelationsInput'
     status: _str
+    job: 'jobUpdateOneWithoutRelationsInput'
+    user: 'userUpdateOneWithoutRelationsInput'
 
 
 class historyUpdateManyMutationInput(TypedDict, total=False):
@@ -18674,66 +18674,66 @@ class historyListRelationFilter(TypedDict, total=False):
 
 class historyInclude(TypedDict, total=False):
     """history relational arguments"""
-    user: Union[bool, 'userArgsFromhistory']
     job: Union[bool, 'jobArgsFromhistory']
+    user: Union[bool, 'userArgsFromhistory']
 
 
     
 
 class userIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
-    post: Union[bool, 'FindManypostArgsFromhistoryRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromhistoryRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromhistoryRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromhistoryRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromhistoryRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive1']
+    post: Union[bool, 'FindManypostArgsFromhistoryRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromhistoryRecursive1']
 
 
 class userIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
-    post: Union[bool, 'FindManypostArgsFromhistoryRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromhistoryRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromhistoryRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromhistoryRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromhistoryRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive2']
+    post: Union[bool, 'FindManypostArgsFromhistoryRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromhistoryRecursive2']
 
 
 class userIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
-    post: Union[bool, 'FindManypostArgsFromhistoryRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromhistoryRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromhistoryRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromhistoryRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromhistoryRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive3']
+    post: Union[bool, 'FindManypostArgsFromhistoryRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromhistoryRecursive3']
 
 
 class userIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
-    post: Union[bool, 'FindManypostArgsFromhistoryRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromhistoryRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromhistoryRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromhistoryRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromhistoryRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive4']
+    post: Union[bool, 'FindManypostArgsFromhistoryRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromhistoryRecursive4']
 
 
 class userIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -18823,30 +18823,30 @@ class FindManyuserArgsFromhistoryRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
+    job: Union[bool, 'jobArgsFromhistoryRecursive1']
     user1: Union[bool, 'userArgsFromhistoryRecursive1']
     user2: Union[bool, 'userArgsFromhistoryRecursive1']
-    job: Union[bool, 'jobArgsFromhistoryRecursive1']
 
 
 class rating_userIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
+    job: Union[bool, 'jobArgsFromhistoryRecursive2']
     user1: Union[bool, 'userArgsFromhistoryRecursive2']
     user2: Union[bool, 'userArgsFromhistoryRecursive2']
-    job: Union[bool, 'jobArgsFromhistoryRecursive2']
 
 
 class rating_userIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
+    job: Union[bool, 'jobArgsFromhistoryRecursive3']
     user1: Union[bool, 'userArgsFromhistoryRecursive3']
     user2: Union[bool, 'userArgsFromhistoryRecursive3']
-    job: Union[bool, 'jobArgsFromhistoryRecursive3']
 
 
 class rating_userIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
+    job: Union[bool, 'jobArgsFromhistoryRecursive4']
     user1: Union[bool, 'userArgsFromhistoryRecursive4']
     user2: Union[bool, 'userArgsFromhistoryRecursive4']
-    job: Union[bool, 'jobArgsFromhistoryRecursive4']
 
 
 class rating_userIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -18936,30 +18936,30 @@ class FindManyrating_userArgsFromhistoryRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
+    job: Union[bool, 'jobArgsFromhistoryRecursive1']
     user1: Union[bool, 'userArgsFromhistoryRecursive1']
     user2: Union[bool, 'userArgsFromhistoryRecursive1']
-    job: Union[bool, 'jobArgsFromhistoryRecursive1']
 
 
 class rating_comIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
+    job: Union[bool, 'jobArgsFromhistoryRecursive2']
     user1: Union[bool, 'userArgsFromhistoryRecursive2']
     user2: Union[bool, 'userArgsFromhistoryRecursive2']
-    job: Union[bool, 'jobArgsFromhistoryRecursive2']
 
 
 class rating_comIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
+    job: Union[bool, 'jobArgsFromhistoryRecursive3']
     user1: Union[bool, 'userArgsFromhistoryRecursive3']
     user2: Union[bool, 'userArgsFromhistoryRecursive3']
-    job: Union[bool, 'jobArgsFromhistoryRecursive3']
 
 
 class rating_comIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
+    job: Union[bool, 'jobArgsFromhistoryRecursive4']
     user1: Union[bool, 'userArgsFromhistoryRecursive4']
     user2: Union[bool, 'userArgsFromhistoryRecursive4']
-    job: Union[bool, 'jobArgsFromhistoryRecursive4']
 
 
 class rating_comIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -19263,26 +19263,26 @@ class FindManycategoryArgsFromhistoryRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive1']
     category: Union[bool, 'categoryArgsFromhistoryRecursive1']
+    user: Union[bool, 'userArgsFromhistoryRecursive1']
 
 
 class experienceIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive2']
     category: Union[bool, 'categoryArgsFromhistoryRecursive2']
+    user: Union[bool, 'userArgsFromhistoryRecursive2']
 
 
 class experienceIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive3']
     category: Union[bool, 'categoryArgsFromhistoryRecursive3']
+    user: Union[bool, 'userArgsFromhistoryRecursive3']
 
 
 class experienceIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive4']
     category: Union[bool, 'categoryArgsFromhistoryRecursive4']
+    user: Union[bool, 'userArgsFromhistoryRecursive4']
 
 
 class experienceIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -19477,26 +19477,26 @@ class FindManycareerArgsFromhistoryRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive1']
     career: Union[bool, 'careerArgsFromhistoryRecursive1']
+    user: Union[bool, 'userArgsFromhistoryRecursive1']
 
 
 class user_careerIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive2']
     career: Union[bool, 'careerArgsFromhistoryRecursive2']
+    user: Union[bool, 'userArgsFromhistoryRecursive2']
 
 
 class user_careerIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive3']
     career: Union[bool, 'careerArgsFromhistoryRecursive3']
+    user: Union[bool, 'userArgsFromhistoryRecursive3']
 
 
 class user_careerIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive4']
     career: Union[bool, 'careerArgsFromhistoryRecursive4']
+    user: Union[bool, 'userArgsFromhistoryRecursive4']
 
 
 class user_careerIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -19586,42 +19586,42 @@ class FindManyuser_careerArgsFromhistoryRecursive4(TypedDict, total=False):
 
 class jobIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromhistoryRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromhistoryRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive1']
     post: Union[bool, 'FindManypostArgsFromhistoryRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive1']
 
 
 class jobIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromhistoryRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromhistoryRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive2']
     post: Union[bool, 'FindManypostArgsFromhistoryRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive2']
 
 
 class jobIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromhistoryRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromhistoryRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive3']
     post: Union[bool, 'FindManypostArgsFromhistoryRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive3']
 
 
 class jobIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromhistoryRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromhistoryRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromhistoryRecursive4']
     post: Union[bool, 'FindManypostArgsFromhistoryRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromhistoryRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromhistoryRecursive4']
 
 
 class jobIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -19711,26 +19711,26 @@ class FindManyjobArgsFromhistoryRecursive4(TypedDict, total=False):
 
 class historyIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive1']
     job: Union[bool, 'jobArgsFromhistoryRecursive1']
+    user: Union[bool, 'userArgsFromhistoryRecursive1']
 
 
 class historyIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive2']
     job: Union[bool, 'jobArgsFromhistoryRecursive2']
+    user: Union[bool, 'userArgsFromhistoryRecursive2']
 
 
 class historyIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive3']
     job: Union[bool, 'jobArgsFromhistoryRecursive3']
+    user: Union[bool, 'userArgsFromhistoryRecursive3']
 
 
 class historyIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive4']
     job: Union[bool, 'jobArgsFromhistoryRecursive4']
+    user: Union[bool, 'userArgsFromhistoryRecursive4']
 
 
 class historyIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -19820,26 +19820,26 @@ class FindManyhistoryArgsFromhistoryRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
-    job: Union[bool, 'jobArgsFromhistoryRecursive1']
     category: Union[bool, 'categoryArgsFromhistoryRecursive1']
+    job: Union[bool, 'jobArgsFromhistoryRecursive1']
 
 
 class job_expIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
-    job: Union[bool, 'jobArgsFromhistoryRecursive2']
     category: Union[bool, 'categoryArgsFromhistoryRecursive2']
+    job: Union[bool, 'jobArgsFromhistoryRecursive2']
 
 
 class job_expIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
-    job: Union[bool, 'jobArgsFromhistoryRecursive3']
     category: Union[bool, 'categoryArgsFromhistoryRecursive3']
+    job: Union[bool, 'jobArgsFromhistoryRecursive3']
 
 
 class job_expIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
-    job: Union[bool, 'jobArgsFromhistoryRecursive4']
     category: Union[bool, 'categoryArgsFromhistoryRecursive4']
+    job: Union[bool, 'jobArgsFromhistoryRecursive4']
 
 
 class job_expIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -19929,26 +19929,26 @@ class FindManyjob_expArgsFromhistoryRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive1']
     job: Union[bool, 'jobArgsFromhistoryRecursive1']
+    user: Union[bool, 'userArgsFromhistoryRecursive1']
 
 
 class bookmarkIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive2']
     job: Union[bool, 'jobArgsFromhistoryRecursive2']
+    user: Union[bool, 'userArgsFromhistoryRecursive2']
 
 
 class bookmarkIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive3']
     job: Union[bool, 'jobArgsFromhistoryRecursive3']
+    user: Union[bool, 'userArgsFromhistoryRecursive3']
 
 
 class bookmarkIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive4']
     job: Union[bool, 'jobArgsFromhistoryRecursive4']
+    user: Union[bool, 'userArgsFromhistoryRecursive4']
 
 
 class bookmarkIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -20038,26 +20038,26 @@ class FindManybookmarkArgsFromhistoryRecursive4(TypedDict, total=False):
 
 class postIncludeFromhistory(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive1']
     job: Union[bool, 'jobArgsFromhistoryRecursive1']
+    user: Union[bool, 'userArgsFromhistoryRecursive1']
 
 
 class postIncludeFromhistoryRecursive1(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive2']
     job: Union[bool, 'jobArgsFromhistoryRecursive2']
+    user: Union[bool, 'userArgsFromhistoryRecursive2']
 
 
 class postIncludeFromhistoryRecursive2(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive3']
     job: Union[bool, 'jobArgsFromhistoryRecursive3']
+    user: Union[bool, 'userArgsFromhistoryRecursive3']
 
 
 class postIncludeFromhistoryRecursive3(TypedDict, total=False):
     """Relational arguments for history"""
-    user: Union[bool, 'userArgsFromhistoryRecursive4']
     job: Union[bool, 'jobArgsFromhistoryRecursive4']
+    user: Union[bool, 'userArgsFromhistoryRecursive4']
 
 
 class postIncludeFromhistoryRecursive4(TypedDict, total=False):
@@ -20155,9 +20155,9 @@ class historyWhereInput(TypedDict, total=False):
     """history arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
-    job: 'jobRelationFilter'
     status: Union[_str, 'types.StringFilter']
+    job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['historyWhereInputRecursive1', List['historyWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -20170,9 +20170,9 @@ class historyWhereInputRecursive1(TypedDict, total=False):
     """history arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
-    job: 'jobRelationFilter'
     status: Union[_str, 'types.StringFilter']
+    job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['historyWhereInputRecursive2', List['historyWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -20185,9 +20185,9 @@ class historyWhereInputRecursive2(TypedDict, total=False):
     """history arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
-    job: 'jobRelationFilter'
     status: Union[_str, 'types.StringFilter']
+    job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['historyWhereInputRecursive3', List['historyWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -20200,9 +20200,9 @@ class historyWhereInputRecursive3(TypedDict, total=False):
     """history arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
-    job: 'jobRelationFilter'
     status: Union[_str, 'types.StringFilter']
+    job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['historyWhereInputRecursive4', List['historyWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -20215,9 +20215,9 @@ class historyWhereInputRecursive4(TypedDict, total=False):
     """history arguments for searching"""
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
-    job: 'jobRelationFilter'
     status: Union[_str, 'types.StringFilter']
+    job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
 
 
@@ -20362,9 +20362,9 @@ historyCountAggregateOutput = TypedDict(
 historyKeys = Literal[
     'user_id',
     'job_id',
-    'user',
-    'job',
     'status',
+    'job',
+    'user',
 ]
 historyScalarFieldKeys = Literal[
     'user_id',
@@ -20374,8 +20374,8 @@ historyScalarFieldKeys = Literal[
 historyScalarFieldKeysT = TypeVar('historyScalarFieldKeysT', bound=historyScalarFieldKeys)
 
 historyRelationalFieldKeys = Literal[
-        'user',
         'job',
+        'user',
     ]
 
 # job_exp types
@@ -20384,8 +20384,8 @@ class job_expOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the job_exp create method"""
     job_id: _int
     category_id: _int
-    job: 'jobCreateNestedWithoutRelationsInput'
     category: 'categoryCreateNestedWithoutRelationsInput'
+    job: 'jobCreateNestedWithoutRelationsInput'
 
 
 class job_expCreateInput(job_expOptionalCreateInput):
@@ -20437,8 +20437,8 @@ job_expWhereUniqueInput = _job_expCompoundjob_id_category_idKey
 
 class job_expUpdateInput(TypedDict, total=False):
     """Optional arguments for updating a record"""
-    job: 'jobUpdateOneWithoutRelationsInput'
     category: 'categoryUpdateOneWithoutRelationsInput'
+    job: 'jobUpdateOneWithoutRelationsInput'
 
 
 class job_expUpdateManyMutationInput(TypedDict, total=False):
@@ -20526,66 +20526,66 @@ class job_expListRelationFilter(TypedDict, total=False):
 
 class job_expInclude(TypedDict, total=False):
     """job_exp relational arguments"""
-    job: Union[bool, 'jobArgsFromjob_exp']
     category: Union[bool, 'categoryArgsFromjob_exp']
+    job: Union[bool, 'jobArgsFromjob_exp']
 
 
     
 
 class userIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    post: Union[bool, 'FindManypostArgsFromjob_expRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive1']
     contact: Union[bool, 'FindManycontactArgsFromjob_expRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFromjob_expRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromjob_expRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromjob_expRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive1']
+    post: Union[bool, 'FindManypostArgsFromjob_expRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromjob_expRecursive1']
 
 
 class userIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    post: Union[bool, 'FindManypostArgsFromjob_expRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive2']
     contact: Union[bool, 'FindManycontactArgsFromjob_expRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFromjob_expRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromjob_expRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromjob_expRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive2']
+    post: Union[bool, 'FindManypostArgsFromjob_expRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromjob_expRecursive2']
 
 
 class userIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    post: Union[bool, 'FindManypostArgsFromjob_expRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive3']
     contact: Union[bool, 'FindManycontactArgsFromjob_expRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFromjob_expRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromjob_expRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromjob_expRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive3']
+    post: Union[bool, 'FindManypostArgsFromjob_expRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromjob_expRecursive3']
 
 
 class userIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    post: Union[bool, 'FindManypostArgsFromjob_expRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive4']
     contact: Union[bool, 'FindManycontactArgsFromjob_expRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFromjob_expRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFromjob_expRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromjob_expRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive4']
+    post: Union[bool, 'FindManypostArgsFromjob_expRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFromjob_expRecursive4']
 
 
 class userIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -20675,30 +20675,30 @@ class FindManyuserArgsFromjob_expRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    job: Union[bool, 'jobArgsFromjob_expRecursive1']
     user1: Union[bool, 'userArgsFromjob_expRecursive1']
     user2: Union[bool, 'userArgsFromjob_expRecursive1']
-    job: Union[bool, 'jobArgsFromjob_expRecursive1']
 
 
 class rating_userIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    job: Union[bool, 'jobArgsFromjob_expRecursive2']
     user1: Union[bool, 'userArgsFromjob_expRecursive2']
     user2: Union[bool, 'userArgsFromjob_expRecursive2']
-    job: Union[bool, 'jobArgsFromjob_expRecursive2']
 
 
 class rating_userIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    job: Union[bool, 'jobArgsFromjob_expRecursive3']
     user1: Union[bool, 'userArgsFromjob_expRecursive3']
     user2: Union[bool, 'userArgsFromjob_expRecursive3']
-    job: Union[bool, 'jobArgsFromjob_expRecursive3']
 
 
 class rating_userIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    job: Union[bool, 'jobArgsFromjob_expRecursive4']
     user1: Union[bool, 'userArgsFromjob_expRecursive4']
     user2: Union[bool, 'userArgsFromjob_expRecursive4']
-    job: Union[bool, 'jobArgsFromjob_expRecursive4']
 
 
 class rating_userIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -20788,30 +20788,30 @@ class FindManyrating_userArgsFromjob_expRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    job: Union[bool, 'jobArgsFromjob_expRecursive1']
     user1: Union[bool, 'userArgsFromjob_expRecursive1']
     user2: Union[bool, 'userArgsFromjob_expRecursive1']
-    job: Union[bool, 'jobArgsFromjob_expRecursive1']
 
 
 class rating_comIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    job: Union[bool, 'jobArgsFromjob_expRecursive2']
     user1: Union[bool, 'userArgsFromjob_expRecursive2']
     user2: Union[bool, 'userArgsFromjob_expRecursive2']
-    job: Union[bool, 'jobArgsFromjob_expRecursive2']
 
 
 class rating_comIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    job: Union[bool, 'jobArgsFromjob_expRecursive3']
     user1: Union[bool, 'userArgsFromjob_expRecursive3']
     user2: Union[bool, 'userArgsFromjob_expRecursive3']
-    job: Union[bool, 'jobArgsFromjob_expRecursive3']
 
 
 class rating_comIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    job: Union[bool, 'jobArgsFromjob_expRecursive4']
     user1: Union[bool, 'userArgsFromjob_expRecursive4']
     user2: Union[bool, 'userArgsFromjob_expRecursive4']
-    job: Union[bool, 'jobArgsFromjob_expRecursive4']
 
 
 class rating_comIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -21115,26 +21115,26 @@ class FindManycategoryArgsFromjob_expRecursive4(TypedDict, total=False):
 
 class experienceIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive1']
     category: Union[bool, 'categoryArgsFromjob_expRecursive1']
+    user: Union[bool, 'userArgsFromjob_expRecursive1']
 
 
 class experienceIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive2']
     category: Union[bool, 'categoryArgsFromjob_expRecursive2']
+    user: Union[bool, 'userArgsFromjob_expRecursive2']
 
 
 class experienceIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive3']
     category: Union[bool, 'categoryArgsFromjob_expRecursive3']
+    user: Union[bool, 'userArgsFromjob_expRecursive3']
 
 
 class experienceIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive4']
     category: Union[bool, 'categoryArgsFromjob_expRecursive4']
+    user: Union[bool, 'userArgsFromjob_expRecursive4']
 
 
 class experienceIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -21329,26 +21329,26 @@ class FindManycareerArgsFromjob_expRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive1']
     career: Union[bool, 'careerArgsFromjob_expRecursive1']
+    user: Union[bool, 'userArgsFromjob_expRecursive1']
 
 
 class user_careerIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive2']
     career: Union[bool, 'careerArgsFromjob_expRecursive2']
+    user: Union[bool, 'userArgsFromjob_expRecursive2']
 
 
 class user_careerIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive3']
     career: Union[bool, 'careerArgsFromjob_expRecursive3']
+    user: Union[bool, 'userArgsFromjob_expRecursive3']
 
 
 class user_careerIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive4']
     career: Union[bool, 'careerArgsFromjob_expRecursive4']
+    user: Union[bool, 'userArgsFromjob_expRecursive4']
 
 
 class user_careerIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -21438,42 +21438,42 @@ class FindManyuser_careerArgsFromjob_expRecursive4(TypedDict, total=False):
 
 class jobIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFromjob_expRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFromjob_expRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive1']
     post: Union[bool, 'FindManypostArgsFromjob_expRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive1']
 
 
 class jobIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFromjob_expRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFromjob_expRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive2']
     post: Union[bool, 'FindManypostArgsFromjob_expRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive2']
 
 
 class jobIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFromjob_expRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFromjob_expRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive3']
     post: Union[bool, 'FindManypostArgsFromjob_expRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive3']
 
 
 class jobIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFromjob_expRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFromjob_expRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFromjob_expRecursive4']
     post: Union[bool, 'FindManypostArgsFromjob_expRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFromjob_expRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFromjob_expRecursive4']
 
 
 class jobIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -21563,26 +21563,26 @@ class FindManyjobArgsFromjob_expRecursive4(TypedDict, total=False):
 
 class historyIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive1']
     job: Union[bool, 'jobArgsFromjob_expRecursive1']
+    user: Union[bool, 'userArgsFromjob_expRecursive1']
 
 
 class historyIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive2']
     job: Union[bool, 'jobArgsFromjob_expRecursive2']
+    user: Union[bool, 'userArgsFromjob_expRecursive2']
 
 
 class historyIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive3']
     job: Union[bool, 'jobArgsFromjob_expRecursive3']
+    user: Union[bool, 'userArgsFromjob_expRecursive3']
 
 
 class historyIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive4']
     job: Union[bool, 'jobArgsFromjob_expRecursive4']
+    user: Union[bool, 'userArgsFromjob_expRecursive4']
 
 
 class historyIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -21672,26 +21672,26 @@ class FindManyhistoryArgsFromjob_expRecursive4(TypedDict, total=False):
 
 class job_expIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    job: Union[bool, 'jobArgsFromjob_expRecursive1']
     category: Union[bool, 'categoryArgsFromjob_expRecursive1']
+    job: Union[bool, 'jobArgsFromjob_expRecursive1']
 
 
 class job_expIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    job: Union[bool, 'jobArgsFromjob_expRecursive2']
     category: Union[bool, 'categoryArgsFromjob_expRecursive2']
+    job: Union[bool, 'jobArgsFromjob_expRecursive2']
 
 
 class job_expIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    job: Union[bool, 'jobArgsFromjob_expRecursive3']
     category: Union[bool, 'categoryArgsFromjob_expRecursive3']
+    job: Union[bool, 'jobArgsFromjob_expRecursive3']
 
 
 class job_expIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    job: Union[bool, 'jobArgsFromjob_expRecursive4']
     category: Union[bool, 'categoryArgsFromjob_expRecursive4']
+    job: Union[bool, 'jobArgsFromjob_expRecursive4']
 
 
 class job_expIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -21781,26 +21781,26 @@ class FindManyjob_expArgsFromjob_expRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive1']
     job: Union[bool, 'jobArgsFromjob_expRecursive1']
+    user: Union[bool, 'userArgsFromjob_expRecursive1']
 
 
 class bookmarkIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive2']
     job: Union[bool, 'jobArgsFromjob_expRecursive2']
+    user: Union[bool, 'userArgsFromjob_expRecursive2']
 
 
 class bookmarkIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive3']
     job: Union[bool, 'jobArgsFromjob_expRecursive3']
+    user: Union[bool, 'userArgsFromjob_expRecursive3']
 
 
 class bookmarkIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive4']
     job: Union[bool, 'jobArgsFromjob_expRecursive4']
+    user: Union[bool, 'userArgsFromjob_expRecursive4']
 
 
 class bookmarkIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -21890,26 +21890,26 @@ class FindManybookmarkArgsFromjob_expRecursive4(TypedDict, total=False):
 
 class postIncludeFromjob_exp(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive1']
     job: Union[bool, 'jobArgsFromjob_expRecursive1']
+    user: Union[bool, 'userArgsFromjob_expRecursive1']
 
 
 class postIncludeFromjob_expRecursive1(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive2']
     job: Union[bool, 'jobArgsFromjob_expRecursive2']
+    user: Union[bool, 'userArgsFromjob_expRecursive2']
 
 
 class postIncludeFromjob_expRecursive2(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive3']
     job: Union[bool, 'jobArgsFromjob_expRecursive3']
+    user: Union[bool, 'userArgsFromjob_expRecursive3']
 
 
 class postIncludeFromjob_expRecursive3(TypedDict, total=False):
     """Relational arguments for job_exp"""
-    user: Union[bool, 'userArgsFromjob_expRecursive4']
     job: Union[bool, 'jobArgsFromjob_expRecursive4']
+    user: Union[bool, 'userArgsFromjob_expRecursive4']
 
 
 class postIncludeFromjob_expRecursive4(TypedDict, total=False):
@@ -22007,8 +22007,8 @@ class job_expWhereInput(TypedDict, total=False):
     """job_exp arguments for searching"""
     job_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    job: 'jobRelationFilter'
     category: 'categoryRelationFilter'
+    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['job_expWhereInputRecursive1', List['job_expWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -22021,8 +22021,8 @@ class job_expWhereInputRecursive1(TypedDict, total=False):
     """job_exp arguments for searching"""
     job_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    job: 'jobRelationFilter'
     category: 'categoryRelationFilter'
+    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['job_expWhereInputRecursive2', List['job_expWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -22035,8 +22035,8 @@ class job_expWhereInputRecursive2(TypedDict, total=False):
     """job_exp arguments for searching"""
     job_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    job: 'jobRelationFilter'
     category: 'categoryRelationFilter'
+    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['job_expWhereInputRecursive3', List['job_expWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -22049,8 +22049,8 @@ class job_expWhereInputRecursive3(TypedDict, total=False):
     """job_exp arguments for searching"""
     job_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    job: 'jobRelationFilter'
     category: 'categoryRelationFilter'
+    job: 'jobRelationFilter'
 
     # should be noted that AND and NOT should be Union['job_expWhereInputRecursive4', List['job_expWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -22063,8 +22063,8 @@ class job_expWhereInputRecursive4(TypedDict, total=False):
     """job_exp arguments for searching"""
     job_id: Union[_int, 'types.IntFilter']
     category_id: Union[_int, 'types.IntFilter']
-    job: 'jobRelationFilter'
     category: 'categoryRelationFilter'
+    job: 'jobRelationFilter'
 
 
 
@@ -22198,8 +22198,8 @@ job_expCountAggregateOutput = TypedDict(
 job_expKeys = Literal[
     'job_id',
     'category_id',
-    'job',
     'category',
+    'job',
 ]
 job_expScalarFieldKeys = Literal[
     'job_id',
@@ -22208,19 +22208,19 @@ job_expScalarFieldKeys = Literal[
 job_expScalarFieldKeysT = TypeVar('job_expScalarFieldKeysT', bound=job_expScalarFieldKeys)
 
 job_expRelationalFieldKeys = Literal[
-        'job',
         'category',
+        'job',
     ]
 
 # bookmark types
 
 class bookmarkOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the bookmark create method"""
-    book_id: _int
     user_id: _int
     job_id: _int
-    user: 'userCreateNestedWithoutRelationsInput'
+    book_id: _int
     job: 'jobCreateNestedWithoutRelationsInput'
+    user: 'userCreateNestedWithoutRelationsInput'
 
 
 class bookmarkCreateInput(bookmarkOptionalCreateInput):
@@ -22232,9 +22232,9 @@ class bookmarkCreateInput(bookmarkOptionalCreateInput):
 
 class bookmarkOptionalCreateWithoutRelationsInput(TypedDict, total=False):
     """Optional arguments to the bookmark create method, without relations"""
-    book_id: _int
     user_id: _int
     job_id: _int
+    book_id: _int
 
 
 class bookmarkCreateWithoutRelationsInput(bookmarkOptionalCreateWithoutRelationsInput):
@@ -22285,8 +22285,8 @@ bookmarkWhereUniqueInput = Union[
 class bookmarkUpdateInput(TypedDict, total=False):
     """Optional arguments for updating a record"""
     book_id: Union[AtomicIntInput, _int]
-    user: 'userUpdateOneWithoutRelationsInput'
     job: 'jobUpdateOneWithoutRelationsInput'
+    user: 'userUpdateOneWithoutRelationsInput'
 
 
 class bookmarkUpdateManyMutationInput(TypedDict, total=False):
@@ -22326,14 +22326,6 @@ class bookmarkUpsertInput(TypedDict):
     update: 'bookmarkUpdateInput'  # pyright: ignore[reportIncompatibleMethodOverride]
 
 
-_bookmark_book_id_OrderByInput = TypedDict(
-    '_bookmark_book_id_OrderByInput',
-    {
-        'book_id': 'SortOrder',
-    },
-    total=True
-)
-
 _bookmark_user_id_OrderByInput = TypedDict(
     '_bookmark_user_id_OrderByInput',
     {
@@ -22350,10 +22342,18 @@ _bookmark_job_id_OrderByInput = TypedDict(
     total=True
 )
 
-bookmarkOrderByInput = Union[
+_bookmark_book_id_OrderByInput = TypedDict(
     '_bookmark_book_id_OrderByInput',
+    {
+        'book_id': 'SortOrder',
+    },
+    total=True
+)
+
+bookmarkOrderByInput = Union[
     '_bookmark_user_id_OrderByInput',
     '_bookmark_job_id_OrderByInput',
+    '_bookmark_book_id_OrderByInput',
 ]
 
 
@@ -22384,66 +22384,66 @@ class bookmarkListRelationFilter(TypedDict, total=False):
 
 class bookmarkInclude(TypedDict, total=False):
     """bookmark relational arguments"""
-    user: Union[bool, 'userArgsFrombookmark']
     job: Union[bool, 'jobArgsFrombookmark']
+    user: Union[bool, 'userArgsFrombookmark']
 
 
     
 
 class userIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    post: Union[bool, 'FindManypostArgsFrombookmarkRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive1']
     contact: Union[bool, 'FindManycontactArgsFrombookmarkRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFrombookmarkRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFrombookmarkRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFrombookmarkRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive1']
+    post: Union[bool, 'FindManypostArgsFrombookmarkRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFrombookmarkRecursive1']
 
 
 class userIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    post: Union[bool, 'FindManypostArgsFrombookmarkRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive2']
     contact: Union[bool, 'FindManycontactArgsFrombookmarkRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFrombookmarkRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFrombookmarkRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFrombookmarkRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive2']
+    post: Union[bool, 'FindManypostArgsFrombookmarkRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFrombookmarkRecursive2']
 
 
 class userIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    post: Union[bool, 'FindManypostArgsFrombookmarkRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive3']
     contact: Union[bool, 'FindManycontactArgsFrombookmarkRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFrombookmarkRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFrombookmarkRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFrombookmarkRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive3']
+    post: Union[bool, 'FindManypostArgsFrombookmarkRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFrombookmarkRecursive3']
 
 
 class userIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    post: Union[bool, 'FindManypostArgsFrombookmarkRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive4']
     contact: Union[bool, 'FindManycontactArgsFrombookmarkRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFrombookmarkRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFrombookmarkRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFrombookmarkRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive4']
+    post: Union[bool, 'FindManypostArgsFrombookmarkRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFrombookmarkRecursive4']
 
 
 class userIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -22533,30 +22533,30 @@ class FindManyuserArgsFrombookmarkRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    job: Union[bool, 'jobArgsFrombookmarkRecursive1']
     user1: Union[bool, 'userArgsFrombookmarkRecursive1']
     user2: Union[bool, 'userArgsFrombookmarkRecursive1']
-    job: Union[bool, 'jobArgsFrombookmarkRecursive1']
 
 
 class rating_userIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    job: Union[bool, 'jobArgsFrombookmarkRecursive2']
     user1: Union[bool, 'userArgsFrombookmarkRecursive2']
     user2: Union[bool, 'userArgsFrombookmarkRecursive2']
-    job: Union[bool, 'jobArgsFrombookmarkRecursive2']
 
 
 class rating_userIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    job: Union[bool, 'jobArgsFrombookmarkRecursive3']
     user1: Union[bool, 'userArgsFrombookmarkRecursive3']
     user2: Union[bool, 'userArgsFrombookmarkRecursive3']
-    job: Union[bool, 'jobArgsFrombookmarkRecursive3']
 
 
 class rating_userIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    job: Union[bool, 'jobArgsFrombookmarkRecursive4']
     user1: Union[bool, 'userArgsFrombookmarkRecursive4']
     user2: Union[bool, 'userArgsFrombookmarkRecursive4']
-    job: Union[bool, 'jobArgsFrombookmarkRecursive4']
 
 
 class rating_userIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -22646,30 +22646,30 @@ class FindManyrating_userArgsFrombookmarkRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    job: Union[bool, 'jobArgsFrombookmarkRecursive1']
     user1: Union[bool, 'userArgsFrombookmarkRecursive1']
     user2: Union[bool, 'userArgsFrombookmarkRecursive1']
-    job: Union[bool, 'jobArgsFrombookmarkRecursive1']
 
 
 class rating_comIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    job: Union[bool, 'jobArgsFrombookmarkRecursive2']
     user1: Union[bool, 'userArgsFrombookmarkRecursive2']
     user2: Union[bool, 'userArgsFrombookmarkRecursive2']
-    job: Union[bool, 'jobArgsFrombookmarkRecursive2']
 
 
 class rating_comIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    job: Union[bool, 'jobArgsFrombookmarkRecursive3']
     user1: Union[bool, 'userArgsFrombookmarkRecursive3']
     user2: Union[bool, 'userArgsFrombookmarkRecursive3']
-    job: Union[bool, 'jobArgsFrombookmarkRecursive3']
 
 
 class rating_comIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    job: Union[bool, 'jobArgsFrombookmarkRecursive4']
     user1: Union[bool, 'userArgsFrombookmarkRecursive4']
     user2: Union[bool, 'userArgsFrombookmarkRecursive4']
-    job: Union[bool, 'jobArgsFrombookmarkRecursive4']
 
 
 class rating_comIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -22973,26 +22973,26 @@ class FindManycategoryArgsFrombookmarkRecursive4(TypedDict, total=False):
 
 class experienceIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive1']
     category: Union[bool, 'categoryArgsFrombookmarkRecursive1']
+    user: Union[bool, 'userArgsFrombookmarkRecursive1']
 
 
 class experienceIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive2']
     category: Union[bool, 'categoryArgsFrombookmarkRecursive2']
+    user: Union[bool, 'userArgsFrombookmarkRecursive2']
 
 
 class experienceIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive3']
     category: Union[bool, 'categoryArgsFrombookmarkRecursive3']
+    user: Union[bool, 'userArgsFrombookmarkRecursive3']
 
 
 class experienceIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive4']
     category: Union[bool, 'categoryArgsFrombookmarkRecursive4']
+    user: Union[bool, 'userArgsFrombookmarkRecursive4']
 
 
 class experienceIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -23187,26 +23187,26 @@ class FindManycareerArgsFrombookmarkRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive1']
     career: Union[bool, 'careerArgsFrombookmarkRecursive1']
+    user: Union[bool, 'userArgsFrombookmarkRecursive1']
 
 
 class user_careerIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive2']
     career: Union[bool, 'careerArgsFrombookmarkRecursive2']
+    user: Union[bool, 'userArgsFrombookmarkRecursive2']
 
 
 class user_careerIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive3']
     career: Union[bool, 'careerArgsFrombookmarkRecursive3']
+    user: Union[bool, 'userArgsFrombookmarkRecursive3']
 
 
 class user_careerIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive4']
     career: Union[bool, 'careerArgsFrombookmarkRecursive4']
+    user: Union[bool, 'userArgsFrombookmarkRecursive4']
 
 
 class user_careerIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -23296,42 +23296,42 @@ class FindManyuser_careerArgsFrombookmarkRecursive4(TypedDict, total=False):
 
 class jobIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFrombookmarkRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFrombookmarkRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive1']
     post: Union[bool, 'FindManypostArgsFrombookmarkRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive1']
 
 
 class jobIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFrombookmarkRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFrombookmarkRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive2']
     post: Union[bool, 'FindManypostArgsFrombookmarkRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive2']
 
 
 class jobIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFrombookmarkRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFrombookmarkRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive3']
     post: Union[bool, 'FindManypostArgsFrombookmarkRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive3']
 
 
 class jobIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFrombookmarkRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFrombookmarkRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrombookmarkRecursive4']
     post: Union[bool, 'FindManypostArgsFrombookmarkRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFrombookmarkRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFrombookmarkRecursive4']
 
 
 class jobIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -23421,26 +23421,26 @@ class FindManyjobArgsFrombookmarkRecursive4(TypedDict, total=False):
 
 class historyIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive1']
     job: Union[bool, 'jobArgsFrombookmarkRecursive1']
+    user: Union[bool, 'userArgsFrombookmarkRecursive1']
 
 
 class historyIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive2']
     job: Union[bool, 'jobArgsFrombookmarkRecursive2']
+    user: Union[bool, 'userArgsFrombookmarkRecursive2']
 
 
 class historyIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive3']
     job: Union[bool, 'jobArgsFrombookmarkRecursive3']
+    user: Union[bool, 'userArgsFrombookmarkRecursive3']
 
 
 class historyIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive4']
     job: Union[bool, 'jobArgsFrombookmarkRecursive4']
+    user: Union[bool, 'userArgsFrombookmarkRecursive4']
 
 
 class historyIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -23530,26 +23530,26 @@ class FindManyhistoryArgsFrombookmarkRecursive4(TypedDict, total=False):
 
 class job_expIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    job: Union[bool, 'jobArgsFrombookmarkRecursive1']
     category: Union[bool, 'categoryArgsFrombookmarkRecursive1']
+    job: Union[bool, 'jobArgsFrombookmarkRecursive1']
 
 
 class job_expIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    job: Union[bool, 'jobArgsFrombookmarkRecursive2']
     category: Union[bool, 'categoryArgsFrombookmarkRecursive2']
+    job: Union[bool, 'jobArgsFrombookmarkRecursive2']
 
 
 class job_expIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    job: Union[bool, 'jobArgsFrombookmarkRecursive3']
     category: Union[bool, 'categoryArgsFrombookmarkRecursive3']
+    job: Union[bool, 'jobArgsFrombookmarkRecursive3']
 
 
 class job_expIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    job: Union[bool, 'jobArgsFrombookmarkRecursive4']
     category: Union[bool, 'categoryArgsFrombookmarkRecursive4']
+    job: Union[bool, 'jobArgsFrombookmarkRecursive4']
 
 
 class job_expIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -23639,26 +23639,26 @@ class FindManyjob_expArgsFrombookmarkRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive1']
     job: Union[bool, 'jobArgsFrombookmarkRecursive1']
+    user: Union[bool, 'userArgsFrombookmarkRecursive1']
 
 
 class bookmarkIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive2']
     job: Union[bool, 'jobArgsFrombookmarkRecursive2']
+    user: Union[bool, 'userArgsFrombookmarkRecursive2']
 
 
 class bookmarkIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive3']
     job: Union[bool, 'jobArgsFrombookmarkRecursive3']
+    user: Union[bool, 'userArgsFrombookmarkRecursive3']
 
 
 class bookmarkIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive4']
     job: Union[bool, 'jobArgsFrombookmarkRecursive4']
+    user: Union[bool, 'userArgsFrombookmarkRecursive4']
 
 
 class bookmarkIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -23748,26 +23748,26 @@ class FindManybookmarkArgsFrombookmarkRecursive4(TypedDict, total=False):
 
 class postIncludeFrombookmark(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive1']
     job: Union[bool, 'jobArgsFrombookmarkRecursive1']
+    user: Union[bool, 'userArgsFrombookmarkRecursive1']
 
 
 class postIncludeFrombookmarkRecursive1(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive2']
     job: Union[bool, 'jobArgsFrombookmarkRecursive2']
+    user: Union[bool, 'userArgsFrombookmarkRecursive2']
 
 
 class postIncludeFrombookmarkRecursive2(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive3']
     job: Union[bool, 'jobArgsFrombookmarkRecursive3']
+    user: Union[bool, 'userArgsFrombookmarkRecursive3']
 
 
 class postIncludeFrombookmarkRecursive3(TypedDict, total=False):
     """Relational arguments for bookmark"""
-    user: Union[bool, 'userArgsFrombookmarkRecursive4']
     job: Union[bool, 'jobArgsFrombookmarkRecursive4']
+    user: Union[bool, 'userArgsFrombookmarkRecursive4']
 
 
 class postIncludeFrombookmarkRecursive4(TypedDict, total=False):
@@ -23863,11 +23863,11 @@ FindFirstbookmarkArgs = FindManybookmarkArgsFrombookmark
 
 class bookmarkWhereInput(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntFilter']
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    book_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['bookmarkWhereInputRecursive1', List['bookmarkWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -23878,11 +23878,11 @@ class bookmarkWhereInput(TypedDict, total=False):
 
 class bookmarkWhereInputRecursive1(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntFilter']
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    book_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['bookmarkWhereInputRecursive2', List['bookmarkWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -23893,11 +23893,11 @@ class bookmarkWhereInputRecursive1(TypedDict, total=False):
 
 class bookmarkWhereInputRecursive2(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntFilter']
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    book_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['bookmarkWhereInputRecursive3', List['bookmarkWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -23908,11 +23908,11 @@ class bookmarkWhereInputRecursive2(TypedDict, total=False):
 
 class bookmarkWhereInputRecursive3(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntFilter']
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    book_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['bookmarkWhereInputRecursive4', List['bookmarkWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -23923,11 +23923,11 @@ class bookmarkWhereInputRecursive3(TypedDict, total=False):
 
 class bookmarkWhereInputRecursive4(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntFilter']
     user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    book_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
 
 
@@ -23938,9 +23938,9 @@ class bookmarkWhereInputRecursive4(TypedDict, total=False):
 
 class bookmarkScalarWhereWithAggregatesInput(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntWithAggregatesFilter']
     user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    book_id: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['bookmarkScalarWhereWithAggregatesInputRecursive1']
     OR: List['bookmarkScalarWhereWithAggregatesInputRecursive1']
@@ -23949,9 +23949,9 @@ class bookmarkScalarWhereWithAggregatesInput(TypedDict, total=False):
 
 class bookmarkScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntWithAggregatesFilter']
     user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    book_id: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['bookmarkScalarWhereWithAggregatesInputRecursive2']
     OR: List['bookmarkScalarWhereWithAggregatesInputRecursive2']
@@ -23960,9 +23960,9 @@ class bookmarkScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
 
 class bookmarkScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntWithAggregatesFilter']
     user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    book_id: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['bookmarkScalarWhereWithAggregatesInputRecursive3']
     OR: List['bookmarkScalarWhereWithAggregatesInputRecursive3']
@@ -23971,9 +23971,9 @@ class bookmarkScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
 
 class bookmarkScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntWithAggregatesFilter']
     user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    book_id: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['bookmarkScalarWhereWithAggregatesInputRecursive4']
     OR: List['bookmarkScalarWhereWithAggregatesInputRecursive4']
@@ -23982,16 +23982,16 @@ class bookmarkScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
 
 class bookmarkScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
     """bookmark arguments for searching"""
-    book_id: Union[_int, 'types.IntWithAggregatesFilter']
     user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    book_id: Union[_int, 'types.IntWithAggregatesFilter']
 
 
 
 class bookmarkGroupByOutput(TypedDict, total=False):
-    book_id: _int
     user_id: _int
     job_id: _int
+    book_id: _int
     _sum: 'bookmarkSumAggregateOutput'
     _avg: 'bookmarkAvgAggregateOutput'
     _min: 'bookmarkMinAggregateOutput'
@@ -24001,23 +24001,23 @@ class bookmarkGroupByOutput(TypedDict, total=False):
 
 class bookmarkAvgAggregateOutput(TypedDict, total=False):
     """bookmark output for aggregating averages"""
-    book_id: float
     user_id: float
     job_id: float
+    book_id: float
 
 
 class bookmarkSumAggregateOutput(TypedDict, total=False):
     """bookmark output for aggregating sums"""
-    book_id: _int
     user_id: _int
     job_id: _int
+    book_id: _int
 
 
 class bookmarkScalarAggregateOutput(TypedDict, total=False):
     """bookmark output including scalar fields"""
-    book_id: _int
     user_id: _int
     job_id: _int
+    book_id: _int
 
 
 bookmarkMinAggregateOutput = bookmarkScalarAggregateOutput
@@ -24026,23 +24026,23 @@ bookmarkMaxAggregateOutput = bookmarkScalarAggregateOutput
 
 class bookmarkMaxAggregateInput(TypedDict, total=False):
     """bookmark input for aggregating by max"""
-    book_id: bool
     user_id: bool
     job_id: bool
+    book_id: bool
 
 
 class bookmarkMinAggregateInput(TypedDict, total=False):
     """bookmark input for aggregating by min"""
-    book_id: bool
     user_id: bool
     job_id: bool
+    book_id: bool
 
 
 class bookmarkNumberAggregateInput(TypedDict, total=False):
     """bookmark input for aggregating numbers"""
-    book_id: bool
     user_id: bool
     job_id: bool
+    book_id: bool
 
 
 bookmarkAvgAggregateInput = bookmarkNumberAggregateInput
@@ -24052,9 +24052,9 @@ bookmarkSumAggregateInput = bookmarkNumberAggregateInput
 bookmarkCountAggregateInput = TypedDict(
     'bookmarkCountAggregateInput',
     {
-        'book_id': bool,
         'user_id': bool,
         'job_id': bool,
+        'book_id': bool,
         '_all': bool,
     },
     total=False,
@@ -24063,9 +24063,9 @@ bookmarkCountAggregateInput = TypedDict(
 bookmarkCountAggregateOutput = TypedDict(
     'bookmarkCountAggregateOutput',
     {
-        'book_id': int,
         'user_id': int,
         'job_id': int,
+        'book_id': int,
         '_all': int,
     },
     total=False,
@@ -24073,32 +24073,32 @@ bookmarkCountAggregateOutput = TypedDict(
 
 
 bookmarkKeys = Literal[
-    'book_id',
     'user_id',
     'job_id',
-    'user',
+    'book_id',
     'job',
+    'user',
 ]
 bookmarkScalarFieldKeys = Literal[
-    'book_id',
     'user_id',
     'job_id',
+    'book_id',
 ]
 bookmarkScalarFieldKeysT = TypeVar('bookmarkScalarFieldKeysT', bound=bookmarkScalarFieldKeys)
 
 bookmarkRelationalFieldKeys = Literal[
-        'user',
         'job',
+        'user',
     ]
 
 # post types
 
 class postOptionalCreateInput(TypedDict, total=False):
     """Optional arguments to the post create method"""
-    user_id: _int
     job_id: _int
-    user: 'userCreateNestedWithoutRelationsInput'
+    user_id: _int
     job: 'jobCreateNestedWithoutRelationsInput'
+    user: 'userCreateNestedWithoutRelationsInput'
 
 
 class postCreateInput(postOptionalCreateInput):
@@ -24110,8 +24110,8 @@ class postCreateInput(postOptionalCreateInput):
 
 class postOptionalCreateWithoutRelationsInput(TypedDict, total=False):
     """Optional arguments to the post create method, without relations"""
-    user_id: _int
     job_id: _int
+    user_id: _int
 
 
 class postCreateWithoutRelationsInput(postOptionalCreateWithoutRelationsInput):
@@ -24150,8 +24150,8 @@ postWhereUniqueInput = _postCompounduser_id_job_idKey
 
 class postUpdateInput(TypedDict, total=False):
     """Optional arguments for updating a record"""
-    user: 'userUpdateOneWithoutRelationsInput'
     job: 'jobUpdateOneWithoutRelationsInput'
+    user: 'userUpdateOneWithoutRelationsInput'
 
 
 class postUpdateManyMutationInput(TypedDict, total=False):
@@ -24190,14 +24190,6 @@ class postUpsertInput(TypedDict):
     update: 'postUpdateInput'  # pyright: ignore[reportIncompatibleMethodOverride]
 
 
-_post_user_id_OrderByInput = TypedDict(
-    '_post_user_id_OrderByInput',
-    {
-        'user_id': 'SortOrder',
-    },
-    total=True
-)
-
 _post_job_id_OrderByInput = TypedDict(
     '_post_job_id_OrderByInput',
     {
@@ -24206,9 +24198,17 @@ _post_job_id_OrderByInput = TypedDict(
     total=True
 )
 
-postOrderByInput = Union[
+_post_user_id_OrderByInput = TypedDict(
     '_post_user_id_OrderByInput',
+    {
+        'user_id': 'SortOrder',
+    },
+    total=True
+)
+
+postOrderByInput = Union[
     '_post_job_id_OrderByInput',
+    '_post_user_id_OrderByInput',
 ]
 
 
@@ -24239,66 +24239,66 @@ class postListRelationFilter(TypedDict, total=False):
 
 class postInclude(TypedDict, total=False):
     """post relational arguments"""
-    user: Union[bool, 'userArgsFrompost']
     job: Union[bool, 'jobArgsFrompost']
+    user: Union[bool, 'userArgsFrompost']
 
 
     
 
 class userIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
-    post: Union[bool, 'FindManypostArgsFrompostRecursive1']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFrompostRecursive1']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFrompostRecursive1']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFrompostRecursive1']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFrompostRecursive1']
+    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive1']
     contact: Union[bool, 'FindManycontactArgsFrompostRecursive1']
     experience: Union[bool, 'FindManyexperienceArgsFrompostRecursive1']
-    user_career: Union[bool, 'FindManyuser_careerArgsFrompostRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFrompostRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive1']
+    post: Union[bool, 'FindManypostArgsFrompostRecursive1']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFrompostRecursive1']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFrompostRecursive1']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFrompostRecursive1']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFrompostRecursive1']
+    user_career: Union[bool, 'FindManyuser_careerArgsFrompostRecursive1']
 
 
 class userIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
-    post: Union[bool, 'FindManypostArgsFrompostRecursive2']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFrompostRecursive2']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFrompostRecursive2']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFrompostRecursive2']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFrompostRecursive2']
+    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive2']
     contact: Union[bool, 'FindManycontactArgsFrompostRecursive2']
     experience: Union[bool, 'FindManyexperienceArgsFrompostRecursive2']
-    user_career: Union[bool, 'FindManyuser_careerArgsFrompostRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFrompostRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive2']
+    post: Union[bool, 'FindManypostArgsFrompostRecursive2']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFrompostRecursive2']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFrompostRecursive2']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFrompostRecursive2']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFrompostRecursive2']
+    user_career: Union[bool, 'FindManyuser_careerArgsFrompostRecursive2']
 
 
 class userIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
-    post: Union[bool, 'FindManypostArgsFrompostRecursive3']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFrompostRecursive3']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFrompostRecursive3']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFrompostRecursive3']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFrompostRecursive3']
+    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive3']
     contact: Union[bool, 'FindManycontactArgsFrompostRecursive3']
     experience: Union[bool, 'FindManyexperienceArgsFrompostRecursive3']
-    user_career: Union[bool, 'FindManyuser_careerArgsFrompostRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFrompostRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive3']
+    post: Union[bool, 'FindManypostArgsFrompostRecursive3']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFrompostRecursive3']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFrompostRecursive3']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFrompostRecursive3']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFrompostRecursive3']
+    user_career: Union[bool, 'FindManyuser_careerArgsFrompostRecursive3']
 
 
 class userIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
-    post: Union[bool, 'FindManypostArgsFrompostRecursive4']
-    rating_user1: Union[bool, 'FindManyrating_userArgsFrompostRecursive4']
-    rating_users2: Union[bool, 'FindManyrating_userArgsFrompostRecursive4']
-    rating_com1: Union[bool, 'FindManyrating_comArgsFrompostRecursive4']
-    rating_com2: Union[bool, 'FindManyrating_comArgsFrompostRecursive4']
+    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive4']
     contact: Union[bool, 'FindManycontactArgsFrompostRecursive4']
     experience: Union[bool, 'FindManyexperienceArgsFrompostRecursive4']
-    user_career: Union[bool, 'FindManyuser_careerArgsFrompostRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFrompostRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive4']
+    post: Union[bool, 'FindManypostArgsFrompostRecursive4']
+    rating_com1: Union[bool, 'FindManyrating_comArgsFrompostRecursive4']
+    rating_com2: Union[bool, 'FindManyrating_comArgsFrompostRecursive4']
+    rating_user1: Union[bool, 'FindManyrating_userArgsFrompostRecursive4']
+    rating_users2: Union[bool, 'FindManyrating_userArgsFrompostRecursive4']
+    user_career: Union[bool, 'FindManyuser_careerArgsFrompostRecursive4']
 
 
 class userIncludeFrompostRecursive4(TypedDict, total=False):
@@ -24388,30 +24388,30 @@ class FindManyuserArgsFrompostRecursive4(TypedDict, total=False):
 
 class rating_userIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
+    job: Union[bool, 'jobArgsFrompostRecursive1']
     user1: Union[bool, 'userArgsFrompostRecursive1']
     user2: Union[bool, 'userArgsFrompostRecursive1']
-    job: Union[bool, 'jobArgsFrompostRecursive1']
 
 
 class rating_userIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
+    job: Union[bool, 'jobArgsFrompostRecursive2']
     user1: Union[bool, 'userArgsFrompostRecursive2']
     user2: Union[bool, 'userArgsFrompostRecursive2']
-    job: Union[bool, 'jobArgsFrompostRecursive2']
 
 
 class rating_userIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
+    job: Union[bool, 'jobArgsFrompostRecursive3']
     user1: Union[bool, 'userArgsFrompostRecursive3']
     user2: Union[bool, 'userArgsFrompostRecursive3']
-    job: Union[bool, 'jobArgsFrompostRecursive3']
 
 
 class rating_userIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
+    job: Union[bool, 'jobArgsFrompostRecursive4']
     user1: Union[bool, 'userArgsFrompostRecursive4']
     user2: Union[bool, 'userArgsFrompostRecursive4']
-    job: Union[bool, 'jobArgsFrompostRecursive4']
 
 
 class rating_userIncludeFrompostRecursive4(TypedDict, total=False):
@@ -24501,30 +24501,30 @@ class FindManyrating_userArgsFrompostRecursive4(TypedDict, total=False):
 
 class rating_comIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
+    job: Union[bool, 'jobArgsFrompostRecursive1']
     user1: Union[bool, 'userArgsFrompostRecursive1']
     user2: Union[bool, 'userArgsFrompostRecursive1']
-    job: Union[bool, 'jobArgsFrompostRecursive1']
 
 
 class rating_comIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
+    job: Union[bool, 'jobArgsFrompostRecursive2']
     user1: Union[bool, 'userArgsFrompostRecursive2']
     user2: Union[bool, 'userArgsFrompostRecursive2']
-    job: Union[bool, 'jobArgsFrompostRecursive2']
 
 
 class rating_comIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
+    job: Union[bool, 'jobArgsFrompostRecursive3']
     user1: Union[bool, 'userArgsFrompostRecursive3']
     user2: Union[bool, 'userArgsFrompostRecursive3']
-    job: Union[bool, 'jobArgsFrompostRecursive3']
 
 
 class rating_comIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
+    job: Union[bool, 'jobArgsFrompostRecursive4']
     user1: Union[bool, 'userArgsFrompostRecursive4']
     user2: Union[bool, 'userArgsFrompostRecursive4']
-    job: Union[bool, 'jobArgsFrompostRecursive4']
 
 
 class rating_comIncludeFrompostRecursive4(TypedDict, total=False):
@@ -24828,26 +24828,26 @@ class FindManycategoryArgsFrompostRecursive4(TypedDict, total=False):
 
 class experienceIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive1']
     category: Union[bool, 'categoryArgsFrompostRecursive1']
+    user: Union[bool, 'userArgsFrompostRecursive1']
 
 
 class experienceIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive2']
     category: Union[bool, 'categoryArgsFrompostRecursive2']
+    user: Union[bool, 'userArgsFrompostRecursive2']
 
 
 class experienceIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive3']
     category: Union[bool, 'categoryArgsFrompostRecursive3']
+    user: Union[bool, 'userArgsFrompostRecursive3']
 
 
 class experienceIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive4']
     category: Union[bool, 'categoryArgsFrompostRecursive4']
+    user: Union[bool, 'userArgsFrompostRecursive4']
 
 
 class experienceIncludeFrompostRecursive4(TypedDict, total=False):
@@ -25042,26 +25042,26 @@ class FindManycareerArgsFrompostRecursive4(TypedDict, total=False):
 
 class user_careerIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive1']
     career: Union[bool, 'careerArgsFrompostRecursive1']
+    user: Union[bool, 'userArgsFrompostRecursive1']
 
 
 class user_careerIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive2']
     career: Union[bool, 'careerArgsFrompostRecursive2']
+    user: Union[bool, 'userArgsFrompostRecursive2']
 
 
 class user_careerIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive3']
     career: Union[bool, 'careerArgsFrompostRecursive3']
+    user: Union[bool, 'userArgsFrompostRecursive3']
 
 
 class user_careerIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive4']
     career: Union[bool, 'careerArgsFrompostRecursive4']
+    user: Union[bool, 'userArgsFrompostRecursive4']
 
 
 class user_careerIncludeFrompostRecursive4(TypedDict, total=False):
@@ -25151,42 +25151,42 @@ class FindManyuser_careerArgsFrompostRecursive4(TypedDict, total=False):
 
 class jobIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive1']
     history: Union[bool, 'FindManyhistoryArgsFrompostRecursive1']
     job_exp: Union[bool, 'FindManyjob_expArgsFrompostRecursive1']
-    rating_user: Union[bool, 'FindManyrating_userArgsFrompostRecursive1']
-    rating_com: Union[bool, 'FindManyrating_comArgsFrompostRecursive1']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive1']
     post: Union[bool, 'FindManypostArgsFrompostRecursive1']
+    rating_com: Union[bool, 'FindManyrating_comArgsFrompostRecursive1']
+    rating_user: Union[bool, 'FindManyrating_userArgsFrompostRecursive1']
 
 
 class jobIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive2']
     history: Union[bool, 'FindManyhistoryArgsFrompostRecursive2']
     job_exp: Union[bool, 'FindManyjob_expArgsFrompostRecursive2']
-    rating_user: Union[bool, 'FindManyrating_userArgsFrompostRecursive2']
-    rating_com: Union[bool, 'FindManyrating_comArgsFrompostRecursive2']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive2']
     post: Union[bool, 'FindManypostArgsFrompostRecursive2']
+    rating_com: Union[bool, 'FindManyrating_comArgsFrompostRecursive2']
+    rating_user: Union[bool, 'FindManyrating_userArgsFrompostRecursive2']
 
 
 class jobIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive3']
     history: Union[bool, 'FindManyhistoryArgsFrompostRecursive3']
     job_exp: Union[bool, 'FindManyjob_expArgsFrompostRecursive3']
-    rating_user: Union[bool, 'FindManyrating_userArgsFrompostRecursive3']
-    rating_com: Union[bool, 'FindManyrating_comArgsFrompostRecursive3']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive3']
     post: Union[bool, 'FindManypostArgsFrompostRecursive3']
+    rating_com: Union[bool, 'FindManyrating_comArgsFrompostRecursive3']
+    rating_user: Union[bool, 'FindManyrating_userArgsFrompostRecursive3']
 
 
 class jobIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
+    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive4']
     history: Union[bool, 'FindManyhistoryArgsFrompostRecursive4']
     job_exp: Union[bool, 'FindManyjob_expArgsFrompostRecursive4']
-    rating_user: Union[bool, 'FindManyrating_userArgsFrompostRecursive4']
-    rating_com: Union[bool, 'FindManyrating_comArgsFrompostRecursive4']
-    bookmark: Union[bool, 'FindManybookmarkArgsFrompostRecursive4']
     post: Union[bool, 'FindManypostArgsFrompostRecursive4']
+    rating_com: Union[bool, 'FindManyrating_comArgsFrompostRecursive4']
+    rating_user: Union[bool, 'FindManyrating_userArgsFrompostRecursive4']
 
 
 class jobIncludeFrompostRecursive4(TypedDict, total=False):
@@ -25276,26 +25276,26 @@ class FindManyjobArgsFrompostRecursive4(TypedDict, total=False):
 
 class historyIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive1']
     job: Union[bool, 'jobArgsFrompostRecursive1']
+    user: Union[bool, 'userArgsFrompostRecursive1']
 
 
 class historyIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive2']
     job: Union[bool, 'jobArgsFrompostRecursive2']
+    user: Union[bool, 'userArgsFrompostRecursive2']
 
 
 class historyIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive3']
     job: Union[bool, 'jobArgsFrompostRecursive3']
+    user: Union[bool, 'userArgsFrompostRecursive3']
 
 
 class historyIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive4']
     job: Union[bool, 'jobArgsFrompostRecursive4']
+    user: Union[bool, 'userArgsFrompostRecursive4']
 
 
 class historyIncludeFrompostRecursive4(TypedDict, total=False):
@@ -25385,26 +25385,26 @@ class FindManyhistoryArgsFrompostRecursive4(TypedDict, total=False):
 
 class job_expIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
-    job: Union[bool, 'jobArgsFrompostRecursive1']
     category: Union[bool, 'categoryArgsFrompostRecursive1']
+    job: Union[bool, 'jobArgsFrompostRecursive1']
 
 
 class job_expIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
-    job: Union[bool, 'jobArgsFrompostRecursive2']
     category: Union[bool, 'categoryArgsFrompostRecursive2']
+    job: Union[bool, 'jobArgsFrompostRecursive2']
 
 
 class job_expIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
-    job: Union[bool, 'jobArgsFrompostRecursive3']
     category: Union[bool, 'categoryArgsFrompostRecursive3']
+    job: Union[bool, 'jobArgsFrompostRecursive3']
 
 
 class job_expIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
-    job: Union[bool, 'jobArgsFrompostRecursive4']
     category: Union[bool, 'categoryArgsFrompostRecursive4']
+    job: Union[bool, 'jobArgsFrompostRecursive4']
 
 
 class job_expIncludeFrompostRecursive4(TypedDict, total=False):
@@ -25494,26 +25494,26 @@ class FindManyjob_expArgsFrompostRecursive4(TypedDict, total=False):
 
 class bookmarkIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive1']
     job: Union[bool, 'jobArgsFrompostRecursive1']
+    user: Union[bool, 'userArgsFrompostRecursive1']
 
 
 class bookmarkIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive2']
     job: Union[bool, 'jobArgsFrompostRecursive2']
+    user: Union[bool, 'userArgsFrompostRecursive2']
 
 
 class bookmarkIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive3']
     job: Union[bool, 'jobArgsFrompostRecursive3']
+    user: Union[bool, 'userArgsFrompostRecursive3']
 
 
 class bookmarkIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive4']
     job: Union[bool, 'jobArgsFrompostRecursive4']
+    user: Union[bool, 'userArgsFrompostRecursive4']
 
 
 class bookmarkIncludeFrompostRecursive4(TypedDict, total=False):
@@ -25603,26 +25603,26 @@ class FindManybookmarkArgsFrompostRecursive4(TypedDict, total=False):
 
 class postIncludeFrompost(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive1']
     job: Union[bool, 'jobArgsFrompostRecursive1']
+    user: Union[bool, 'userArgsFrompostRecursive1']
 
 
 class postIncludeFrompostRecursive1(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive2']
     job: Union[bool, 'jobArgsFrompostRecursive2']
+    user: Union[bool, 'userArgsFrompostRecursive2']
 
 
 class postIncludeFrompostRecursive2(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive3']
     job: Union[bool, 'jobArgsFrompostRecursive3']
+    user: Union[bool, 'userArgsFrompostRecursive3']
 
 
 class postIncludeFrompostRecursive3(TypedDict, total=False):
     """Relational arguments for post"""
-    user: Union[bool, 'userArgsFrompostRecursive4']
     job: Union[bool, 'jobArgsFrompostRecursive4']
+    user: Union[bool, 'userArgsFrompostRecursive4']
 
 
 class postIncludeFrompostRecursive4(TypedDict, total=False):
@@ -25718,10 +25718,10 @@ FindFirstpostArgs = FindManypostArgsFrompost
 
 class postWhereInput(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    user_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['postWhereInputRecursive1', List['postWhereInputRecursive1']]
     # but this causes mypy to hang :/
@@ -25732,10 +25732,10 @@ class postWhereInput(TypedDict, total=False):
 
 class postWhereInputRecursive1(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    user_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['postWhereInputRecursive2', List['postWhereInputRecursive2']]
     # but this causes mypy to hang :/
@@ -25746,10 +25746,10 @@ class postWhereInputRecursive1(TypedDict, total=False):
 
 class postWhereInputRecursive2(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    user_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['postWhereInputRecursive3', List['postWhereInputRecursive3']]
     # but this causes mypy to hang :/
@@ -25760,10 +25760,10 @@ class postWhereInputRecursive2(TypedDict, total=False):
 
 class postWhereInputRecursive3(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    user_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
     # should be noted that AND and NOT should be Union['postWhereInputRecursive4', List['postWhereInputRecursive4']]
     # but this causes mypy to hang :/
@@ -25774,10 +25774,10 @@ class postWhereInputRecursive3(TypedDict, total=False):
 
 class postWhereInputRecursive4(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntFilter']
     job_id: Union[_int, 'types.IntFilter']
-    user: 'userRelationFilter'
+    user_id: Union[_int, 'types.IntFilter']
     job: 'jobRelationFilter'
+    user: 'userRelationFilter'
 
 
 
@@ -25788,8 +25788,8 @@ class postWhereInputRecursive4(TypedDict, total=False):
 
 class postScalarWhereWithAggregatesInput(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['postScalarWhereWithAggregatesInputRecursive1']
     OR: List['postScalarWhereWithAggregatesInputRecursive1']
@@ -25798,8 +25798,8 @@ class postScalarWhereWithAggregatesInput(TypedDict, total=False):
 
 class postScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['postScalarWhereWithAggregatesInputRecursive2']
     OR: List['postScalarWhereWithAggregatesInputRecursive2']
@@ -25808,8 +25808,8 @@ class postScalarWhereWithAggregatesInputRecursive1(TypedDict, total=False):
 
 class postScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['postScalarWhereWithAggregatesInputRecursive3']
     OR: List['postScalarWhereWithAggregatesInputRecursive3']
@@ -25818,8 +25818,8 @@ class postScalarWhereWithAggregatesInputRecursive2(TypedDict, total=False):
 
 class postScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id: Union[_int, 'types.IntWithAggregatesFilter']
 
     AND: List['postScalarWhereWithAggregatesInputRecursive4']
     OR: List['postScalarWhereWithAggregatesInputRecursive4']
@@ -25828,14 +25828,14 @@ class postScalarWhereWithAggregatesInputRecursive3(TypedDict, total=False):
 
 class postScalarWhereWithAggregatesInputRecursive4(TypedDict, total=False):
     """post arguments for searching"""
-    user_id: Union[_int, 'types.IntWithAggregatesFilter']
     job_id: Union[_int, 'types.IntWithAggregatesFilter']
+    user_id: Union[_int, 'types.IntWithAggregatesFilter']
 
 
 
 class postGroupByOutput(TypedDict, total=False):
-    user_id: _int
     job_id: _int
+    user_id: _int
     _sum: 'postSumAggregateOutput'
     _avg: 'postAvgAggregateOutput'
     _min: 'postMinAggregateOutput'
@@ -25845,20 +25845,20 @@ class postGroupByOutput(TypedDict, total=False):
 
 class postAvgAggregateOutput(TypedDict, total=False):
     """post output for aggregating averages"""
-    user_id: float
     job_id: float
+    user_id: float
 
 
 class postSumAggregateOutput(TypedDict, total=False):
     """post output for aggregating sums"""
-    user_id: _int
     job_id: _int
+    user_id: _int
 
 
 class postScalarAggregateOutput(TypedDict, total=False):
     """post output including scalar fields"""
-    user_id: _int
     job_id: _int
+    user_id: _int
 
 
 postMinAggregateOutput = postScalarAggregateOutput
@@ -25867,20 +25867,20 @@ postMaxAggregateOutput = postScalarAggregateOutput
 
 class postMaxAggregateInput(TypedDict, total=False):
     """post input for aggregating by max"""
-    user_id: bool
     job_id: bool
+    user_id: bool
 
 
 class postMinAggregateInput(TypedDict, total=False):
     """post input for aggregating by min"""
-    user_id: bool
     job_id: bool
+    user_id: bool
 
 
 class postNumberAggregateInput(TypedDict, total=False):
     """post input for aggregating numbers"""
-    user_id: bool
     job_id: bool
+    user_id: bool
 
 
 postAvgAggregateInput = postNumberAggregateInput
@@ -25890,8 +25890,8 @@ postSumAggregateInput = postNumberAggregateInput
 postCountAggregateInput = TypedDict(
     'postCountAggregateInput',
     {
-        'user_id': bool,
         'job_id': bool,
+        'user_id': bool,
         '_all': bool,
     },
     total=False,
@@ -25900,8 +25900,8 @@ postCountAggregateInput = TypedDict(
 postCountAggregateOutput = TypedDict(
     'postCountAggregateOutput',
     {
-        'user_id': int,
         'job_id': int,
+        'user_id': int,
         '_all': int,
     },
     total=False,
@@ -25909,20 +25909,20 @@ postCountAggregateOutput = TypedDict(
 
 
 postKeys = Literal[
-    'user_id',
     'job_id',
-    'user',
+    'user_id',
     'job',
+    'user',
 ]
 postScalarFieldKeys = Literal[
-    'user_id',
     'job_id',
+    'user_id',
 ]
 postScalarFieldKeysT = TypeVar('postScalarFieldKeysT', bound=postScalarFieldKeys)
 
 postRelationalFieldKeys = Literal[
-        'user',
         'job',
+        'user',
     ]
 
 

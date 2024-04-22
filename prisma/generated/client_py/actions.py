@@ -1192,7 +1192,7 @@ class rating_userActions(Generic[_PrismaModelT]):
         -------
         ```py
         user = rating_user.prisma().query_first(
-            'SELECT * FROM rating_user WHERE user_id1 = $1',
+            'SELECT * FROM rating_user WHERE job_id = $1',
             1448521415,
         )
         ```
@@ -1232,9 +1232,9 @@ class rating_userActions(Generic[_PrismaModelT]):
         rating_user = rating_user.prisma().create(
             data={
                 # data to create a rating_user record
-                'user_id1': 1628650740,
-                'user_id2': 1249606685,
-                'job_id': 835903122,
+                'job_id': 1628650740,
+                'user_id1': 1249606685,
+                'user_id2': 835903122,
             },
         )
         ```
@@ -1289,15 +1289,15 @@ class rating_userActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a rating_user record
-                    'user_id1': 763719779,
-                    'user_id2': 429995104,
-                    'job_id': 1775811865,
+                    'job_id': 763719779,
+                    'user_id1': 429995104,
+                    'user_id2': 1775811865,
                 },
                 {
                     # data to create a rating_user record
-                    'user_id1': 893145566,
-                    'user_id2': 995405759,
-                    'job_id': 2102736524,
+                    'job_id': 893145566,
+                    'user_id1': 995405759,
+                    'user_id2': 2102736524,
                 },
             ],
             skip_duplicates=True,
@@ -1516,11 +1516,11 @@ class rating_userActions(Generic[_PrismaModelT]):
         # find the first 10 rating_user records
         rating_users = rating_user.prisma().find_many(take=10)
 
-        # find the first 5 rating_user records ordered by the user_id2 field
+        # find the first 5 rating_user records ordered by the friendly_rating field
         rating_users = rating_user.prisma().find_many(
             take=5,
             order={
-                'user_id2': 'desc',
+                'friendly_rating': 'desc',
             },
         )
         ```
@@ -1581,11 +1581,11 @@ class rating_userActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second rating_user record ordered by the job_id field
+        # find the second rating_user record ordered by the efficiency_rating field
         rating_user = rating_user.prisma().find_first(
             skip=1,
             order={
-                'job_id': 'desc',
+                'efficiency_rating': 'desc',
             },
         )
         ```
@@ -1649,11 +1649,11 @@ class rating_userActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second rating_user record ordered by the friendly_rating field
+        # find the second rating_user record ordered by the accuracy_rating field
         rating_user = rating_user.prisma().find_first_or_raise(
             skip=1,
             order={
-                'friendly_rating': 'desc',
+                'accuracy_rating': 'desc',
             },
         )
         ```
@@ -1768,14 +1768,14 @@ class rating_userActions(Generic[_PrismaModelT]):
             data={
                 'create': {
                     'rating_id': 878442065,
-                    'user_id1': 893145566,
-                    'user_id2': 995405759,
-                    'job_id': 2102736524,
+                    'job_id': 893145566,
+                    'user_id1': 995405759,
+                    'user_id2': 2102736524,
                 },
                 'update': {
-                    'user_id1': 893145566,
-                    'user_id2': 995405759,
-                    'job_id': 2102736524,
+                    'job_id': 893145566,
+                    'user_id1': 995405759,
+                    'user_id2': 2102736524,
                 },
             },
         )
@@ -1823,7 +1823,7 @@ class rating_userActions(Generic[_PrismaModelT]):
         # update all rating_user records
         total = rating_user.prisma().update_many(
             data={
-                'efficiency_rating': 1675280054.162757
+                'user_id1': 1675280054
             },
             where={}
         )
@@ -1887,7 +1887,7 @@ class rating_userActions(Generic[_PrismaModelT]):
         results = rating_user.prisma().count(
             select={
                 '_all': True,
-                'accuracy_rating': True,
+                'user_id2': True,
             },
         )
         ```
@@ -2094,10 +2094,10 @@ class rating_userActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # group rating_user records by user_id1 values
+        # group rating_user records by job_id values
         # and count how many records are in each group
         results = rating_user.prisma().group_by(
-            ['user_id1'],
+            ['job_id'],
             count=True,
         )
         ```
@@ -2186,7 +2186,7 @@ class rating_comActions(Generic[_PrismaModelT]):
         ```py
         users = rating_com.prisma().query_raw(
             'SELECT * FROM rating_com WHERE rating_id = $1',
-            2054802212,
+            1627576247,
         )
         ```
         """
@@ -2225,8 +2225,8 @@ class rating_comActions(Generic[_PrismaModelT]):
         -------
         ```py
         user = rating_com.prisma().query_first(
-            'SELECT * FROM rating_com WHERE user_id1 = $1',
-            60335757,
+            'SELECT * FROM rating_com WHERE job_id = $1',
+            2054802212,
         )
         ```
         """
@@ -2265,9 +2265,9 @@ class rating_comActions(Generic[_PrismaModelT]):
         rating_com = rating_com.prisma().create(
             data={
                 # data to create a rating_com record
+                'job_id': 60335757,
                 'user_id1': 684462146,
                 'user_id2': 1625503827,
-                'job_id': 521827728,
             },
         )
         ```
@@ -2322,15 +2322,15 @@ class rating_comActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a rating_com record
+                    'job_id': 521827728,
                     'user_id1': 1266032265,
                     'user_id2': 93253262,
-                    'job_id': 2053047983,
                 },
                 {
                     # data to create a rating_com record
+                    'job_id': 2053047983,
                     'user_id1': 685333180,
                     'user_id2': 127474245,
-                    'job_id': 948921754,
                 },
             ],
             skip_duplicates=True,
@@ -2384,7 +2384,7 @@ class rating_comActions(Generic[_PrismaModelT]):
         ```py
         rating_com = rating_com.prisma().delete(
             where={
-                'rating_id': 1964990155,
+                'rating_id': 948921754,
             },
         )
         ```
@@ -2436,7 +2436,7 @@ class rating_comActions(Generic[_PrismaModelT]):
         ```py
         rating_com = rating_com.prisma().find_unique(
             where={
-                'rating_id': 1228891816,
+                'rating_id': 1964990155,
             },
         )
         ```
@@ -2487,7 +2487,7 @@ class rating_comActions(Generic[_PrismaModelT]):
         ```py
         rating_com = rating_com.prisma().find_unique_or_raise(
             where={
-                'rating_id': 255202753,
+                'rating_id': 1228891816,
             },
         )
         ```
@@ -2549,11 +2549,11 @@ class rating_comActions(Generic[_PrismaModelT]):
         # find the first 10 rating_com records
         rating_coms = rating_com.prisma().find_many(take=10)
 
-        # find the first 5 rating_com records ordered by the user_id2 field
+        # find the first 5 rating_com records ordered by the rating field
         rating_coms = rating_com.prisma().find_many(
             take=5,
             order={
-                'user_id2': 'desc',
+                'rating': 'desc',
             },
         )
         ```
@@ -2614,11 +2614,11 @@ class rating_comActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second rating_com record ordered by the job_id field
+        # find the second rating_com record ordered by the user_id1 field
         rating_com = rating_com.prisma().find_first(
             skip=1,
             order={
-                'job_id': 'desc',
+                'user_id1': 'desc',
             },
         )
         ```
@@ -2682,11 +2682,11 @@ class rating_comActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second rating_com record ordered by the rating field
+        # find the second rating_com record ordered by the user_id2 field
         rating_com = rating_com.prisma().find_first_or_raise(
             skip=1,
             order={
-                'rating': 'desc',
+                'user_id2': 'desc',
             },
         )
         ```
@@ -2739,7 +2739,7 @@ class rating_comActions(Generic[_PrismaModelT]):
         ```py
         rating_com = rating_com.prisma().update(
             where={
-                'rating_id': 1223573862,
+                'rating_id': 255202753,
             },
             data={
                 # data to update the rating_com record to
@@ -2796,19 +2796,19 @@ class rating_comActions(Generic[_PrismaModelT]):
         ```py
         rating_com = rating_com.prisma().upsert(
             where={
-                'rating_id': 541269159,
+                'rating_id': 1223573862,
             },
             data={
                 'create': {
-                    'rating_id': 541269159,
+                    'rating_id': 1223573862,
+                    'job_id': 2053047983,
                     'user_id1': 685333180,
                     'user_id2': 127474245,
-                    'job_id': 948921754,
                 },
                 'update': {
+                    'job_id': 2053047983,
                     'user_id1': 685333180,
                     'user_id2': 127474245,
-                    'job_id': 948921754,
                 },
             },
         )
@@ -2856,7 +2856,7 @@ class rating_comActions(Generic[_PrismaModelT]):
         # update all rating_com records
         total = rating_com.prisma().update_many(
             data={
-                'rating_id': 1064846676
+                'rating_id': 541269159
             },
             where={}
         )
@@ -2920,7 +2920,7 @@ class rating_comActions(Generic[_PrismaModelT]):
         results = rating_com.prisma().count(
             select={
                 '_all': True,
-                'user_id1': True,
+                'job_id': True,
             },
         )
         ```
@@ -2987,7 +2987,7 @@ class rating_comActions(Generic[_PrismaModelT]):
         results = rating_com.prisma().count(
             select={
                 '_all': True,
-                'user_id2': True,
+                'rating': True,
             },
         )
         ```
@@ -3127,10 +3127,10 @@ class rating_comActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # group rating_com records by job_id values
+        # group rating_com records by user_id1 values
         # and count how many records are in each group
         results = rating_com.prisma().group_by(
-            ['job_id'],
+            ['user_id1'],
             count=True,
         )
         ```
@@ -3219,7 +3219,7 @@ class contactActions(Generic[_PrismaModelT]):
         ```py
         users = contact.prisma().query_raw(
             'SELECT * FROM contact WHERE contact_id = $1',
-            508382461,
+            1064846676,
         )
         ```
         """
@@ -3259,7 +3259,7 @@ class contactActions(Generic[_PrismaModelT]):
         ```py
         user = contact.prisma().query_first(
             'SELECT * FROM contact WHERE user_id = $1',
-            1024265714,
+            508382461,
         )
         ```
         """
@@ -3298,10 +3298,10 @@ class contactActions(Generic[_PrismaModelT]):
         contact = contact.prisma().create(
             data={
                 # data to create a contact record
-                'user_id': 872078403,
-                'facebook': 'biheheiajg',
-                'instagram': 'jbgijghgb',
-                'linkedin': 'hgjcghfbi',
+                'user_id': 1024265714,
+                'facebook': 'ihcahiead',
+                'instagram': 'biheheiajg',
+                'linkedin': 'jbgijghgb',
             },
         )
         ```
@@ -3356,17 +3356,17 @@ class contactActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a contact record
-                    'user_id': 820312479,
-                    'facebook': 'jchciaee',
-                    'instagram': 'deeificjd',
-                    'linkedin': 'bbcbhebbda',
+                    'user_id': 769267518,
+                    'facebook': 'icadbcehj',
+                    'instagram': 'jchciaee',
+                    'linkedin': 'deeificjd',
                 },
                 {
                     # data to create a contact record
-                    'user_id': 1495896251,
-                    'facebook': 'caifcbgii',
-                    'instagram': 'igaibbfgj',
-                    'linkedin': 'bggajdcbbi',
+                    'user_id': 1121741130,
+                    'facebook': 'bejfijgcfb',
+                    'instagram': 'caifcbgii',
+                    'linkedin': 'igaibbfgj',
                 },
             ],
             skip_duplicates=True,
@@ -3420,7 +3420,7 @@ class contactActions(Generic[_PrismaModelT]):
         ```py
         contact = contact.prisma().delete(
             where={
-                'contact_id': 525761943,
+                'contact_id': 1660932118,
             },
         )
         ```
@@ -3472,7 +3472,7 @@ class contactActions(Generic[_PrismaModelT]):
         ```py
         contact = contact.prisma().find_unique(
             where={
-                'contact_id': 736209796,
+                'contact_id': 525761943,
             },
         )
         ```
@@ -3523,7 +3523,7 @@ class contactActions(Generic[_PrismaModelT]):
         ```py
         contact = contact.prisma().find_unique_or_raise(
             where={
-                'contact_id': 493907821,
+                'contact_id': 736209796,
             },
         )
         ```
@@ -3775,7 +3775,7 @@ class contactActions(Generic[_PrismaModelT]):
         ```py
         contact = contact.prisma().update(
             where={
-                'contact_id': 639686562,
+                'contact_id': 493907821,
             },
             data={
                 # data to update the contact record to
@@ -3832,21 +3832,21 @@ class contactActions(Generic[_PrismaModelT]):
         ```py
         contact = contact.prisma().upsert(
             where={
-                'contact_id': 654007347,
+                'contact_id': 639686562,
             },
             data={
                 'create': {
-                    'contact_id': 654007347,
-                    'user_id': 1495896251,
-                    'facebook': 'caifcbgii',
-                    'instagram': 'igaibbfgj',
-                    'linkedin': 'bggajdcbbi',
+                    'contact_id': 639686562,
+                    'user_id': 1121741130,
+                    'facebook': 'bejfijgcfb',
+                    'instagram': 'caifcbgii',
+                    'linkedin': 'igaibbfgj',
                 },
                 'update': {
-                    'user_id': 1495896251,
-                    'facebook': 'caifcbgii',
-                    'instagram': 'igaibbfgj',
-                    'linkedin': 'bggajdcbbi',
+                    'user_id': 1121741130,
+                    'facebook': 'bejfijgcfb',
+                    'instagram': 'caifcbgii',
+                    'linkedin': 'igaibbfgj',
                 },
             },
         )
@@ -3894,7 +3894,7 @@ class contactActions(Generic[_PrismaModelT]):
         # update all contact records
         total = contact.prisma().update_many(
             data={
-                'contact_id': 1905261552
+                'contact_id': 654007347
             },
             where={}
         )
@@ -4257,7 +4257,7 @@ class categoryActions(Generic[_PrismaModelT]):
         ```py
         users = category.prisma().query_raw(
             'SELECT * FROM category WHERE category_id = $1',
-            78746985,
+            1905261552,
         )
         ```
         """
@@ -4297,7 +4297,7 @@ class categoryActions(Generic[_PrismaModelT]):
         ```py
         user = category.prisma().query_first(
             'SELECT * FROM category WHERE name = $1',
-            'bdjidcidac',
+            'hihegjif',
         )
         ```
         """
@@ -4336,7 +4336,7 @@ class categoryActions(Generic[_PrismaModelT]):
         category = category.prisma().create(
             data={
                 # data to create a category record
-                'name': 'ifgaaagff',
+                'name': 'bdjidcidac',
             },
         )
         ```
@@ -4391,11 +4391,11 @@ class categoryActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a category record
-                    'name': 'befcddgjce',
+                    'name': 'ifgaaagff',
                 },
                 {
                     # data to create a category record
-                    'name': 'bfhdbjjgfd',
+                    'name': 'befcddgjce',
                 },
             ],
             skip_duplicates=True,
@@ -4449,7 +4449,7 @@ class categoryActions(Generic[_PrismaModelT]):
         ```py
         category = category.prisma().delete(
             where={
-                'category_id': 2013903098,
+                'category_id': 1573199653,
             },
         )
         ```
@@ -4501,7 +4501,7 @@ class categoryActions(Generic[_PrismaModelT]):
         ```py
         category = category.prisma().find_unique(
             where={
-                'category_id': 500965035,
+                'category_id': 2013903098,
             },
         )
         ```
@@ -4552,7 +4552,7 @@ class categoryActions(Generic[_PrismaModelT]):
         ```py
         category = category.prisma().find_unique_or_raise(
             where={
-                'category_id': 1800624392,
+                'category_id': 500965035,
             },
         )
         ```
@@ -4804,7 +4804,7 @@ class categoryActions(Generic[_PrismaModelT]):
         ```py
         category = category.prisma().update(
             where={
-                'category_id': 2077067425,
+                'category_id': 1800624392,
             },
             data={
                 # data to update the category record to
@@ -4861,15 +4861,15 @@ class categoryActions(Generic[_PrismaModelT]):
         ```py
         category = category.prisma().upsert(
             where={
-                'category_id': 1672112838,
+                'category_id': 2077067425,
             },
             data={
                 'create': {
-                    'category_id': 1672112838,
-                    'name': 'bfhdbjjgfd',
+                    'category_id': 2077067425,
+                    'name': 'befcddgjce',
                 },
                 'update': {
-                    'name': 'bfhdbjjgfd',
+                    'name': 'befcddgjce',
                 },
             },
         )
@@ -4917,7 +4917,7 @@ class categoryActions(Generic[_PrismaModelT]):
         # update all category records
         total = category.prisma().update_many(
             data={
-                'name': 'jcgghhgdj'
+                'name': 'bghcbbcidi'
             },
             where={}
         )
@@ -5280,7 +5280,7 @@ class experienceActions(Generic[_PrismaModelT]):
         ```py
         users = experience.prisma().query_raw(
             'SELECT * FROM experience WHERE user_id = $1',
-            1447624116,
+            926677639,
         )
         ```
         """
@@ -5320,7 +5320,7 @@ class experienceActions(Generic[_PrismaModelT]):
         ```py
         user = experience.prisma().query_first(
             'SELECT * FROM experience WHERE category_id = $1',
-            1738083805,
+            1447624116,
         )
         ```
         """
@@ -5359,8 +5359,8 @@ class experienceActions(Generic[_PrismaModelT]):
         experience = experience.prisma().create(
             data={
                 # data to create a experience record
-                'user_id': 340946258,
-                'category_id': 601077795,
+                'user_id': 1738083805,
+                'category_id': 340946258,
             },
         )
         ```
@@ -5415,13 +5415,13 @@ class experienceActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a experience record
-                    'user_id': 290603296,
-                    'category_id': 1855826649,
+                    'user_id': 601077795,
+                    'category_id': 290603296,
                 },
                 {
                     # data to create a experience record
-                    'user_id': 1611009182,
-                    'category_id': 446673791,
+                    'user_id': 1855826649,
+                    'category_id': 1611009182,
                 },
             ],
             skip_duplicates=True,
@@ -5946,7 +5946,7 @@ class experienceActions(Generic[_PrismaModelT]):
         # update all experience records
         total = experience.prisma().update_many(
             data={
-                'category_id': 300568396
+                'category_id': 446673791
             },
             where={}
         )
@@ -6309,7 +6309,7 @@ class careerActions(Generic[_PrismaModelT]):
         ```py
         users = career.prisma().query_raw(
             'SELECT * FROM career WHERE career_id = $1',
-            632626069,
+            300568396,
         )
         ```
         """
@@ -6349,7 +6349,7 @@ class careerActions(Generic[_PrismaModelT]):
         ```py
         user = career.prisma().query_first(
             'SELECT * FROM career WHERE name = $1',
-            'bhceabbgja',
+            'gdcgcgagj',
         )
         ```
         """
@@ -6388,7 +6388,7 @@ class careerActions(Generic[_PrismaModelT]):
         career = career.prisma().create(
             data={
                 # data to create a career record
-                'name': 'ehabfhegh',
+                'name': 'bhceabbgja',
             },
         )
         ```
@@ -6443,11 +6443,11 @@ class careerActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a career record
-                    'name': 'bcajcajjbc',
+                    'name': 'ehabfhegh',
                 },
                 {
                     # data to create a career record
-                    'name': 'bfdgheeegf',
+                    'name': 'bcajcajjbc',
                 },
             ],
             skip_duplicates=True,
@@ -6501,7 +6501,7 @@ class careerActions(Generic[_PrismaModelT]):
         ```py
         career = career.prisma().delete(
             where={
-                'career_id': 424218998,
+                'career_id': 1536744465,
             },
         )
         ```
@@ -6553,7 +6553,7 @@ class careerActions(Generic[_PrismaModelT]):
         ```py
         career = career.prisma().find_unique(
             where={
-                'career_id': 2125632375,
+                'career_id': 424218998,
             },
         )
         ```
@@ -6604,7 +6604,7 @@ class careerActions(Generic[_PrismaModelT]):
         ```py
         career = career.prisma().find_unique_or_raise(
             where={
-                'career_id': 536951780,
+                'career_id': 2125632375,
             },
         )
         ```
@@ -6856,7 +6856,7 @@ class careerActions(Generic[_PrismaModelT]):
         ```py
         career = career.prisma().update(
             where={
-                'career_id': 924723277,
+                'career_id': 536951780,
             },
             data={
                 # data to update the career record to
@@ -6913,15 +6913,15 @@ class careerActions(Generic[_PrismaModelT]):
         ```py
         career = career.prisma().upsert(
             where={
-                'career_id': 1621937922,
+                'career_id': 924723277,
             },
             data={
                 'create': {
-                    'career_id': 1621937922,
-                    'name': 'bfdgheeegf',
+                    'career_id': 924723277,
+                    'name': 'bcajcajjbc',
                 },
                 'update': {
-                    'name': 'bfdgheeegf',
+                    'name': 'bcajcajjbc',
                 },
             },
         )
@@ -6969,7 +6969,7 @@ class careerActions(Generic[_PrismaModelT]):
         # update all career records
         total = career.prisma().update_many(
             data={
-                'name': 'bieiidcabj'
+                'name': 'bgcbjdhjcc'
             },
             where={}
         )
@@ -7332,7 +7332,7 @@ class user_careerActions(Generic[_PrismaModelT]):
         ```py
         users = user_career.prisma().query_raw(
             'SELECT * FROM user_career WHERE user_id = $1',
-            1921528400,
+            1848832019,
         )
         ```
         """
@@ -7372,7 +7372,7 @@ class user_careerActions(Generic[_PrismaModelT]):
         ```py
         user = user_career.prisma().query_first(
             'SELECT * FROM user_career WHERE career_id = $1',
-            2100427849,
+            1921528400,
         )
         ```
         """
@@ -7411,8 +7411,8 @@ class user_careerActions(Generic[_PrismaModelT]):
         user_career = user_career.prisma().create(
             data={
                 # data to create a user_career record
-                'user_id': 849140046,
-                'career_id': 928152175,
+                'user_id': 2100427849,
+                'career_id': 849140046,
             },
         )
         ```
@@ -7467,13 +7467,13 @@ class user_careerActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a user_career record
-                    'user_id': 273032060,
-                    'career_id': 982848517,
+                    'user_id': 928152175,
+                    'career_id': 273032060,
                 },
                 {
                     # data to create a user_career record
-                    'user_id': 510737498,
-                    'career_id': 2117488267,
+                    'user_id': 982848517,
+                    'career_id': 510737498,
                 },
             ],
             skip_duplicates=True,
@@ -7998,7 +7998,7 @@ class user_careerActions(Generic[_PrismaModelT]):
         # update all user_career records
         total = user_career.prisma().update_many(
             data={
-                'career_id': 1401944936
+                'career_id': 2117488267
             },
             where={}
         )
@@ -8361,7 +8361,7 @@ class jobActions(Generic[_PrismaModelT]):
         ```py
         users = job.prisma().query_raw(
             'SELECT * FROM job WHERE job_id = $1',
-            1297607553,
+            1401944936,
         )
         ```
         """
@@ -8401,7 +8401,7 @@ class jobActions(Generic[_PrismaModelT]):
         ```py
         user = job.prisma().query_first(
             'SELECT * FROM job WHERE title = $1',
-            'fbjeiiffa',
+            'bcjhgahffd',
         )
         ```
         """
@@ -8440,10 +8440,10 @@ class jobActions(Generic[_PrismaModelT]):
         job = job.prisma().create(
             data={
                 # data to create a job record
-                'title': 'jhgidcgbf',
-                'description': 'bgjgecfejc',
-                'budget': 169262781,
-                'type': 'bacdaibgfa',
+                'title': 'fbjeiiffa',
+                'description': 'jhgidcgbf',
+                'budget': 1696425492,
+                'type': 'bgjcgchib',
             },
         )
         ```
@@ -8498,17 +8498,17 @@ class jobActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a job record
-                    'title': 'dchgibach',
-                    'description': 'fchheijjc',
-                    'budget': 2029357497,
-                    'type': 'bdbifjhbbi',
+                    'title': 'bacdaibgfa',
+                    'description': 'dchgibach',
+                    'budget': 527748992,
+                    'type': 'cacjdfhejh',
                 },
                 {
                     # data to create a job record
-                    'title': 'cbccbbcdfb',
-                    'description': 'bacejedaca',
-                    'budget': 1717307509,
-                    'type': 'bfjibceaec',
+                    'title': 'bdbifjhbbi',
+                    'description': 'cbccbbcdfb',
+                    'budget': 1024943020,
+                    'type': 'bhbhdahfaj',
                 },
             ],
             skip_duplicates=True,
@@ -8562,7 +8562,7 @@ class jobActions(Generic[_PrismaModelT]):
         ```py
         job = job.prisma().delete(
             where={
-                'job_id': 817623163,
+                'job_id': 1598124042,
             },
         )
         ```
@@ -8614,7 +8614,7 @@ class jobActions(Generic[_PrismaModelT]):
         ```py
         job = job.prisma().find_unique(
             where={
-                'job_id': 1030557336,
+                'job_id': 817623163,
             },
         )
         ```
@@ -8665,7 +8665,7 @@ class jobActions(Generic[_PrismaModelT]):
         ```py
         job = job.prisma().find_unique_or_raise(
             where={
-                'job_id': 1131525873,
+                'job_id': 1030557336,
             },
         )
         ```
@@ -8917,7 +8917,7 @@ class jobActions(Generic[_PrismaModelT]):
         ```py
         job = job.prisma().update(
             where={
-                'job_id': 210666198,
+                'job_id': 1131525873,
             },
             data={
                 # data to update the job record to
@@ -8974,21 +8974,21 @@ class jobActions(Generic[_PrismaModelT]):
         ```py
         job = job.prisma().upsert(
             where={
-                'job_id': 1276057943,
+                'job_id': 210666198,
             },
             data={
                 'create': {
-                    'job_id': 1276057943,
-                    'title': 'cbccbbcdfb',
-                    'description': 'bacejedaca',
-                    'budget': 1717307509,
-                    'type': 'bfjibceaec',
+                    'job_id': 210666198,
+                    'title': 'bdbifjhbbi',
+                    'description': 'cbccbbcdfb',
+                    'budget': 1024943020,
+                    'type': 'bhbhdahfaj',
                 },
                 'update': {
-                    'title': 'cbccbbcdfb',
-                    'description': 'bacejedaca',
-                    'budget': 1717307509,
-                    'type': 'bfjibceaec',
+                    'title': 'bdbifjhbbi',
+                    'description': 'cbccbbcdfb',
+                    'budget': 1024943020,
+                    'type': 'bhbhdahfaj',
                 },
             },
         )
@@ -9399,7 +9399,7 @@ class historyActions(Generic[_PrismaModelT]):
         ```py
         users = history.prisma().query_raw(
             'SELECT * FROM history WHERE user_id = $1',
-            745569348,
+            1276057943,
         )
         ```
         """
@@ -9439,7 +9439,7 @@ class historyActions(Generic[_PrismaModelT]):
         ```py
         user = history.prisma().query_first(
             'SELECT * FROM history WHERE job_id = $1',
-            307876141,
+            745569348,
         )
         ```
         """
@@ -9478,8 +9478,8 @@ class historyActions(Generic[_PrismaModelT]):
         history = history.prisma().create(
             data={
                 # data to create a history record
-                'user_id': 1674049122,
-                'job_id': 1526854643,
+                'user_id': 307876141,
+                'job_id': 1674049122,
             },
         )
         ```
@@ -9534,13 +9534,13 @@ class historyActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a history record
-                    'user_id': 958077104,
-                    'job_id': 1513050921,
+                    'user_id': 1526854643,
+                    'job_id': 958077104,
                 },
                 {
                     # data to create a history record
-                    'user_id': 204674734,
-                    'job_id': 2067651663,
+                    'user_id': 1513050921,
+                    'job_id': 204674734,
                 },
             ],
             skip_duplicates=True,
@@ -10065,7 +10065,7 @@ class historyActions(Generic[_PrismaModelT]):
         # update all history records
         total = history.prisma().update_many(
             data={
-                'status': 'bbidjbbjaa'
+                'status': 'caghgfbggd'
             },
             where={}
         )
@@ -10428,7 +10428,7 @@ class job_expActions(Generic[_PrismaModelT]):
         ```py
         users = job_exp.prisma().query_raw(
             'SELECT * FROM job_exp WHERE job_id = $1',
-            1589704933,
+            1183911900,
         )
         ```
         """
@@ -10468,7 +10468,7 @@ class job_expActions(Generic[_PrismaModelT]):
         ```py
         user = job_exp.prisma().query_first(
             'SELECT * FROM job_exp WHERE category_id = $1',
-            1243475898,
+            1589704933,
         )
         ```
         """
@@ -10507,8 +10507,8 @@ class job_expActions(Generic[_PrismaModelT]):
         job_exp = job_exp.prisma().create(
             data={
                 # data to create a job_exp record
-                'job_id': 1369828971,
-                'category_id': 1678593480,
+                'job_id': 1243475898,
+                'category_id': 1369828971,
             },
         )
         ```
@@ -10563,13 +10563,13 @@ class job_expActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a job_exp record
-                    'job_id': 403521121,
-                    'category_id': 648760710,
+                    'job_id': 1678593480,
+                    'category_id': 403521121,
                 },
                 {
                     # data to create a job_exp record
-                    'job_id': 607323719,
-                    'category_id': 1468890740,
+                    'job_id': 648760710,
+                    'category_id': 607323719,
                 },
             ],
             skip_duplicates=True,
@@ -11094,7 +11094,7 @@ class job_expActions(Generic[_PrismaModelT]):
         # update all job_exp records
         total = job_exp.prisma().update_many(
             data={
-                'category_id': 629039005
+                'category_id': 1468890740
             },
             where={}
         )
@@ -11456,8 +11456,8 @@ class bookmarkActions(Generic[_PrismaModelT]):
         -------
         ```py
         users = bookmark.prisma().query_raw(
-            'SELECT * FROM bookmark WHERE book_id = $1',
-            1214168082,
+            'SELECT * FROM bookmark WHERE user_id = $1',
+            629039005,
         )
         ```
         """
@@ -11496,8 +11496,8 @@ class bookmarkActions(Generic[_PrismaModelT]):
         -------
         ```py
         user = bookmark.prisma().query_first(
-            'SELECT * FROM bookmark WHERE user_id = $1',
-            898613219,
+            'SELECT * FROM bookmark WHERE job_id = $1',
+            1214168082,
         )
         ```
         """
@@ -11536,8 +11536,8 @@ class bookmarkActions(Generic[_PrismaModelT]):
         bookmark = bookmark.prisma().create(
             data={
                 # data to create a bookmark record
-                'user_id': 658378208,
-                'job_id': 954620057,
+                'user_id': 898613219,
+                'job_id': 658378208,
             },
         )
         ```
@@ -11592,13 +11592,13 @@ class bookmarkActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a bookmark record
-                    'user_id': 1214809950,
-                    'job_id': 1047820095,
+                    'user_id': 954620057,
+                    'job_id': 1214809950,
                 },
                 {
                     # data to create a bookmark record
-                    'user_id': 1302734860,
-                    'job_id': 893052245,
+                    'user_id': 1047820095,
+                    'job_id': 1302734860,
                 },
             ],
             skip_duplicates=True,
@@ -11652,7 +11652,7 @@ class bookmarkActions(Generic[_PrismaModelT]):
         ```py
         bookmark = bookmark.prisma().delete(
             where={
-                'book_id': 280083306,
+                'book_id': 893052245,
             },
         )
         ```
@@ -11704,7 +11704,7 @@ class bookmarkActions(Generic[_PrismaModelT]):
         ```py
         bookmark = bookmark.prisma().find_unique(
             where={
-                'book_id': 549668955,
+                'book_id': 280083306,
             },
         )
         ```
@@ -11755,7 +11755,7 @@ class bookmarkActions(Generic[_PrismaModelT]):
         ```py
         bookmark = bookmark.prisma().find_unique_or_raise(
             where={
-                'book_id': 76790008,
+                'book_id': 549668955,
             },
         )
         ```
@@ -11817,11 +11817,11 @@ class bookmarkActions(Generic[_PrismaModelT]):
         # find the first 10 bookmark records
         bookmarks = bookmark.prisma().find_many(take=10)
 
-        # find the first 5 bookmark records ordered by the job_id field
+        # find the first 5 bookmark records ordered by the book_id field
         bookmarks = bookmark.prisma().find_many(
             take=5,
             order={
-                'job_id': 'desc',
+                'book_id': 'desc',
             },
         )
         ```
@@ -11882,11 +11882,11 @@ class bookmarkActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second bookmark record ordered by the book_id field
+        # find the second bookmark record ordered by the user_id field
         bookmark = bookmark.prisma().find_first(
             skip=1,
             order={
-                'book_id': 'desc',
+                'user_id': 'desc',
             },
         )
         ```
@@ -11950,11 +11950,11 @@ class bookmarkActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second bookmark record ordered by the user_id field
+        # find the second bookmark record ordered by the job_id field
         bookmark = bookmark.prisma().find_first_or_raise(
             skip=1,
             order={
-                'user_id': 'desc',
+                'job_id': 'desc',
             },
         )
         ```
@@ -12007,7 +12007,7 @@ class bookmarkActions(Generic[_PrismaModelT]):
         ```py
         bookmark = bookmark.prisma().update(
             where={
-                'book_id': 2098299345,
+                'book_id': 76790008,
             },
             data={
                 # data to update the bookmark record to
@@ -12064,17 +12064,17 @@ class bookmarkActions(Generic[_PrismaModelT]):
         ```py
         bookmark = bookmark.prisma().upsert(
             where={
-                'book_id': 245900342,
+                'book_id': 2098299345,
             },
             data={
                 'create': {
-                    'book_id': 245900342,
-                    'user_id': 1302734860,
-                    'job_id': 893052245,
+                    'book_id': 2098299345,
+                    'user_id': 1047820095,
+                    'job_id': 1302734860,
                 },
                 'update': {
-                    'user_id': 1302734860,
-                    'job_id': 893052245,
+                    'user_id': 1047820095,
+                    'job_id': 1302734860,
                 },
             },
         )
@@ -12122,7 +12122,7 @@ class bookmarkActions(Generic[_PrismaModelT]):
         # update all bookmark records
         total = bookmark.prisma().update_many(
             data={
-                'job_id': 811863863
+                'book_id': 245900342
             },
             where={}
         )
@@ -12186,7 +12186,7 @@ class bookmarkActions(Generic[_PrismaModelT]):
         results = bookmark.prisma().count(
             select={
                 '_all': True,
-                'book_id': True,
+                'user_id': True,
             },
         )
         ```
@@ -12253,7 +12253,7 @@ class bookmarkActions(Generic[_PrismaModelT]):
         results = bookmark.prisma().count(
             select={
                 '_all': True,
-                'user_id': True,
+                'job_id': True,
             },
         )
         ```
@@ -12393,10 +12393,10 @@ class bookmarkActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # group bookmark records by job_id values
+        # group bookmark records by book_id values
         # and count how many records are in each group
         results = bookmark.prisma().group_by(
-            ['job_id'],
+            ['book_id'],
             count=True,
         )
         ```
@@ -12484,8 +12484,8 @@ class postActions(Generic[_PrismaModelT]):
         -------
         ```py
         users = post.prisma().query_raw(
-            'SELECT * FROM post WHERE user_id = $1',
-            1388801188,
+            'SELECT * FROM post WHERE job_id = $1',
+            811863863,
         )
         ```
         """
@@ -12524,8 +12524,8 @@ class postActions(Generic[_PrismaModelT]):
         -------
         ```py
         user = post.prisma().query_first(
-            'SELECT * FROM post WHERE job_id = $1',
-            752577037,
+            'SELECT * FROM post WHERE user_id = $1',
+            1388801188,
         )
         ```
         """
@@ -12564,8 +12564,8 @@ class postActions(Generic[_PrismaModelT]):
         post = post.prisma().create(
             data={
                 # data to create a post record
+                'job_id': 752577037,
                 'user_id': 1187663298,
-                'job_id': 769681363,
             },
         )
         ```
@@ -12620,13 +12620,13 @@ class postActions(Generic[_PrismaModelT]):
             data=[
                 {
                     # data to create a post record
+                    'job_id': 769681363,
                     'user_id': 1214295824,
-                    'job_id': 1021417993,
                 },
                 {
                     # data to create a post record
+                    'job_id': 1021417993,
                     'user_id': 351503374,
-                    'job_id': 1321184815,
                 },
             ],
             skip_duplicates=True,
@@ -12848,11 +12848,11 @@ class postActions(Generic[_PrismaModelT]):
         # find the first 10 post records
         posts = post.prisma().find_many(take=10)
 
-        # find the first 5 post records ordered by the user_id field
+        # find the first 5 post records ordered by the job_id field
         posts = post.prisma().find_many(
             take=5,
             order={
-                'user_id': 'desc',
+                'job_id': 'desc',
             },
         )
         ```
@@ -12913,11 +12913,11 @@ class postActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second post record ordered by the job_id field
+        # find the second post record ordered by the user_id field
         post = post.prisma().find_first(
             skip=1,
             order={
-                'job_id': 'desc',
+                'user_id': 'desc',
             },
         )
         ```
@@ -12981,11 +12981,11 @@ class postActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # find the second post record ordered by the user_id field
+        # find the second post record ordered by the job_id field
         post = post.prisma().find_first_or_raise(
             skip=1,
             order={
-                'user_id': 'desc',
+                'job_id': 'desc',
             },
         )
         ```
@@ -13151,7 +13151,7 @@ class postActions(Generic[_PrismaModelT]):
         # update all post records
         total = post.prisma().update_many(
             data={
-                'job_id': 369732668
+                'user_id': 1321184815
             },
             where={}
         )
@@ -13215,7 +13215,7 @@ class postActions(Generic[_PrismaModelT]):
         results = post.prisma().count(
             select={
                 '_all': True,
-                'user_id': True,
+                'job_id': True,
             },
         )
         ```
@@ -13282,7 +13282,7 @@ class postActions(Generic[_PrismaModelT]):
         results = post.prisma().count(
             select={
                 '_all': True,
-                'job_id': True,
+                'user_id': True,
             },
         )
         ```
@@ -13422,10 +13422,10 @@ class postActions(Generic[_PrismaModelT]):
         Example
         -------
         ```py
-        # group post records by user_id values
+        # group post records by job_id values
         # and count how many records are in each group
         results = post.prisma().group_by(
-            ['user_id'],
+            ['job_id'],
             count=True,
         )
         ```

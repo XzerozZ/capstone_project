@@ -23,26 +23,26 @@ PRISMA_MODELS: set[str] = {
 
 RELATIONAL_FIELD_MAPPINGS: dict[str, dict[str, str]] = {
     'user': {
-        'post': 'post',
-        'rating_user1': 'rating_user',
-        'rating_users2': 'rating_user',
-        'rating_com1': 'rating_com',
-        'rating_com2': 'rating_com',
+        'bookmark': 'bookmark',
         'contact': 'contact',
         'experience': 'experience',
-        'user_career': 'user_career',
         'history': 'history',
-        'bookmark': 'bookmark',
+        'post': 'post',
+        'rating_com1': 'rating_com',
+        'rating_com2': 'rating_com',
+        'rating_user1': 'rating_user',
+        'rating_users2': 'rating_user',
+        'user_career': 'user_career',
     },
     'rating_user': {
+        'job': 'job',
         'user1': 'user',
         'user2': 'user',
-        'job': 'job',
     },
     'rating_com': {
+        'job': 'job',
         'user1': 'user',
         'user2': 'user',
-        'job': 'job',
     },
     'contact': {
         'user': 'user',
@@ -52,39 +52,39 @@ RELATIONAL_FIELD_MAPPINGS: dict[str, dict[str, str]] = {
         'job_exp': 'job_exp',
     },
     'experience': {
-        'user': 'user',
         'category': 'category',
+        'user': 'user',
     },
     'career': {
         'user_career': 'user_career',
     },
     'user_career': {
-        'user': 'user',
         'career': 'career',
+        'user': 'user',
     },
     'job': {
+        'bookmark': 'bookmark',
         'history': 'history',
         'job_exp': 'job_exp',
-        'rating_user': 'rating_user',
-        'rating_com': 'rating_com',
-        'bookmark': 'bookmark',
         'post': 'post',
+        'rating_com': 'rating_com',
+        'rating_user': 'rating_user',
     },
     'history': {
-        'user': 'user',
         'job': 'job',
+        'user': 'user',
     },
     'job_exp': {
-        'job': 'job',
         'category': 'category',
+        'job': 'job',
     },
     'bookmark': {
-        'user': 'user',
         'job': 'job',
+        'user': 'user',
     },
     'post': {
-        'user': 'user',
         'job': 'job',
+        'user': 'user',
     },
 }
 

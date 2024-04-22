@@ -69,16 +69,16 @@ class user(bases.Baseuser):
     email: _str
     password: _str
     role: _str
-    post: Optional[List['models.post']] = None
-    rating_user1: Optional[List['models.rating_user']] = None
-    rating_users2: Optional[List['models.rating_user']] = None
-    rating_com1: Optional[List['models.rating_com']] = None
-    rating_com2: Optional[List['models.rating_com']] = None
+    bookmark: Optional[List['models.bookmark']] = None
     contact: Optional[List['models.contact']] = None
     experience: Optional[List['models.experience']] = None
-    user_career: Optional[List['models.user_career']] = None
     history: Optional[List['models.history']] = None
-    bookmark: Optional[List['models.bookmark']] = None
+    post: Optional[List['models.post']] = None
+    rating_com1: Optional[List['models.rating_com']] = None
+    rating_com2: Optional[List['models.rating_com']] = None
+    rating_user1: Optional[List['models.rating_user']] = None
+    rating_users2: Optional[List['models.rating_user']] = None
+    user_career: Optional[List['models.user_career']] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -207,15 +207,15 @@ class rating_user(bases.Baserating_user):
     """Represents a rating_user record"""
 
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     friendly_rating: _float
     efficiency_rating: _float
     accuracy_rating: _float
+    user_id1: _int
+    user_id2: _int
+    job: Optional['models.job'] = None
     user1: Optional['models.user'] = None
     user2: Optional['models.user'] = None
-    job: Optional['models.job'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -344,13 +344,13 @@ class rating_com(bases.Baserating_com):
     """Represents a rating_com record"""
 
     rating_id: _int
-    user_id1: _int
-    user_id2: _int
     job_id: _int
     rating: _float
+    user_id1: _int
+    user_id2: _int
+    job: Optional['models.job'] = None
     user1: Optional['models.user'] = None
     user2: Optional['models.user'] = None
-    job: Optional['models.job'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -744,8 +744,8 @@ class experience(bases.Baseexperience):
 
     user_id: _int
     category_id: _int
-    user: Optional['models.user'] = None
     category: Optional['models.category'] = None
+    user: Optional['models.user'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -1005,8 +1005,8 @@ class user_career(bases.Baseuser_career):
 
     user_id: _int
     career_id: _int
-    user: Optional['models.user'] = None
     career: Optional['models.career'] = None
+    user: Optional['models.user'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -1142,12 +1142,12 @@ class job(bases.Basejob):
     posted_date: datetime.datetime
     submitted_date: Optional[datetime.datetime] = None
     status: _str
+    bookmark: Optional[List['models.bookmark']] = None
     history: Optional[List['models.history']] = None
     job_exp: Optional[List['models.job_exp']] = None
-    rating_user: Optional[List['models.rating_user']] = None
-    rating_com: Optional[List['models.rating_com']] = None
-    bookmark: Optional[List['models.bookmark']] = None
     post: Optional[List['models.post']] = None
+    rating_com: Optional[List['models.rating_com']] = None
+    rating_user: Optional[List['models.rating_user']] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -1277,9 +1277,9 @@ class history(bases.Basehistory):
 
     user_id: _int
     job_id: _int
-    user: Optional['models.user'] = None
-    job: Optional['models.job'] = None
     status: _str
+    job: Optional['models.job'] = None
+    user: Optional['models.user'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -1409,8 +1409,8 @@ class job_exp(bases.Basejob_exp):
 
     job_id: _int
     category_id: _int
-    job: Optional['models.job'] = None
     category: Optional['models.category'] = None
+    job: Optional['models.job'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -1538,11 +1538,11 @@ class job_exp(bases.Basejob_exp):
 class bookmark(bases.Basebookmark):
     """Represents a bookmark record"""
 
-    book_id: _int
     user_id: _int
     job_id: _int
-    user: Optional['models.user'] = None
+    book_id: _int
     job: Optional['models.job'] = None
+    user: Optional['models.user'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -1670,10 +1670,10 @@ class bookmark(bases.Basebookmark):
 class post(bases.Basepost):
     """Represents a post record"""
 
-    user_id: _int
     job_id: _int
-    user: Optional['models.user'] = None
+    user_id: _int
     job: Optional['models.job'] = None
+    user: Optional['models.user'] = None
 
     # take *args and **kwargs so that other metaclasses can define arguments
     def __init_subclass__(
@@ -1800,16 +1800,16 @@ class post(bases.Basepost):
 
 
 _user_relational_fields: Set[str] = {
-        'post',
-        'rating_user1',
-        'rating_users2',
-        'rating_com1',
-        'rating_com2',
+        'bookmark',
         'contact',
         'experience',
-        'user_career',
         'history',
-        'bookmark',
+        'post',
+        'rating_com1',
+        'rating_com2',
+        'rating_user1',
+        'rating_users2',
+        'user_career',
     }
 _user_fields: Dict['types.userKeys', PartialModelField] = OrderedDict(
     [
@@ -1893,43 +1893,11 @@ _user_fields: Dict['types.userKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
-        ('post', {
-            'name': 'post',
+        ('bookmark', {
+            'name': 'bookmark',
             'is_list': True,
             'optional': True,
-            'type': 'List[\'models.post\']',
-            'is_relational': True,
-            'documentation': None,
-        }),
-        ('rating_user1', {
-            'name': 'rating_user1',
-            'is_list': True,
-            'optional': True,
-            'type': 'List[\'models.rating_user\']',
-            'is_relational': True,
-            'documentation': None,
-        }),
-        ('rating_users2', {
-            'name': 'rating_users2',
-            'is_list': True,
-            'optional': True,
-            'type': 'List[\'models.rating_user\']',
-            'is_relational': True,
-            'documentation': None,
-        }),
-        ('rating_com1', {
-            'name': 'rating_com1',
-            'is_list': True,
-            'optional': True,
-            'type': 'List[\'models.rating_com\']',
-            'is_relational': True,
-            'documentation': None,
-        }),
-        ('rating_com2', {
-            'name': 'rating_com2',
-            'is_list': True,
-            'optional': True,
-            'type': 'List[\'models.rating_com\']',
+            'type': 'List[\'models.bookmark\']',
             'is_relational': True,
             'documentation': None,
         }),
@@ -1949,14 +1917,6 @@ _user_fields: Dict['types.userKeys', PartialModelField] = OrderedDict(
             'is_relational': True,
             'documentation': None,
         }),
-        ('user_career', {
-            'name': 'user_career',
-            'is_list': True,
-            'optional': True,
-            'type': 'List[\'models.user_career\']',
-            'is_relational': True,
-            'documentation': None,
-        }),
         ('history', {
             'name': 'history',
             'is_list': True,
@@ -1965,11 +1925,51 @@ _user_fields: Dict['types.userKeys', PartialModelField] = OrderedDict(
             'is_relational': True,
             'documentation': None,
         }),
-        ('bookmark', {
-            'name': 'bookmark',
+        ('post', {
+            'name': 'post',
             'is_list': True,
             'optional': True,
-            'type': 'List[\'models.bookmark\']',
+            'type': 'List[\'models.post\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('rating_com1', {
+            'name': 'rating_com1',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.rating_com\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('rating_com2', {
+            'name': 'rating_com2',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.rating_com\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('rating_user1', {
+            'name': 'rating_user1',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.rating_user\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('rating_users2', {
+            'name': 'rating_users2',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.rating_user\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('user_career', {
+            'name': 'user_career',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.user_career\']',
             'is_relational': True,
             'documentation': None,
         }),
@@ -1977,30 +1977,14 @@ _user_fields: Dict['types.userKeys', PartialModelField] = OrderedDict(
 )
 
 _rating_user_relational_fields: Set[str] = {
+        'job',
         'user1',
         'user2',
-        'job',
     }
 _rating_user_fields: Dict['types.rating_userKeys', PartialModelField] = OrderedDict(
     [
         ('rating_id', {
             'name': 'rating_id',
-            'is_list': False,
-            'optional': False,
-            'type': '_int',
-            'is_relational': False,
-            'documentation': None,
-        }),
-        ('user_id1', {
-            'name': 'user_id1',
-            'is_list': False,
-            'optional': False,
-            'type': '_int',
-            'is_relational': False,
-            'documentation': None,
-        }),
-        ('user_id2', {
-            'name': 'user_id2',
             'is_list': False,
             'optional': False,
             'type': '_int',
@@ -2039,6 +2023,30 @@ _rating_user_fields: Dict['types.rating_userKeys', PartialModelField] = OrderedD
             'is_relational': False,
             'documentation': None,
         }),
+        ('user_id1', {
+            'name': 'user_id1',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('user_id2', {
+            'name': 'user_id2',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('job', {
+            'name': 'job',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.job',
+            'is_relational': True,
+            'documentation': None,
+        }),
         ('user1', {
             'name': 'user1',
             'is_list': False,
@@ -2055,42 +2063,18 @@ _rating_user_fields: Dict['types.rating_userKeys', PartialModelField] = OrderedD
             'is_relational': True,
             'documentation': None,
         }),
-        ('job', {
-            'name': 'job',
-            'is_list': False,
-            'optional': True,
-            'type': 'models.job',
-            'is_relational': True,
-            'documentation': None,
-        }),
     ],
 )
 
 _rating_com_relational_fields: Set[str] = {
+        'job',
         'user1',
         'user2',
-        'job',
     }
 _rating_com_fields: Dict['types.rating_comKeys', PartialModelField] = OrderedDict(
     [
         ('rating_id', {
             'name': 'rating_id',
-            'is_list': False,
-            'optional': False,
-            'type': '_int',
-            'is_relational': False,
-            'documentation': None,
-        }),
-        ('user_id1', {
-            'name': 'user_id1',
-            'is_list': False,
-            'optional': False,
-            'type': '_int',
-            'is_relational': False,
-            'documentation': None,
-        }),
-        ('user_id2', {
-            'name': 'user_id2',
             'is_list': False,
             'optional': False,
             'type': '_int',
@@ -2113,6 +2097,30 @@ _rating_com_fields: Dict['types.rating_comKeys', PartialModelField] = OrderedDic
             'is_relational': False,
             'documentation': None,
         }),
+        ('user_id1', {
+            'name': 'user_id1',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('user_id2', {
+            'name': 'user_id2',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('job', {
+            'name': 'job',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.job',
+            'is_relational': True,
+            'documentation': None,
+        }),
         ('user1', {
             'name': 'user1',
             'is_list': False,
@@ -2126,14 +2134,6 @@ _rating_com_fields: Dict['types.rating_comKeys', PartialModelField] = OrderedDic
             'is_list': False,
             'optional': True,
             'type': 'models.user',
-            'is_relational': True,
-            'documentation': None,
-        }),
-        ('job', {
-            'name': 'job',
-            'is_list': False,
-            'optional': True,
-            'type': 'models.job',
             'is_relational': True,
             'documentation': None,
         }),
@@ -2238,8 +2238,8 @@ _category_fields: Dict['types.categoryKeys', PartialModelField] = OrderedDict(
 )
 
 _experience_relational_fields: Set[str] = {
-        'user',
         'category',
+        'user',
     }
 _experience_fields: Dict['types.experienceKeys', PartialModelField] = OrderedDict(
     [
@@ -2259,19 +2259,19 @@ _experience_fields: Dict['types.experienceKeys', PartialModelField] = OrderedDic
             'is_relational': False,
             'documentation': None,
         }),
-        ('user', {
-            'name': 'user',
-            'is_list': False,
-            'optional': True,
-            'type': 'models.user',
-            'is_relational': True,
-            'documentation': None,
-        }),
         ('category', {
             'name': 'category',
             'is_list': False,
             'optional': True,
             'type': 'models.category',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('user', {
+            'name': 'user',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.user',
             'is_relational': True,
             'documentation': None,
         }),
@@ -2311,8 +2311,8 @@ _career_fields: Dict['types.careerKeys', PartialModelField] = OrderedDict(
 )
 
 _user_career_relational_fields: Set[str] = {
-        'user',
         'career',
+        'user',
     }
 _user_career_fields: Dict['types.user_careerKeys', PartialModelField] = OrderedDict(
     [
@@ -2332,14 +2332,6 @@ _user_career_fields: Dict['types.user_careerKeys', PartialModelField] = OrderedD
             'is_relational': False,
             'documentation': None,
         }),
-        ('user', {
-            'name': 'user',
-            'is_list': False,
-            'optional': True,
-            'type': 'models.user',
-            'is_relational': True,
-            'documentation': None,
-        }),
         ('career', {
             'name': 'career',
             'is_list': False,
@@ -2348,16 +2340,24 @@ _user_career_fields: Dict['types.user_careerKeys', PartialModelField] = OrderedD
             'is_relational': True,
             'documentation': None,
         }),
+        ('user', {
+            'name': 'user',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.user',
+            'is_relational': True,
+            'documentation': None,
+        }),
     ],
 )
 
 _job_relational_fields: Set[str] = {
+        'bookmark',
         'history',
         'job_exp',
-        'rating_user',
-        'rating_com',
-        'bookmark',
         'post',
+        'rating_com',
+        'rating_user',
     }
 _job_fields: Dict['types.jobKeys', PartialModelField] = OrderedDict(
     [
@@ -2425,6 +2425,14 @@ _job_fields: Dict['types.jobKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
+        ('bookmark', {
+            'name': 'bookmark',
+            'is_list': True,
+            'optional': True,
+            'type': 'List[\'models.bookmark\']',
+            'is_relational': True,
+            'documentation': None,
+        }),
         ('history', {
             'name': 'history',
             'is_list': True,
@@ -2441,11 +2449,11 @@ _job_fields: Dict['types.jobKeys', PartialModelField] = OrderedDict(
             'is_relational': True,
             'documentation': None,
         }),
-        ('rating_user', {
-            'name': 'rating_user',
+        ('post', {
+            'name': 'post',
             'is_list': True,
             'optional': True,
-            'type': 'List[\'models.rating_user\']',
+            'type': 'List[\'models.post\']',
             'is_relational': True,
             'documentation': None,
         }),
@@ -2457,19 +2465,11 @@ _job_fields: Dict['types.jobKeys', PartialModelField] = OrderedDict(
             'is_relational': True,
             'documentation': None,
         }),
-        ('bookmark', {
-            'name': 'bookmark',
+        ('rating_user', {
+            'name': 'rating_user',
             'is_list': True,
             'optional': True,
-            'type': 'List[\'models.bookmark\']',
-            'is_relational': True,
-            'documentation': None,
-        }),
-        ('post', {
-            'name': 'post',
-            'is_list': True,
-            'optional': True,
-            'type': 'List[\'models.post\']',
+            'type': 'List[\'models.rating_user\']',
             'is_relational': True,
             'documentation': None,
         }),
@@ -2477,8 +2477,8 @@ _job_fields: Dict['types.jobKeys', PartialModelField] = OrderedDict(
 )
 
 _history_relational_fields: Set[str] = {
-        'user',
         'job',
+        'user',
     }
 _history_fields: Dict['types.historyKeys', PartialModelField] = OrderedDict(
     [
@@ -2498,12 +2498,12 @@ _history_fields: Dict['types.historyKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
-        ('user', {
-            'name': 'user',
+        ('status', {
+            'name': 'status',
             'is_list': False,
-            'optional': True,
-            'type': 'models.user',
-            'is_relational': True,
+            'optional': False,
+            'type': '_str',
+            'is_relational': False,
             'documentation': None,
         }),
         ('job', {
@@ -2514,20 +2514,20 @@ _history_fields: Dict['types.historyKeys', PartialModelField] = OrderedDict(
             'is_relational': True,
             'documentation': None,
         }),
-        ('status', {
-            'name': 'status',
+        ('user', {
+            'name': 'user',
             'is_list': False,
-            'optional': False,
-            'type': '_str',
-            'is_relational': False,
+            'optional': True,
+            'type': 'models.user',
+            'is_relational': True,
             'documentation': None,
         }),
     ],
 )
 
 _job_exp_relational_fields: Set[str] = {
-        'job',
         'category',
+        'job',
     }
 _job_exp_fields: Dict['types.job_expKeys', PartialModelField] = OrderedDict(
     [
@@ -2547,14 +2547,6 @@ _job_exp_fields: Dict['types.job_expKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
-        ('job', {
-            'name': 'job',
-            'is_list': False,
-            'optional': True,
-            'type': 'models.job',
-            'is_relational': True,
-            'documentation': None,
-        }),
         ('category', {
             'name': 'category',
             'is_list': False,
@@ -2563,15 +2555,39 @@ _job_exp_fields: Dict['types.job_expKeys', PartialModelField] = OrderedDict(
             'is_relational': True,
             'documentation': None,
         }),
+        ('job', {
+            'name': 'job',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.job',
+            'is_relational': True,
+            'documentation': None,
+        }),
     ],
 )
 
 _bookmark_relational_fields: Set[str] = {
-        'user',
         'job',
+        'user',
     }
 _bookmark_fields: Dict['types.bookmarkKeys', PartialModelField] = OrderedDict(
     [
+        ('user_id', {
+            'name': 'user_id',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
+        ('job_id', {
+            'name': 'job_id',
+            'is_list': False,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
+            'documentation': None,
+        }),
         ('book_id', {
             'name': 'book_id',
             'is_list': False,
@@ -2580,20 +2596,12 @@ _bookmark_fields: Dict['types.bookmarkKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
-        ('user_id', {
-            'name': 'user_id',
+        ('job', {
+            'name': 'job',
             'is_list': False,
-            'optional': False,
-            'type': '_int',
-            'is_relational': False,
-            'documentation': None,
-        }),
-        ('job_id', {
-            'name': 'job_id',
-            'is_list': False,
-            'optional': False,
-            'type': '_int',
-            'is_relational': False,
+            'optional': True,
+            'type': 'models.job',
+            'is_relational': True,
             'documentation': None,
         }),
         ('user', {
@@ -2601,14 +2609,6 @@ _bookmark_fields: Dict['types.bookmarkKeys', PartialModelField] = OrderedDict(
             'is_list': False,
             'optional': True,
             'type': 'models.user',
-            'is_relational': True,
-            'documentation': None,
-        }),
-        ('job', {
-            'name': 'job',
-            'is_list': False,
-            'optional': True,
-            'type': 'models.job',
             'is_relational': True,
             'documentation': None,
         }),
@@ -2616,19 +2616,11 @@ _bookmark_fields: Dict['types.bookmarkKeys', PartialModelField] = OrderedDict(
 )
 
 _post_relational_fields: Set[str] = {
-        'user',
         'job',
+        'user',
     }
 _post_fields: Dict['types.postKeys', PartialModelField] = OrderedDict(
     [
-        ('user_id', {
-            'name': 'user_id',
-            'is_list': False,
-            'optional': False,
-            'type': '_int',
-            'is_relational': False,
-            'documentation': None,
-        }),
         ('job_id', {
             'name': 'job_id',
             'is_list': False,
@@ -2637,12 +2629,12 @@ _post_fields: Dict['types.postKeys', PartialModelField] = OrderedDict(
             'is_relational': False,
             'documentation': None,
         }),
-        ('user', {
-            'name': 'user',
+        ('user_id', {
+            'name': 'user_id',
             'is_list': False,
-            'optional': True,
-            'type': 'models.user',
-            'is_relational': True,
+            'optional': False,
+            'type': '_int',
+            'is_relational': False,
             'documentation': None,
         }),
         ('job', {
@@ -2650,6 +2642,14 @@ _post_fields: Dict['types.postKeys', PartialModelField] = OrderedDict(
             'is_list': False,
             'optional': True,
             'type': 'models.job',
+            'is_relational': True,
+            'documentation': None,
+        }),
+        ('user', {
+            'name': 'user',
+            'is_list': False,
+            'optional': True,
+            'type': 'models.user',
             'is_relational': True,
             'documentation': None,
         }),

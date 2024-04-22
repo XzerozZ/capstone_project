@@ -1850,29 +1850,29 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    post: number
-    rating_user1: number
-    rating_users2: number
-    rating_com1: number
-    rating_com2: number
+    bookmark: number
     contact: number
     experience: number
-    user_career: number
     history: number
-    bookmark: number
+    post: number
+    rating_com1: number
+    rating_com2: number
+    rating_user1: number
+    rating_users2: number
+    user_career: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    post?: boolean | UserCountOutputTypeCountPostArgs
-    rating_user1?: boolean | UserCountOutputTypeCountRating_user1Args
-    rating_users2?: boolean | UserCountOutputTypeCountRating_users2Args
-    rating_com1?: boolean | UserCountOutputTypeCountRating_com1Args
-    rating_com2?: boolean | UserCountOutputTypeCountRating_com2Args
+    bookmark?: boolean | UserCountOutputTypeCountBookmarkArgs
     contact?: boolean | UserCountOutputTypeCountContactArgs
     experience?: boolean | UserCountOutputTypeCountExperienceArgs
-    user_career?: boolean | UserCountOutputTypeCountUser_careerArgs
     history?: boolean | UserCountOutputTypeCountHistoryArgs
-    bookmark?: boolean | UserCountOutputTypeCountBookmarkArgs
+    post?: boolean | UserCountOutputTypeCountPostArgs
+    rating_com1?: boolean | UserCountOutputTypeCountRating_com1Args
+    rating_com2?: boolean | UserCountOutputTypeCountRating_com2Args
+    rating_user1?: boolean | UserCountOutputTypeCountRating_user1Args
+    rating_users2?: boolean | UserCountOutputTypeCountRating_users2Args
+    user_career?: boolean | UserCountOutputTypeCountUser_careerArgs
   }
 
   // Custom InputTypes
@@ -1891,40 +1891,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountPostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: postWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountRating_user1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: rating_userWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountRating_users2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: rating_userWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountRating_com1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: rating_comWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountRating_com2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: rating_comWhereInput
+  export type UserCountOutputTypeCountBookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: bookmarkWhereInput
   }
 
 
@@ -1947,14 +1915,6 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountUser_careerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: user_careerWhereInput
-  }
-
-
-  /**
-   * UserCountOutputType without action
-   */
   export type UserCountOutputTypeCountHistoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: historyWhereInput
   }
@@ -1963,8 +1923,48 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountBookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: bookmarkWhereInput
+  export type UserCountOutputTypeCountPostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: postWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRating_com1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: rating_comWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRating_com2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: rating_comWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRating_user1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: rating_userWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRating_users2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: rating_userWhereInput
+  }
+
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountUser_careerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_careerWhereInput
   }
 
 
@@ -2052,21 +2052,21 @@ export namespace Prisma {
    */
 
   export type JobCountOutputType = {
+    bookmark: number
     history: number
     job_exp: number
-    rating_user: number
-    rating_com: number
-    bookmark: number
     post: number
+    rating_com: number
+    rating_user: number
   }
 
   export type JobCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bookmark?: boolean | JobCountOutputTypeCountBookmarkArgs
     history?: boolean | JobCountOutputTypeCountHistoryArgs
     job_exp?: boolean | JobCountOutputTypeCountJob_expArgs
-    rating_user?: boolean | JobCountOutputTypeCountRating_userArgs
-    rating_com?: boolean | JobCountOutputTypeCountRating_comArgs
-    bookmark?: boolean | JobCountOutputTypeCountBookmarkArgs
     post?: boolean | JobCountOutputTypeCountPostArgs
+    rating_com?: boolean | JobCountOutputTypeCountRating_comArgs
+    rating_user?: boolean | JobCountOutputTypeCountRating_userArgs
   }
 
   // Custom InputTypes
@@ -2079,6 +2079,14 @@ export namespace Prisma {
      * Select specific fields to fetch from the JobCountOutputType
      */
     select?: JobCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * JobCountOutputType without action
+   */
+  export type JobCountOutputTypeCountBookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: bookmarkWhereInput
   }
 
 
@@ -2101,8 +2109,8 @@ export namespace Prisma {
   /**
    * JobCountOutputType without action
    */
-  export type JobCountOutputTypeCountRating_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: rating_userWhereInput
+  export type JobCountOutputTypeCountPostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: postWhereInput
   }
 
 
@@ -2117,16 +2125,8 @@ export namespace Prisma {
   /**
    * JobCountOutputType without action
    */
-  export type JobCountOutputTypeCountBookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: bookmarkWhereInput
-  }
-
-
-  /**
-   * JobCountOutputType without action
-   */
-  export type JobCountOutputTypeCountPostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: postWhereInput
+  export type JobCountOutputTypeCountRating_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: rating_userWhereInput
   }
 
 
@@ -2373,16 +2373,16 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     role?: boolean
-    post?: boolean | user$postArgs<ExtArgs>
-    rating_user1?: boolean | user$rating_user1Args<ExtArgs>
-    rating_users2?: boolean | user$rating_users2Args<ExtArgs>
-    rating_com1?: boolean | user$rating_com1Args<ExtArgs>
-    rating_com2?: boolean | user$rating_com2Args<ExtArgs>
+    bookmark?: boolean | user$bookmarkArgs<ExtArgs>
     contact?: boolean | user$contactArgs<ExtArgs>
     experience?: boolean | user$experienceArgs<ExtArgs>
-    user_career?: boolean | user$user_careerArgs<ExtArgs>
     history?: boolean | user$historyArgs<ExtArgs>
-    bookmark?: boolean | user$bookmarkArgs<ExtArgs>
+    post?: boolean | user$postArgs<ExtArgs>
+    rating_com1?: boolean | user$rating_com1Args<ExtArgs>
+    rating_com2?: boolean | user$rating_com2Args<ExtArgs>
+    rating_user1?: boolean | user$rating_user1Args<ExtArgs>
+    rating_users2?: boolean | user$rating_users2Args<ExtArgs>
+    user_career?: boolean | user$user_careerArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2400,16 +2400,16 @@ export namespace Prisma {
   }
 
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    post?: boolean | user$postArgs<ExtArgs>
-    rating_user1?: boolean | user$rating_user1Args<ExtArgs>
-    rating_users2?: boolean | user$rating_users2Args<ExtArgs>
-    rating_com1?: boolean | user$rating_com1Args<ExtArgs>
-    rating_com2?: boolean | user$rating_com2Args<ExtArgs>
+    bookmark?: boolean | user$bookmarkArgs<ExtArgs>
     contact?: boolean | user$contactArgs<ExtArgs>
     experience?: boolean | user$experienceArgs<ExtArgs>
-    user_career?: boolean | user$user_careerArgs<ExtArgs>
     history?: boolean | user$historyArgs<ExtArgs>
-    bookmark?: boolean | user$bookmarkArgs<ExtArgs>
+    post?: boolean | user$postArgs<ExtArgs>
+    rating_com1?: boolean | user$rating_com1Args<ExtArgs>
+    rating_com2?: boolean | user$rating_com2Args<ExtArgs>
+    rating_user1?: boolean | user$rating_user1Args<ExtArgs>
+    rating_users2?: boolean | user$rating_users2Args<ExtArgs>
+    user_career?: boolean | user$user_careerArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2417,16 +2417,16 @@ export namespace Prisma {
   export type $userPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user"
     objects: {
-      post: Prisma.$postPayload<ExtArgs>[]
-      rating_user1: Prisma.$rating_userPayload<ExtArgs>[]
-      rating_users2: Prisma.$rating_userPayload<ExtArgs>[]
-      rating_com1: Prisma.$rating_comPayload<ExtArgs>[]
-      rating_com2: Prisma.$rating_comPayload<ExtArgs>[]
+      bookmark: Prisma.$bookmarkPayload<ExtArgs>[]
       contact: Prisma.$contactPayload<ExtArgs>[]
       experience: Prisma.$experiencePayload<ExtArgs>[]
-      user_career: Prisma.$user_careerPayload<ExtArgs>[]
       history: Prisma.$historyPayload<ExtArgs>[]
-      bookmark: Prisma.$bookmarkPayload<ExtArgs>[]
+      post: Prisma.$postPayload<ExtArgs>[]
+      rating_com1: Prisma.$rating_comPayload<ExtArgs>[]
+      rating_com2: Prisma.$rating_comPayload<ExtArgs>[]
+      rating_user1: Prisma.$rating_userPayload<ExtArgs>[]
+      rating_users2: Prisma.$rating_userPayload<ExtArgs>[]
+      user_career: Prisma.$user_careerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       user_id: number
@@ -2804,25 +2804,25 @@ export namespace Prisma {
   export interface Prisma__userClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    post<T extends user$postArgs<ExtArgs> = {}>(args?: Subset<T, user$postArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$postPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    rating_user1<T extends user$rating_user1Args<ExtArgs> = {}>(args?: Subset<T, user$rating_user1Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_userPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    rating_users2<T extends user$rating_users2Args<ExtArgs> = {}>(args?: Subset<T, user$rating_users2Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_userPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    rating_com1<T extends user$rating_com1Args<ExtArgs> = {}>(args?: Subset<T, user$rating_com1Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_comPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    rating_com2<T extends user$rating_com2Args<ExtArgs> = {}>(args?: Subset<T, user$rating_com2Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_comPayload<ExtArgs>, T, 'findMany'> | Null>;
+    bookmark<T extends user$bookmarkArgs<ExtArgs> = {}>(args?: Subset<T, user$bookmarkArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$bookmarkPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     contact<T extends user$contactArgs<ExtArgs> = {}>(args?: Subset<T, user$contactArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$contactPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     experience<T extends user$experienceArgs<ExtArgs> = {}>(args?: Subset<T, user$experienceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$experiencePayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    user_career<T extends user$user_careerArgs<ExtArgs> = {}>(args?: Subset<T, user$user_careerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_careerPayload<ExtArgs>, T, 'findMany'> | Null>;
-
     history<T extends user$historyArgs<ExtArgs> = {}>(args?: Subset<T, user$historyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$historyPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    bookmark<T extends user$bookmarkArgs<ExtArgs> = {}>(args?: Subset<T, user$bookmarkArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$bookmarkPayload<ExtArgs>, T, 'findMany'> | Null>;
+    post<T extends user$postArgs<ExtArgs> = {}>(args?: Subset<T, user$postArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$postPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    rating_com1<T extends user$rating_com1Args<ExtArgs> = {}>(args?: Subset<T, user$rating_com1Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_comPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    rating_com2<T extends user$rating_com2Args<ExtArgs> = {}>(args?: Subset<T, user$rating_com2Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_comPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    rating_user1<T extends user$rating_user1Args<ExtArgs> = {}>(args?: Subset<T, user$rating_user1Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_userPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    rating_users2<T extends user$rating_users2Args<ExtArgs> = {}>(args?: Subset<T, user$rating_users2Args<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_userPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    user_career<T extends user$user_careerArgs<ExtArgs> = {}>(args?: Subset<T, user$user_careerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_careerPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3174,107 +3174,23 @@ export namespace Prisma {
 
 
   /**
-   * user.post
+   * user.bookmark
    */
-  export type user$postArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type user$bookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the post
+     * Select specific fields to fetch from the bookmark
      */
-    select?: postSelect<ExtArgs> | null
+    select?: bookmarkSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: postInclude<ExtArgs> | null
-    where?: postWhereInput
-    orderBy?: postOrderByWithRelationInput | postOrderByWithRelationInput[]
-    cursor?: postWhereUniqueInput
+    include?: bookmarkInclude<ExtArgs> | null
+    where?: bookmarkWhereInput
+    orderBy?: bookmarkOrderByWithRelationInput | bookmarkOrderByWithRelationInput[]
+    cursor?: bookmarkWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-
-  /**
-   * user.rating_user1
-   */
-  export type user$rating_user1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the rating_user
-     */
-    select?: rating_userSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: rating_userInclude<ExtArgs> | null
-    where?: rating_userWhereInput
-    orderBy?: rating_userOrderByWithRelationInput | rating_userOrderByWithRelationInput[]
-    cursor?: rating_userWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Rating_userScalarFieldEnum | Rating_userScalarFieldEnum[]
-  }
-
-
-  /**
-   * user.rating_users2
-   */
-  export type user$rating_users2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the rating_user
-     */
-    select?: rating_userSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: rating_userInclude<ExtArgs> | null
-    where?: rating_userWhereInput
-    orderBy?: rating_userOrderByWithRelationInput | rating_userOrderByWithRelationInput[]
-    cursor?: rating_userWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Rating_userScalarFieldEnum | Rating_userScalarFieldEnum[]
-  }
-
-
-  /**
-   * user.rating_com1
-   */
-  export type user$rating_com1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the rating_com
-     */
-    select?: rating_comSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: rating_comInclude<ExtArgs> | null
-    where?: rating_comWhereInput
-    orderBy?: rating_comOrderByWithRelationInput | rating_comOrderByWithRelationInput[]
-    cursor?: rating_comWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Rating_comScalarFieldEnum | Rating_comScalarFieldEnum[]
-  }
-
-
-  /**
-   * user.rating_com2
-   */
-  export type user$rating_com2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the rating_com
-     */
-    select?: rating_comSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: rating_comInclude<ExtArgs> | null
-    where?: rating_comWhereInput
-    orderBy?: rating_comOrderByWithRelationInput | rating_comOrderByWithRelationInput[]
-    cursor?: rating_comWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Rating_comScalarFieldEnum | Rating_comScalarFieldEnum[]
+    distinct?: BookmarkScalarFieldEnum | BookmarkScalarFieldEnum[]
   }
 
 
@@ -3321,27 +3237,6 @@ export namespace Prisma {
 
 
   /**
-   * user.user_career
-   */
-  export type user$user_careerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the user_career
-     */
-    select?: user_careerSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: user_careerInclude<ExtArgs> | null
-    where?: user_careerWhereInput
-    orderBy?: user_careerOrderByWithRelationInput | user_careerOrderByWithRelationInput[]
-    cursor?: user_careerWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: User_careerScalarFieldEnum | User_careerScalarFieldEnum[]
-  }
-
-
-  /**
    * user.history
    */
   export type user$historyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3363,23 +3258,128 @@ export namespace Prisma {
 
 
   /**
-   * user.bookmark
+   * user.post
    */
-  export type user$bookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type user$postArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bookmark
+     * Select specific fields to fetch from the post
      */
-    select?: bookmarkSelect<ExtArgs> | null
+    select?: postSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: bookmarkInclude<ExtArgs> | null
-    where?: bookmarkWhereInput
-    orderBy?: bookmarkOrderByWithRelationInput | bookmarkOrderByWithRelationInput[]
-    cursor?: bookmarkWhereUniqueInput
+    include?: postInclude<ExtArgs> | null
+    where?: postWhereInput
+    orderBy?: postOrderByWithRelationInput | postOrderByWithRelationInput[]
+    cursor?: postWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: BookmarkScalarFieldEnum | BookmarkScalarFieldEnum[]
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+  }
+
+
+  /**
+   * user.rating_com1
+   */
+  export type user$rating_com1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rating_com
+     */
+    select?: rating_comSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: rating_comInclude<ExtArgs> | null
+    where?: rating_comWhereInput
+    orderBy?: rating_comOrderByWithRelationInput | rating_comOrderByWithRelationInput[]
+    cursor?: rating_comWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Rating_comScalarFieldEnum | Rating_comScalarFieldEnum[]
+  }
+
+
+  /**
+   * user.rating_com2
+   */
+  export type user$rating_com2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rating_com
+     */
+    select?: rating_comSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: rating_comInclude<ExtArgs> | null
+    where?: rating_comWhereInput
+    orderBy?: rating_comOrderByWithRelationInput | rating_comOrderByWithRelationInput[]
+    cursor?: rating_comWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Rating_comScalarFieldEnum | Rating_comScalarFieldEnum[]
+  }
+
+
+  /**
+   * user.rating_user1
+   */
+  export type user$rating_user1Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rating_user
+     */
+    select?: rating_userSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: rating_userInclude<ExtArgs> | null
+    where?: rating_userWhereInput
+    orderBy?: rating_userOrderByWithRelationInput | rating_userOrderByWithRelationInput[]
+    cursor?: rating_userWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Rating_userScalarFieldEnum | Rating_userScalarFieldEnum[]
+  }
+
+
+  /**
+   * user.rating_users2
+   */
+  export type user$rating_users2Args<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the rating_user
+     */
+    select?: rating_userSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: rating_userInclude<ExtArgs> | null
+    where?: rating_userWhereInput
+    orderBy?: rating_userOrderByWithRelationInput | rating_userOrderByWithRelationInput[]
+    cursor?: rating_userWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Rating_userScalarFieldEnum | Rating_userScalarFieldEnum[]
+  }
+
+
+  /**
+   * user.user_career
+   */
+  export type user$user_careerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_career
+     */
+    select?: user_careerSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: user_careerInclude<ExtArgs> | null
+    where?: user_careerWhereInput
+    orderBy?: user_careerOrderByWithRelationInput | user_careerOrderByWithRelationInput[]
+    cursor?: user_careerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: User_careerScalarFieldEnum | User_careerScalarFieldEnum[]
   }
 
 
@@ -3413,104 +3413,104 @@ export namespace Prisma {
 
   export type Rating_userAvgAggregateOutputType = {
     rating_id: number | null
-    user_id1: number | null
-    user_id2: number | null
     job_id: number | null
     friendly_rating: number | null
     efficiency_rating: number | null
     accuracy_rating: number | null
+    user_id1: number | null
+    user_id2: number | null
   }
 
   export type Rating_userSumAggregateOutputType = {
     rating_id: number | null
-    user_id1: number | null
-    user_id2: number | null
     job_id: number | null
     friendly_rating: number | null
     efficiency_rating: number | null
     accuracy_rating: number | null
+    user_id1: number | null
+    user_id2: number | null
   }
 
   export type Rating_userMinAggregateOutputType = {
     rating_id: number | null
-    user_id1: number | null
-    user_id2: number | null
     job_id: number | null
     friendly_rating: number | null
     efficiency_rating: number | null
     accuracy_rating: number | null
+    user_id1: number | null
+    user_id2: number | null
   }
 
   export type Rating_userMaxAggregateOutputType = {
     rating_id: number | null
-    user_id1: number | null
-    user_id2: number | null
     job_id: number | null
     friendly_rating: number | null
     efficiency_rating: number | null
     accuracy_rating: number | null
+    user_id1: number | null
+    user_id2: number | null
   }
 
   export type Rating_userCountAggregateOutputType = {
     rating_id: number
-    user_id1: number
-    user_id2: number
     job_id: number
     friendly_rating: number
     efficiency_rating: number
     accuracy_rating: number
+    user_id1: number
+    user_id2: number
     _all: number
   }
 
 
   export type Rating_userAvgAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     friendly_rating?: true
     efficiency_rating?: true
     accuracy_rating?: true
+    user_id1?: true
+    user_id2?: true
   }
 
   export type Rating_userSumAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     friendly_rating?: true
     efficiency_rating?: true
     accuracy_rating?: true
+    user_id1?: true
+    user_id2?: true
   }
 
   export type Rating_userMinAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     friendly_rating?: true
     efficiency_rating?: true
     accuracy_rating?: true
+    user_id1?: true
+    user_id2?: true
   }
 
   export type Rating_userMaxAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     friendly_rating?: true
     efficiency_rating?: true
     accuracy_rating?: true
+    user_id1?: true
+    user_id2?: true
   }
 
   export type Rating_userCountAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     friendly_rating?: true
     efficiency_rating?: true
     accuracy_rating?: true
+    user_id1?: true
+    user_id2?: true
     _all?: true
   }
 
@@ -3602,12 +3602,12 @@ export namespace Prisma {
 
   export type Rating_userGroupByOutputType = {
     rating_id: number
-    user_id1: number
-    user_id2: number
     job_id: number
     friendly_rating: number
     efficiency_rating: number
     accuracy_rating: number
+    user_id1: number
+    user_id2: number
     _count: Rating_userCountAggregateOutputType | null
     _avg: Rating_userAvgAggregateOutputType | null
     _sum: Rating_userSumAggregateOutputType | null
@@ -3631,49 +3631,49 @@ export namespace Prisma {
 
   export type rating_userSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     rating_id?: boolean
-    user_id1?: boolean
-    user_id2?: boolean
     job_id?: boolean
     friendly_rating?: boolean
     efficiency_rating?: boolean
     accuracy_rating?: boolean
+    user_id1?: boolean
+    user_id2?: boolean
+    job?: boolean | jobDefaultArgs<ExtArgs>
     user1?: boolean | userDefaultArgs<ExtArgs>
     user2?: boolean | userDefaultArgs<ExtArgs>
-    job?: boolean | jobDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["rating_user"]>
 
   export type rating_userSelectScalar = {
     rating_id?: boolean
-    user_id1?: boolean
-    user_id2?: boolean
     job_id?: boolean
     friendly_rating?: boolean
     efficiency_rating?: boolean
     accuracy_rating?: boolean
+    user_id1?: boolean
+    user_id2?: boolean
   }
 
   export type rating_userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    job?: boolean | jobDefaultArgs<ExtArgs>
     user1?: boolean | userDefaultArgs<ExtArgs>
     user2?: boolean | userDefaultArgs<ExtArgs>
-    job?: boolean | jobDefaultArgs<ExtArgs>
   }
 
 
   export type $rating_userPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "rating_user"
     objects: {
+      job: Prisma.$jobPayload<ExtArgs>
       user1: Prisma.$userPayload<ExtArgs>
       user2: Prisma.$userPayload<ExtArgs>
-      job: Prisma.$jobPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       rating_id: number
-      user_id1: number
-      user_id2: number
       job_id: number
       friendly_rating: number
       efficiency_rating: number
       accuracy_rating: number
+      user_id1: number
+      user_id2: number
     }, ExtArgs["result"]["rating_user"]>
     composites: {}
   }
@@ -4039,11 +4039,11 @@ export namespace Prisma {
   export interface Prisma__rating_userClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    job<T extends jobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobDefaultArgs<ExtArgs>>): Prisma__jobClient<$Result.GetResult<Prisma.$jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
     user1<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     user2<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    job<T extends jobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobDefaultArgs<ExtArgs>>): Prisma__jobClient<$Result.GetResult<Prisma.$jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4074,12 +4074,12 @@ export namespace Prisma {
    */ 
   interface rating_userFieldRefs {
     readonly rating_id: FieldRef<"rating_user", 'Int'>
-    readonly user_id1: FieldRef<"rating_user", 'Int'>
-    readonly user_id2: FieldRef<"rating_user", 'Int'>
     readonly job_id: FieldRef<"rating_user", 'Int'>
     readonly friendly_rating: FieldRef<"rating_user", 'Float'>
     readonly efficiency_rating: FieldRef<"rating_user", 'Float'>
     readonly accuracy_rating: FieldRef<"rating_user", 'Float'>
+    readonly user_id1: FieldRef<"rating_user", 'Int'>
+    readonly user_id2: FieldRef<"rating_user", 'Int'>
   }
     
 
@@ -4421,84 +4421,84 @@ export namespace Prisma {
 
   export type Rating_comAvgAggregateOutputType = {
     rating_id: number | null
-    user_id1: number | null
-    user_id2: number | null
     job_id: number | null
     rating: number | null
+    user_id1: number | null
+    user_id2: number | null
   }
 
   export type Rating_comSumAggregateOutputType = {
     rating_id: number | null
-    user_id1: number | null
-    user_id2: number | null
     job_id: number | null
     rating: number | null
+    user_id1: number | null
+    user_id2: number | null
   }
 
   export type Rating_comMinAggregateOutputType = {
     rating_id: number | null
-    user_id1: number | null
-    user_id2: number | null
     job_id: number | null
     rating: number | null
+    user_id1: number | null
+    user_id2: number | null
   }
 
   export type Rating_comMaxAggregateOutputType = {
     rating_id: number | null
-    user_id1: number | null
-    user_id2: number | null
     job_id: number | null
     rating: number | null
+    user_id1: number | null
+    user_id2: number | null
   }
 
   export type Rating_comCountAggregateOutputType = {
     rating_id: number
-    user_id1: number
-    user_id2: number
     job_id: number
     rating: number
+    user_id1: number
+    user_id2: number
     _all: number
   }
 
 
   export type Rating_comAvgAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     rating?: true
+    user_id1?: true
+    user_id2?: true
   }
 
   export type Rating_comSumAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     rating?: true
+    user_id1?: true
+    user_id2?: true
   }
 
   export type Rating_comMinAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     rating?: true
+    user_id1?: true
+    user_id2?: true
   }
 
   export type Rating_comMaxAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     rating?: true
+    user_id1?: true
+    user_id2?: true
   }
 
   export type Rating_comCountAggregateInputType = {
     rating_id?: true
-    user_id1?: true
-    user_id2?: true
     job_id?: true
     rating?: true
+    user_id1?: true
+    user_id2?: true
     _all?: true
   }
 
@@ -4590,10 +4590,10 @@ export namespace Prisma {
 
   export type Rating_comGroupByOutputType = {
     rating_id: number
-    user_id1: number
-    user_id2: number
     job_id: number
     rating: number
+    user_id1: number
+    user_id2: number
     _count: Rating_comCountAggregateOutputType | null
     _avg: Rating_comAvgAggregateOutputType | null
     _sum: Rating_comSumAggregateOutputType | null
@@ -4617,43 +4617,43 @@ export namespace Prisma {
 
   export type rating_comSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     rating_id?: boolean
-    user_id1?: boolean
-    user_id2?: boolean
     job_id?: boolean
     rating?: boolean
+    user_id1?: boolean
+    user_id2?: boolean
+    job?: boolean | jobDefaultArgs<ExtArgs>
     user1?: boolean | userDefaultArgs<ExtArgs>
     user2?: boolean | userDefaultArgs<ExtArgs>
-    job?: boolean | jobDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["rating_com"]>
 
   export type rating_comSelectScalar = {
     rating_id?: boolean
-    user_id1?: boolean
-    user_id2?: boolean
     job_id?: boolean
     rating?: boolean
+    user_id1?: boolean
+    user_id2?: boolean
   }
 
   export type rating_comInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    job?: boolean | jobDefaultArgs<ExtArgs>
     user1?: boolean | userDefaultArgs<ExtArgs>
     user2?: boolean | userDefaultArgs<ExtArgs>
-    job?: boolean | jobDefaultArgs<ExtArgs>
   }
 
 
   export type $rating_comPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "rating_com"
     objects: {
+      job: Prisma.$jobPayload<ExtArgs>
       user1: Prisma.$userPayload<ExtArgs>
       user2: Prisma.$userPayload<ExtArgs>
-      job: Prisma.$jobPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       rating_id: number
-      user_id1: number
-      user_id2: number
       job_id: number
       rating: number
+      user_id1: number
+      user_id2: number
     }, ExtArgs["result"]["rating_com"]>
     composites: {}
   }
@@ -5019,11 +5019,11 @@ export namespace Prisma {
   export interface Prisma__rating_comClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    job<T extends jobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobDefaultArgs<ExtArgs>>): Prisma__jobClient<$Result.GetResult<Prisma.$jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
     user1<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     user2<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    job<T extends jobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobDefaultArgs<ExtArgs>>): Prisma__jobClient<$Result.GetResult<Prisma.$jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5054,10 +5054,10 @@ export namespace Prisma {
    */ 
   interface rating_comFieldRefs {
     readonly rating_id: FieldRef<"rating_com", 'Int'>
-    readonly user_id1: FieldRef<"rating_com", 'Int'>
-    readonly user_id2: FieldRef<"rating_com", 'Int'>
     readonly job_id: FieldRef<"rating_com", 'Int'>
     readonly rating: FieldRef<"rating_com", 'Float'>
+    readonly user_id1: FieldRef<"rating_com", 'Int'>
+    readonly user_id2: FieldRef<"rating_com", 'Int'>
   }
     
 
@@ -7487,8 +7487,8 @@ export namespace Prisma {
   export type experienceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     user_id?: boolean
     category_id?: boolean
-    user?: boolean | userDefaultArgs<ExtArgs>
     category?: boolean | categoryDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["experience"]>
 
   export type experienceSelectScalar = {
@@ -7497,16 +7497,16 @@ export namespace Prisma {
   }
 
   export type experienceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | userDefaultArgs<ExtArgs>
     category?: boolean | categoryDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }
 
 
   export type $experiencePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "experience"
     objects: {
-      user: Prisma.$userPayload<ExtArgs>
       category: Prisma.$categoryPayload<ExtArgs>
+      user: Prisma.$userPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       user_id: number
@@ -7876,9 +7876,9 @@ export namespace Prisma {
   export interface Prisma__experienceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     category<T extends categoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, categoryDefaultArgs<ExtArgs>>): Prisma__categoryClient<$Result.GetResult<Prisma.$categoryPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -9357,8 +9357,8 @@ export namespace Prisma {
   export type user_careerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     user_id?: boolean
     career_id?: boolean
-    user?: boolean | userDefaultArgs<ExtArgs>
     career?: boolean | careerDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user_career"]>
 
   export type user_careerSelectScalar = {
@@ -9367,16 +9367,16 @@ export namespace Prisma {
   }
 
   export type user_careerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | userDefaultArgs<ExtArgs>
     career?: boolean | careerDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }
 
 
   export type $user_careerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user_career"
     objects: {
-      user: Prisma.$userPayload<ExtArgs>
       career: Prisma.$careerPayload<ExtArgs>
+      user: Prisma.$userPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       user_id: number
@@ -9746,9 +9746,9 @@ export namespace Prisma {
   export interface Prisma__user_careerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     career<T extends careerDefaultArgs<ExtArgs> = {}>(args?: Subset<T, careerDefaultArgs<ExtArgs>>): Prisma__careerClient<$Result.GetResult<Prisma.$careerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10333,12 +10333,12 @@ export namespace Prisma {
     posted_date?: boolean
     submitted_date?: boolean
     status?: boolean
+    bookmark?: boolean | job$bookmarkArgs<ExtArgs>
     history?: boolean | job$historyArgs<ExtArgs>
     job_exp?: boolean | job$job_expArgs<ExtArgs>
-    rating_user?: boolean | job$rating_userArgs<ExtArgs>
-    rating_com?: boolean | job$rating_comArgs<ExtArgs>
-    bookmark?: boolean | job$bookmarkArgs<ExtArgs>
     post?: boolean | job$postArgs<ExtArgs>
+    rating_com?: boolean | job$rating_comArgs<ExtArgs>
+    rating_user?: boolean | job$rating_userArgs<ExtArgs>
     _count?: boolean | JobCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["job"]>
 
@@ -10354,12 +10354,12 @@ export namespace Prisma {
   }
 
   export type jobInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    bookmark?: boolean | job$bookmarkArgs<ExtArgs>
     history?: boolean | job$historyArgs<ExtArgs>
     job_exp?: boolean | job$job_expArgs<ExtArgs>
-    rating_user?: boolean | job$rating_userArgs<ExtArgs>
-    rating_com?: boolean | job$rating_comArgs<ExtArgs>
-    bookmark?: boolean | job$bookmarkArgs<ExtArgs>
     post?: boolean | job$postArgs<ExtArgs>
+    rating_com?: boolean | job$rating_comArgs<ExtArgs>
+    rating_user?: boolean | job$rating_userArgs<ExtArgs>
     _count?: boolean | JobCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -10367,12 +10367,12 @@ export namespace Prisma {
   export type $jobPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "job"
     objects: {
+      bookmark: Prisma.$bookmarkPayload<ExtArgs>[]
       history: Prisma.$historyPayload<ExtArgs>[]
       job_exp: Prisma.$job_expPayload<ExtArgs>[]
-      rating_user: Prisma.$rating_userPayload<ExtArgs>[]
-      rating_com: Prisma.$rating_comPayload<ExtArgs>[]
-      bookmark: Prisma.$bookmarkPayload<ExtArgs>[]
       post: Prisma.$postPayload<ExtArgs>[]
+      rating_com: Prisma.$rating_comPayload<ExtArgs>[]
+      rating_user: Prisma.$rating_userPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       job_id: number
@@ -10748,17 +10748,17 @@ export namespace Prisma {
   export interface Prisma__jobClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    bookmark<T extends job$bookmarkArgs<ExtArgs> = {}>(args?: Subset<T, job$bookmarkArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$bookmarkPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     history<T extends job$historyArgs<ExtArgs> = {}>(args?: Subset<T, job$historyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$historyPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     job_exp<T extends job$job_expArgs<ExtArgs> = {}>(args?: Subset<T, job$job_expArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$job_expPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    rating_user<T extends job$rating_userArgs<ExtArgs> = {}>(args?: Subset<T, job$rating_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_userPayload<ExtArgs>, T, 'findMany'> | Null>;
+    post<T extends job$postArgs<ExtArgs> = {}>(args?: Subset<T, job$postArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$postPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     rating_com<T extends job$rating_comArgs<ExtArgs> = {}>(args?: Subset<T, job$rating_comArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_comPayload<ExtArgs>, T, 'findMany'> | Null>;
 
-    bookmark<T extends job$bookmarkArgs<ExtArgs> = {}>(args?: Subset<T, job$bookmarkArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$bookmarkPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    post<T extends job$postArgs<ExtArgs> = {}>(args?: Subset<T, job$postArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$postPayload<ExtArgs>, T, 'findMany'> | Null>;
+    rating_user<T extends job$rating_userArgs<ExtArgs> = {}>(args?: Subset<T, job$rating_userArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$rating_userPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -11108,6 +11108,27 @@ export namespace Prisma {
 
 
   /**
+   * job.bookmark
+   */
+  export type job$bookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the bookmark
+     */
+    select?: bookmarkSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: bookmarkInclude<ExtArgs> | null
+    where?: bookmarkWhereInput
+    orderBy?: bookmarkOrderByWithRelationInput | bookmarkOrderByWithRelationInput[]
+    cursor?: bookmarkWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BookmarkScalarFieldEnum | BookmarkScalarFieldEnum[]
+  }
+
+
+  /**
    * job.history
    */
   export type job$historyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11150,23 +11171,23 @@ export namespace Prisma {
 
 
   /**
-   * job.rating_user
+   * job.post
    */
-  export type job$rating_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type job$postArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the rating_user
+     * Select specific fields to fetch from the post
      */
-    select?: rating_userSelect<ExtArgs> | null
+    select?: postSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: rating_userInclude<ExtArgs> | null
-    where?: rating_userWhereInput
-    orderBy?: rating_userOrderByWithRelationInput | rating_userOrderByWithRelationInput[]
-    cursor?: rating_userWhereUniqueInput
+    include?: postInclude<ExtArgs> | null
+    where?: postWhereInput
+    orderBy?: postOrderByWithRelationInput | postOrderByWithRelationInput[]
+    cursor?: postWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: Rating_userScalarFieldEnum | Rating_userScalarFieldEnum[]
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
   }
 
 
@@ -11192,44 +11213,23 @@ export namespace Prisma {
 
 
   /**
-   * job.bookmark
+   * job.rating_user
    */
-  export type job$bookmarkArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type job$rating_userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the bookmark
+     * Select specific fields to fetch from the rating_user
      */
-    select?: bookmarkSelect<ExtArgs> | null
+    select?: rating_userSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: bookmarkInclude<ExtArgs> | null
-    where?: bookmarkWhereInput
-    orderBy?: bookmarkOrderByWithRelationInput | bookmarkOrderByWithRelationInput[]
-    cursor?: bookmarkWhereUniqueInput
+    include?: rating_userInclude<ExtArgs> | null
+    where?: rating_userWhereInput
+    orderBy?: rating_userOrderByWithRelationInput | rating_userOrderByWithRelationInput[]
+    cursor?: rating_userWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: BookmarkScalarFieldEnum | BookmarkScalarFieldEnum[]
-  }
-
-
-  /**
-   * job.post
-   */
-  export type job$postArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the post
-     */
-    select?: postSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: postInclude<ExtArgs> | null
-    where?: postWhereInput
-    orderBy?: postOrderByWithRelationInput | postOrderByWithRelationInput[]
-    cursor?: postWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+    distinct?: Rating_userScalarFieldEnum | Rating_userScalarFieldEnum[]
   }
 
 
@@ -11435,8 +11435,8 @@ export namespace Prisma {
     user_id?: boolean
     job_id?: boolean
     status?: boolean
-    user?: boolean | userDefaultArgs<ExtArgs>
     job?: boolean | jobDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["history"]>
 
   export type historySelectScalar = {
@@ -11446,16 +11446,16 @@ export namespace Prisma {
   }
 
   export type historyInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | userDefaultArgs<ExtArgs>
     job?: boolean | jobDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }
 
 
   export type $historyPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "history"
     objects: {
-      user: Prisma.$userPayload<ExtArgs>
       job: Prisma.$jobPayload<ExtArgs>
+      user: Prisma.$userPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       user_id: number
@@ -11826,9 +11826,9 @@ export namespace Prisma {
   export interface Prisma__historyClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     job<T extends jobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobDefaultArgs<ExtArgs>>): Prisma__jobClient<$Result.GetResult<Prisma.$jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -12366,8 +12366,8 @@ export namespace Prisma {
   export type job_expSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     job_id?: boolean
     category_id?: boolean
-    job?: boolean | jobDefaultArgs<ExtArgs>
     category?: boolean | categoryDefaultArgs<ExtArgs>
+    job?: boolean | jobDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["job_exp"]>
 
   export type job_expSelectScalar = {
@@ -12376,16 +12376,16 @@ export namespace Prisma {
   }
 
   export type job_expInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    job?: boolean | jobDefaultArgs<ExtArgs>
     category?: boolean | categoryDefaultArgs<ExtArgs>
+    job?: boolean | jobDefaultArgs<ExtArgs>
   }
 
 
   export type $job_expPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "job_exp"
     objects: {
-      job: Prisma.$jobPayload<ExtArgs>
       category: Prisma.$categoryPayload<ExtArgs>
+      job: Prisma.$jobPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       job_id: number
@@ -12755,9 +12755,9 @@ export namespace Prisma {
   export interface Prisma__job_expClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    job<T extends jobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobDefaultArgs<ExtArgs>>): Prisma__jobClient<$Result.GetResult<Prisma.$jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     category<T extends categoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, categoryDefaultArgs<ExtArgs>>): Prisma__categoryClient<$Result.GetResult<Prisma.$categoryPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    job<T extends jobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobDefaultArgs<ExtArgs>>): Prisma__jobClient<$Result.GetResult<Prisma.$jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -13129,65 +13129,65 @@ export namespace Prisma {
   }
 
   export type BookmarkAvgAggregateOutputType = {
-    book_id: number | null
     user_id: number | null
     job_id: number | null
+    book_id: number | null
   }
 
   export type BookmarkSumAggregateOutputType = {
-    book_id: number | null
     user_id: number | null
     job_id: number | null
+    book_id: number | null
   }
 
   export type BookmarkMinAggregateOutputType = {
-    book_id: number | null
     user_id: number | null
     job_id: number | null
+    book_id: number | null
   }
 
   export type BookmarkMaxAggregateOutputType = {
-    book_id: number | null
     user_id: number | null
     job_id: number | null
+    book_id: number | null
   }
 
   export type BookmarkCountAggregateOutputType = {
-    book_id: number
     user_id: number
     job_id: number
+    book_id: number
     _all: number
   }
 
 
   export type BookmarkAvgAggregateInputType = {
-    book_id?: true
     user_id?: true
     job_id?: true
+    book_id?: true
   }
 
   export type BookmarkSumAggregateInputType = {
-    book_id?: true
     user_id?: true
     job_id?: true
+    book_id?: true
   }
 
   export type BookmarkMinAggregateInputType = {
-    book_id?: true
     user_id?: true
     job_id?: true
+    book_id?: true
   }
 
   export type BookmarkMaxAggregateInputType = {
-    book_id?: true
     user_id?: true
     job_id?: true
+    book_id?: true
   }
 
   export type BookmarkCountAggregateInputType = {
-    book_id?: true
     user_id?: true
     job_id?: true
+    book_id?: true
     _all?: true
   }
 
@@ -13278,9 +13278,9 @@ export namespace Prisma {
   }
 
   export type BookmarkGroupByOutputType = {
-    book_id: number
     user_id: number
     job_id: number
+    book_id: number
     _count: BookmarkCountAggregateOutputType | null
     _avg: BookmarkAvgAggregateOutputType | null
     _sum: BookmarkSumAggregateOutputType | null
@@ -13303,35 +13303,35 @@ export namespace Prisma {
 
 
   export type bookmarkSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    book_id?: boolean
     user_id?: boolean
     job_id?: boolean
-    user?: boolean | userDefaultArgs<ExtArgs>
+    book_id?: boolean
     job?: boolean | jobDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["bookmark"]>
 
   export type bookmarkSelectScalar = {
-    book_id?: boolean
     user_id?: boolean
     job_id?: boolean
+    book_id?: boolean
   }
 
   export type bookmarkInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | userDefaultArgs<ExtArgs>
     job?: boolean | jobDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }
 
 
   export type $bookmarkPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "bookmark"
     objects: {
-      user: Prisma.$userPayload<ExtArgs>
       job: Prisma.$jobPayload<ExtArgs>
+      user: Prisma.$userPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      book_id: number
       user_id: number
       job_id: number
+      book_id: number
     }, ExtArgs["result"]["bookmark"]>
     composites: {}
   }
@@ -13424,8 +13424,8 @@ export namespace Prisma {
      * // Get first 10 Bookmarks
      * const bookmarks = await prisma.bookmark.findMany({ take: 10 })
      * 
-     * // Only select the `book_id`
-     * const bookmarkWithBook_idOnly = await prisma.bookmark.findMany({ select: { book_id: true } })
+     * // Only select the `user_id`
+     * const bookmarkWithUser_idOnly = await prisma.bookmark.findMany({ select: { user_id: true } })
      * 
     **/
     findMany<T extends bookmarkFindManyArgs<ExtArgs>>(
@@ -13697,9 +13697,9 @@ export namespace Prisma {
   export interface Prisma__bookmarkClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     job<T extends jobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobDefaultArgs<ExtArgs>>): Prisma__jobClient<$Result.GetResult<Prisma.$jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -13729,9 +13729,9 @@ export namespace Prisma {
    * Fields of the bookmark model
    */ 
   interface bookmarkFieldRefs {
-    readonly book_id: FieldRef<"bookmark", 'Int'>
     readonly user_id: FieldRef<"bookmark", 'Int'>
     readonly job_id: FieldRef<"bookmark", 'Int'>
+    readonly book_id: FieldRef<"bookmark", 'Int'>
   }
     
 
@@ -14072,55 +14072,55 @@ export namespace Prisma {
   }
 
   export type PostAvgAggregateOutputType = {
-    user_id: number | null
     job_id: number | null
+    user_id: number | null
   }
 
   export type PostSumAggregateOutputType = {
-    user_id: number | null
     job_id: number | null
+    user_id: number | null
   }
 
   export type PostMinAggregateOutputType = {
-    user_id: number | null
     job_id: number | null
+    user_id: number | null
   }
 
   export type PostMaxAggregateOutputType = {
-    user_id: number | null
     job_id: number | null
+    user_id: number | null
   }
 
   export type PostCountAggregateOutputType = {
-    user_id: number
     job_id: number
+    user_id: number
     _all: number
   }
 
 
   export type PostAvgAggregateInputType = {
-    user_id?: true
     job_id?: true
+    user_id?: true
   }
 
   export type PostSumAggregateInputType = {
-    user_id?: true
     job_id?: true
+    user_id?: true
   }
 
   export type PostMinAggregateInputType = {
-    user_id?: true
     job_id?: true
+    user_id?: true
   }
 
   export type PostMaxAggregateInputType = {
-    user_id?: true
     job_id?: true
+    user_id?: true
   }
 
   export type PostCountAggregateInputType = {
-    user_id?: true
     job_id?: true
+    user_id?: true
     _all?: true
   }
 
@@ -14211,8 +14211,8 @@ export namespace Prisma {
   }
 
   export type PostGroupByOutputType = {
-    user_id: number
     job_id: number
+    user_id: number
     _count: PostCountAggregateOutputType | null
     _avg: PostAvgAggregateOutputType | null
     _sum: PostSumAggregateOutputType | null
@@ -14235,32 +14235,32 @@ export namespace Prisma {
 
 
   export type postSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_id?: boolean
     job_id?: boolean
-    user?: boolean | userDefaultArgs<ExtArgs>
+    user_id?: boolean
     job?: boolean | jobDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
 
   export type postSelectScalar = {
-    user_id?: boolean
     job_id?: boolean
+    user_id?: boolean
   }
 
   export type postInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | userDefaultArgs<ExtArgs>
     job?: boolean | jobDefaultArgs<ExtArgs>
+    user?: boolean | userDefaultArgs<ExtArgs>
   }
 
 
   export type $postPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "post"
     objects: {
-      user: Prisma.$userPayload<ExtArgs>
       job: Prisma.$jobPayload<ExtArgs>
+      user: Prisma.$userPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      user_id: number
       job_id: number
+      user_id: number
     }, ExtArgs["result"]["post"]>
     composites: {}
   }
@@ -14353,8 +14353,8 @@ export namespace Prisma {
      * // Get first 10 Posts
      * const posts = await prisma.post.findMany({ take: 10 })
      * 
-     * // Only select the `user_id`
-     * const postWithUser_idOnly = await prisma.post.findMany({ select: { user_id: true } })
+     * // Only select the `job_id`
+     * const postWithJob_idOnly = await prisma.post.findMany({ select: { job_id: true } })
      * 
     **/
     findMany<T extends postFindManyArgs<ExtArgs>>(
@@ -14626,9 +14626,9 @@ export namespace Prisma {
   export interface Prisma__postClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
     job<T extends jobDefaultArgs<ExtArgs> = {}>(args?: Subset<T, jobDefaultArgs<ExtArgs>>): Prisma__jobClient<$Result.GetResult<Prisma.$jobPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    user<T extends userDefaultArgs<ExtArgs> = {}>(args?: Subset<T, userDefaultArgs<ExtArgs>>): Prisma__userClient<$Result.GetResult<Prisma.$userPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -14658,8 +14658,8 @@ export namespace Prisma {
    * Fields of the post model
    */ 
   interface postFieldRefs {
-    readonly user_id: FieldRef<"post", 'Int'>
     readonly job_id: FieldRef<"post", 'Int'>
+    readonly user_id: FieldRef<"post", 'Int'>
   }
     
 
@@ -15019,12 +15019,12 @@ export namespace Prisma {
 
   export const Rating_userScalarFieldEnum: {
     rating_id: 'rating_id',
-    user_id1: 'user_id1',
-    user_id2: 'user_id2',
     job_id: 'job_id',
     friendly_rating: 'friendly_rating',
     efficiency_rating: 'efficiency_rating',
-    accuracy_rating: 'accuracy_rating'
+    accuracy_rating: 'accuracy_rating',
+    user_id1: 'user_id1',
+    user_id2: 'user_id2'
   };
 
   export type Rating_userScalarFieldEnum = (typeof Rating_userScalarFieldEnum)[keyof typeof Rating_userScalarFieldEnum]
@@ -15032,10 +15032,10 @@ export namespace Prisma {
 
   export const Rating_comScalarFieldEnum: {
     rating_id: 'rating_id',
-    user_id1: 'user_id1',
-    user_id2: 'user_id2',
     job_id: 'job_id',
-    rating: 'rating'
+    rating: 'rating',
+    user_id1: 'user_id1',
+    user_id2: 'user_id2'
   };
 
   export type Rating_comScalarFieldEnum = (typeof Rating_comScalarFieldEnum)[keyof typeof Rating_comScalarFieldEnum]
@@ -15116,17 +15116,17 @@ export namespace Prisma {
 
 
   export const BookmarkScalarFieldEnum: {
-    book_id: 'book_id',
     user_id: 'user_id',
-    job_id: 'job_id'
+    job_id: 'job_id',
+    book_id: 'book_id'
   };
 
   export type BookmarkScalarFieldEnum = (typeof BookmarkScalarFieldEnum)[keyof typeof BookmarkScalarFieldEnum]
 
 
   export const PostScalarFieldEnum: {
-    user_id: 'user_id',
-    job_id: 'job_id'
+    job_id: 'job_id',
+    user_id: 'user_id'
   };
 
   export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
@@ -15234,16 +15234,16 @@ export namespace Prisma {
     email?: StringFilter<"user"> | string
     password?: StringFilter<"user"> | string
     role?: StringFilter<"user"> | string
-    post?: PostListRelationFilter
-    rating_user1?: Rating_userListRelationFilter
-    rating_users2?: Rating_userListRelationFilter
-    rating_com1?: Rating_comListRelationFilter
-    rating_com2?: Rating_comListRelationFilter
+    bookmark?: BookmarkListRelationFilter
     contact?: ContactListRelationFilter
     experience?: ExperienceListRelationFilter
-    user_career?: User_careerListRelationFilter
     history?: HistoryListRelationFilter
-    bookmark?: BookmarkListRelationFilter
+    post?: PostListRelationFilter
+    rating_com1?: Rating_comListRelationFilter
+    rating_com2?: Rating_comListRelationFilter
+    rating_user1?: Rating_userListRelationFilter
+    rating_users2?: Rating_userListRelationFilter
+    user_career?: User_careerListRelationFilter
   }
 
   export type userOrderByWithRelationInput = {
@@ -15257,16 +15257,16 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     role?: SortOrder
-    post?: postOrderByRelationAggregateInput
-    rating_user1?: rating_userOrderByRelationAggregateInput
-    rating_users2?: rating_userOrderByRelationAggregateInput
-    rating_com1?: rating_comOrderByRelationAggregateInput
-    rating_com2?: rating_comOrderByRelationAggregateInput
+    bookmark?: bookmarkOrderByRelationAggregateInput
     contact?: contactOrderByRelationAggregateInput
     experience?: experienceOrderByRelationAggregateInput
-    user_career?: user_careerOrderByRelationAggregateInput
     history?: historyOrderByRelationAggregateInput
-    bookmark?: bookmarkOrderByRelationAggregateInput
+    post?: postOrderByRelationAggregateInput
+    rating_com1?: rating_comOrderByRelationAggregateInput
+    rating_com2?: rating_comOrderByRelationAggregateInput
+    rating_user1?: rating_userOrderByRelationAggregateInput
+    rating_users2?: rating_userOrderByRelationAggregateInput
+    user_career?: user_careerOrderByRelationAggregateInput
   }
 
   export type userWhereUniqueInput = Prisma.AtLeast<{
@@ -15283,16 +15283,16 @@ export namespace Prisma {
     id_card?: StringFilter<"user"> | string
     password?: StringFilter<"user"> | string
     role?: StringFilter<"user"> | string
-    post?: PostListRelationFilter
-    rating_user1?: Rating_userListRelationFilter
-    rating_users2?: Rating_userListRelationFilter
-    rating_com1?: Rating_comListRelationFilter
-    rating_com2?: Rating_comListRelationFilter
+    bookmark?: BookmarkListRelationFilter
     contact?: ContactListRelationFilter
     experience?: ExperienceListRelationFilter
-    user_career?: User_careerListRelationFilter
     history?: HistoryListRelationFilter
-    bookmark?: BookmarkListRelationFilter
+    post?: PostListRelationFilter
+    rating_com1?: Rating_comListRelationFilter
+    rating_com2?: Rating_comListRelationFilter
+    rating_user1?: Rating_userListRelationFilter
+    rating_users2?: Rating_userListRelationFilter
+    user_career?: User_careerListRelationFilter
   }, "user_id" | "email">
 
   export type userOrderByWithAggregationInput = {
@@ -15334,28 +15334,28 @@ export namespace Prisma {
     OR?: rating_userWhereInput[]
     NOT?: rating_userWhereInput | rating_userWhereInput[]
     rating_id?: IntFilter<"rating_user"> | number
-    user_id1?: IntFilter<"rating_user"> | number
-    user_id2?: IntFilter<"rating_user"> | number
     job_id?: IntFilter<"rating_user"> | number
     friendly_rating?: FloatFilter<"rating_user"> | number
     efficiency_rating?: FloatFilter<"rating_user"> | number
     accuracy_rating?: FloatFilter<"rating_user"> | number
+    user_id1?: IntFilter<"rating_user"> | number
+    user_id2?: IntFilter<"rating_user"> | number
+    job?: XOR<JobRelationFilter, jobWhereInput>
     user1?: XOR<UserRelationFilter, userWhereInput>
     user2?: XOR<UserRelationFilter, userWhereInput>
-    job?: XOR<JobRelationFilter, jobWhereInput>
   }
 
   export type rating_userOrderByWithRelationInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     friendly_rating?: SortOrder
     efficiency_rating?: SortOrder
     accuracy_rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
+    job?: jobOrderByWithRelationInput
     user1?: userOrderByWithRelationInput
     user2?: userOrderByWithRelationInput
-    job?: jobOrderByWithRelationInput
   }
 
   export type rating_userWhereUniqueInput = Prisma.AtLeast<{
@@ -15363,25 +15363,25 @@ export namespace Prisma {
     AND?: rating_userWhereInput | rating_userWhereInput[]
     OR?: rating_userWhereInput[]
     NOT?: rating_userWhereInput | rating_userWhereInput[]
-    user_id1?: IntFilter<"rating_user"> | number
-    user_id2?: IntFilter<"rating_user"> | number
     job_id?: IntFilter<"rating_user"> | number
     friendly_rating?: FloatFilter<"rating_user"> | number
     efficiency_rating?: FloatFilter<"rating_user"> | number
     accuracy_rating?: FloatFilter<"rating_user"> | number
+    user_id1?: IntFilter<"rating_user"> | number
+    user_id2?: IntFilter<"rating_user"> | number
+    job?: XOR<JobRelationFilter, jobWhereInput>
     user1?: XOR<UserRelationFilter, userWhereInput>
     user2?: XOR<UserRelationFilter, userWhereInput>
-    job?: XOR<JobRelationFilter, jobWhereInput>
   }, "rating_id">
 
   export type rating_userOrderByWithAggregationInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     friendly_rating?: SortOrder
     efficiency_rating?: SortOrder
     accuracy_rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
     _count?: rating_userCountOrderByAggregateInput
     _avg?: rating_userAvgOrderByAggregateInput
     _max?: rating_userMaxOrderByAggregateInput
@@ -15394,12 +15394,12 @@ export namespace Prisma {
     OR?: rating_userScalarWhereWithAggregatesInput[]
     NOT?: rating_userScalarWhereWithAggregatesInput | rating_userScalarWhereWithAggregatesInput[]
     rating_id?: IntWithAggregatesFilter<"rating_user"> | number
-    user_id1?: IntWithAggregatesFilter<"rating_user"> | number
-    user_id2?: IntWithAggregatesFilter<"rating_user"> | number
     job_id?: IntWithAggregatesFilter<"rating_user"> | number
     friendly_rating?: FloatWithAggregatesFilter<"rating_user"> | number
     efficiency_rating?: FloatWithAggregatesFilter<"rating_user"> | number
     accuracy_rating?: FloatWithAggregatesFilter<"rating_user"> | number
+    user_id1?: IntWithAggregatesFilter<"rating_user"> | number
+    user_id2?: IntWithAggregatesFilter<"rating_user"> | number
   }
 
   export type rating_comWhereInput = {
@@ -15407,24 +15407,24 @@ export namespace Prisma {
     OR?: rating_comWhereInput[]
     NOT?: rating_comWhereInput | rating_comWhereInput[]
     rating_id?: IntFilter<"rating_com"> | number
-    user_id1?: IntFilter<"rating_com"> | number
-    user_id2?: IntFilter<"rating_com"> | number
     job_id?: IntFilter<"rating_com"> | number
     rating?: FloatFilter<"rating_com"> | number
+    user_id1?: IntFilter<"rating_com"> | number
+    user_id2?: IntFilter<"rating_com"> | number
+    job?: XOR<JobRelationFilter, jobWhereInput>
     user1?: XOR<UserRelationFilter, userWhereInput>
     user2?: XOR<UserRelationFilter, userWhereInput>
-    job?: XOR<JobRelationFilter, jobWhereInput>
   }
 
   export type rating_comOrderByWithRelationInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
+    job?: jobOrderByWithRelationInput
     user1?: userOrderByWithRelationInput
     user2?: userOrderByWithRelationInput
-    job?: jobOrderByWithRelationInput
   }
 
   export type rating_comWhereUniqueInput = Prisma.AtLeast<{
@@ -15432,21 +15432,21 @@ export namespace Prisma {
     AND?: rating_comWhereInput | rating_comWhereInput[]
     OR?: rating_comWhereInput[]
     NOT?: rating_comWhereInput | rating_comWhereInput[]
-    user_id1?: IntFilter<"rating_com"> | number
-    user_id2?: IntFilter<"rating_com"> | number
     job_id?: IntFilter<"rating_com"> | number
     rating?: FloatFilter<"rating_com"> | number
+    user_id1?: IntFilter<"rating_com"> | number
+    user_id2?: IntFilter<"rating_com"> | number
+    job?: XOR<JobRelationFilter, jobWhereInput>
     user1?: XOR<UserRelationFilter, userWhereInput>
     user2?: XOR<UserRelationFilter, userWhereInput>
-    job?: XOR<JobRelationFilter, jobWhereInput>
   }, "rating_id">
 
   export type rating_comOrderByWithAggregationInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
     _count?: rating_comCountOrderByAggregateInput
     _avg?: rating_comAvgOrderByAggregateInput
     _max?: rating_comMaxOrderByAggregateInput
@@ -15459,10 +15459,10 @@ export namespace Prisma {
     OR?: rating_comScalarWhereWithAggregatesInput[]
     NOT?: rating_comScalarWhereWithAggregatesInput | rating_comScalarWhereWithAggregatesInput[]
     rating_id?: IntWithAggregatesFilter<"rating_com"> | number
-    user_id1?: IntWithAggregatesFilter<"rating_com"> | number
-    user_id2?: IntWithAggregatesFilter<"rating_com"> | number
     job_id?: IntWithAggregatesFilter<"rating_com"> | number
     rating?: FloatWithAggregatesFilter<"rating_com"> | number
+    user_id1?: IntWithAggregatesFilter<"rating_com"> | number
+    user_id2?: IntWithAggregatesFilter<"rating_com"> | number
   }
 
   export type contactWhereInput = {
@@ -15573,15 +15573,15 @@ export namespace Prisma {
     NOT?: experienceWhereInput | experienceWhereInput[]
     user_id?: IntFilter<"experience"> | number
     category_id?: IntFilter<"experience"> | number
-    user?: XOR<UserRelationFilter, userWhereInput>
     category?: XOR<CategoryRelationFilter, categoryWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }
 
   export type experienceOrderByWithRelationInput = {
     user_id?: SortOrder
     category_id?: SortOrder
-    user?: userOrderByWithRelationInput
     category?: categoryOrderByWithRelationInput
+    user?: userOrderByWithRelationInput
   }
 
   export type experienceWhereUniqueInput = Prisma.AtLeast<{
@@ -15591,8 +15591,8 @@ export namespace Prisma {
     NOT?: experienceWhereInput | experienceWhereInput[]
     user_id?: IntFilter<"experience"> | number
     category_id?: IntFilter<"experience"> | number
-    user?: XOR<UserRelationFilter, userWhereInput>
     category?: XOR<CategoryRelationFilter, categoryWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }, "user_id_category_id">
 
   export type experienceOrderByWithAggregationInput = {
@@ -15661,15 +15661,15 @@ export namespace Prisma {
     NOT?: user_careerWhereInput | user_careerWhereInput[]
     user_id?: IntFilter<"user_career"> | number
     career_id?: IntFilter<"user_career"> | number
-    user?: XOR<UserRelationFilter, userWhereInput>
     career?: XOR<CareerRelationFilter, careerWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }
 
   export type user_careerOrderByWithRelationInput = {
     user_id?: SortOrder
     career_id?: SortOrder
-    user?: userOrderByWithRelationInput
     career?: careerOrderByWithRelationInput
+    user?: userOrderByWithRelationInput
   }
 
   export type user_careerWhereUniqueInput = Prisma.AtLeast<{
@@ -15679,8 +15679,8 @@ export namespace Prisma {
     NOT?: user_careerWhereInput | user_careerWhereInput[]
     user_id?: IntFilter<"user_career"> | number
     career_id?: IntFilter<"user_career"> | number
-    user?: XOR<UserRelationFilter, userWhereInput>
     career?: XOR<CareerRelationFilter, careerWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }, "user_id_career_id">
 
   export type user_careerOrderByWithAggregationInput = {
@@ -15713,12 +15713,12 @@ export namespace Prisma {
     posted_date?: DateTimeFilter<"job"> | Date | string
     submitted_date?: DateTimeNullableFilter<"job"> | Date | string | null
     status?: StringFilter<"job"> | string
+    bookmark?: BookmarkListRelationFilter
     history?: HistoryListRelationFilter
     job_exp?: Job_expListRelationFilter
-    rating_user?: Rating_userListRelationFilter
-    rating_com?: Rating_comListRelationFilter
-    bookmark?: BookmarkListRelationFilter
     post?: PostListRelationFilter
+    rating_com?: Rating_comListRelationFilter
+    rating_user?: Rating_userListRelationFilter
   }
 
   export type jobOrderByWithRelationInput = {
@@ -15730,12 +15730,12 @@ export namespace Prisma {
     posted_date?: SortOrder
     submitted_date?: SortOrderInput | SortOrder
     status?: SortOrder
+    bookmark?: bookmarkOrderByRelationAggregateInput
     history?: historyOrderByRelationAggregateInput
     job_exp?: job_expOrderByRelationAggregateInput
-    rating_user?: rating_userOrderByRelationAggregateInput
-    rating_com?: rating_comOrderByRelationAggregateInput
-    bookmark?: bookmarkOrderByRelationAggregateInput
     post?: postOrderByRelationAggregateInput
+    rating_com?: rating_comOrderByRelationAggregateInput
+    rating_user?: rating_userOrderByRelationAggregateInput
   }
 
   export type jobWhereUniqueInput = Prisma.AtLeast<{
@@ -15750,12 +15750,12 @@ export namespace Prisma {
     posted_date?: DateTimeFilter<"job"> | Date | string
     submitted_date?: DateTimeNullableFilter<"job"> | Date | string | null
     status?: StringFilter<"job"> | string
+    bookmark?: BookmarkListRelationFilter
     history?: HistoryListRelationFilter
     job_exp?: Job_expListRelationFilter
-    rating_user?: Rating_userListRelationFilter
-    rating_com?: Rating_comListRelationFilter
-    bookmark?: BookmarkListRelationFilter
     post?: PostListRelationFilter
+    rating_com?: Rating_comListRelationFilter
+    rating_user?: Rating_userListRelationFilter
   }, "job_id">
 
   export type jobOrderByWithAggregationInput = {
@@ -15795,16 +15795,16 @@ export namespace Prisma {
     user_id?: IntFilter<"history"> | number
     job_id?: IntFilter<"history"> | number
     status?: StringFilter<"history"> | string
-    user?: XOR<UserRelationFilter, userWhereInput>
     job?: XOR<JobRelationFilter, jobWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }
 
   export type historyOrderByWithRelationInput = {
     user_id?: SortOrder
     job_id?: SortOrder
     status?: SortOrder
-    user?: userOrderByWithRelationInput
     job?: jobOrderByWithRelationInput
+    user?: userOrderByWithRelationInput
   }
 
   export type historyWhereUniqueInput = Prisma.AtLeast<{
@@ -15815,8 +15815,8 @@ export namespace Prisma {
     user_id?: IntFilter<"history"> | number
     job_id?: IntFilter<"history"> | number
     status?: StringFilter<"history"> | string
-    user?: XOR<UserRelationFilter, userWhereInput>
     job?: XOR<JobRelationFilter, jobWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }, "user_id_job_id">
 
   export type historyOrderByWithAggregationInput = {
@@ -15845,15 +15845,15 @@ export namespace Prisma {
     NOT?: job_expWhereInput | job_expWhereInput[]
     job_id?: IntFilter<"job_exp"> | number
     category_id?: IntFilter<"job_exp"> | number
-    job?: XOR<JobRelationFilter, jobWhereInput>
     category?: XOR<CategoryRelationFilter, categoryWhereInput>
+    job?: XOR<JobRelationFilter, jobWhereInput>
   }
 
   export type job_expOrderByWithRelationInput = {
     job_id?: SortOrder
     category_id?: SortOrder
-    job?: jobOrderByWithRelationInput
     category?: categoryOrderByWithRelationInput
+    job?: jobOrderByWithRelationInput
   }
 
   export type job_expWhereUniqueInput = Prisma.AtLeast<{
@@ -15863,8 +15863,8 @@ export namespace Prisma {
     NOT?: job_expWhereInput | job_expWhereInput[]
     job_id?: IntFilter<"job_exp"> | number
     category_id?: IntFilter<"job_exp"> | number
-    job?: XOR<JobRelationFilter, jobWhereInput>
     category?: XOR<CategoryRelationFilter, categoryWhereInput>
+    job?: XOR<JobRelationFilter, jobWhereInput>
   }, "job_id_category_id">
 
   export type job_expOrderByWithAggregationInput = {
@@ -15889,19 +15889,19 @@ export namespace Prisma {
     AND?: bookmarkWhereInput | bookmarkWhereInput[]
     OR?: bookmarkWhereInput[]
     NOT?: bookmarkWhereInput | bookmarkWhereInput[]
-    book_id?: IntFilter<"bookmark"> | number
     user_id?: IntFilter<"bookmark"> | number
     job_id?: IntFilter<"bookmark"> | number
-    user?: XOR<UserRelationFilter, userWhereInput>
+    book_id?: IntFilter<"bookmark"> | number
     job?: XOR<JobRelationFilter, jobWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }
 
   export type bookmarkOrderByWithRelationInput = {
-    book_id?: SortOrder
     user_id?: SortOrder
     job_id?: SortOrder
-    user?: userOrderByWithRelationInput
+    book_id?: SortOrder
     job?: jobOrderByWithRelationInput
+    user?: userOrderByWithRelationInput
   }
 
   export type bookmarkWhereUniqueInput = Prisma.AtLeast<{
@@ -15912,14 +15912,14 @@ export namespace Prisma {
     NOT?: bookmarkWhereInput | bookmarkWhereInput[]
     user_id?: IntFilter<"bookmark"> | number
     job_id?: IntFilter<"bookmark"> | number
-    user?: XOR<UserRelationFilter, userWhereInput>
     job?: XOR<JobRelationFilter, jobWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }, "book_id" | "user_id_job_id">
 
   export type bookmarkOrderByWithAggregationInput = {
-    book_id?: SortOrder
     user_id?: SortOrder
     job_id?: SortOrder
+    book_id?: SortOrder
     _count?: bookmarkCountOrderByAggregateInput
     _avg?: bookmarkAvgOrderByAggregateInput
     _max?: bookmarkMaxOrderByAggregateInput
@@ -15931,26 +15931,26 @@ export namespace Prisma {
     AND?: bookmarkScalarWhereWithAggregatesInput | bookmarkScalarWhereWithAggregatesInput[]
     OR?: bookmarkScalarWhereWithAggregatesInput[]
     NOT?: bookmarkScalarWhereWithAggregatesInput | bookmarkScalarWhereWithAggregatesInput[]
-    book_id?: IntWithAggregatesFilter<"bookmark"> | number
     user_id?: IntWithAggregatesFilter<"bookmark"> | number
     job_id?: IntWithAggregatesFilter<"bookmark"> | number
+    book_id?: IntWithAggregatesFilter<"bookmark"> | number
   }
 
   export type postWhereInput = {
     AND?: postWhereInput | postWhereInput[]
     OR?: postWhereInput[]
     NOT?: postWhereInput | postWhereInput[]
-    user_id?: IntFilter<"post"> | number
     job_id?: IntFilter<"post"> | number
-    user?: XOR<UserRelationFilter, userWhereInput>
+    user_id?: IntFilter<"post"> | number
     job?: XOR<JobRelationFilter, jobWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }
 
   export type postOrderByWithRelationInput = {
-    user_id?: SortOrder
     job_id?: SortOrder
-    user?: userOrderByWithRelationInput
+    user_id?: SortOrder
     job?: jobOrderByWithRelationInput
+    user?: userOrderByWithRelationInput
   }
 
   export type postWhereUniqueInput = Prisma.AtLeast<{
@@ -15958,15 +15958,15 @@ export namespace Prisma {
     AND?: postWhereInput | postWhereInput[]
     OR?: postWhereInput[]
     NOT?: postWhereInput | postWhereInput[]
-    user_id?: IntFilter<"post"> | number
     job_id?: IntFilter<"post"> | number
-    user?: XOR<UserRelationFilter, userWhereInput>
+    user_id?: IntFilter<"post"> | number
     job?: XOR<JobRelationFilter, jobWhereInput>
+    user?: XOR<UserRelationFilter, userWhereInput>
   }, "user_id_job_id">
 
   export type postOrderByWithAggregationInput = {
-    user_id?: SortOrder
     job_id?: SortOrder
+    user_id?: SortOrder
     _count?: postCountOrderByAggregateInput
     _avg?: postAvgOrderByAggregateInput
     _max?: postMaxOrderByAggregateInput
@@ -15978,8 +15978,8 @@ export namespace Prisma {
     AND?: postScalarWhereWithAggregatesInput | postScalarWhereWithAggregatesInput[]
     OR?: postScalarWhereWithAggregatesInput[]
     NOT?: postScalarWhereWithAggregatesInput | postScalarWhereWithAggregatesInput[]
-    user_id?: IntWithAggregatesFilter<"post"> | number
     job_id?: IntWithAggregatesFilter<"post"> | number
+    user_id?: IntWithAggregatesFilter<"post"> | number
   }
 
   export type userCreateInput = {
@@ -15992,16 +15992,16 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
     contact?: contactCreateNestedManyWithoutUserInput
     experience?: experienceCreateNestedManyWithoutUserInput
-    user_career?: user_careerCreateNestedManyWithoutUserInput
     history?: historyCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
+    post?: postCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
+    user_career?: user_careerCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateInput = {
@@ -16015,16 +16015,16 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
     contact?: contactUncheckedCreateNestedManyWithoutUserInput
     experience?: experienceUncheckedCreateNestedManyWithoutUserInput
-    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
     history?: historyUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
+    post?: postUncheckedCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
+    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userUpdateInput = {
@@ -16037,16 +16037,16 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
     contact?: contactUpdateManyWithoutUserNestedInput
     experience?: experienceUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUpdateManyWithoutUserNestedInput
     history?: historyUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
+    post?: postUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateInput = {
@@ -16060,16 +16060,16 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
     contact?: contactUncheckedUpdateManyWithoutUserNestedInput
     experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
     history?: historyUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
+    post?: postUncheckedUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type userCreateManyInput = {
@@ -16114,48 +16114,48 @@ export namespace Prisma {
     friendly_rating?: number
     efficiency_rating?: number
     accuracy_rating?: number
+    job: jobCreateNestedOneWithoutRating_userInput
     user1: userCreateNestedOneWithoutRating_user1Input
     user2: userCreateNestedOneWithoutRating_users2Input
-    job: jobCreateNestedOneWithoutRating_userInput
   }
 
   export type rating_userUncheckedCreateInput = {
     rating_id?: number
-    user_id1: number
-    user_id2: number
     job_id: number
     friendly_rating?: number
     efficiency_rating?: number
     accuracy_rating?: number
+    user_id1: number
+    user_id2: number
   }
 
   export type rating_userUpdateInput = {
     friendly_rating?: FloatFieldUpdateOperationsInput | number
     efficiency_rating?: FloatFieldUpdateOperationsInput | number
     accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    job?: jobUpdateOneRequiredWithoutRating_userNestedInput
     user1?: userUpdateOneRequiredWithoutRating_user1NestedInput
     user2?: userUpdateOneRequiredWithoutRating_users2NestedInput
-    job?: jobUpdateOneRequiredWithoutRating_userNestedInput
   }
 
   export type rating_userUncheckedUpdateInput = {
     rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
     job_id?: IntFieldUpdateOperationsInput | number
     friendly_rating?: FloatFieldUpdateOperationsInput | number
     efficiency_rating?: FloatFieldUpdateOperationsInput | number
     accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
   }
 
   export type rating_userCreateManyInput = {
     rating_id?: number
-    user_id1: number
-    user_id2: number
     job_id: number
     friendly_rating?: number
     efficiency_rating?: number
     accuracy_rating?: number
+    user_id1: number
+    user_id2: number
   }
 
   export type rating_userUpdateManyMutationInput = {
@@ -16166,50 +16166,50 @@ export namespace Prisma {
 
   export type rating_userUncheckedUpdateManyInput = {
     rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
     job_id?: IntFieldUpdateOperationsInput | number
     friendly_rating?: FloatFieldUpdateOperationsInput | number
     efficiency_rating?: FloatFieldUpdateOperationsInput | number
     accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
   }
 
   export type rating_comCreateInput = {
     rating?: number
+    job: jobCreateNestedOneWithoutRating_comInput
     user1: userCreateNestedOneWithoutRating_com1Input
     user2: userCreateNestedOneWithoutRating_com2Input
-    job: jobCreateNestedOneWithoutRating_comInput
   }
 
   export type rating_comUncheckedCreateInput = {
     rating_id?: number
-    user_id1: number
-    user_id2: number
     job_id: number
     rating?: number
+    user_id1: number
+    user_id2: number
   }
 
   export type rating_comUpdateInput = {
     rating?: FloatFieldUpdateOperationsInput | number
+    job?: jobUpdateOneRequiredWithoutRating_comNestedInput
     user1?: userUpdateOneRequiredWithoutRating_com1NestedInput
     user2?: userUpdateOneRequiredWithoutRating_com2NestedInput
-    job?: jobUpdateOneRequiredWithoutRating_comNestedInput
   }
 
   export type rating_comUncheckedUpdateInput = {
     rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
     job_id?: IntFieldUpdateOperationsInput | number
     rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
   }
 
   export type rating_comCreateManyInput = {
     rating_id?: number
-    user_id1: number
-    user_id2: number
     job_id: number
     rating?: number
+    user_id1: number
+    user_id2: number
   }
 
   export type rating_comUpdateManyMutationInput = {
@@ -16218,10 +16218,10 @@ export namespace Prisma {
 
   export type rating_comUncheckedUpdateManyInput = {
     rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
     job_id?: IntFieldUpdateOperationsInput | number
     rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
   }
 
   export type contactCreateInput = {
@@ -16317,8 +16317,8 @@ export namespace Prisma {
   }
 
   export type experienceCreateInput = {
-    user: userCreateNestedOneWithoutExperienceInput
     category: categoryCreateNestedOneWithoutExperiencesInput
+    user: userCreateNestedOneWithoutExperienceInput
   }
 
   export type experienceUncheckedCreateInput = {
@@ -16327,8 +16327,8 @@ export namespace Prisma {
   }
 
   export type experienceUpdateInput = {
-    user?: userUpdateOneRequiredWithoutExperienceNestedInput
     category?: categoryUpdateOneRequiredWithoutExperiencesNestedInput
+    user?: userUpdateOneRequiredWithoutExperienceNestedInput
   }
 
   export type experienceUncheckedUpdateInput = {
@@ -16387,8 +16387,8 @@ export namespace Prisma {
   }
 
   export type user_careerCreateInput = {
-    user: userCreateNestedOneWithoutUser_careerInput
     career: careerCreateNestedOneWithoutUser_careerInput
+    user: userCreateNestedOneWithoutUser_careerInput
   }
 
   export type user_careerUncheckedCreateInput = {
@@ -16397,8 +16397,8 @@ export namespace Prisma {
   }
 
   export type user_careerUpdateInput = {
-    user?: userUpdateOneRequiredWithoutUser_careerNestedInput
     career?: careerUpdateOneRequiredWithoutUser_careerNestedInput
+    user?: userUpdateOneRequiredWithoutUser_careerNestedInput
   }
 
   export type user_careerUncheckedUpdateInput = {
@@ -16428,12 +16428,12 @@ export namespace Prisma {
     posted_date?: Date | string
     submitted_date?: Date | string | null
     status?: string
+    bookmark?: bookmarkCreateNestedManyWithoutJobInput
     history?: historyCreateNestedManyWithoutJobInput
     job_exp?: job_expCreateNestedManyWithoutJobInput
-    rating_user?: rating_userCreateNestedManyWithoutJobInput
-    rating_com?: rating_comCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkCreateNestedManyWithoutJobInput
     post?: postCreateNestedManyWithoutJobInput
+    rating_com?: rating_comCreateNestedManyWithoutJobInput
+    rating_user?: rating_userCreateNestedManyWithoutJobInput
   }
 
   export type jobUncheckedCreateInput = {
@@ -16445,12 +16445,12 @@ export namespace Prisma {
     posted_date?: Date | string
     submitted_date?: Date | string | null
     status?: string
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
     history?: historyUncheckedCreateNestedManyWithoutJobInput
     job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
-    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
-    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
     post?: postUncheckedCreateNestedManyWithoutJobInput
+    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
+    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
   }
 
   export type jobUpdateInput = {
@@ -16461,12 +16461,12 @@ export namespace Prisma {
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
     submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
     history?: historyUpdateManyWithoutJobNestedInput
     job_exp?: job_expUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
     post?: postUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUpdateManyWithoutJobNestedInput
   }
 
   export type jobUncheckedUpdateInput = {
@@ -16478,12 +16478,12 @@ export namespace Prisma {
     posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
     submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
     history?: historyUncheckedUpdateManyWithoutJobNestedInput
     job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
     post?: postUncheckedUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
   }
 
   export type jobCreateManyInput = {
@@ -16520,8 +16520,8 @@ export namespace Prisma {
 
   export type historyCreateInput = {
     status?: string
-    user: userCreateNestedOneWithoutHistoryInput
     job: jobCreateNestedOneWithoutHistoryInput
+    user: userCreateNestedOneWithoutHistoryInput
   }
 
   export type historyUncheckedCreateInput = {
@@ -16532,8 +16532,8 @@ export namespace Prisma {
 
   export type historyUpdateInput = {
     status?: StringFieldUpdateOperationsInput | string
-    user?: userUpdateOneRequiredWithoutHistoryNestedInput
     job?: jobUpdateOneRequiredWithoutHistoryNestedInput
+    user?: userUpdateOneRequiredWithoutHistoryNestedInput
   }
 
   export type historyUncheckedUpdateInput = {
@@ -16559,8 +16559,8 @@ export namespace Prisma {
   }
 
   export type job_expCreateInput = {
-    job: jobCreateNestedOneWithoutJob_expInput
     category: categoryCreateNestedOneWithoutJob_expInput
+    job: jobCreateNestedOneWithoutJob_expInput
   }
 
   export type job_expUncheckedCreateInput = {
@@ -16569,8 +16569,8 @@ export namespace Prisma {
   }
 
   export type job_expUpdateInput = {
-    job?: jobUpdateOneRequiredWithoutJob_expNestedInput
     category?: categoryUpdateOneRequiredWithoutJob_expNestedInput
+    job?: jobUpdateOneRequiredWithoutJob_expNestedInput
   }
 
   export type job_expUncheckedUpdateInput = {
@@ -16593,31 +16593,31 @@ export namespace Prisma {
   }
 
   export type bookmarkCreateInput = {
-    user: userCreateNestedOneWithoutBookmarkInput
     job: jobCreateNestedOneWithoutBookmarkInput
+    user: userCreateNestedOneWithoutBookmarkInput
   }
 
   export type bookmarkUncheckedCreateInput = {
-    book_id?: number
     user_id: number
     job_id: number
+    book_id?: number
   }
 
   export type bookmarkUpdateInput = {
-    user?: userUpdateOneRequiredWithoutBookmarkNestedInput
     job?: jobUpdateOneRequiredWithoutBookmarkNestedInput
+    user?: userUpdateOneRequiredWithoutBookmarkNestedInput
   }
 
   export type bookmarkUncheckedUpdateInput = {
-    book_id?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
     job_id?: IntFieldUpdateOperationsInput | number
+    book_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type bookmarkCreateManyInput = {
-    book_id?: number
     user_id: number
     job_id: number
+    book_id?: number
   }
 
   export type bookmarkUpdateManyMutationInput = {
@@ -16625,34 +16625,34 @@ export namespace Prisma {
   }
 
   export type bookmarkUncheckedUpdateManyInput = {
-    book_id?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
     job_id?: IntFieldUpdateOperationsInput | number
+    book_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type postCreateInput = {
-    user: userCreateNestedOneWithoutPostInput
     job: jobCreateNestedOneWithoutPostInput
+    user: userCreateNestedOneWithoutPostInput
   }
 
   export type postUncheckedCreateInput = {
-    user_id: number
     job_id: number
+    user_id: number
   }
 
   export type postUpdateInput = {
-    user?: userUpdateOneRequiredWithoutPostNestedInput
     job?: jobUpdateOneRequiredWithoutPostNestedInput
+    user?: userUpdateOneRequiredWithoutPostNestedInput
   }
 
   export type postUncheckedUpdateInput = {
-    user_id?: IntFieldUpdateOperationsInput | number
     job_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type postCreateManyInput = {
-    user_id: number
     job_id: number
+    user_id: number
   }
 
   export type postUpdateManyMutationInput = {
@@ -16660,8 +16660,8 @@ export namespace Prisma {
   }
 
   export type postUncheckedUpdateManyInput = {
-    user_id?: IntFieldUpdateOperationsInput | number
     job_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -16705,22 +16705,10 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type PostListRelationFilter = {
-    every?: postWhereInput
-    some?: postWhereInput
-    none?: postWhereInput
-  }
-
-  export type Rating_userListRelationFilter = {
-    every?: rating_userWhereInput
-    some?: rating_userWhereInput
-    none?: rating_userWhereInput
-  }
-
-  export type Rating_comListRelationFilter = {
-    every?: rating_comWhereInput
-    some?: rating_comWhereInput
-    none?: rating_comWhereInput
+  export type BookmarkListRelationFilter = {
+    every?: bookmarkWhereInput
+    some?: bookmarkWhereInput
+    none?: bookmarkWhereInput
   }
 
   export type ContactListRelationFilter = {
@@ -16735,22 +16723,34 @@ export namespace Prisma {
     none?: experienceWhereInput
   }
 
-  export type User_careerListRelationFilter = {
-    every?: user_careerWhereInput
-    some?: user_careerWhereInput
-    none?: user_careerWhereInput
-  }
-
   export type HistoryListRelationFilter = {
     every?: historyWhereInput
     some?: historyWhereInput
     none?: historyWhereInput
   }
 
-  export type BookmarkListRelationFilter = {
-    every?: bookmarkWhereInput
-    some?: bookmarkWhereInput
-    none?: bookmarkWhereInput
+  export type PostListRelationFilter = {
+    every?: postWhereInput
+    some?: postWhereInput
+    none?: postWhereInput
+  }
+
+  export type Rating_comListRelationFilter = {
+    every?: rating_comWhereInput
+    some?: rating_comWhereInput
+    none?: rating_comWhereInput
+  }
+
+  export type Rating_userListRelationFilter = {
+    every?: rating_userWhereInput
+    some?: rating_userWhereInput
+    none?: rating_userWhereInput
+  }
+
+  export type User_careerListRelationFilter = {
+    every?: user_careerWhereInput
+    some?: user_careerWhereInput
+    none?: user_careerWhereInput
   }
 
   export type SortOrderInput = {
@@ -16758,15 +16758,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type postOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type rating_userOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type rating_comOrderByRelationAggregateInput = {
+  export type bookmarkOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16778,15 +16770,23 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type user_careerOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type historyOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type bookmarkOrderByRelationAggregateInput = {
+  export type postOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type rating_comOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type rating_userOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type user_careerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16900,64 +16900,64 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type UserRelationFilter = {
-    is?: userWhereInput
-    isNot?: userWhereInput
-  }
-
   export type JobRelationFilter = {
     is?: jobWhereInput
     isNot?: jobWhereInput
   }
 
+  export type UserRelationFilter = {
+    is?: userWhereInput
+    isNot?: userWhereInput
+  }
+
   export type rating_userCountOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     friendly_rating?: SortOrder
     efficiency_rating?: SortOrder
     accuracy_rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type rating_userAvgOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     friendly_rating?: SortOrder
     efficiency_rating?: SortOrder
     accuracy_rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type rating_userMaxOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     friendly_rating?: SortOrder
     efficiency_rating?: SortOrder
     accuracy_rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type rating_userMinOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     friendly_rating?: SortOrder
     efficiency_rating?: SortOrder
     accuracy_rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type rating_userSumOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     friendly_rating?: SortOrder
     efficiency_rating?: SortOrder
     accuracy_rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -16978,42 +16978,42 @@ export namespace Prisma {
 
   export type rating_comCountOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type rating_comAvgOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type rating_comMaxOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type rating_comMinOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type rating_comSumOrderByAggregateInput = {
     rating_id?: SortOrder
-    user_id1?: SortOrder
-    user_id2?: SortOrder
     job_id?: SortOrder
     rating?: SortOrder
+    user_id1?: SortOrder
+    user_id2?: SortOrder
   }
 
   export type contactCountOrderByAggregateInput = {
@@ -17338,33 +17338,33 @@ export namespace Prisma {
   }
 
   export type bookmarkCountOrderByAggregateInput = {
-    book_id?: SortOrder
     user_id?: SortOrder
     job_id?: SortOrder
+    book_id?: SortOrder
   }
 
   export type bookmarkAvgOrderByAggregateInput = {
-    book_id?: SortOrder
     user_id?: SortOrder
     job_id?: SortOrder
+    book_id?: SortOrder
   }
 
   export type bookmarkMaxOrderByAggregateInput = {
-    book_id?: SortOrder
     user_id?: SortOrder
     job_id?: SortOrder
+    book_id?: SortOrder
   }
 
   export type bookmarkMinOrderByAggregateInput = {
-    book_id?: SortOrder
     user_id?: SortOrder
     job_id?: SortOrder
+    book_id?: SortOrder
   }
 
   export type bookmarkSumOrderByAggregateInput = {
-    book_id?: SortOrder
     user_id?: SortOrder
     job_id?: SortOrder
+    book_id?: SortOrder
   }
 
   export type postUser_idJob_idCompoundUniqueInput = {
@@ -17373,63 +17373,35 @@ export namespace Prisma {
   }
 
   export type postCountOrderByAggregateInput = {
-    user_id?: SortOrder
     job_id?: SortOrder
+    user_id?: SortOrder
   }
 
   export type postAvgOrderByAggregateInput = {
-    user_id?: SortOrder
     job_id?: SortOrder
+    user_id?: SortOrder
   }
 
   export type postMaxOrderByAggregateInput = {
-    user_id?: SortOrder
     job_id?: SortOrder
+    user_id?: SortOrder
   }
 
   export type postMinOrderByAggregateInput = {
-    user_id?: SortOrder
     job_id?: SortOrder
+    user_id?: SortOrder
   }
 
   export type postSumOrderByAggregateInput = {
-    user_id?: SortOrder
     job_id?: SortOrder
+    user_id?: SortOrder
   }
 
-  export type postCreateNestedManyWithoutUserInput = {
-    create?: XOR<postCreateWithoutUserInput, postUncheckedCreateWithoutUserInput> | postCreateWithoutUserInput[] | postUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: postCreateOrConnectWithoutUserInput | postCreateOrConnectWithoutUserInput[]
-    createMany?: postCreateManyUserInputEnvelope
-    connect?: postWhereUniqueInput | postWhereUniqueInput[]
-  }
-
-  export type rating_userCreateNestedManyWithoutUser1Input = {
-    create?: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input> | rating_userCreateWithoutUser1Input[] | rating_userUncheckedCreateWithoutUser1Input[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutUser1Input | rating_userCreateOrConnectWithoutUser1Input[]
-    createMany?: rating_userCreateManyUser1InputEnvelope
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-  }
-
-  export type rating_userCreateNestedManyWithoutUser2Input = {
-    create?: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input> | rating_userCreateWithoutUser2Input[] | rating_userUncheckedCreateWithoutUser2Input[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutUser2Input | rating_userCreateOrConnectWithoutUser2Input[]
-    createMany?: rating_userCreateManyUser2InputEnvelope
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-  }
-
-  export type rating_comCreateNestedManyWithoutUser1Input = {
-    create?: XOR<rating_comCreateWithoutUser1Input, rating_comUncheckedCreateWithoutUser1Input> | rating_comCreateWithoutUser1Input[] | rating_comUncheckedCreateWithoutUser1Input[]
-    connectOrCreate?: rating_comCreateOrConnectWithoutUser1Input | rating_comCreateOrConnectWithoutUser1Input[]
-    createMany?: rating_comCreateManyUser1InputEnvelope
-    connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
-  }
-
-  export type rating_comCreateNestedManyWithoutUser2Input = {
-    create?: XOR<rating_comCreateWithoutUser2Input, rating_comUncheckedCreateWithoutUser2Input> | rating_comCreateWithoutUser2Input[] | rating_comUncheckedCreateWithoutUser2Input[]
-    connectOrCreate?: rating_comCreateOrConnectWithoutUser2Input | rating_comCreateOrConnectWithoutUser2Input[]
-    createMany?: rating_comCreateManyUser2InputEnvelope
-    connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+  export type bookmarkCreateNestedManyWithoutUserInput = {
+    create?: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput> | bookmarkCreateWithoutUserInput[] | bookmarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: bookmarkCreateOrConnectWithoutUserInput | bookmarkCreateOrConnectWithoutUserInput[]
+    createMany?: bookmarkCreateManyUserInputEnvelope
+    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
   }
 
   export type contactCreateNestedManyWithoutUserInput = {
@@ -17446,13 +17418,6 @@ export namespace Prisma {
     connect?: experienceWhereUniqueInput | experienceWhereUniqueInput[]
   }
 
-  export type user_careerCreateNestedManyWithoutUserInput = {
-    create?: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput> | user_careerCreateWithoutUserInput[] | user_careerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: user_careerCreateOrConnectWithoutUserInput | user_careerCreateOrConnectWithoutUserInput[]
-    createMany?: user_careerCreateManyUserInputEnvelope
-    connect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-  }
-
   export type historyCreateNestedManyWithoutUserInput = {
     create?: XOR<historyCreateWithoutUserInput, historyUncheckedCreateWithoutUserInput> | historyCreateWithoutUserInput[] | historyUncheckedCreateWithoutUserInput[]
     connectOrCreate?: historyCreateOrConnectWithoutUserInput | historyCreateOrConnectWithoutUserInput[]
@@ -17460,46 +17425,53 @@ export namespace Prisma {
     connect?: historyWhereUniqueInput | historyWhereUniqueInput[]
   }
 
-  export type bookmarkCreateNestedManyWithoutUserInput = {
-    create?: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput> | bookmarkCreateWithoutUserInput[] | bookmarkUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: bookmarkCreateOrConnectWithoutUserInput | bookmarkCreateOrConnectWithoutUserInput[]
-    createMany?: bookmarkCreateManyUserInputEnvelope
-    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-  }
-
-  export type postUncheckedCreateNestedManyWithoutUserInput = {
+  export type postCreateNestedManyWithoutUserInput = {
     create?: XOR<postCreateWithoutUserInput, postUncheckedCreateWithoutUserInput> | postCreateWithoutUserInput[] | postUncheckedCreateWithoutUserInput[]
     connectOrCreate?: postCreateOrConnectWithoutUserInput | postCreateOrConnectWithoutUserInput[]
     createMany?: postCreateManyUserInputEnvelope
     connect?: postWhereUniqueInput | postWhereUniqueInput[]
   }
 
-  export type rating_userUncheckedCreateNestedManyWithoutUser1Input = {
-    create?: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input> | rating_userCreateWithoutUser1Input[] | rating_userUncheckedCreateWithoutUser1Input[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutUser1Input | rating_userCreateOrConnectWithoutUser1Input[]
-    createMany?: rating_userCreateManyUser1InputEnvelope
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-  }
-
-  export type rating_userUncheckedCreateNestedManyWithoutUser2Input = {
-    create?: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input> | rating_userCreateWithoutUser2Input[] | rating_userUncheckedCreateWithoutUser2Input[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutUser2Input | rating_userCreateOrConnectWithoutUser2Input[]
-    createMany?: rating_userCreateManyUser2InputEnvelope
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-  }
-
-  export type rating_comUncheckedCreateNestedManyWithoutUser1Input = {
+  export type rating_comCreateNestedManyWithoutUser1Input = {
     create?: XOR<rating_comCreateWithoutUser1Input, rating_comUncheckedCreateWithoutUser1Input> | rating_comCreateWithoutUser1Input[] | rating_comUncheckedCreateWithoutUser1Input[]
     connectOrCreate?: rating_comCreateOrConnectWithoutUser1Input | rating_comCreateOrConnectWithoutUser1Input[]
     createMany?: rating_comCreateManyUser1InputEnvelope
     connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
   }
 
-  export type rating_comUncheckedCreateNestedManyWithoutUser2Input = {
+  export type rating_comCreateNestedManyWithoutUser2Input = {
     create?: XOR<rating_comCreateWithoutUser2Input, rating_comUncheckedCreateWithoutUser2Input> | rating_comCreateWithoutUser2Input[] | rating_comUncheckedCreateWithoutUser2Input[]
     connectOrCreate?: rating_comCreateOrConnectWithoutUser2Input | rating_comCreateOrConnectWithoutUser2Input[]
     createMany?: rating_comCreateManyUser2InputEnvelope
     connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+  }
+
+  export type rating_userCreateNestedManyWithoutUser1Input = {
+    create?: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input> | rating_userCreateWithoutUser1Input[] | rating_userUncheckedCreateWithoutUser1Input[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutUser1Input | rating_userCreateOrConnectWithoutUser1Input[]
+    createMany?: rating_userCreateManyUser1InputEnvelope
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+  }
+
+  export type rating_userCreateNestedManyWithoutUser2Input = {
+    create?: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input> | rating_userCreateWithoutUser2Input[] | rating_userUncheckedCreateWithoutUser2Input[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutUser2Input | rating_userCreateOrConnectWithoutUser2Input[]
+    createMany?: rating_userCreateManyUser2InputEnvelope
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+  }
+
+  export type user_careerCreateNestedManyWithoutUserInput = {
+    create?: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput> | user_careerCreateWithoutUserInput[] | user_careerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_careerCreateOrConnectWithoutUserInput | user_careerCreateOrConnectWithoutUserInput[]
+    createMany?: user_careerCreateManyUserInputEnvelope
+    connect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
+  }
+
+  export type bookmarkUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput> | bookmarkCreateWithoutUserInput[] | bookmarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: bookmarkCreateOrConnectWithoutUserInput | bookmarkCreateOrConnectWithoutUserInput[]
+    createMany?: bookmarkCreateManyUserInputEnvelope
+    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
   }
 
   export type contactUncheckedCreateNestedManyWithoutUserInput = {
@@ -17516,13 +17488,6 @@ export namespace Prisma {
     connect?: experienceWhereUniqueInput | experienceWhereUniqueInput[]
   }
 
-  export type user_careerUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput> | user_careerCreateWithoutUserInput[] | user_careerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: user_careerCreateOrConnectWithoutUserInput | user_careerCreateOrConnectWithoutUserInput[]
-    createMany?: user_careerCreateManyUserInputEnvelope
-    connect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-  }
-
   export type historyUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<historyCreateWithoutUserInput, historyUncheckedCreateWithoutUserInput> | historyCreateWithoutUserInput[] | historyUncheckedCreateWithoutUserInput[]
     connectOrCreate?: historyCreateOrConnectWithoutUserInput | historyCreateOrConnectWithoutUserInput[]
@@ -17530,11 +17495,46 @@ export namespace Prisma {
     connect?: historyWhereUniqueInput | historyWhereUniqueInput[]
   }
 
-  export type bookmarkUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput> | bookmarkCreateWithoutUserInput[] | bookmarkUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: bookmarkCreateOrConnectWithoutUserInput | bookmarkCreateOrConnectWithoutUserInput[]
-    createMany?: bookmarkCreateManyUserInputEnvelope
-    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+  export type postUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<postCreateWithoutUserInput, postUncheckedCreateWithoutUserInput> | postCreateWithoutUserInput[] | postUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: postCreateOrConnectWithoutUserInput | postCreateOrConnectWithoutUserInput[]
+    createMany?: postCreateManyUserInputEnvelope
+    connect?: postWhereUniqueInput | postWhereUniqueInput[]
+  }
+
+  export type rating_comUncheckedCreateNestedManyWithoutUser1Input = {
+    create?: XOR<rating_comCreateWithoutUser1Input, rating_comUncheckedCreateWithoutUser1Input> | rating_comCreateWithoutUser1Input[] | rating_comUncheckedCreateWithoutUser1Input[]
+    connectOrCreate?: rating_comCreateOrConnectWithoutUser1Input | rating_comCreateOrConnectWithoutUser1Input[]
+    createMany?: rating_comCreateManyUser1InputEnvelope
+    connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+  }
+
+  export type rating_comUncheckedCreateNestedManyWithoutUser2Input = {
+    create?: XOR<rating_comCreateWithoutUser2Input, rating_comUncheckedCreateWithoutUser2Input> | rating_comCreateWithoutUser2Input[] | rating_comUncheckedCreateWithoutUser2Input[]
+    connectOrCreate?: rating_comCreateOrConnectWithoutUser2Input | rating_comCreateOrConnectWithoutUser2Input[]
+    createMany?: rating_comCreateManyUser2InputEnvelope
+    connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+  }
+
+  export type rating_userUncheckedCreateNestedManyWithoutUser1Input = {
+    create?: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input> | rating_userCreateWithoutUser1Input[] | rating_userUncheckedCreateWithoutUser1Input[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutUser1Input | rating_userCreateOrConnectWithoutUser1Input[]
+    createMany?: rating_userCreateManyUser1InputEnvelope
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+  }
+
+  export type rating_userUncheckedCreateNestedManyWithoutUser2Input = {
+    create?: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input> | rating_userCreateWithoutUser2Input[] | rating_userUncheckedCreateWithoutUser2Input[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutUser2Input | rating_userCreateOrConnectWithoutUser2Input[]
+    createMany?: rating_userCreateManyUser2InputEnvelope
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+  }
+
+  export type user_careerUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput> | user_careerCreateWithoutUserInput[] | user_careerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_careerCreateOrConnectWithoutUserInput | user_careerCreateOrConnectWithoutUserInput[]
+    createMany?: user_careerCreateManyUserInputEnvelope
+    connect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -17545,74 +17545,18 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type postUpdateManyWithoutUserNestedInput = {
-    create?: XOR<postCreateWithoutUserInput, postUncheckedCreateWithoutUserInput> | postCreateWithoutUserInput[] | postUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: postCreateOrConnectWithoutUserInput | postCreateOrConnectWithoutUserInput[]
-    upsert?: postUpsertWithWhereUniqueWithoutUserInput | postUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: postCreateManyUserInputEnvelope
-    set?: postWhereUniqueInput | postWhereUniqueInput[]
-    disconnect?: postWhereUniqueInput | postWhereUniqueInput[]
-    delete?: postWhereUniqueInput | postWhereUniqueInput[]
-    connect?: postWhereUniqueInput | postWhereUniqueInput[]
-    update?: postUpdateWithWhereUniqueWithoutUserInput | postUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: postUpdateManyWithWhereWithoutUserInput | postUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: postScalarWhereInput | postScalarWhereInput[]
-  }
-
-  export type rating_userUpdateManyWithoutUser1NestedInput = {
-    create?: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input> | rating_userCreateWithoutUser1Input[] | rating_userUncheckedCreateWithoutUser1Input[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutUser1Input | rating_userCreateOrConnectWithoutUser1Input[]
-    upsert?: rating_userUpsertWithWhereUniqueWithoutUser1Input | rating_userUpsertWithWhereUniqueWithoutUser1Input[]
-    createMany?: rating_userCreateManyUser1InputEnvelope
-    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    update?: rating_userUpdateWithWhereUniqueWithoutUser1Input | rating_userUpdateWithWhereUniqueWithoutUser1Input[]
-    updateMany?: rating_userUpdateManyWithWhereWithoutUser1Input | rating_userUpdateManyWithWhereWithoutUser1Input[]
-    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
-  }
-
-  export type rating_userUpdateManyWithoutUser2NestedInput = {
-    create?: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input> | rating_userCreateWithoutUser2Input[] | rating_userUncheckedCreateWithoutUser2Input[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutUser2Input | rating_userCreateOrConnectWithoutUser2Input[]
-    upsert?: rating_userUpsertWithWhereUniqueWithoutUser2Input | rating_userUpsertWithWhereUniqueWithoutUser2Input[]
-    createMany?: rating_userCreateManyUser2InputEnvelope
-    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    update?: rating_userUpdateWithWhereUniqueWithoutUser2Input | rating_userUpdateWithWhereUniqueWithoutUser2Input[]
-    updateMany?: rating_userUpdateManyWithWhereWithoutUser2Input | rating_userUpdateManyWithWhereWithoutUser2Input[]
-    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
-  }
-
-  export type rating_comUpdateManyWithoutUser1NestedInput = {
-    create?: XOR<rating_comCreateWithoutUser1Input, rating_comUncheckedCreateWithoutUser1Input> | rating_comCreateWithoutUser1Input[] | rating_comUncheckedCreateWithoutUser1Input[]
-    connectOrCreate?: rating_comCreateOrConnectWithoutUser1Input | rating_comCreateOrConnectWithoutUser1Input[]
-    upsert?: rating_comUpsertWithWhereUniqueWithoutUser1Input | rating_comUpsertWithWhereUniqueWithoutUser1Input[]
-    createMany?: rating_comCreateManyUser1InputEnvelope
-    set?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
-    disconnect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
-    delete?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
-    connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
-    update?: rating_comUpdateWithWhereUniqueWithoutUser1Input | rating_comUpdateWithWhereUniqueWithoutUser1Input[]
-    updateMany?: rating_comUpdateManyWithWhereWithoutUser1Input | rating_comUpdateManyWithWhereWithoutUser1Input[]
-    deleteMany?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
-  }
-
-  export type rating_comUpdateManyWithoutUser2NestedInput = {
-    create?: XOR<rating_comCreateWithoutUser2Input, rating_comUncheckedCreateWithoutUser2Input> | rating_comCreateWithoutUser2Input[] | rating_comUncheckedCreateWithoutUser2Input[]
-    connectOrCreate?: rating_comCreateOrConnectWithoutUser2Input | rating_comCreateOrConnectWithoutUser2Input[]
-    upsert?: rating_comUpsertWithWhereUniqueWithoutUser2Input | rating_comUpsertWithWhereUniqueWithoutUser2Input[]
-    createMany?: rating_comCreateManyUser2InputEnvelope
-    set?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
-    disconnect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
-    delete?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
-    connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
-    update?: rating_comUpdateWithWhereUniqueWithoutUser2Input | rating_comUpdateWithWhereUniqueWithoutUser2Input[]
-    updateMany?: rating_comUpdateManyWithWhereWithoutUser2Input | rating_comUpdateManyWithWhereWithoutUser2Input[]
-    deleteMany?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
+  export type bookmarkUpdateManyWithoutUserNestedInput = {
+    create?: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput> | bookmarkCreateWithoutUserInput[] | bookmarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: bookmarkCreateOrConnectWithoutUserInput | bookmarkCreateOrConnectWithoutUserInput[]
+    upsert?: bookmarkUpsertWithWhereUniqueWithoutUserInput | bookmarkUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: bookmarkCreateManyUserInputEnvelope
+    set?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    disconnect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    delete?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    update?: bookmarkUpdateWithWhereUniqueWithoutUserInput | bookmarkUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: bookmarkUpdateManyWithWhereWithoutUserInput | bookmarkUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
   }
 
   export type contactUpdateManyWithoutUserNestedInput = {
@@ -17643,20 +17587,6 @@ export namespace Prisma {
     deleteMany?: experienceScalarWhereInput | experienceScalarWhereInput[]
   }
 
-  export type user_careerUpdateManyWithoutUserNestedInput = {
-    create?: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput> | user_careerCreateWithoutUserInput[] | user_careerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: user_careerCreateOrConnectWithoutUserInput | user_careerCreateOrConnectWithoutUserInput[]
-    upsert?: user_careerUpsertWithWhereUniqueWithoutUserInput | user_careerUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: user_careerCreateManyUserInputEnvelope
-    set?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-    disconnect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-    delete?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-    connect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-    update?: user_careerUpdateWithWhereUniqueWithoutUserInput | user_careerUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: user_careerUpdateManyWithWhereWithoutUserInput | user_careerUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: user_careerScalarWhereInput | user_careerScalarWhereInput[]
-  }
-
   export type historyUpdateManyWithoutUserNestedInput = {
     create?: XOR<historyCreateWithoutUserInput, historyUncheckedCreateWithoutUserInput> | historyCreateWithoutUserInput[] | historyUncheckedCreateWithoutUserInput[]
     connectOrCreate?: historyCreateOrConnectWithoutUserInput | historyCreateOrConnectWithoutUserInput[]
@@ -17671,29 +17601,7 @@ export namespace Prisma {
     deleteMany?: historyScalarWhereInput | historyScalarWhereInput[]
   }
 
-  export type bookmarkUpdateManyWithoutUserNestedInput = {
-    create?: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput> | bookmarkCreateWithoutUserInput[] | bookmarkUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: bookmarkCreateOrConnectWithoutUserInput | bookmarkCreateOrConnectWithoutUserInput[]
-    upsert?: bookmarkUpsertWithWhereUniqueWithoutUserInput | bookmarkUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: bookmarkCreateManyUserInputEnvelope
-    set?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    disconnect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    delete?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    update?: bookmarkUpdateWithWhereUniqueWithoutUserInput | bookmarkUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: bookmarkUpdateManyWithWhereWithoutUserInput | bookmarkUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type postUncheckedUpdateManyWithoutUserNestedInput = {
+  export type postUpdateManyWithoutUserNestedInput = {
     create?: XOR<postCreateWithoutUserInput, postUncheckedCreateWithoutUserInput> | postCreateWithoutUserInput[] | postUncheckedCreateWithoutUserInput[]
     connectOrCreate?: postCreateOrConnectWithoutUserInput | postCreateOrConnectWithoutUserInput[]
     upsert?: postUpsertWithWhereUniqueWithoutUserInput | postUpsertWithWhereUniqueWithoutUserInput[]
@@ -17707,35 +17615,7 @@ export namespace Prisma {
     deleteMany?: postScalarWhereInput | postScalarWhereInput[]
   }
 
-  export type rating_userUncheckedUpdateManyWithoutUser1NestedInput = {
-    create?: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input> | rating_userCreateWithoutUser1Input[] | rating_userUncheckedCreateWithoutUser1Input[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutUser1Input | rating_userCreateOrConnectWithoutUser1Input[]
-    upsert?: rating_userUpsertWithWhereUniqueWithoutUser1Input | rating_userUpsertWithWhereUniqueWithoutUser1Input[]
-    createMany?: rating_userCreateManyUser1InputEnvelope
-    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    update?: rating_userUpdateWithWhereUniqueWithoutUser1Input | rating_userUpdateWithWhereUniqueWithoutUser1Input[]
-    updateMany?: rating_userUpdateManyWithWhereWithoutUser1Input | rating_userUpdateManyWithWhereWithoutUser1Input[]
-    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
-  }
-
-  export type rating_userUncheckedUpdateManyWithoutUser2NestedInput = {
-    create?: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input> | rating_userCreateWithoutUser2Input[] | rating_userUncheckedCreateWithoutUser2Input[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutUser2Input | rating_userCreateOrConnectWithoutUser2Input[]
-    upsert?: rating_userUpsertWithWhereUniqueWithoutUser2Input | rating_userUpsertWithWhereUniqueWithoutUser2Input[]
-    createMany?: rating_userCreateManyUser2InputEnvelope
-    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    update?: rating_userUpdateWithWhereUniqueWithoutUser2Input | rating_userUpdateWithWhereUniqueWithoutUser2Input[]
-    updateMany?: rating_userUpdateManyWithWhereWithoutUser2Input | rating_userUpdateManyWithWhereWithoutUser2Input[]
-    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
-  }
-
-  export type rating_comUncheckedUpdateManyWithoutUser1NestedInput = {
+  export type rating_comUpdateManyWithoutUser1NestedInput = {
     create?: XOR<rating_comCreateWithoutUser1Input, rating_comUncheckedCreateWithoutUser1Input> | rating_comCreateWithoutUser1Input[] | rating_comUncheckedCreateWithoutUser1Input[]
     connectOrCreate?: rating_comCreateOrConnectWithoutUser1Input | rating_comCreateOrConnectWithoutUser1Input[]
     upsert?: rating_comUpsertWithWhereUniqueWithoutUser1Input | rating_comUpsertWithWhereUniqueWithoutUser1Input[]
@@ -17749,7 +17629,7 @@ export namespace Prisma {
     deleteMany?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
   }
 
-  export type rating_comUncheckedUpdateManyWithoutUser2NestedInput = {
+  export type rating_comUpdateManyWithoutUser2NestedInput = {
     create?: XOR<rating_comCreateWithoutUser2Input, rating_comUncheckedCreateWithoutUser2Input> | rating_comCreateWithoutUser2Input[] | rating_comUncheckedCreateWithoutUser2Input[]
     connectOrCreate?: rating_comCreateOrConnectWithoutUser2Input | rating_comCreateOrConnectWithoutUser2Input[]
     upsert?: rating_comUpsertWithWhereUniqueWithoutUser2Input | rating_comUpsertWithWhereUniqueWithoutUser2Input[]
@@ -17761,6 +17641,70 @@ export namespace Prisma {
     update?: rating_comUpdateWithWhereUniqueWithoutUser2Input | rating_comUpdateWithWhereUniqueWithoutUser2Input[]
     updateMany?: rating_comUpdateManyWithWhereWithoutUser2Input | rating_comUpdateManyWithWhereWithoutUser2Input[]
     deleteMany?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
+  }
+
+  export type rating_userUpdateManyWithoutUser1NestedInput = {
+    create?: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input> | rating_userCreateWithoutUser1Input[] | rating_userUncheckedCreateWithoutUser1Input[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutUser1Input | rating_userCreateOrConnectWithoutUser1Input[]
+    upsert?: rating_userUpsertWithWhereUniqueWithoutUser1Input | rating_userUpsertWithWhereUniqueWithoutUser1Input[]
+    createMany?: rating_userCreateManyUser1InputEnvelope
+    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    update?: rating_userUpdateWithWhereUniqueWithoutUser1Input | rating_userUpdateWithWhereUniqueWithoutUser1Input[]
+    updateMany?: rating_userUpdateManyWithWhereWithoutUser1Input | rating_userUpdateManyWithWhereWithoutUser1Input[]
+    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
+  }
+
+  export type rating_userUpdateManyWithoutUser2NestedInput = {
+    create?: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input> | rating_userCreateWithoutUser2Input[] | rating_userUncheckedCreateWithoutUser2Input[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutUser2Input | rating_userCreateOrConnectWithoutUser2Input[]
+    upsert?: rating_userUpsertWithWhereUniqueWithoutUser2Input | rating_userUpsertWithWhereUniqueWithoutUser2Input[]
+    createMany?: rating_userCreateManyUser2InputEnvelope
+    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    update?: rating_userUpdateWithWhereUniqueWithoutUser2Input | rating_userUpdateWithWhereUniqueWithoutUser2Input[]
+    updateMany?: rating_userUpdateManyWithWhereWithoutUser2Input | rating_userUpdateManyWithWhereWithoutUser2Input[]
+    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
+  }
+
+  export type user_careerUpdateManyWithoutUserNestedInput = {
+    create?: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput> | user_careerCreateWithoutUserInput[] | user_careerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_careerCreateOrConnectWithoutUserInput | user_careerCreateOrConnectWithoutUserInput[]
+    upsert?: user_careerUpsertWithWhereUniqueWithoutUserInput | user_careerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: user_careerCreateManyUserInputEnvelope
+    set?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
+    disconnect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
+    delete?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
+    connect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
+    update?: user_careerUpdateWithWhereUniqueWithoutUserInput | user_careerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: user_careerUpdateManyWithWhereWithoutUserInput | user_careerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: user_careerScalarWhereInput | user_careerScalarWhereInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type bookmarkUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput> | bookmarkCreateWithoutUserInput[] | bookmarkUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: bookmarkCreateOrConnectWithoutUserInput | bookmarkCreateOrConnectWithoutUserInput[]
+    upsert?: bookmarkUpsertWithWhereUniqueWithoutUserInput | bookmarkUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: bookmarkCreateManyUserInputEnvelope
+    set?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    disconnect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    delete?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    update?: bookmarkUpdateWithWhereUniqueWithoutUserInput | bookmarkUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: bookmarkUpdateManyWithWhereWithoutUserInput | bookmarkUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
   }
 
   export type contactUncheckedUpdateManyWithoutUserNestedInput = {
@@ -17791,20 +17735,6 @@ export namespace Prisma {
     deleteMany?: experienceScalarWhereInput | experienceScalarWhereInput[]
   }
 
-  export type user_careerUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput> | user_careerCreateWithoutUserInput[] | user_careerUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: user_careerCreateOrConnectWithoutUserInput | user_careerCreateOrConnectWithoutUserInput[]
-    upsert?: user_careerUpsertWithWhereUniqueWithoutUserInput | user_careerUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: user_careerCreateManyUserInputEnvelope
-    set?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-    disconnect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-    delete?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-    connect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
-    update?: user_careerUpdateWithWhereUniqueWithoutUserInput | user_careerUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: user_careerUpdateManyWithWhereWithoutUserInput | user_careerUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: user_careerScalarWhereInput | user_careerScalarWhereInput[]
-  }
-
   export type historyUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<historyCreateWithoutUserInput, historyUncheckedCreateWithoutUserInput> | historyCreateWithoutUserInput[] | historyUncheckedCreateWithoutUserInput[]
     connectOrCreate?: historyCreateOrConnectWithoutUserInput | historyCreateOrConnectWithoutUserInput[]
@@ -17819,18 +17749,94 @@ export namespace Prisma {
     deleteMany?: historyScalarWhereInput | historyScalarWhereInput[]
   }
 
-  export type bookmarkUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput> | bookmarkCreateWithoutUserInput[] | bookmarkUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: bookmarkCreateOrConnectWithoutUserInput | bookmarkCreateOrConnectWithoutUserInput[]
-    upsert?: bookmarkUpsertWithWhereUniqueWithoutUserInput | bookmarkUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: bookmarkCreateManyUserInputEnvelope
-    set?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    disconnect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    delete?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    update?: bookmarkUpdateWithWhereUniqueWithoutUserInput | bookmarkUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: bookmarkUpdateManyWithWhereWithoutUserInput | bookmarkUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
+  export type postUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<postCreateWithoutUserInput, postUncheckedCreateWithoutUserInput> | postCreateWithoutUserInput[] | postUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: postCreateOrConnectWithoutUserInput | postCreateOrConnectWithoutUserInput[]
+    upsert?: postUpsertWithWhereUniqueWithoutUserInput | postUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: postCreateManyUserInputEnvelope
+    set?: postWhereUniqueInput | postWhereUniqueInput[]
+    disconnect?: postWhereUniqueInput | postWhereUniqueInput[]
+    delete?: postWhereUniqueInput | postWhereUniqueInput[]
+    connect?: postWhereUniqueInput | postWhereUniqueInput[]
+    update?: postUpdateWithWhereUniqueWithoutUserInput | postUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: postUpdateManyWithWhereWithoutUserInput | postUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: postScalarWhereInput | postScalarWhereInput[]
+  }
+
+  export type rating_comUncheckedUpdateManyWithoutUser1NestedInput = {
+    create?: XOR<rating_comCreateWithoutUser1Input, rating_comUncheckedCreateWithoutUser1Input> | rating_comCreateWithoutUser1Input[] | rating_comUncheckedCreateWithoutUser1Input[]
+    connectOrCreate?: rating_comCreateOrConnectWithoutUser1Input | rating_comCreateOrConnectWithoutUser1Input[]
+    upsert?: rating_comUpsertWithWhereUniqueWithoutUser1Input | rating_comUpsertWithWhereUniqueWithoutUser1Input[]
+    createMany?: rating_comCreateManyUser1InputEnvelope
+    set?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+    disconnect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+    delete?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+    connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+    update?: rating_comUpdateWithWhereUniqueWithoutUser1Input | rating_comUpdateWithWhereUniqueWithoutUser1Input[]
+    updateMany?: rating_comUpdateManyWithWhereWithoutUser1Input | rating_comUpdateManyWithWhereWithoutUser1Input[]
+    deleteMany?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
+  }
+
+  export type rating_comUncheckedUpdateManyWithoutUser2NestedInput = {
+    create?: XOR<rating_comCreateWithoutUser2Input, rating_comUncheckedCreateWithoutUser2Input> | rating_comCreateWithoutUser2Input[] | rating_comUncheckedCreateWithoutUser2Input[]
+    connectOrCreate?: rating_comCreateOrConnectWithoutUser2Input | rating_comCreateOrConnectWithoutUser2Input[]
+    upsert?: rating_comUpsertWithWhereUniqueWithoutUser2Input | rating_comUpsertWithWhereUniqueWithoutUser2Input[]
+    createMany?: rating_comCreateManyUser2InputEnvelope
+    set?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+    disconnect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+    delete?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+    connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
+    update?: rating_comUpdateWithWhereUniqueWithoutUser2Input | rating_comUpdateWithWhereUniqueWithoutUser2Input[]
+    updateMany?: rating_comUpdateManyWithWhereWithoutUser2Input | rating_comUpdateManyWithWhereWithoutUser2Input[]
+    deleteMany?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
+  }
+
+  export type rating_userUncheckedUpdateManyWithoutUser1NestedInput = {
+    create?: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input> | rating_userCreateWithoutUser1Input[] | rating_userUncheckedCreateWithoutUser1Input[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutUser1Input | rating_userCreateOrConnectWithoutUser1Input[]
+    upsert?: rating_userUpsertWithWhereUniqueWithoutUser1Input | rating_userUpsertWithWhereUniqueWithoutUser1Input[]
+    createMany?: rating_userCreateManyUser1InputEnvelope
+    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    update?: rating_userUpdateWithWhereUniqueWithoutUser1Input | rating_userUpdateWithWhereUniqueWithoutUser1Input[]
+    updateMany?: rating_userUpdateManyWithWhereWithoutUser1Input | rating_userUpdateManyWithWhereWithoutUser1Input[]
+    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
+  }
+
+  export type rating_userUncheckedUpdateManyWithoutUser2NestedInput = {
+    create?: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input> | rating_userCreateWithoutUser2Input[] | rating_userUncheckedCreateWithoutUser2Input[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutUser2Input | rating_userCreateOrConnectWithoutUser2Input[]
+    upsert?: rating_userUpsertWithWhereUniqueWithoutUser2Input | rating_userUpsertWithWhereUniqueWithoutUser2Input[]
+    createMany?: rating_userCreateManyUser2InputEnvelope
+    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    update?: rating_userUpdateWithWhereUniqueWithoutUser2Input | rating_userUpdateWithWhereUniqueWithoutUser2Input[]
+    updateMany?: rating_userUpdateManyWithWhereWithoutUser2Input | rating_userUpdateManyWithWhereWithoutUser2Input[]
+    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
+  }
+
+  export type user_careerUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput> | user_careerCreateWithoutUserInput[] | user_careerUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: user_careerCreateOrConnectWithoutUserInput | user_careerCreateOrConnectWithoutUserInput[]
+    upsert?: user_careerUpsertWithWhereUniqueWithoutUserInput | user_careerUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: user_careerCreateManyUserInputEnvelope
+    set?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
+    disconnect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
+    delete?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
+    connect?: user_careerWhereUniqueInput | user_careerWhereUniqueInput[]
+    update?: user_careerUpdateWithWhereUniqueWithoutUserInput | user_careerUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: user_careerUpdateManyWithWhereWithoutUserInput | user_careerUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: user_careerScalarWhereInput | user_careerScalarWhereInput[]
+  }
+
+  export type jobCreateNestedOneWithoutRating_userInput = {
+    create?: XOR<jobCreateWithoutRating_userInput, jobUncheckedCreateWithoutRating_userInput>
+    connectOrCreate?: jobCreateOrConnectWithoutRating_userInput
+    connect?: jobWhereUniqueInput
   }
 
   export type userCreateNestedOneWithoutRating_user1Input = {
@@ -17845,18 +17851,20 @@ export namespace Prisma {
     connect?: userWhereUniqueInput
   }
 
-  export type jobCreateNestedOneWithoutRating_userInput = {
-    create?: XOR<jobCreateWithoutRating_userInput, jobUncheckedCreateWithoutRating_userInput>
-    connectOrCreate?: jobCreateOrConnectWithoutRating_userInput
-    connect?: jobWhereUniqueInput
-  }
-
   export type FloatFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type jobUpdateOneRequiredWithoutRating_userNestedInput = {
+    create?: XOR<jobCreateWithoutRating_userInput, jobUncheckedCreateWithoutRating_userInput>
+    connectOrCreate?: jobCreateOrConnectWithoutRating_userInput
+    upsert?: jobUpsertWithoutRating_userInput
+    connect?: jobWhereUniqueInput
+    update?: XOR<XOR<jobUpdateToOneWithWhereWithoutRating_userInput, jobUpdateWithoutRating_userInput>, jobUncheckedUpdateWithoutRating_userInput>
   }
 
   export type userUpdateOneRequiredWithoutRating_user1NestedInput = {
@@ -17875,12 +17883,10 @@ export namespace Prisma {
     update?: XOR<XOR<userUpdateToOneWithWhereWithoutRating_users2Input, userUpdateWithoutRating_users2Input>, userUncheckedUpdateWithoutRating_users2Input>
   }
 
-  export type jobUpdateOneRequiredWithoutRating_userNestedInput = {
-    create?: XOR<jobCreateWithoutRating_userInput, jobUncheckedCreateWithoutRating_userInput>
-    connectOrCreate?: jobCreateOrConnectWithoutRating_userInput
-    upsert?: jobUpsertWithoutRating_userInput
+  export type jobCreateNestedOneWithoutRating_comInput = {
+    create?: XOR<jobCreateWithoutRating_comInput, jobUncheckedCreateWithoutRating_comInput>
+    connectOrCreate?: jobCreateOrConnectWithoutRating_comInput
     connect?: jobWhereUniqueInput
-    update?: XOR<XOR<jobUpdateToOneWithWhereWithoutRating_userInput, jobUpdateWithoutRating_userInput>, jobUncheckedUpdateWithoutRating_userInput>
   }
 
   export type userCreateNestedOneWithoutRating_com1Input = {
@@ -17895,10 +17901,12 @@ export namespace Prisma {
     connect?: userWhereUniqueInput
   }
 
-  export type jobCreateNestedOneWithoutRating_comInput = {
+  export type jobUpdateOneRequiredWithoutRating_comNestedInput = {
     create?: XOR<jobCreateWithoutRating_comInput, jobUncheckedCreateWithoutRating_comInput>
     connectOrCreate?: jobCreateOrConnectWithoutRating_comInput
+    upsert?: jobUpsertWithoutRating_comInput
     connect?: jobWhereUniqueInput
+    update?: XOR<XOR<jobUpdateToOneWithWhereWithoutRating_comInput, jobUpdateWithoutRating_comInput>, jobUncheckedUpdateWithoutRating_comInput>
   }
 
   export type userUpdateOneRequiredWithoutRating_com1NestedInput = {
@@ -17915,14 +17923,6 @@ export namespace Prisma {
     upsert?: userUpsertWithoutRating_com2Input
     connect?: userWhereUniqueInput
     update?: XOR<XOR<userUpdateToOneWithWhereWithoutRating_com2Input, userUpdateWithoutRating_com2Input>, userUncheckedUpdateWithoutRating_com2Input>
-  }
-
-  export type jobUpdateOneRequiredWithoutRating_comNestedInput = {
-    create?: XOR<jobCreateWithoutRating_comInput, jobUncheckedCreateWithoutRating_comInput>
-    connectOrCreate?: jobCreateOrConnectWithoutRating_comInput
-    upsert?: jobUpsertWithoutRating_comInput
-    connect?: jobWhereUniqueInput
-    update?: XOR<XOR<jobUpdateToOneWithWhereWithoutRating_comInput, jobUpdateWithoutRating_comInput>, jobUncheckedUpdateWithoutRating_comInput>
   }
 
   export type userCreateNestedOneWithoutContactInput = {
@@ -18023,24 +18023,16 @@ export namespace Prisma {
     deleteMany?: job_expScalarWhereInput | job_expScalarWhereInput[]
   }
 
-  export type userCreateNestedOneWithoutExperienceInput = {
-    create?: XOR<userCreateWithoutExperienceInput, userUncheckedCreateWithoutExperienceInput>
-    connectOrCreate?: userCreateOrConnectWithoutExperienceInput
-    connect?: userWhereUniqueInput
-  }
-
   export type categoryCreateNestedOneWithoutExperiencesInput = {
     create?: XOR<categoryCreateWithoutExperiencesInput, categoryUncheckedCreateWithoutExperiencesInput>
     connectOrCreate?: categoryCreateOrConnectWithoutExperiencesInput
     connect?: categoryWhereUniqueInput
   }
 
-  export type userUpdateOneRequiredWithoutExperienceNestedInput = {
+  export type userCreateNestedOneWithoutExperienceInput = {
     create?: XOR<userCreateWithoutExperienceInput, userUncheckedCreateWithoutExperienceInput>
     connectOrCreate?: userCreateOrConnectWithoutExperienceInput
-    upsert?: userUpsertWithoutExperienceInput
     connect?: userWhereUniqueInput
-    update?: XOR<XOR<userUpdateToOneWithWhereWithoutExperienceInput, userUpdateWithoutExperienceInput>, userUncheckedUpdateWithoutExperienceInput>
   }
 
   export type categoryUpdateOneRequiredWithoutExperiencesNestedInput = {
@@ -18049,6 +18041,14 @@ export namespace Prisma {
     upsert?: categoryUpsertWithoutExperiencesInput
     connect?: categoryWhereUniqueInput
     update?: XOR<XOR<categoryUpdateToOneWithWhereWithoutExperiencesInput, categoryUpdateWithoutExperiencesInput>, categoryUncheckedUpdateWithoutExperiencesInput>
+  }
+
+  export type userUpdateOneRequiredWithoutExperienceNestedInput = {
+    create?: XOR<userCreateWithoutExperienceInput, userUncheckedCreateWithoutExperienceInput>
+    connectOrCreate?: userCreateOrConnectWithoutExperienceInput
+    upsert?: userUpsertWithoutExperienceInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutExperienceInput, userUpdateWithoutExperienceInput>, userUncheckedUpdateWithoutExperienceInput>
   }
 
   export type user_careerCreateNestedManyWithoutCareerInput = {
@@ -18093,16 +18093,24 @@ export namespace Prisma {
     deleteMany?: user_careerScalarWhereInput | user_careerScalarWhereInput[]
   }
 
+  export type careerCreateNestedOneWithoutUser_careerInput = {
+    create?: XOR<careerCreateWithoutUser_careerInput, careerUncheckedCreateWithoutUser_careerInput>
+    connectOrCreate?: careerCreateOrConnectWithoutUser_careerInput
+    connect?: careerWhereUniqueInput
+  }
+
   export type userCreateNestedOneWithoutUser_careerInput = {
     create?: XOR<userCreateWithoutUser_careerInput, userUncheckedCreateWithoutUser_careerInput>
     connectOrCreate?: userCreateOrConnectWithoutUser_careerInput
     connect?: userWhereUniqueInput
   }
 
-  export type careerCreateNestedOneWithoutUser_careerInput = {
+  export type careerUpdateOneRequiredWithoutUser_careerNestedInput = {
     create?: XOR<careerCreateWithoutUser_careerInput, careerUncheckedCreateWithoutUser_careerInput>
     connectOrCreate?: careerCreateOrConnectWithoutUser_careerInput
+    upsert?: careerUpsertWithoutUser_careerInput
     connect?: careerWhereUniqueInput
+    update?: XOR<XOR<careerUpdateToOneWithWhereWithoutUser_careerInput, careerUpdateWithoutUser_careerInput>, careerUncheckedUpdateWithoutUser_careerInput>
   }
 
   export type userUpdateOneRequiredWithoutUser_careerNestedInput = {
@@ -18113,12 +18121,11 @@ export namespace Prisma {
     update?: XOR<XOR<userUpdateToOneWithWhereWithoutUser_careerInput, userUpdateWithoutUser_careerInput>, userUncheckedUpdateWithoutUser_careerInput>
   }
 
-  export type careerUpdateOneRequiredWithoutUser_careerNestedInput = {
-    create?: XOR<careerCreateWithoutUser_careerInput, careerUncheckedCreateWithoutUser_careerInput>
-    connectOrCreate?: careerCreateOrConnectWithoutUser_careerInput
-    upsert?: careerUpsertWithoutUser_careerInput
-    connect?: careerWhereUniqueInput
-    update?: XOR<XOR<careerUpdateToOneWithWhereWithoutUser_careerInput, careerUpdateWithoutUser_careerInput>, careerUncheckedUpdateWithoutUser_careerInput>
+  export type bookmarkCreateNestedManyWithoutJobInput = {
+    create?: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput> | bookmarkCreateWithoutJobInput[] | bookmarkUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: bookmarkCreateOrConnectWithoutJobInput | bookmarkCreateOrConnectWithoutJobInput[]
+    createMany?: bookmarkCreateManyJobInputEnvelope
+    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
   }
 
   export type historyCreateNestedManyWithoutJobInput = {
@@ -18135,11 +18142,11 @@ export namespace Prisma {
     connect?: job_expWhereUniqueInput | job_expWhereUniqueInput[]
   }
 
-  export type rating_userCreateNestedManyWithoutJobInput = {
-    create?: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput> | rating_userCreateWithoutJobInput[] | rating_userUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutJobInput | rating_userCreateOrConnectWithoutJobInput[]
-    createMany?: rating_userCreateManyJobInputEnvelope
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+  export type postCreateNestedManyWithoutJobInput = {
+    create?: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput> | postCreateWithoutJobInput[] | postUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: postCreateOrConnectWithoutJobInput | postCreateOrConnectWithoutJobInput[]
+    createMany?: postCreateManyJobInputEnvelope
+    connect?: postWhereUniqueInput | postWhereUniqueInput[]
   }
 
   export type rating_comCreateNestedManyWithoutJobInput = {
@@ -18149,18 +18156,18 @@ export namespace Prisma {
     connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
   }
 
-  export type bookmarkCreateNestedManyWithoutJobInput = {
+  export type rating_userCreateNestedManyWithoutJobInput = {
+    create?: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput> | rating_userCreateWithoutJobInput[] | rating_userUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutJobInput | rating_userCreateOrConnectWithoutJobInput[]
+    createMany?: rating_userCreateManyJobInputEnvelope
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+  }
+
+  export type bookmarkUncheckedCreateNestedManyWithoutJobInput = {
     create?: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput> | bookmarkCreateWithoutJobInput[] | bookmarkUncheckedCreateWithoutJobInput[]
     connectOrCreate?: bookmarkCreateOrConnectWithoutJobInput | bookmarkCreateOrConnectWithoutJobInput[]
     createMany?: bookmarkCreateManyJobInputEnvelope
     connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-  }
-
-  export type postCreateNestedManyWithoutJobInput = {
-    create?: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput> | postCreateWithoutJobInput[] | postUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: postCreateOrConnectWithoutJobInput | postCreateOrConnectWithoutJobInput[]
-    createMany?: postCreateManyJobInputEnvelope
-    connect?: postWhereUniqueInput | postWhereUniqueInput[]
   }
 
   export type historyUncheckedCreateNestedManyWithoutJobInput = {
@@ -18177,11 +18184,11 @@ export namespace Prisma {
     connect?: job_expWhereUniqueInput | job_expWhereUniqueInput[]
   }
 
-  export type rating_userUncheckedCreateNestedManyWithoutJobInput = {
-    create?: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput> | rating_userCreateWithoutJobInput[] | rating_userUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutJobInput | rating_userCreateOrConnectWithoutJobInput[]
-    createMany?: rating_userCreateManyJobInputEnvelope
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+  export type postUncheckedCreateNestedManyWithoutJobInput = {
+    create?: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput> | postCreateWithoutJobInput[] | postUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: postCreateOrConnectWithoutJobInput | postCreateOrConnectWithoutJobInput[]
+    createMany?: postCreateManyJobInputEnvelope
+    connect?: postWhereUniqueInput | postWhereUniqueInput[]
   }
 
   export type rating_comUncheckedCreateNestedManyWithoutJobInput = {
@@ -18191,18 +18198,11 @@ export namespace Prisma {
     connect?: rating_comWhereUniqueInput | rating_comWhereUniqueInput[]
   }
 
-  export type bookmarkUncheckedCreateNestedManyWithoutJobInput = {
-    create?: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput> | bookmarkCreateWithoutJobInput[] | bookmarkUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: bookmarkCreateOrConnectWithoutJobInput | bookmarkCreateOrConnectWithoutJobInput[]
-    createMany?: bookmarkCreateManyJobInputEnvelope
-    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-  }
-
-  export type postUncheckedCreateNestedManyWithoutJobInput = {
-    create?: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput> | postCreateWithoutJobInput[] | postUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: postCreateOrConnectWithoutJobInput | postCreateOrConnectWithoutJobInput[]
-    createMany?: postCreateManyJobInputEnvelope
-    connect?: postWhereUniqueInput | postWhereUniqueInput[]
+  export type rating_userUncheckedCreateNestedManyWithoutJobInput = {
+    create?: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput> | rating_userCreateWithoutJobInput[] | rating_userUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutJobInput | rating_userCreateOrConnectWithoutJobInput[]
+    createMany?: rating_userCreateManyJobInputEnvelope
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -18211,6 +18211,20 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type bookmarkUpdateManyWithoutJobNestedInput = {
+    create?: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput> | bookmarkCreateWithoutJobInput[] | bookmarkUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: bookmarkCreateOrConnectWithoutJobInput | bookmarkCreateOrConnectWithoutJobInput[]
+    upsert?: bookmarkUpsertWithWhereUniqueWithoutJobInput | bookmarkUpsertWithWhereUniqueWithoutJobInput[]
+    createMany?: bookmarkCreateManyJobInputEnvelope
+    set?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    disconnect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    delete?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
+    update?: bookmarkUpdateWithWhereUniqueWithoutJobInput | bookmarkUpdateWithWhereUniqueWithoutJobInput[]
+    updateMany?: bookmarkUpdateManyWithWhereWithoutJobInput | bookmarkUpdateManyWithWhereWithoutJobInput[]
+    deleteMany?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
   }
 
   export type historyUpdateManyWithoutJobNestedInput = {
@@ -18241,18 +18255,18 @@ export namespace Prisma {
     deleteMany?: job_expScalarWhereInput | job_expScalarWhereInput[]
   }
 
-  export type rating_userUpdateManyWithoutJobNestedInput = {
-    create?: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput> | rating_userCreateWithoutJobInput[] | rating_userUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutJobInput | rating_userCreateOrConnectWithoutJobInput[]
-    upsert?: rating_userUpsertWithWhereUniqueWithoutJobInput | rating_userUpsertWithWhereUniqueWithoutJobInput[]
-    createMany?: rating_userCreateManyJobInputEnvelope
-    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    update?: rating_userUpdateWithWhereUniqueWithoutJobInput | rating_userUpdateWithWhereUniqueWithoutJobInput[]
-    updateMany?: rating_userUpdateManyWithWhereWithoutJobInput | rating_userUpdateManyWithWhereWithoutJobInput[]
-    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
+  export type postUpdateManyWithoutJobNestedInput = {
+    create?: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput> | postCreateWithoutJobInput[] | postUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: postCreateOrConnectWithoutJobInput | postCreateOrConnectWithoutJobInput[]
+    upsert?: postUpsertWithWhereUniqueWithoutJobInput | postUpsertWithWhereUniqueWithoutJobInput[]
+    createMany?: postCreateManyJobInputEnvelope
+    set?: postWhereUniqueInput | postWhereUniqueInput[]
+    disconnect?: postWhereUniqueInput | postWhereUniqueInput[]
+    delete?: postWhereUniqueInput | postWhereUniqueInput[]
+    connect?: postWhereUniqueInput | postWhereUniqueInput[]
+    update?: postUpdateWithWhereUniqueWithoutJobInput | postUpdateWithWhereUniqueWithoutJobInput[]
+    updateMany?: postUpdateManyWithWhereWithoutJobInput | postUpdateManyWithWhereWithoutJobInput[]
+    deleteMany?: postScalarWhereInput | postScalarWhereInput[]
   }
 
   export type rating_comUpdateManyWithoutJobNestedInput = {
@@ -18269,7 +18283,21 @@ export namespace Prisma {
     deleteMany?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
   }
 
-  export type bookmarkUpdateManyWithoutJobNestedInput = {
+  export type rating_userUpdateManyWithoutJobNestedInput = {
+    create?: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput> | rating_userCreateWithoutJobInput[] | rating_userUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutJobInput | rating_userCreateOrConnectWithoutJobInput[]
+    upsert?: rating_userUpsertWithWhereUniqueWithoutJobInput | rating_userUpsertWithWhereUniqueWithoutJobInput[]
+    createMany?: rating_userCreateManyJobInputEnvelope
+    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    update?: rating_userUpdateWithWhereUniqueWithoutJobInput | rating_userUpdateWithWhereUniqueWithoutJobInput[]
+    updateMany?: rating_userUpdateManyWithWhereWithoutJobInput | rating_userUpdateManyWithWhereWithoutJobInput[]
+    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
+  }
+
+  export type bookmarkUncheckedUpdateManyWithoutJobNestedInput = {
     create?: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput> | bookmarkCreateWithoutJobInput[] | bookmarkUncheckedCreateWithoutJobInput[]
     connectOrCreate?: bookmarkCreateOrConnectWithoutJobInput | bookmarkCreateOrConnectWithoutJobInput[]
     upsert?: bookmarkUpsertWithWhereUniqueWithoutJobInput | bookmarkUpsertWithWhereUniqueWithoutJobInput[]
@@ -18281,20 +18309,6 @@ export namespace Prisma {
     update?: bookmarkUpdateWithWhereUniqueWithoutJobInput | bookmarkUpdateWithWhereUniqueWithoutJobInput[]
     updateMany?: bookmarkUpdateManyWithWhereWithoutJobInput | bookmarkUpdateManyWithWhereWithoutJobInput[]
     deleteMany?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
-  }
-
-  export type postUpdateManyWithoutJobNestedInput = {
-    create?: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput> | postCreateWithoutJobInput[] | postUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: postCreateOrConnectWithoutJobInput | postCreateOrConnectWithoutJobInput[]
-    upsert?: postUpsertWithWhereUniqueWithoutJobInput | postUpsertWithWhereUniqueWithoutJobInput[]
-    createMany?: postCreateManyJobInputEnvelope
-    set?: postWhereUniqueInput | postWhereUniqueInput[]
-    disconnect?: postWhereUniqueInput | postWhereUniqueInput[]
-    delete?: postWhereUniqueInput | postWhereUniqueInput[]
-    connect?: postWhereUniqueInput | postWhereUniqueInput[]
-    update?: postUpdateWithWhereUniqueWithoutJobInput | postUpdateWithWhereUniqueWithoutJobInput[]
-    updateMany?: postUpdateManyWithWhereWithoutJobInput | postUpdateManyWithWhereWithoutJobInput[]
-    deleteMany?: postScalarWhereInput | postScalarWhereInput[]
   }
 
   export type historyUncheckedUpdateManyWithoutJobNestedInput = {
@@ -18325,18 +18339,18 @@ export namespace Prisma {
     deleteMany?: job_expScalarWhereInput | job_expScalarWhereInput[]
   }
 
-  export type rating_userUncheckedUpdateManyWithoutJobNestedInput = {
-    create?: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput> | rating_userCreateWithoutJobInput[] | rating_userUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: rating_userCreateOrConnectWithoutJobInput | rating_userCreateOrConnectWithoutJobInput[]
-    upsert?: rating_userUpsertWithWhereUniqueWithoutJobInput | rating_userUpsertWithWhereUniqueWithoutJobInput[]
-    createMany?: rating_userCreateManyJobInputEnvelope
-    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
-    update?: rating_userUpdateWithWhereUniqueWithoutJobInput | rating_userUpdateWithWhereUniqueWithoutJobInput[]
-    updateMany?: rating_userUpdateManyWithWhereWithoutJobInput | rating_userUpdateManyWithWhereWithoutJobInput[]
-    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
+  export type postUncheckedUpdateManyWithoutJobNestedInput = {
+    create?: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput> | postCreateWithoutJobInput[] | postUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: postCreateOrConnectWithoutJobInput | postCreateOrConnectWithoutJobInput[]
+    upsert?: postUpsertWithWhereUniqueWithoutJobInput | postUpsertWithWhereUniqueWithoutJobInput[]
+    createMany?: postCreateManyJobInputEnvelope
+    set?: postWhereUniqueInput | postWhereUniqueInput[]
+    disconnect?: postWhereUniqueInput | postWhereUniqueInput[]
+    delete?: postWhereUniqueInput | postWhereUniqueInput[]
+    connect?: postWhereUniqueInput | postWhereUniqueInput[]
+    update?: postUpdateWithWhereUniqueWithoutJobInput | postUpdateWithWhereUniqueWithoutJobInput[]
+    updateMany?: postUpdateManyWithWhereWithoutJobInput | postUpdateManyWithWhereWithoutJobInput[]
+    deleteMany?: postScalarWhereInput | postScalarWhereInput[]
   }
 
   export type rating_comUncheckedUpdateManyWithoutJobNestedInput = {
@@ -18353,38 +18367,18 @@ export namespace Prisma {
     deleteMany?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
   }
 
-  export type bookmarkUncheckedUpdateManyWithoutJobNestedInput = {
-    create?: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput> | bookmarkCreateWithoutJobInput[] | bookmarkUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: bookmarkCreateOrConnectWithoutJobInput | bookmarkCreateOrConnectWithoutJobInput[]
-    upsert?: bookmarkUpsertWithWhereUniqueWithoutJobInput | bookmarkUpsertWithWhereUniqueWithoutJobInput[]
-    createMany?: bookmarkCreateManyJobInputEnvelope
-    set?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    disconnect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    delete?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    connect?: bookmarkWhereUniqueInput | bookmarkWhereUniqueInput[]
-    update?: bookmarkUpdateWithWhereUniqueWithoutJobInput | bookmarkUpdateWithWhereUniqueWithoutJobInput[]
-    updateMany?: bookmarkUpdateManyWithWhereWithoutJobInput | bookmarkUpdateManyWithWhereWithoutJobInput[]
-    deleteMany?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
-  }
-
-  export type postUncheckedUpdateManyWithoutJobNestedInput = {
-    create?: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput> | postCreateWithoutJobInput[] | postUncheckedCreateWithoutJobInput[]
-    connectOrCreate?: postCreateOrConnectWithoutJobInput | postCreateOrConnectWithoutJobInput[]
-    upsert?: postUpsertWithWhereUniqueWithoutJobInput | postUpsertWithWhereUniqueWithoutJobInput[]
-    createMany?: postCreateManyJobInputEnvelope
-    set?: postWhereUniqueInput | postWhereUniqueInput[]
-    disconnect?: postWhereUniqueInput | postWhereUniqueInput[]
-    delete?: postWhereUniqueInput | postWhereUniqueInput[]
-    connect?: postWhereUniqueInput | postWhereUniqueInput[]
-    update?: postUpdateWithWhereUniqueWithoutJobInput | postUpdateWithWhereUniqueWithoutJobInput[]
-    updateMany?: postUpdateManyWithWhereWithoutJobInput | postUpdateManyWithWhereWithoutJobInput[]
-    deleteMany?: postScalarWhereInput | postScalarWhereInput[]
-  }
-
-  export type userCreateNestedOneWithoutHistoryInput = {
-    create?: XOR<userCreateWithoutHistoryInput, userUncheckedCreateWithoutHistoryInput>
-    connectOrCreate?: userCreateOrConnectWithoutHistoryInput
-    connect?: userWhereUniqueInput
+  export type rating_userUncheckedUpdateManyWithoutJobNestedInput = {
+    create?: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput> | rating_userCreateWithoutJobInput[] | rating_userUncheckedCreateWithoutJobInput[]
+    connectOrCreate?: rating_userCreateOrConnectWithoutJobInput | rating_userCreateOrConnectWithoutJobInput[]
+    upsert?: rating_userUpsertWithWhereUniqueWithoutJobInput | rating_userUpsertWithWhereUniqueWithoutJobInput[]
+    createMany?: rating_userCreateManyJobInputEnvelope
+    set?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    disconnect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    delete?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    connect?: rating_userWhereUniqueInput | rating_userWhereUniqueInput[]
+    update?: rating_userUpdateWithWhereUniqueWithoutJobInput | rating_userUpdateWithWhereUniqueWithoutJobInput[]
+    updateMany?: rating_userUpdateManyWithWhereWithoutJobInput | rating_userUpdateManyWithWhereWithoutJobInput[]
+    deleteMany?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
   }
 
   export type jobCreateNestedOneWithoutHistoryInput = {
@@ -18393,12 +18387,10 @@ export namespace Prisma {
     connect?: jobWhereUniqueInput
   }
 
-  export type userUpdateOneRequiredWithoutHistoryNestedInput = {
+  export type userCreateNestedOneWithoutHistoryInput = {
     create?: XOR<userCreateWithoutHistoryInput, userUncheckedCreateWithoutHistoryInput>
     connectOrCreate?: userCreateOrConnectWithoutHistoryInput
-    upsert?: userUpsertWithoutHistoryInput
     connect?: userWhereUniqueInput
-    update?: XOR<XOR<userUpdateToOneWithWhereWithoutHistoryInput, userUpdateWithoutHistoryInput>, userUncheckedUpdateWithoutHistoryInput>
   }
 
   export type jobUpdateOneRequiredWithoutHistoryNestedInput = {
@@ -18409,10 +18401,12 @@ export namespace Prisma {
     update?: XOR<XOR<jobUpdateToOneWithWhereWithoutHistoryInput, jobUpdateWithoutHistoryInput>, jobUncheckedUpdateWithoutHistoryInput>
   }
 
-  export type jobCreateNestedOneWithoutJob_expInput = {
-    create?: XOR<jobCreateWithoutJob_expInput, jobUncheckedCreateWithoutJob_expInput>
-    connectOrCreate?: jobCreateOrConnectWithoutJob_expInput
-    connect?: jobWhereUniqueInput
+  export type userUpdateOneRequiredWithoutHistoryNestedInput = {
+    create?: XOR<userCreateWithoutHistoryInput, userUncheckedCreateWithoutHistoryInput>
+    connectOrCreate?: userCreateOrConnectWithoutHistoryInput
+    upsert?: userUpsertWithoutHistoryInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutHistoryInput, userUpdateWithoutHistoryInput>, userUncheckedUpdateWithoutHistoryInput>
   }
 
   export type categoryCreateNestedOneWithoutJob_expInput = {
@@ -18421,12 +18415,10 @@ export namespace Prisma {
     connect?: categoryWhereUniqueInput
   }
 
-  export type jobUpdateOneRequiredWithoutJob_expNestedInput = {
+  export type jobCreateNestedOneWithoutJob_expInput = {
     create?: XOR<jobCreateWithoutJob_expInput, jobUncheckedCreateWithoutJob_expInput>
     connectOrCreate?: jobCreateOrConnectWithoutJob_expInput
-    upsert?: jobUpsertWithoutJob_expInput
     connect?: jobWhereUniqueInput
-    update?: XOR<XOR<jobUpdateToOneWithWhereWithoutJob_expInput, jobUpdateWithoutJob_expInput>, jobUncheckedUpdateWithoutJob_expInput>
   }
 
   export type categoryUpdateOneRequiredWithoutJob_expNestedInput = {
@@ -18437,10 +18429,12 @@ export namespace Prisma {
     update?: XOR<XOR<categoryUpdateToOneWithWhereWithoutJob_expInput, categoryUpdateWithoutJob_expInput>, categoryUncheckedUpdateWithoutJob_expInput>
   }
 
-  export type userCreateNestedOneWithoutBookmarkInput = {
-    create?: XOR<userCreateWithoutBookmarkInput, userUncheckedCreateWithoutBookmarkInput>
-    connectOrCreate?: userCreateOrConnectWithoutBookmarkInput
-    connect?: userWhereUniqueInput
+  export type jobUpdateOneRequiredWithoutJob_expNestedInput = {
+    create?: XOR<jobCreateWithoutJob_expInput, jobUncheckedCreateWithoutJob_expInput>
+    connectOrCreate?: jobCreateOrConnectWithoutJob_expInput
+    upsert?: jobUpsertWithoutJob_expInput
+    connect?: jobWhereUniqueInput
+    update?: XOR<XOR<jobUpdateToOneWithWhereWithoutJob_expInput, jobUpdateWithoutJob_expInput>, jobUncheckedUpdateWithoutJob_expInput>
   }
 
   export type jobCreateNestedOneWithoutBookmarkInput = {
@@ -18449,12 +18443,10 @@ export namespace Prisma {
     connect?: jobWhereUniqueInput
   }
 
-  export type userUpdateOneRequiredWithoutBookmarkNestedInput = {
+  export type userCreateNestedOneWithoutBookmarkInput = {
     create?: XOR<userCreateWithoutBookmarkInput, userUncheckedCreateWithoutBookmarkInput>
     connectOrCreate?: userCreateOrConnectWithoutBookmarkInput
-    upsert?: userUpsertWithoutBookmarkInput
     connect?: userWhereUniqueInput
-    update?: XOR<XOR<userUpdateToOneWithWhereWithoutBookmarkInput, userUpdateWithoutBookmarkInput>, userUncheckedUpdateWithoutBookmarkInput>
   }
 
   export type jobUpdateOneRequiredWithoutBookmarkNestedInput = {
@@ -18465,10 +18457,12 @@ export namespace Prisma {
     update?: XOR<XOR<jobUpdateToOneWithWhereWithoutBookmarkInput, jobUpdateWithoutBookmarkInput>, jobUncheckedUpdateWithoutBookmarkInput>
   }
 
-  export type userCreateNestedOneWithoutPostInput = {
-    create?: XOR<userCreateWithoutPostInput, userUncheckedCreateWithoutPostInput>
-    connectOrCreate?: userCreateOrConnectWithoutPostInput
+  export type userUpdateOneRequiredWithoutBookmarkNestedInput = {
+    create?: XOR<userCreateWithoutBookmarkInput, userUncheckedCreateWithoutBookmarkInput>
+    connectOrCreate?: userCreateOrConnectWithoutBookmarkInput
+    upsert?: userUpsertWithoutBookmarkInput
     connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutBookmarkInput, userUpdateWithoutBookmarkInput>, userUncheckedUpdateWithoutBookmarkInput>
   }
 
   export type jobCreateNestedOneWithoutPostInput = {
@@ -18477,12 +18471,10 @@ export namespace Prisma {
     connect?: jobWhereUniqueInput
   }
 
-  export type userUpdateOneRequiredWithoutPostNestedInput = {
+  export type userCreateNestedOneWithoutPostInput = {
     create?: XOR<userCreateWithoutPostInput, userUncheckedCreateWithoutPostInput>
     connectOrCreate?: userCreateOrConnectWithoutPostInput
-    upsert?: userUpsertWithoutPostInput
     connect?: userWhereUniqueInput
-    update?: XOR<XOR<userUpdateToOneWithWhereWithoutPostInput, userUpdateWithoutPostInput>, userUncheckedUpdateWithoutPostInput>
   }
 
   export type jobUpdateOneRequiredWithoutPostNestedInput = {
@@ -18491,6 +18483,14 @@ export namespace Prisma {
     upsert?: jobUpsertWithoutPostInput
     connect?: jobWhereUniqueInput
     update?: XOR<XOR<jobUpdateToOneWithWhereWithoutPostInput, jobUpdateWithoutPostInput>, jobUncheckedUpdateWithoutPostInput>
+  }
+
+  export type userUpdateOneRequiredWithoutPostNestedInput = {
+    create?: XOR<userCreateWithoutPostInput, userUncheckedCreateWithoutPostInput>
+    connectOrCreate?: userCreateOrConnectWithoutPostInput
+    upsert?: userUpsertWithoutPostInput
+    connect?: userWhereUniqueInput
+    update?: XOR<XOR<userUpdateToOneWithWhereWithoutPostInput, userUpdateWithoutPostInput>, userUncheckedUpdateWithoutPostInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -18670,121 +18670,22 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type postCreateWithoutUserInput = {
-    job: jobCreateNestedOneWithoutPostInput
+  export type bookmarkCreateWithoutUserInput = {
+    job: jobCreateNestedOneWithoutBookmarkInput
   }
 
-  export type postUncheckedCreateWithoutUserInput = {
+  export type bookmarkUncheckedCreateWithoutUserInput = {
     job_id: number
+    book_id?: number
   }
 
-  export type postCreateOrConnectWithoutUserInput = {
-    where: postWhereUniqueInput
-    create: XOR<postCreateWithoutUserInput, postUncheckedCreateWithoutUserInput>
+  export type bookmarkCreateOrConnectWithoutUserInput = {
+    where: bookmarkWhereUniqueInput
+    create: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput>
   }
 
-  export type postCreateManyUserInputEnvelope = {
-    data: postCreateManyUserInput | postCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type rating_userCreateWithoutUser1Input = {
-    friendly_rating?: number
-    efficiency_rating?: number
-    accuracy_rating?: number
-    user2: userCreateNestedOneWithoutRating_users2Input
-    job: jobCreateNestedOneWithoutRating_userInput
-  }
-
-  export type rating_userUncheckedCreateWithoutUser1Input = {
-    rating_id?: number
-    user_id2: number
-    job_id: number
-    friendly_rating?: number
-    efficiency_rating?: number
-    accuracy_rating?: number
-  }
-
-  export type rating_userCreateOrConnectWithoutUser1Input = {
-    where: rating_userWhereUniqueInput
-    create: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input>
-  }
-
-  export type rating_userCreateManyUser1InputEnvelope = {
-    data: rating_userCreateManyUser1Input | rating_userCreateManyUser1Input[]
-    skipDuplicates?: boolean
-  }
-
-  export type rating_userCreateWithoutUser2Input = {
-    friendly_rating?: number
-    efficiency_rating?: number
-    accuracy_rating?: number
-    user1: userCreateNestedOneWithoutRating_user1Input
-    job: jobCreateNestedOneWithoutRating_userInput
-  }
-
-  export type rating_userUncheckedCreateWithoutUser2Input = {
-    rating_id?: number
-    user_id1: number
-    job_id: number
-    friendly_rating?: number
-    efficiency_rating?: number
-    accuracy_rating?: number
-  }
-
-  export type rating_userCreateOrConnectWithoutUser2Input = {
-    where: rating_userWhereUniqueInput
-    create: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input>
-  }
-
-  export type rating_userCreateManyUser2InputEnvelope = {
-    data: rating_userCreateManyUser2Input | rating_userCreateManyUser2Input[]
-    skipDuplicates?: boolean
-  }
-
-  export type rating_comCreateWithoutUser1Input = {
-    rating?: number
-    user2: userCreateNestedOneWithoutRating_com2Input
-    job: jobCreateNestedOneWithoutRating_comInput
-  }
-
-  export type rating_comUncheckedCreateWithoutUser1Input = {
-    rating_id?: number
-    user_id2: number
-    job_id: number
-    rating?: number
-  }
-
-  export type rating_comCreateOrConnectWithoutUser1Input = {
-    where: rating_comWhereUniqueInput
-    create: XOR<rating_comCreateWithoutUser1Input, rating_comUncheckedCreateWithoutUser1Input>
-  }
-
-  export type rating_comCreateManyUser1InputEnvelope = {
-    data: rating_comCreateManyUser1Input | rating_comCreateManyUser1Input[]
-    skipDuplicates?: boolean
-  }
-
-  export type rating_comCreateWithoutUser2Input = {
-    rating?: number
-    user1: userCreateNestedOneWithoutRating_com1Input
-    job: jobCreateNestedOneWithoutRating_comInput
-  }
-
-  export type rating_comUncheckedCreateWithoutUser2Input = {
-    rating_id?: number
-    user_id1: number
-    job_id: number
-    rating?: number
-  }
-
-  export type rating_comCreateOrConnectWithoutUser2Input = {
-    where: rating_comWhereUniqueInput
-    create: XOR<rating_comCreateWithoutUser2Input, rating_comUncheckedCreateWithoutUser2Input>
-  }
-
-  export type rating_comCreateManyUser2InputEnvelope = {
-    data: rating_comCreateManyUser2Input | rating_comCreateManyUser2Input[]
+  export type bookmarkCreateManyUserInputEnvelope = {
+    data: bookmarkCreateManyUserInput | bookmarkCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -18829,24 +18730,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type user_careerCreateWithoutUserInput = {
-    career: careerCreateNestedOneWithoutUser_careerInput
-  }
-
-  export type user_careerUncheckedCreateWithoutUserInput = {
-    career_id: number
-  }
-
-  export type user_careerCreateOrConnectWithoutUserInput = {
-    where: user_careerWhereUniqueInput
-    create: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput>
-  }
-
-  export type user_careerCreateManyUserInputEnvelope = {
-    data: user_careerCreateManyUserInput | user_careerCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type historyCreateWithoutUserInput = {
     status?: string
     job: jobCreateNestedOneWithoutHistoryInput
@@ -18867,135 +18750,165 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type bookmarkCreateWithoutUserInput = {
-    job: jobCreateNestedOneWithoutBookmarkInput
+  export type postCreateWithoutUserInput = {
+    job: jobCreateNestedOneWithoutPostInput
   }
 
-  export type bookmarkUncheckedCreateWithoutUserInput = {
-    book_id?: number
+  export type postUncheckedCreateWithoutUserInput = {
     job_id: number
   }
 
-  export type bookmarkCreateOrConnectWithoutUserInput = {
-    where: bookmarkWhereUniqueInput
-    create: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput>
-  }
-
-  export type bookmarkCreateManyUserInputEnvelope = {
-    data: bookmarkCreateManyUserInput | bookmarkCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type postUpsertWithWhereUniqueWithoutUserInput = {
+  export type postCreateOrConnectWithoutUserInput = {
     where: postWhereUniqueInput
-    update: XOR<postUpdateWithoutUserInput, postUncheckedUpdateWithoutUserInput>
     create: XOR<postCreateWithoutUserInput, postUncheckedCreateWithoutUserInput>
   }
 
-  export type postUpdateWithWhereUniqueWithoutUserInput = {
-    where: postWhereUniqueInput
-    data: XOR<postUpdateWithoutUserInput, postUncheckedUpdateWithoutUserInput>
+  export type postCreateManyUserInputEnvelope = {
+    data: postCreateManyUserInput | postCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
-  export type postUpdateManyWithWhereWithoutUserInput = {
-    where: postScalarWhereInput
-    data: XOR<postUpdateManyMutationInput, postUncheckedUpdateManyWithoutUserInput>
+  export type rating_comCreateWithoutUser1Input = {
+    rating?: number
+    job: jobCreateNestedOneWithoutRating_comInput
+    user2: userCreateNestedOneWithoutRating_com2Input
   }
 
-  export type postScalarWhereInput = {
-    AND?: postScalarWhereInput | postScalarWhereInput[]
-    OR?: postScalarWhereInput[]
-    NOT?: postScalarWhereInput | postScalarWhereInput[]
-    user_id?: IntFilter<"post"> | number
-    job_id?: IntFilter<"post"> | number
+  export type rating_comUncheckedCreateWithoutUser1Input = {
+    rating_id?: number
+    job_id: number
+    rating?: number
+    user_id2: number
   }
 
-  export type rating_userUpsertWithWhereUniqueWithoutUser1Input = {
-    where: rating_userWhereUniqueInput
-    update: XOR<rating_userUpdateWithoutUser1Input, rating_userUncheckedUpdateWithoutUser1Input>
-    create: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input>
-  }
-
-  export type rating_userUpdateWithWhereUniqueWithoutUser1Input = {
-    where: rating_userWhereUniqueInput
-    data: XOR<rating_userUpdateWithoutUser1Input, rating_userUncheckedUpdateWithoutUser1Input>
-  }
-
-  export type rating_userUpdateManyWithWhereWithoutUser1Input = {
-    where: rating_userScalarWhereInput
-    data: XOR<rating_userUpdateManyMutationInput, rating_userUncheckedUpdateManyWithoutUser1Input>
-  }
-
-  export type rating_userScalarWhereInput = {
-    AND?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
-    OR?: rating_userScalarWhereInput[]
-    NOT?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
-    rating_id?: IntFilter<"rating_user"> | number
-    user_id1?: IntFilter<"rating_user"> | number
-    user_id2?: IntFilter<"rating_user"> | number
-    job_id?: IntFilter<"rating_user"> | number
-    friendly_rating?: FloatFilter<"rating_user"> | number
-    efficiency_rating?: FloatFilter<"rating_user"> | number
-    accuracy_rating?: FloatFilter<"rating_user"> | number
-  }
-
-  export type rating_userUpsertWithWhereUniqueWithoutUser2Input = {
-    where: rating_userWhereUniqueInput
-    update: XOR<rating_userUpdateWithoutUser2Input, rating_userUncheckedUpdateWithoutUser2Input>
-    create: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input>
-  }
-
-  export type rating_userUpdateWithWhereUniqueWithoutUser2Input = {
-    where: rating_userWhereUniqueInput
-    data: XOR<rating_userUpdateWithoutUser2Input, rating_userUncheckedUpdateWithoutUser2Input>
-  }
-
-  export type rating_userUpdateManyWithWhereWithoutUser2Input = {
-    where: rating_userScalarWhereInput
-    data: XOR<rating_userUpdateManyMutationInput, rating_userUncheckedUpdateManyWithoutUser2Input>
-  }
-
-  export type rating_comUpsertWithWhereUniqueWithoutUser1Input = {
+  export type rating_comCreateOrConnectWithoutUser1Input = {
     where: rating_comWhereUniqueInput
-    update: XOR<rating_comUpdateWithoutUser1Input, rating_comUncheckedUpdateWithoutUser1Input>
     create: XOR<rating_comCreateWithoutUser1Input, rating_comUncheckedCreateWithoutUser1Input>
   }
 
-  export type rating_comUpdateWithWhereUniqueWithoutUser1Input = {
+  export type rating_comCreateManyUser1InputEnvelope = {
+    data: rating_comCreateManyUser1Input | rating_comCreateManyUser1Input[]
+    skipDuplicates?: boolean
+  }
+
+  export type rating_comCreateWithoutUser2Input = {
+    rating?: number
+    job: jobCreateNestedOneWithoutRating_comInput
+    user1: userCreateNestedOneWithoutRating_com1Input
+  }
+
+  export type rating_comUncheckedCreateWithoutUser2Input = {
+    rating_id?: number
+    job_id: number
+    rating?: number
+    user_id1: number
+  }
+
+  export type rating_comCreateOrConnectWithoutUser2Input = {
     where: rating_comWhereUniqueInput
-    data: XOR<rating_comUpdateWithoutUser1Input, rating_comUncheckedUpdateWithoutUser1Input>
-  }
-
-  export type rating_comUpdateManyWithWhereWithoutUser1Input = {
-    where: rating_comScalarWhereInput
-    data: XOR<rating_comUpdateManyMutationInput, rating_comUncheckedUpdateManyWithoutUser1Input>
-  }
-
-  export type rating_comScalarWhereInput = {
-    AND?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
-    OR?: rating_comScalarWhereInput[]
-    NOT?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
-    rating_id?: IntFilter<"rating_com"> | number
-    user_id1?: IntFilter<"rating_com"> | number
-    user_id2?: IntFilter<"rating_com"> | number
-    job_id?: IntFilter<"rating_com"> | number
-    rating?: FloatFilter<"rating_com"> | number
-  }
-
-  export type rating_comUpsertWithWhereUniqueWithoutUser2Input = {
-    where: rating_comWhereUniqueInput
-    update: XOR<rating_comUpdateWithoutUser2Input, rating_comUncheckedUpdateWithoutUser2Input>
     create: XOR<rating_comCreateWithoutUser2Input, rating_comUncheckedCreateWithoutUser2Input>
   }
 
-  export type rating_comUpdateWithWhereUniqueWithoutUser2Input = {
-    where: rating_comWhereUniqueInput
-    data: XOR<rating_comUpdateWithoutUser2Input, rating_comUncheckedUpdateWithoutUser2Input>
+  export type rating_comCreateManyUser2InputEnvelope = {
+    data: rating_comCreateManyUser2Input | rating_comCreateManyUser2Input[]
+    skipDuplicates?: boolean
   }
 
-  export type rating_comUpdateManyWithWhereWithoutUser2Input = {
-    where: rating_comScalarWhereInput
-    data: XOR<rating_comUpdateManyMutationInput, rating_comUncheckedUpdateManyWithoutUser2Input>
+  export type rating_userCreateWithoutUser1Input = {
+    friendly_rating?: number
+    efficiency_rating?: number
+    accuracy_rating?: number
+    job: jobCreateNestedOneWithoutRating_userInput
+    user2: userCreateNestedOneWithoutRating_users2Input
+  }
+
+  export type rating_userUncheckedCreateWithoutUser1Input = {
+    rating_id?: number
+    job_id: number
+    friendly_rating?: number
+    efficiency_rating?: number
+    accuracy_rating?: number
+    user_id2: number
+  }
+
+  export type rating_userCreateOrConnectWithoutUser1Input = {
+    where: rating_userWhereUniqueInput
+    create: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input>
+  }
+
+  export type rating_userCreateManyUser1InputEnvelope = {
+    data: rating_userCreateManyUser1Input | rating_userCreateManyUser1Input[]
+    skipDuplicates?: boolean
+  }
+
+  export type rating_userCreateWithoutUser2Input = {
+    friendly_rating?: number
+    efficiency_rating?: number
+    accuracy_rating?: number
+    job: jobCreateNestedOneWithoutRating_userInput
+    user1: userCreateNestedOneWithoutRating_user1Input
+  }
+
+  export type rating_userUncheckedCreateWithoutUser2Input = {
+    rating_id?: number
+    job_id: number
+    friendly_rating?: number
+    efficiency_rating?: number
+    accuracy_rating?: number
+    user_id1: number
+  }
+
+  export type rating_userCreateOrConnectWithoutUser2Input = {
+    where: rating_userWhereUniqueInput
+    create: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input>
+  }
+
+  export type rating_userCreateManyUser2InputEnvelope = {
+    data: rating_userCreateManyUser2Input | rating_userCreateManyUser2Input[]
+    skipDuplicates?: boolean
+  }
+
+  export type user_careerCreateWithoutUserInput = {
+    career: careerCreateNestedOneWithoutUser_careerInput
+  }
+
+  export type user_careerUncheckedCreateWithoutUserInput = {
+    career_id: number
+  }
+
+  export type user_careerCreateOrConnectWithoutUserInput = {
+    where: user_careerWhereUniqueInput
+    create: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput>
+  }
+
+  export type user_careerCreateManyUserInputEnvelope = {
+    data: user_careerCreateManyUserInput | user_careerCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type bookmarkUpsertWithWhereUniqueWithoutUserInput = {
+    where: bookmarkWhereUniqueInput
+    update: XOR<bookmarkUpdateWithoutUserInput, bookmarkUncheckedUpdateWithoutUserInput>
+    create: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput>
+  }
+
+  export type bookmarkUpdateWithWhereUniqueWithoutUserInput = {
+    where: bookmarkWhereUniqueInput
+    data: XOR<bookmarkUpdateWithoutUserInput, bookmarkUncheckedUpdateWithoutUserInput>
+  }
+
+  export type bookmarkUpdateManyWithWhereWithoutUserInput = {
+    where: bookmarkScalarWhereInput
+    data: XOR<bookmarkUpdateManyMutationInput, bookmarkUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type bookmarkScalarWhereInput = {
+    AND?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
+    OR?: bookmarkScalarWhereInput[]
+    NOT?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
+    user_id?: IntFilter<"bookmark"> | number
+    job_id?: IntFilter<"bookmark"> | number
+    book_id?: IntFilter<"bookmark"> | number
   }
 
   export type contactUpsertWithWhereUniqueWithoutUserInput = {
@@ -19049,30 +18962,6 @@ export namespace Prisma {
     category_id?: IntFilter<"experience"> | number
   }
 
-  export type user_careerUpsertWithWhereUniqueWithoutUserInput = {
-    where: user_careerWhereUniqueInput
-    update: XOR<user_careerUpdateWithoutUserInput, user_careerUncheckedUpdateWithoutUserInput>
-    create: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput>
-  }
-
-  export type user_careerUpdateWithWhereUniqueWithoutUserInput = {
-    where: user_careerWhereUniqueInput
-    data: XOR<user_careerUpdateWithoutUserInput, user_careerUncheckedUpdateWithoutUserInput>
-  }
-
-  export type user_careerUpdateManyWithWhereWithoutUserInput = {
-    where: user_careerScalarWhereInput
-    data: XOR<user_careerUpdateManyMutationInput, user_careerUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type user_careerScalarWhereInput = {
-    AND?: user_careerScalarWhereInput | user_careerScalarWhereInput[]
-    OR?: user_careerScalarWhereInput[]
-    NOT?: user_careerScalarWhereInput | user_careerScalarWhereInput[]
-    user_id?: IntFilter<"user_career"> | number
-    career_id?: IntFilter<"user_career"> | number
-  }
-
   export type historyUpsertWithWhereUniqueWithoutUserInput = {
     where: historyWhereUniqueInput
     update: XOR<historyUpdateWithoutUserInput, historyUncheckedUpdateWithoutUserInput>
@@ -19098,29 +18987,176 @@ export namespace Prisma {
     status?: StringFilter<"history"> | string
   }
 
-  export type bookmarkUpsertWithWhereUniqueWithoutUserInput = {
-    where: bookmarkWhereUniqueInput
-    update: XOR<bookmarkUpdateWithoutUserInput, bookmarkUncheckedUpdateWithoutUserInput>
-    create: XOR<bookmarkCreateWithoutUserInput, bookmarkUncheckedCreateWithoutUserInput>
+  export type postUpsertWithWhereUniqueWithoutUserInput = {
+    where: postWhereUniqueInput
+    update: XOR<postUpdateWithoutUserInput, postUncheckedUpdateWithoutUserInput>
+    create: XOR<postCreateWithoutUserInput, postUncheckedCreateWithoutUserInput>
   }
 
-  export type bookmarkUpdateWithWhereUniqueWithoutUserInput = {
-    where: bookmarkWhereUniqueInput
-    data: XOR<bookmarkUpdateWithoutUserInput, bookmarkUncheckedUpdateWithoutUserInput>
+  export type postUpdateWithWhereUniqueWithoutUserInput = {
+    where: postWhereUniqueInput
+    data: XOR<postUpdateWithoutUserInput, postUncheckedUpdateWithoutUserInput>
   }
 
-  export type bookmarkUpdateManyWithWhereWithoutUserInput = {
-    where: bookmarkScalarWhereInput
-    data: XOR<bookmarkUpdateManyMutationInput, bookmarkUncheckedUpdateManyWithoutUserInput>
+  export type postUpdateManyWithWhereWithoutUserInput = {
+    where: postScalarWhereInput
+    data: XOR<postUpdateManyMutationInput, postUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type bookmarkScalarWhereInput = {
-    AND?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
-    OR?: bookmarkScalarWhereInput[]
-    NOT?: bookmarkScalarWhereInput | bookmarkScalarWhereInput[]
-    book_id?: IntFilter<"bookmark"> | number
-    user_id?: IntFilter<"bookmark"> | number
-    job_id?: IntFilter<"bookmark"> | number
+  export type postScalarWhereInput = {
+    AND?: postScalarWhereInput | postScalarWhereInput[]
+    OR?: postScalarWhereInput[]
+    NOT?: postScalarWhereInput | postScalarWhereInput[]
+    job_id?: IntFilter<"post"> | number
+    user_id?: IntFilter<"post"> | number
+  }
+
+  export type rating_comUpsertWithWhereUniqueWithoutUser1Input = {
+    where: rating_comWhereUniqueInput
+    update: XOR<rating_comUpdateWithoutUser1Input, rating_comUncheckedUpdateWithoutUser1Input>
+    create: XOR<rating_comCreateWithoutUser1Input, rating_comUncheckedCreateWithoutUser1Input>
+  }
+
+  export type rating_comUpdateWithWhereUniqueWithoutUser1Input = {
+    where: rating_comWhereUniqueInput
+    data: XOR<rating_comUpdateWithoutUser1Input, rating_comUncheckedUpdateWithoutUser1Input>
+  }
+
+  export type rating_comUpdateManyWithWhereWithoutUser1Input = {
+    where: rating_comScalarWhereInput
+    data: XOR<rating_comUpdateManyMutationInput, rating_comUncheckedUpdateManyWithoutUser1Input>
+  }
+
+  export type rating_comScalarWhereInput = {
+    AND?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
+    OR?: rating_comScalarWhereInput[]
+    NOT?: rating_comScalarWhereInput | rating_comScalarWhereInput[]
+    rating_id?: IntFilter<"rating_com"> | number
+    job_id?: IntFilter<"rating_com"> | number
+    rating?: FloatFilter<"rating_com"> | number
+    user_id1?: IntFilter<"rating_com"> | number
+    user_id2?: IntFilter<"rating_com"> | number
+  }
+
+  export type rating_comUpsertWithWhereUniqueWithoutUser2Input = {
+    where: rating_comWhereUniqueInput
+    update: XOR<rating_comUpdateWithoutUser2Input, rating_comUncheckedUpdateWithoutUser2Input>
+    create: XOR<rating_comCreateWithoutUser2Input, rating_comUncheckedCreateWithoutUser2Input>
+  }
+
+  export type rating_comUpdateWithWhereUniqueWithoutUser2Input = {
+    where: rating_comWhereUniqueInput
+    data: XOR<rating_comUpdateWithoutUser2Input, rating_comUncheckedUpdateWithoutUser2Input>
+  }
+
+  export type rating_comUpdateManyWithWhereWithoutUser2Input = {
+    where: rating_comScalarWhereInput
+    data: XOR<rating_comUpdateManyMutationInput, rating_comUncheckedUpdateManyWithoutUser2Input>
+  }
+
+  export type rating_userUpsertWithWhereUniqueWithoutUser1Input = {
+    where: rating_userWhereUniqueInput
+    update: XOR<rating_userUpdateWithoutUser1Input, rating_userUncheckedUpdateWithoutUser1Input>
+    create: XOR<rating_userCreateWithoutUser1Input, rating_userUncheckedCreateWithoutUser1Input>
+  }
+
+  export type rating_userUpdateWithWhereUniqueWithoutUser1Input = {
+    where: rating_userWhereUniqueInput
+    data: XOR<rating_userUpdateWithoutUser1Input, rating_userUncheckedUpdateWithoutUser1Input>
+  }
+
+  export type rating_userUpdateManyWithWhereWithoutUser1Input = {
+    where: rating_userScalarWhereInput
+    data: XOR<rating_userUpdateManyMutationInput, rating_userUncheckedUpdateManyWithoutUser1Input>
+  }
+
+  export type rating_userScalarWhereInput = {
+    AND?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
+    OR?: rating_userScalarWhereInput[]
+    NOT?: rating_userScalarWhereInput | rating_userScalarWhereInput[]
+    rating_id?: IntFilter<"rating_user"> | number
+    job_id?: IntFilter<"rating_user"> | number
+    friendly_rating?: FloatFilter<"rating_user"> | number
+    efficiency_rating?: FloatFilter<"rating_user"> | number
+    accuracy_rating?: FloatFilter<"rating_user"> | number
+    user_id1?: IntFilter<"rating_user"> | number
+    user_id2?: IntFilter<"rating_user"> | number
+  }
+
+  export type rating_userUpsertWithWhereUniqueWithoutUser2Input = {
+    where: rating_userWhereUniqueInput
+    update: XOR<rating_userUpdateWithoutUser2Input, rating_userUncheckedUpdateWithoutUser2Input>
+    create: XOR<rating_userCreateWithoutUser2Input, rating_userUncheckedCreateWithoutUser2Input>
+  }
+
+  export type rating_userUpdateWithWhereUniqueWithoutUser2Input = {
+    where: rating_userWhereUniqueInput
+    data: XOR<rating_userUpdateWithoutUser2Input, rating_userUncheckedUpdateWithoutUser2Input>
+  }
+
+  export type rating_userUpdateManyWithWhereWithoutUser2Input = {
+    where: rating_userScalarWhereInput
+    data: XOR<rating_userUpdateManyMutationInput, rating_userUncheckedUpdateManyWithoutUser2Input>
+  }
+
+  export type user_careerUpsertWithWhereUniqueWithoutUserInput = {
+    where: user_careerWhereUniqueInput
+    update: XOR<user_careerUpdateWithoutUserInput, user_careerUncheckedUpdateWithoutUserInput>
+    create: XOR<user_careerCreateWithoutUserInput, user_careerUncheckedCreateWithoutUserInput>
+  }
+
+  export type user_careerUpdateWithWhereUniqueWithoutUserInput = {
+    where: user_careerWhereUniqueInput
+    data: XOR<user_careerUpdateWithoutUserInput, user_careerUncheckedUpdateWithoutUserInput>
+  }
+
+  export type user_careerUpdateManyWithWhereWithoutUserInput = {
+    where: user_careerScalarWhereInput
+    data: XOR<user_careerUpdateManyMutationInput, user_careerUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type user_careerScalarWhereInput = {
+    AND?: user_careerScalarWhereInput | user_careerScalarWhereInput[]
+    OR?: user_careerScalarWhereInput[]
+    NOT?: user_careerScalarWhereInput | user_careerScalarWhereInput[]
+    user_id?: IntFilter<"user_career"> | number
+    career_id?: IntFilter<"user_career"> | number
+  }
+
+  export type jobCreateWithoutRating_userInput = {
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkCreateNestedManyWithoutJobInput
+    history?: historyCreateNestedManyWithoutJobInput
+    job_exp?: job_expCreateNestedManyWithoutJobInput
+    post?: postCreateNestedManyWithoutJobInput
+    rating_com?: rating_comCreateNestedManyWithoutJobInput
+  }
+
+  export type jobUncheckedCreateWithoutRating_userInput = {
+    job_id?: number
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
+    history?: historyUncheckedCreateNestedManyWithoutJobInput
+    job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
+    post?: postUncheckedCreateNestedManyWithoutJobInput
+    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
+  }
+
+  export type jobCreateOrConnectWithoutRating_userInput = {
+    where: jobWhereUniqueInput
+    create: XOR<jobCreateWithoutRating_userInput, jobUncheckedCreateWithoutRating_userInput>
   }
 
   export type userCreateWithoutRating_user1Input = {
@@ -19133,15 +19169,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postCreateNestedManyWithoutUserInput
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
     contact?: contactCreateNestedManyWithoutUserInput
     experience?: experienceCreateNestedManyWithoutUserInput
-    user_career?: user_careerCreateNestedManyWithoutUserInput
     history?: historyCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
+    post?: postCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
+    user_career?: user_careerCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutRating_user1Input = {
@@ -19155,15 +19191,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
     contact?: contactUncheckedCreateNestedManyWithoutUserInput
     experience?: experienceUncheckedCreateNestedManyWithoutUserInput
-    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
     history?: historyUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
+    post?: postUncheckedCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
+    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutRating_user1Input = {
@@ -19181,15 +19217,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
     contact?: contactCreateNestedManyWithoutUserInput
     experience?: experienceCreateNestedManyWithoutUserInput
-    user_career?: user_careerCreateNestedManyWithoutUserInput
     history?: historyCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
+    post?: postCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    user_career?: user_careerCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutRating_users2Input = {
@@ -19203,15 +19239,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
     contact?: contactUncheckedCreateNestedManyWithoutUserInput
     experience?: experienceUncheckedCreateNestedManyWithoutUserInput
-    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
     history?: historyUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
+    post?: postUncheckedCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutRating_users2Input = {
@@ -19219,40 +19255,46 @@ export namespace Prisma {
     create: XOR<userCreateWithoutRating_users2Input, userUncheckedCreateWithoutRating_users2Input>
   }
 
-  export type jobCreateWithoutRating_userInput = {
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    history?: historyCreateNestedManyWithoutJobInput
-    job_exp?: job_expCreateNestedManyWithoutJobInput
-    rating_com?: rating_comCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkCreateNestedManyWithoutJobInput
-    post?: postCreateNestedManyWithoutJobInput
-  }
-
-  export type jobUncheckedCreateWithoutRating_userInput = {
-    job_id?: number
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    history?: historyUncheckedCreateNestedManyWithoutJobInput
-    job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
-    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
-    post?: postUncheckedCreateNestedManyWithoutJobInput
-  }
-
-  export type jobCreateOrConnectWithoutRating_userInput = {
-    where: jobWhereUniqueInput
+  export type jobUpsertWithoutRating_userInput = {
+    update: XOR<jobUpdateWithoutRating_userInput, jobUncheckedUpdateWithoutRating_userInput>
     create: XOR<jobCreateWithoutRating_userInput, jobUncheckedCreateWithoutRating_userInput>
+    where?: jobWhereInput
+  }
+
+  export type jobUpdateToOneWithWhereWithoutRating_userInput = {
+    where?: jobWhereInput
+    data: XOR<jobUpdateWithoutRating_userInput, jobUncheckedUpdateWithoutRating_userInput>
+  }
+
+  export type jobUpdateWithoutRating_userInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
+    history?: historyUpdateManyWithoutJobNestedInput
+    job_exp?: job_expUpdateManyWithoutJobNestedInput
+    post?: postUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUpdateManyWithoutJobNestedInput
+  }
+
+  export type jobUncheckedUpdateWithoutRating_userInput = {
+    job_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
+    history?: historyUncheckedUpdateManyWithoutJobNestedInput
+    job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
+    post?: postUncheckedUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
   }
 
   export type userUpsertWithoutRating_user1Input = {
@@ -19276,15 +19318,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUpdateManyWithoutUserNestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
     contact?: contactUpdateManyWithoutUserNestedInput
     experience?: experienceUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUpdateManyWithoutUserNestedInput
     history?: historyUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
+    post?: postUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutRating_user1Input = {
@@ -19298,15 +19340,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
     contact?: contactUncheckedUpdateManyWithoutUserNestedInput
     experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
     history?: historyUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
+    post?: postUncheckedUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type userUpsertWithoutRating_users2Input = {
@@ -19330,15 +19372,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
     contact?: contactUpdateManyWithoutUserNestedInput
     experience?: experienceUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUpdateManyWithoutUserNestedInput
     history?: historyUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
+    post?: postUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    user_career?: user_careerUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutRating_users2Input = {
@@ -19352,57 +19394,51 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
     contact?: contactUncheckedUpdateManyWithoutUserNestedInput
     experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
     history?: historyUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
+    post?: postUncheckedUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type jobUpsertWithoutRating_userInput = {
-    update: XOR<jobUpdateWithoutRating_userInput, jobUncheckedUpdateWithoutRating_userInput>
-    create: XOR<jobCreateWithoutRating_userInput, jobUncheckedCreateWithoutRating_userInput>
-    where?: jobWhereInput
+  export type jobCreateWithoutRating_comInput = {
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkCreateNestedManyWithoutJobInput
+    history?: historyCreateNestedManyWithoutJobInput
+    job_exp?: job_expCreateNestedManyWithoutJobInput
+    post?: postCreateNestedManyWithoutJobInput
+    rating_user?: rating_userCreateNestedManyWithoutJobInput
   }
 
-  export type jobUpdateToOneWithWhereWithoutRating_userInput = {
-    where?: jobWhereInput
-    data: XOR<jobUpdateWithoutRating_userInput, jobUncheckedUpdateWithoutRating_userInput>
+  export type jobUncheckedCreateWithoutRating_comInput = {
+    job_id?: number
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
+    history?: historyUncheckedCreateNestedManyWithoutJobInput
+    job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
+    post?: postUncheckedCreateNestedManyWithoutJobInput
+    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
   }
 
-  export type jobUpdateWithoutRating_userInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    history?: historyUpdateManyWithoutJobNestedInput
-    job_exp?: job_expUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
-    post?: postUpdateManyWithoutJobNestedInput
-  }
-
-  export type jobUncheckedUpdateWithoutRating_userInput = {
-    job_id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    history?: historyUncheckedUpdateManyWithoutJobNestedInput
-    job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
-    post?: postUncheckedUpdateManyWithoutJobNestedInput
+  export type jobCreateOrConnectWithoutRating_comInput = {
+    where: jobWhereUniqueInput
+    create: XOR<jobCreateWithoutRating_comInput, jobUncheckedCreateWithoutRating_comInput>
   }
 
   export type userCreateWithoutRating_com1Input = {
@@ -19415,15 +19451,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
-    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
     contact?: contactCreateNestedManyWithoutUserInput
     experience?: experienceCreateNestedManyWithoutUserInput
-    user_career?: user_careerCreateNestedManyWithoutUserInput
     history?: historyCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
+    post?: postCreateNestedManyWithoutUserInput
+    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
+    user_career?: user_careerCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutRating_com1Input = {
@@ -19437,15 +19473,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
-    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
     contact?: contactUncheckedCreateNestedManyWithoutUserInput
     experience?: experienceUncheckedCreateNestedManyWithoutUserInput
-    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
     history?: historyUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
+    post?: postUncheckedCreateNestedManyWithoutUserInput
+    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
+    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutRating_com1Input = {
@@ -19463,15 +19499,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
     contact?: contactCreateNestedManyWithoutUserInput
     experience?: experienceCreateNestedManyWithoutUserInput
-    user_career?: user_careerCreateNestedManyWithoutUserInput
     history?: historyCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
+    post?: postCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
+    user_career?: user_careerCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutRating_com2Input = {
@@ -19485,15 +19521,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
     contact?: contactUncheckedCreateNestedManyWithoutUserInput
     experience?: experienceUncheckedCreateNestedManyWithoutUserInput
-    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
     history?: historyUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
+    post?: postUncheckedCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
+    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutRating_com2Input = {
@@ -19501,40 +19537,46 @@ export namespace Prisma {
     create: XOR<userCreateWithoutRating_com2Input, userUncheckedCreateWithoutRating_com2Input>
   }
 
-  export type jobCreateWithoutRating_comInput = {
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    history?: historyCreateNestedManyWithoutJobInput
-    job_exp?: job_expCreateNestedManyWithoutJobInput
-    rating_user?: rating_userCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkCreateNestedManyWithoutJobInput
-    post?: postCreateNestedManyWithoutJobInput
-  }
-
-  export type jobUncheckedCreateWithoutRating_comInput = {
-    job_id?: number
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    history?: historyUncheckedCreateNestedManyWithoutJobInput
-    job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
-    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
-    post?: postUncheckedCreateNestedManyWithoutJobInput
-  }
-
-  export type jobCreateOrConnectWithoutRating_comInput = {
-    where: jobWhereUniqueInput
+  export type jobUpsertWithoutRating_comInput = {
+    update: XOR<jobUpdateWithoutRating_comInput, jobUncheckedUpdateWithoutRating_comInput>
     create: XOR<jobCreateWithoutRating_comInput, jobUncheckedCreateWithoutRating_comInput>
+    where?: jobWhereInput
+  }
+
+  export type jobUpdateToOneWithWhereWithoutRating_comInput = {
+    where?: jobWhereInput
+    data: XOR<jobUpdateWithoutRating_comInput, jobUncheckedUpdateWithoutRating_comInput>
+  }
+
+  export type jobUpdateWithoutRating_comInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
+    history?: historyUpdateManyWithoutJobNestedInput
+    job_exp?: job_expUpdateManyWithoutJobNestedInput
+    post?: postUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUpdateManyWithoutJobNestedInput
+  }
+
+  export type jobUncheckedUpdateWithoutRating_comInput = {
+    job_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
+    history?: historyUncheckedUpdateManyWithoutJobNestedInput
+    job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
+    post?: postUncheckedUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
   }
 
   export type userUpsertWithoutRating_com1Input = {
@@ -19558,15 +19600,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
-    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
     contact?: contactUpdateManyWithoutUserNestedInput
     experience?: experienceUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUpdateManyWithoutUserNestedInput
     history?: historyUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
+    post?: postUpdateManyWithoutUserNestedInput
+    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutRating_com1Input = {
@@ -19580,15 +19622,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
-    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
     contact?: contactUncheckedUpdateManyWithoutUserNestedInput
     experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
     history?: historyUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
+    post?: postUncheckedUpdateManyWithoutUserNestedInput
+    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type userUpsertWithoutRating_com2Input = {
@@ -19612,15 +19654,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
     contact?: contactUpdateManyWithoutUserNestedInput
     experience?: experienceUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUpdateManyWithoutUserNestedInput
     history?: historyUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
+    post?: postUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutRating_com2Input = {
@@ -19634,57 +19676,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
     contact?: contactUncheckedUpdateManyWithoutUserNestedInput
     experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
     history?: historyUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type jobUpsertWithoutRating_comInput = {
-    update: XOR<jobUpdateWithoutRating_comInput, jobUncheckedUpdateWithoutRating_comInput>
-    create: XOR<jobCreateWithoutRating_comInput, jobUncheckedCreateWithoutRating_comInput>
-    where?: jobWhereInput
-  }
-
-  export type jobUpdateToOneWithWhereWithoutRating_comInput = {
-    where?: jobWhereInput
-    data: XOR<jobUpdateWithoutRating_comInput, jobUncheckedUpdateWithoutRating_comInput>
-  }
-
-  export type jobUpdateWithoutRating_comInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    history?: historyUpdateManyWithoutJobNestedInput
-    job_exp?: job_expUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
-    post?: postUpdateManyWithoutJobNestedInput
-  }
-
-  export type jobUncheckedUpdateWithoutRating_comInput = {
-    job_id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    history?: historyUncheckedUpdateManyWithoutJobNestedInput
-    job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
-    post?: postUncheckedUpdateManyWithoutJobNestedInput
+    post?: postUncheckedUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type userCreateWithoutContactInput = {
@@ -19697,15 +19697,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
+    experience?: experienceCreateNestedManyWithoutUserInput
+    history?: historyCreateNestedManyWithoutUserInput
     post?: postCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
     rating_com1?: rating_comCreateNestedManyWithoutUser1Input
     rating_com2?: rating_comCreateNestedManyWithoutUser2Input
-    experience?: experienceCreateNestedManyWithoutUserInput
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
     user_career?: user_careerCreateNestedManyWithoutUserInput
-    history?: historyCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutContactInput = {
@@ -19719,15 +19719,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
+    experience?: experienceUncheckedCreateNestedManyWithoutUserInput
+    history?: historyUncheckedCreateNestedManyWithoutUserInput
     post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
     rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
     rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
-    experience?: experienceUncheckedCreateNestedManyWithoutUserInput
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
     user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
-    history?: historyUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutContactInput = {
@@ -19756,15 +19756,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
+    experience?: experienceUpdateManyWithoutUserNestedInput
+    history?: historyUpdateManyWithoutUserNestedInput
     post?: postUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
     rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
     rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
-    experience?: experienceUpdateManyWithoutUserNestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
     user_career?: user_careerUpdateManyWithoutUserNestedInput
-    history?: historyUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutContactInput = {
@@ -19778,15 +19778,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
+    experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
+    history?: historyUncheckedUpdateManyWithoutUserNestedInput
     post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
     rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
     rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
-    experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
     user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
-    history?: historyUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type experienceCreateWithoutCategoryInput = {
@@ -19865,54 +19865,6 @@ export namespace Prisma {
     category_id?: IntFilter<"job_exp"> | number
   }
 
-  export type userCreateWithoutExperienceInput = {
-    first_name: string
-    last_name: string
-    username: string
-    image?: string | null
-    phone_number: string
-    id_card: string
-    email: string
-    password: string
-    role: string
-    post?: postCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
-    contact?: contactCreateNestedManyWithoutUserInput
-    user_career?: user_careerCreateNestedManyWithoutUserInput
-    history?: historyCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
-  }
-
-  export type userUncheckedCreateWithoutExperienceInput = {
-    user_id?: number
-    first_name: string
-    last_name: string
-    username: string
-    image?: string | null
-    phone_number: string
-    id_card: string
-    email: string
-    password: string
-    role: string
-    post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
-    contact?: contactUncheckedCreateNestedManyWithoutUserInput
-    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
-    history?: historyUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type userCreateOrConnectWithoutExperienceInput = {
-    where: userWhereUniqueInput
-    create: XOR<userCreateWithoutExperienceInput, userUncheckedCreateWithoutExperienceInput>
-  }
-
   export type categoryCreateWithoutExperiencesInput = {
     name: string
     job_exp?: job_expCreateNestedManyWithoutCategoryInput
@@ -19927,6 +19879,76 @@ export namespace Prisma {
   export type categoryCreateOrConnectWithoutExperiencesInput = {
     where: categoryWhereUniqueInput
     create: XOR<categoryCreateWithoutExperiencesInput, categoryUncheckedCreateWithoutExperiencesInput>
+  }
+
+  export type userCreateWithoutExperienceInput = {
+    first_name: string
+    last_name: string
+    username: string
+    image?: string | null
+    phone_number: string
+    id_card: string
+    email: string
+    password: string
+    role: string
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
+    contact?: contactCreateNestedManyWithoutUserInput
+    history?: historyCreateNestedManyWithoutUserInput
+    post?: postCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
+    user_career?: user_careerCreateNestedManyWithoutUserInput
+  }
+
+  export type userUncheckedCreateWithoutExperienceInput = {
+    user_id?: number
+    first_name: string
+    last_name: string
+    username: string
+    image?: string | null
+    phone_number: string
+    id_card: string
+    email: string
+    password: string
+    role: string
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
+    contact?: contactUncheckedCreateNestedManyWithoutUserInput
+    history?: historyUncheckedCreateNestedManyWithoutUserInput
+    post?: postUncheckedCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
+    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type userCreateOrConnectWithoutExperienceInput = {
+    where: userWhereUniqueInput
+    create: XOR<userCreateWithoutExperienceInput, userUncheckedCreateWithoutExperienceInput>
+  }
+
+  export type categoryUpsertWithoutExperiencesInput = {
+    update: XOR<categoryUpdateWithoutExperiencesInput, categoryUncheckedUpdateWithoutExperiencesInput>
+    create: XOR<categoryCreateWithoutExperiencesInput, categoryUncheckedCreateWithoutExperiencesInput>
+    where?: categoryWhereInput
+  }
+
+  export type categoryUpdateToOneWithWhereWithoutExperiencesInput = {
+    where?: categoryWhereInput
+    data: XOR<categoryUpdateWithoutExperiencesInput, categoryUncheckedUpdateWithoutExperiencesInput>
+  }
+
+  export type categoryUpdateWithoutExperiencesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    job_exp?: job_expUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type categoryUncheckedUpdateWithoutExperiencesInput = {
+    category_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    job_exp?: job_expUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type userUpsertWithoutExperienceInput = {
@@ -19950,15 +19972,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
+    contact?: contactUpdateManyWithoutUserNestedInput
+    history?: historyUpdateManyWithoutUserNestedInput
     post?: postUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
     rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
     rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
-    contact?: contactUpdateManyWithoutUserNestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
     user_career?: user_careerUpdateManyWithoutUserNestedInput
-    history?: historyUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutExperienceInput = {
@@ -19972,37 +19994,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
+    contact?: contactUncheckedUpdateManyWithoutUserNestedInput
+    history?: historyUncheckedUpdateManyWithoutUserNestedInput
     post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
     rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
     rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
-    contact?: contactUncheckedUpdateManyWithoutUserNestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
     user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
-    history?: historyUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type categoryUpsertWithoutExperiencesInput = {
-    update: XOR<categoryUpdateWithoutExperiencesInput, categoryUncheckedUpdateWithoutExperiencesInput>
-    create: XOR<categoryCreateWithoutExperiencesInput, categoryUncheckedCreateWithoutExperiencesInput>
-    where?: categoryWhereInput
-  }
-
-  export type categoryUpdateToOneWithWhereWithoutExperiencesInput = {
-    where?: categoryWhereInput
-    data: XOR<categoryUpdateWithoutExperiencesInput, categoryUncheckedUpdateWithoutExperiencesInput>
-  }
-
-  export type categoryUpdateWithoutExperiencesInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    job_exp?: job_expUpdateManyWithoutCategoryNestedInput
-  }
-
-  export type categoryUncheckedUpdateWithoutExperiencesInput = {
-    category_id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    job_exp?: job_expUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type user_careerCreateWithoutCareerInput = {
@@ -20039,6 +20039,20 @@ export namespace Prisma {
     data: XOR<user_careerUpdateManyMutationInput, user_careerUncheckedUpdateManyWithoutCareerInput>
   }
 
+  export type careerCreateWithoutUser_careerInput = {
+    name: string
+  }
+
+  export type careerUncheckedCreateWithoutUser_careerInput = {
+    career_id?: number
+    name: string
+  }
+
+  export type careerCreateOrConnectWithoutUser_careerInput = {
+    where: careerWhereUniqueInput
+    create: XOR<careerCreateWithoutUser_careerInput, careerUncheckedCreateWithoutUser_careerInput>
+  }
+
   export type userCreateWithoutUser_careerInput = {
     first_name: string
     last_name: string
@@ -20049,15 +20063,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
     contact?: contactCreateNestedManyWithoutUserInput
     experience?: experienceCreateNestedManyWithoutUserInput
     history?: historyCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
+    post?: postCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
   }
 
   export type userUncheckedCreateWithoutUser_careerInput = {
@@ -20071,15 +20085,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
     contact?: contactUncheckedCreateNestedManyWithoutUserInput
     experience?: experienceUncheckedCreateNestedManyWithoutUserInput
     history?: historyUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
+    post?: postUncheckedCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
   }
 
   export type userCreateOrConnectWithoutUser_careerInput = {
@@ -20087,18 +20101,24 @@ export namespace Prisma {
     create: XOR<userCreateWithoutUser_careerInput, userUncheckedCreateWithoutUser_careerInput>
   }
 
-  export type careerCreateWithoutUser_careerInput = {
-    name: string
-  }
-
-  export type careerUncheckedCreateWithoutUser_careerInput = {
-    career_id?: number
-    name: string
-  }
-
-  export type careerCreateOrConnectWithoutUser_careerInput = {
-    where: careerWhereUniqueInput
+  export type careerUpsertWithoutUser_careerInput = {
+    update: XOR<careerUpdateWithoutUser_careerInput, careerUncheckedUpdateWithoutUser_careerInput>
     create: XOR<careerCreateWithoutUser_careerInput, careerUncheckedCreateWithoutUser_careerInput>
+    where?: careerWhereInput
+  }
+
+  export type careerUpdateToOneWithWhereWithoutUser_careerInput = {
+    where?: careerWhereInput
+    data: XOR<careerUpdateWithoutUser_careerInput, careerUncheckedUpdateWithoutUser_careerInput>
+  }
+
+  export type careerUpdateWithoutUser_careerInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type careerUncheckedUpdateWithoutUser_careerInput = {
+    career_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type userUpsertWithoutUser_careerInput = {
@@ -20122,15 +20142,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
     contact?: contactUpdateManyWithoutUserNestedInput
     experience?: experienceUpdateManyWithoutUserNestedInput
     history?: historyUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
+    post?: postUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
   }
 
   export type userUncheckedUpdateWithoutUser_careerInput = {
@@ -20144,35 +20164,34 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
     contact?: contactUncheckedUpdateManyWithoutUserNestedInput
     experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
     history?: historyUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
+    post?: postUncheckedUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
   }
 
-  export type careerUpsertWithoutUser_careerInput = {
-    update: XOR<careerUpdateWithoutUser_careerInput, careerUncheckedUpdateWithoutUser_careerInput>
-    create: XOR<careerCreateWithoutUser_careerInput, careerUncheckedCreateWithoutUser_careerInput>
-    where?: careerWhereInput
+  export type bookmarkCreateWithoutJobInput = {
+    user: userCreateNestedOneWithoutBookmarkInput
   }
 
-  export type careerUpdateToOneWithWhereWithoutUser_careerInput = {
-    where?: careerWhereInput
-    data: XOR<careerUpdateWithoutUser_careerInput, careerUncheckedUpdateWithoutUser_careerInput>
+  export type bookmarkUncheckedCreateWithoutJobInput = {
+    user_id: number
+    book_id?: number
   }
 
-  export type careerUpdateWithoutUser_careerInput = {
-    name?: StringFieldUpdateOperationsInput | string
+  export type bookmarkCreateOrConnectWithoutJobInput = {
+    where: bookmarkWhereUniqueInput
+    create: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput>
   }
 
-  export type careerUncheckedUpdateWithoutUser_careerInput = {
-    career_id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
+  export type bookmarkCreateManyJobInputEnvelope = {
+    data: bookmarkCreateManyJobInput | bookmarkCreateManyJobInput[]
+    skipDuplicates?: boolean
   }
 
   export type historyCreateWithoutJobInput = {
@@ -20213,75 +20232,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type rating_userCreateWithoutJobInput = {
-    friendly_rating?: number
-    efficiency_rating?: number
-    accuracy_rating?: number
-    user1: userCreateNestedOneWithoutRating_user1Input
-    user2: userCreateNestedOneWithoutRating_users2Input
-  }
-
-  export type rating_userUncheckedCreateWithoutJobInput = {
-    rating_id?: number
-    user_id1: number
-    user_id2: number
-    friendly_rating?: number
-    efficiency_rating?: number
-    accuracy_rating?: number
-  }
-
-  export type rating_userCreateOrConnectWithoutJobInput = {
-    where: rating_userWhereUniqueInput
-    create: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput>
-  }
-
-  export type rating_userCreateManyJobInputEnvelope = {
-    data: rating_userCreateManyJobInput | rating_userCreateManyJobInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type rating_comCreateWithoutJobInput = {
-    rating?: number
-    user1: userCreateNestedOneWithoutRating_com1Input
-    user2: userCreateNestedOneWithoutRating_com2Input
-  }
-
-  export type rating_comUncheckedCreateWithoutJobInput = {
-    rating_id?: number
-    user_id1: number
-    user_id2: number
-    rating?: number
-  }
-
-  export type rating_comCreateOrConnectWithoutJobInput = {
-    where: rating_comWhereUniqueInput
-    create: XOR<rating_comCreateWithoutJobInput, rating_comUncheckedCreateWithoutJobInput>
-  }
-
-  export type rating_comCreateManyJobInputEnvelope = {
-    data: rating_comCreateManyJobInput | rating_comCreateManyJobInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type bookmarkCreateWithoutJobInput = {
-    user: userCreateNestedOneWithoutBookmarkInput
-  }
-
-  export type bookmarkUncheckedCreateWithoutJobInput = {
-    book_id?: number
-    user_id: number
-  }
-
-  export type bookmarkCreateOrConnectWithoutJobInput = {
-    where: bookmarkWhereUniqueInput
-    create: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput>
-  }
-
-  export type bookmarkCreateManyJobInputEnvelope = {
-    data: bookmarkCreateManyJobInput | bookmarkCreateManyJobInput[]
-    skipDuplicates?: boolean
-  }
-
   export type postCreateWithoutJobInput = {
     user: userCreateNestedOneWithoutPostInput
   }
@@ -20298,6 +20248,72 @@ export namespace Prisma {
   export type postCreateManyJobInputEnvelope = {
     data: postCreateManyJobInput | postCreateManyJobInput[]
     skipDuplicates?: boolean
+  }
+
+  export type rating_comCreateWithoutJobInput = {
+    rating?: number
+    user1: userCreateNestedOneWithoutRating_com1Input
+    user2: userCreateNestedOneWithoutRating_com2Input
+  }
+
+  export type rating_comUncheckedCreateWithoutJobInput = {
+    rating_id?: number
+    rating?: number
+    user_id1: number
+    user_id2: number
+  }
+
+  export type rating_comCreateOrConnectWithoutJobInput = {
+    where: rating_comWhereUniqueInput
+    create: XOR<rating_comCreateWithoutJobInput, rating_comUncheckedCreateWithoutJobInput>
+  }
+
+  export type rating_comCreateManyJobInputEnvelope = {
+    data: rating_comCreateManyJobInput | rating_comCreateManyJobInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type rating_userCreateWithoutJobInput = {
+    friendly_rating?: number
+    efficiency_rating?: number
+    accuracy_rating?: number
+    user1: userCreateNestedOneWithoutRating_user1Input
+    user2: userCreateNestedOneWithoutRating_users2Input
+  }
+
+  export type rating_userUncheckedCreateWithoutJobInput = {
+    rating_id?: number
+    friendly_rating?: number
+    efficiency_rating?: number
+    accuracy_rating?: number
+    user_id1: number
+    user_id2: number
+  }
+
+  export type rating_userCreateOrConnectWithoutJobInput = {
+    where: rating_userWhereUniqueInput
+    create: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput>
+  }
+
+  export type rating_userCreateManyJobInputEnvelope = {
+    data: rating_userCreateManyJobInput | rating_userCreateManyJobInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type bookmarkUpsertWithWhereUniqueWithoutJobInput = {
+    where: bookmarkWhereUniqueInput
+    update: XOR<bookmarkUpdateWithoutJobInput, bookmarkUncheckedUpdateWithoutJobInput>
+    create: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput>
+  }
+
+  export type bookmarkUpdateWithWhereUniqueWithoutJobInput = {
+    where: bookmarkWhereUniqueInput
+    data: XOR<bookmarkUpdateWithoutJobInput, bookmarkUncheckedUpdateWithoutJobInput>
+  }
+
+  export type bookmarkUpdateManyWithWhereWithoutJobInput = {
+    where: bookmarkScalarWhereInput
+    data: XOR<bookmarkUpdateManyMutationInput, bookmarkUncheckedUpdateManyWithoutJobInput>
   }
 
   export type historyUpsertWithWhereUniqueWithoutJobInput = {
@@ -20332,20 +20348,20 @@ export namespace Prisma {
     data: XOR<job_expUpdateManyMutationInput, job_expUncheckedUpdateManyWithoutJobInput>
   }
 
-  export type rating_userUpsertWithWhereUniqueWithoutJobInput = {
-    where: rating_userWhereUniqueInput
-    update: XOR<rating_userUpdateWithoutJobInput, rating_userUncheckedUpdateWithoutJobInput>
-    create: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput>
+  export type postUpsertWithWhereUniqueWithoutJobInput = {
+    where: postWhereUniqueInput
+    update: XOR<postUpdateWithoutJobInput, postUncheckedUpdateWithoutJobInput>
+    create: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput>
   }
 
-  export type rating_userUpdateWithWhereUniqueWithoutJobInput = {
-    where: rating_userWhereUniqueInput
-    data: XOR<rating_userUpdateWithoutJobInput, rating_userUncheckedUpdateWithoutJobInput>
+  export type postUpdateWithWhereUniqueWithoutJobInput = {
+    where: postWhereUniqueInput
+    data: XOR<postUpdateWithoutJobInput, postUncheckedUpdateWithoutJobInput>
   }
 
-  export type rating_userUpdateManyWithWhereWithoutJobInput = {
-    where: rating_userScalarWhereInput
-    data: XOR<rating_userUpdateManyMutationInput, rating_userUncheckedUpdateManyWithoutJobInput>
+  export type postUpdateManyWithWhereWithoutJobInput = {
+    where: postScalarWhereInput
+    data: XOR<postUpdateManyMutationInput, postUncheckedUpdateManyWithoutJobInput>
   }
 
   export type rating_comUpsertWithWhereUniqueWithoutJobInput = {
@@ -20364,36 +20380,56 @@ export namespace Prisma {
     data: XOR<rating_comUpdateManyMutationInput, rating_comUncheckedUpdateManyWithoutJobInput>
   }
 
-  export type bookmarkUpsertWithWhereUniqueWithoutJobInput = {
-    where: bookmarkWhereUniqueInput
-    update: XOR<bookmarkUpdateWithoutJobInput, bookmarkUncheckedUpdateWithoutJobInput>
-    create: XOR<bookmarkCreateWithoutJobInput, bookmarkUncheckedCreateWithoutJobInput>
+  export type rating_userUpsertWithWhereUniqueWithoutJobInput = {
+    where: rating_userWhereUniqueInput
+    update: XOR<rating_userUpdateWithoutJobInput, rating_userUncheckedUpdateWithoutJobInput>
+    create: XOR<rating_userCreateWithoutJobInput, rating_userUncheckedCreateWithoutJobInput>
   }
 
-  export type bookmarkUpdateWithWhereUniqueWithoutJobInput = {
-    where: bookmarkWhereUniqueInput
-    data: XOR<bookmarkUpdateWithoutJobInput, bookmarkUncheckedUpdateWithoutJobInput>
+  export type rating_userUpdateWithWhereUniqueWithoutJobInput = {
+    where: rating_userWhereUniqueInput
+    data: XOR<rating_userUpdateWithoutJobInput, rating_userUncheckedUpdateWithoutJobInput>
   }
 
-  export type bookmarkUpdateManyWithWhereWithoutJobInput = {
-    where: bookmarkScalarWhereInput
-    data: XOR<bookmarkUpdateManyMutationInput, bookmarkUncheckedUpdateManyWithoutJobInput>
+  export type rating_userUpdateManyWithWhereWithoutJobInput = {
+    where: rating_userScalarWhereInput
+    data: XOR<rating_userUpdateManyMutationInput, rating_userUncheckedUpdateManyWithoutJobInput>
   }
 
-  export type postUpsertWithWhereUniqueWithoutJobInput = {
-    where: postWhereUniqueInput
-    update: XOR<postUpdateWithoutJobInput, postUncheckedUpdateWithoutJobInput>
-    create: XOR<postCreateWithoutJobInput, postUncheckedCreateWithoutJobInput>
+  export type jobCreateWithoutHistoryInput = {
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkCreateNestedManyWithoutJobInput
+    job_exp?: job_expCreateNestedManyWithoutJobInput
+    post?: postCreateNestedManyWithoutJobInput
+    rating_com?: rating_comCreateNestedManyWithoutJobInput
+    rating_user?: rating_userCreateNestedManyWithoutJobInput
   }
 
-  export type postUpdateWithWhereUniqueWithoutJobInput = {
-    where: postWhereUniqueInput
-    data: XOR<postUpdateWithoutJobInput, postUncheckedUpdateWithoutJobInput>
+  export type jobUncheckedCreateWithoutHistoryInput = {
+    job_id?: number
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
+    job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
+    post?: postUncheckedCreateNestedManyWithoutJobInput
+    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
+    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
   }
 
-  export type postUpdateManyWithWhereWithoutJobInput = {
-    where: postScalarWhereInput
-    data: XOR<postUpdateManyMutationInput, postUncheckedUpdateManyWithoutJobInput>
+  export type jobCreateOrConnectWithoutHistoryInput = {
+    where: jobWhereUniqueInput
+    create: XOR<jobCreateWithoutHistoryInput, jobUncheckedCreateWithoutHistoryInput>
   }
 
   export type userCreateWithoutHistoryInput = {
@@ -20406,15 +20442,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
     contact?: contactCreateNestedManyWithoutUserInput
     experience?: experienceCreateNestedManyWithoutUserInput
+    post?: postCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
     user_career?: user_careerCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutHistoryInput = {
@@ -20428,15 +20464,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
     contact?: contactUncheckedCreateNestedManyWithoutUserInput
     experience?: experienceUncheckedCreateNestedManyWithoutUserInput
+    post?: postUncheckedCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
     user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutHistoryInput = {
@@ -20444,40 +20480,46 @@ export namespace Prisma {
     create: XOR<userCreateWithoutHistoryInput, userUncheckedCreateWithoutHistoryInput>
   }
 
-  export type jobCreateWithoutHistoryInput = {
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    job_exp?: job_expCreateNestedManyWithoutJobInput
-    rating_user?: rating_userCreateNestedManyWithoutJobInput
-    rating_com?: rating_comCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkCreateNestedManyWithoutJobInput
-    post?: postCreateNestedManyWithoutJobInput
-  }
-
-  export type jobUncheckedCreateWithoutHistoryInput = {
-    job_id?: number
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
-    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
-    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
-    post?: postUncheckedCreateNestedManyWithoutJobInput
-  }
-
-  export type jobCreateOrConnectWithoutHistoryInput = {
-    where: jobWhereUniqueInput
+  export type jobUpsertWithoutHistoryInput = {
+    update: XOR<jobUpdateWithoutHistoryInput, jobUncheckedUpdateWithoutHistoryInput>
     create: XOR<jobCreateWithoutHistoryInput, jobUncheckedCreateWithoutHistoryInput>
+    where?: jobWhereInput
+  }
+
+  export type jobUpdateToOneWithWhereWithoutHistoryInput = {
+    where?: jobWhereInput
+    data: XOR<jobUpdateWithoutHistoryInput, jobUncheckedUpdateWithoutHistoryInput>
+  }
+
+  export type jobUpdateWithoutHistoryInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
+    job_exp?: job_expUpdateManyWithoutJobNestedInput
+    post?: postUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUpdateManyWithoutJobNestedInput
+  }
+
+  export type jobUncheckedUpdateWithoutHistoryInput = {
+    job_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
+    job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
+    post?: postUncheckedUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
   }
 
   export type userUpsertWithoutHistoryInput = {
@@ -20501,15 +20543,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
     contact?: contactUpdateManyWithoutUserNestedInput
     experience?: experienceUpdateManyWithoutUserNestedInput
+    post?: postUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
     user_career?: user_careerUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutHistoryInput = {
@@ -20523,93 +20565,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
     contact?: contactUncheckedUpdateManyWithoutUserNestedInput
     experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
+    post?: postUncheckedUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
     user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
-  }
-
-  export type jobUpsertWithoutHistoryInput = {
-    update: XOR<jobUpdateWithoutHistoryInput, jobUncheckedUpdateWithoutHistoryInput>
-    create: XOR<jobCreateWithoutHistoryInput, jobUncheckedCreateWithoutHistoryInput>
-    where?: jobWhereInput
-  }
-
-  export type jobUpdateToOneWithWhereWithoutHistoryInput = {
-    where?: jobWhereInput
-    data: XOR<jobUpdateWithoutHistoryInput, jobUncheckedUpdateWithoutHistoryInput>
-  }
-
-  export type jobUpdateWithoutHistoryInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    job_exp?: job_expUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
-    post?: postUpdateManyWithoutJobNestedInput
-  }
-
-  export type jobUncheckedUpdateWithoutHistoryInput = {
-    job_id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
-    post?: postUncheckedUpdateManyWithoutJobNestedInput
-  }
-
-  export type jobCreateWithoutJob_expInput = {
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    history?: historyCreateNestedManyWithoutJobInput
-    rating_user?: rating_userCreateNestedManyWithoutJobInput
-    rating_com?: rating_comCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkCreateNestedManyWithoutJobInput
-    post?: postCreateNestedManyWithoutJobInput
-  }
-
-  export type jobUncheckedCreateWithoutJob_expInput = {
-    job_id?: number
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    history?: historyUncheckedCreateNestedManyWithoutJobInput
-    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
-    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
-    post?: postUncheckedCreateNestedManyWithoutJobInput
-  }
-
-  export type jobCreateOrConnectWithoutJob_expInput = {
-    where: jobWhereUniqueInput
-    create: XOR<jobCreateWithoutJob_expInput, jobUncheckedCreateWithoutJob_expInput>
   }
 
   export type categoryCreateWithoutJob_expInput = {
@@ -20628,46 +20592,40 @@ export namespace Prisma {
     create: XOR<categoryCreateWithoutJob_expInput, categoryUncheckedCreateWithoutJob_expInput>
   }
 
-  export type jobUpsertWithoutJob_expInput = {
-    update: XOR<jobUpdateWithoutJob_expInput, jobUncheckedUpdateWithoutJob_expInput>
+  export type jobCreateWithoutJob_expInput = {
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkCreateNestedManyWithoutJobInput
+    history?: historyCreateNestedManyWithoutJobInput
+    post?: postCreateNestedManyWithoutJobInput
+    rating_com?: rating_comCreateNestedManyWithoutJobInput
+    rating_user?: rating_userCreateNestedManyWithoutJobInput
+  }
+
+  export type jobUncheckedCreateWithoutJob_expInput = {
+    job_id?: number
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
+    history?: historyUncheckedCreateNestedManyWithoutJobInput
+    post?: postUncheckedCreateNestedManyWithoutJobInput
+    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
+    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
+  }
+
+  export type jobCreateOrConnectWithoutJob_expInput = {
+    where: jobWhereUniqueInput
     create: XOR<jobCreateWithoutJob_expInput, jobUncheckedCreateWithoutJob_expInput>
-    where?: jobWhereInput
-  }
-
-  export type jobUpdateToOneWithWhereWithoutJob_expInput = {
-    where?: jobWhereInput
-    data: XOR<jobUpdateWithoutJob_expInput, jobUncheckedUpdateWithoutJob_expInput>
-  }
-
-  export type jobUpdateWithoutJob_expInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    history?: historyUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
-    post?: postUpdateManyWithoutJobNestedInput
-  }
-
-  export type jobUncheckedUpdateWithoutJob_expInput = {
-    job_id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    history?: historyUncheckedUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
-    post?: postUncheckedUpdateManyWithoutJobNestedInput
   }
 
   export type categoryUpsertWithoutJob_expInput = {
@@ -20692,52 +20650,46 @@ export namespace Prisma {
     experiences?: experienceUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
-  export type userCreateWithoutBookmarkInput = {
-    first_name: string
-    last_name: string
-    username: string
-    image?: string | null
-    phone_number: string
-    id_card: string
-    email: string
-    password: string
-    role: string
-    post?: postCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
-    contact?: contactCreateNestedManyWithoutUserInput
-    experience?: experienceCreateNestedManyWithoutUserInput
-    user_career?: user_careerCreateNestedManyWithoutUserInput
-    history?: historyCreateNestedManyWithoutUserInput
+  export type jobUpsertWithoutJob_expInput = {
+    update: XOR<jobUpdateWithoutJob_expInput, jobUncheckedUpdateWithoutJob_expInput>
+    create: XOR<jobCreateWithoutJob_expInput, jobUncheckedCreateWithoutJob_expInput>
+    where?: jobWhereInput
   }
 
-  export type userUncheckedCreateWithoutBookmarkInput = {
-    user_id?: number
-    first_name: string
-    last_name: string
-    username: string
-    image?: string | null
-    phone_number: string
-    id_card: string
-    email: string
-    password: string
-    role: string
-    post?: postUncheckedCreateNestedManyWithoutUserInput
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
-    contact?: contactUncheckedCreateNestedManyWithoutUserInput
-    experience?: experienceUncheckedCreateNestedManyWithoutUserInput
-    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
-    history?: historyUncheckedCreateNestedManyWithoutUserInput
+  export type jobUpdateToOneWithWhereWithoutJob_expInput = {
+    where?: jobWhereInput
+    data: XOR<jobUpdateWithoutJob_expInput, jobUncheckedUpdateWithoutJob_expInput>
   }
 
-  export type userCreateOrConnectWithoutBookmarkInput = {
-    where: userWhereUniqueInput
-    create: XOR<userCreateWithoutBookmarkInput, userUncheckedCreateWithoutBookmarkInput>
+  export type jobUpdateWithoutJob_expInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
+    history?: historyUpdateManyWithoutJobNestedInput
+    post?: postUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUpdateManyWithoutJobNestedInput
+  }
+
+  export type jobUncheckedUpdateWithoutJob_expInput = {
+    job_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
+    history?: historyUncheckedUpdateManyWithoutJobNestedInput
+    post?: postUncheckedUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
   }
 
   export type jobCreateWithoutBookmarkInput = {
@@ -20750,9 +20702,9 @@ export namespace Prisma {
     status?: string
     history?: historyCreateNestedManyWithoutJobInput
     job_exp?: job_expCreateNestedManyWithoutJobInput
-    rating_user?: rating_userCreateNestedManyWithoutJobInput
-    rating_com?: rating_comCreateNestedManyWithoutJobInput
     post?: postCreateNestedManyWithoutJobInput
+    rating_com?: rating_comCreateNestedManyWithoutJobInput
+    rating_user?: rating_userCreateNestedManyWithoutJobInput
   }
 
   export type jobUncheckedCreateWithoutBookmarkInput = {
@@ -20766,9 +20718,9 @@ export namespace Prisma {
     status?: string
     history?: historyUncheckedCreateNestedManyWithoutJobInput
     job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
-    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
-    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
     post?: postUncheckedCreateNestedManyWithoutJobInput
+    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
+    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
   }
 
   export type jobCreateOrConnectWithoutBookmarkInput = {
@@ -20776,58 +20728,52 @@ export namespace Prisma {
     create: XOR<jobCreateWithoutBookmarkInput, jobUncheckedCreateWithoutBookmarkInput>
   }
 
-  export type userUpsertWithoutBookmarkInput = {
-    update: XOR<userUpdateWithoutBookmarkInput, userUncheckedUpdateWithoutBookmarkInput>
+  export type userCreateWithoutBookmarkInput = {
+    first_name: string
+    last_name: string
+    username: string
+    image?: string | null
+    phone_number: string
+    id_card: string
+    email: string
+    password: string
+    role: string
+    contact?: contactCreateNestedManyWithoutUserInput
+    experience?: experienceCreateNestedManyWithoutUserInput
+    history?: historyCreateNestedManyWithoutUserInput
+    post?: postCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
+    user_career?: user_careerCreateNestedManyWithoutUserInput
+  }
+
+  export type userUncheckedCreateWithoutBookmarkInput = {
+    user_id?: number
+    first_name: string
+    last_name: string
+    username: string
+    image?: string | null
+    phone_number: string
+    id_card: string
+    email: string
+    password: string
+    role: string
+    contact?: contactUncheckedCreateNestedManyWithoutUserInput
+    experience?: experienceUncheckedCreateNestedManyWithoutUserInput
+    history?: historyUncheckedCreateNestedManyWithoutUserInput
+    post?: postUncheckedCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
+    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type userCreateOrConnectWithoutBookmarkInput = {
+    where: userWhereUniqueInput
     create: XOR<userCreateWithoutBookmarkInput, userUncheckedCreateWithoutBookmarkInput>
-    where?: userWhereInput
-  }
-
-  export type userUpdateToOneWithWhereWithoutBookmarkInput = {
-    where?: userWhereInput
-    data: XOR<userUpdateWithoutBookmarkInput, userUncheckedUpdateWithoutBookmarkInput>
-  }
-
-  export type userUpdateWithoutBookmarkInput = {
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    phone_number?: StringFieldUpdateOperationsInput | string
-    id_card?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: StringFieldUpdateOperationsInput | string
-    post?: postUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
-    contact?: contactUpdateManyWithoutUserNestedInput
-    experience?: experienceUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUpdateManyWithoutUserNestedInput
-    history?: historyUpdateManyWithoutUserNestedInput
-  }
-
-  export type userUncheckedUpdateWithoutBookmarkInput = {
-    user_id?: IntFieldUpdateOperationsInput | number
-    first_name?: StringFieldUpdateOperationsInput | string
-    last_name?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    phone_number?: StringFieldUpdateOperationsInput | string
-    id_card?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    role?: StringFieldUpdateOperationsInput | string
-    post?: postUncheckedUpdateManyWithoutUserNestedInput
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
-    contact?: contactUncheckedUpdateManyWithoutUserNestedInput
-    experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
-    history?: historyUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type jobUpsertWithoutBookmarkInput = {
@@ -20851,9 +20797,9 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     history?: historyUpdateManyWithoutJobNestedInput
     job_exp?: job_expUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUpdateManyWithoutJobNestedInput
     post?: postUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUpdateManyWithoutJobNestedInput
   }
 
   export type jobUncheckedUpdateWithoutBookmarkInput = {
@@ -20867,9 +20813,99 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     history?: historyUncheckedUpdateManyWithoutJobNestedInput
     job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
     post?: postUncheckedUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
+  }
+
+  export type userUpsertWithoutBookmarkInput = {
+    update: XOR<userUpdateWithoutBookmarkInput, userUncheckedUpdateWithoutBookmarkInput>
+    create: XOR<userCreateWithoutBookmarkInput, userUncheckedCreateWithoutBookmarkInput>
+    where?: userWhereInput
+  }
+
+  export type userUpdateToOneWithWhereWithoutBookmarkInput = {
+    where?: userWhereInput
+    data: XOR<userUpdateWithoutBookmarkInput, userUncheckedUpdateWithoutBookmarkInput>
+  }
+
+  export type userUpdateWithoutBookmarkInput = {
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: StringFieldUpdateOperationsInput | string
+    id_card?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    contact?: contactUpdateManyWithoutUserNestedInput
+    experience?: experienceUpdateManyWithoutUserNestedInput
+    history?: historyUpdateManyWithoutUserNestedInput
+    post?: postUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUpdateManyWithoutUserNestedInput
+  }
+
+  export type userUncheckedUpdateWithoutBookmarkInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    first_name?: StringFieldUpdateOperationsInput | string
+    last_name?: StringFieldUpdateOperationsInput | string
+    username?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    phone_number?: StringFieldUpdateOperationsInput | string
+    id_card?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    role?: StringFieldUpdateOperationsInput | string
+    contact?: contactUncheckedUpdateManyWithoutUserNestedInput
+    experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
+    history?: historyUncheckedUpdateManyWithoutUserNestedInput
+    post?: postUncheckedUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type jobCreateWithoutPostInput = {
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkCreateNestedManyWithoutJobInput
+    history?: historyCreateNestedManyWithoutJobInput
+    job_exp?: job_expCreateNestedManyWithoutJobInput
+    rating_com?: rating_comCreateNestedManyWithoutJobInput
+    rating_user?: rating_userCreateNestedManyWithoutJobInput
+  }
+
+  export type jobUncheckedCreateWithoutPostInput = {
+    job_id?: number
+    title: string
+    description: string
+    budget: number
+    type: string
+    posted_date?: Date | string
+    submitted_date?: Date | string | null
+    status?: string
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
+    history?: historyUncheckedCreateNestedManyWithoutJobInput
+    job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
+    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
+    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
+  }
+
+  export type jobCreateOrConnectWithoutPostInput = {
+    where: jobWhereUniqueInput
+    create: XOR<jobCreateWithoutPostInput, jobUncheckedCreateWithoutPostInput>
   }
 
   export type userCreateWithoutPostInput = {
@@ -20882,15 +20918,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkCreateNestedManyWithoutUserInput
     contact?: contactCreateNestedManyWithoutUserInput
     experience?: experienceCreateNestedManyWithoutUserInput
-    user_career?: user_careerCreateNestedManyWithoutUserInput
     history?: historyCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userCreateNestedManyWithoutUser2Input
+    user_career?: user_careerCreateNestedManyWithoutUserInput
   }
 
   export type userUncheckedCreateWithoutPostInput = {
@@ -20904,15 +20940,15 @@ export namespace Prisma {
     email: string
     password: string
     role: string
-    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
-    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
-    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
-    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
     contact?: contactUncheckedCreateNestedManyWithoutUserInput
     experience?: experienceUncheckedCreateNestedManyWithoutUserInput
-    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
     history?: historyUncheckedCreateNestedManyWithoutUserInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutUserInput
+    rating_com1?: rating_comUncheckedCreateNestedManyWithoutUser1Input
+    rating_com2?: rating_comUncheckedCreateNestedManyWithoutUser2Input
+    rating_user1?: rating_userUncheckedCreateNestedManyWithoutUser1Input
+    rating_users2?: rating_userUncheckedCreateNestedManyWithoutUser2Input
+    user_career?: user_careerUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type userCreateOrConnectWithoutPostInput = {
@@ -20920,40 +20956,46 @@ export namespace Prisma {
     create: XOR<userCreateWithoutPostInput, userUncheckedCreateWithoutPostInput>
   }
 
-  export type jobCreateWithoutPostInput = {
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    history?: historyCreateNestedManyWithoutJobInput
-    job_exp?: job_expCreateNestedManyWithoutJobInput
-    rating_user?: rating_userCreateNestedManyWithoutJobInput
-    rating_com?: rating_comCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkCreateNestedManyWithoutJobInput
-  }
-
-  export type jobUncheckedCreateWithoutPostInput = {
-    job_id?: number
-    title: string
-    description: string
-    budget: number
-    type: string
-    posted_date?: Date | string
-    submitted_date?: Date | string | null
-    status?: string
-    history?: historyUncheckedCreateNestedManyWithoutJobInput
-    job_exp?: job_expUncheckedCreateNestedManyWithoutJobInput
-    rating_user?: rating_userUncheckedCreateNestedManyWithoutJobInput
-    rating_com?: rating_comUncheckedCreateNestedManyWithoutJobInput
-    bookmark?: bookmarkUncheckedCreateNestedManyWithoutJobInput
-  }
-
-  export type jobCreateOrConnectWithoutPostInput = {
-    where: jobWhereUniqueInput
+  export type jobUpsertWithoutPostInput = {
+    update: XOR<jobUpdateWithoutPostInput, jobUncheckedUpdateWithoutPostInput>
     create: XOR<jobCreateWithoutPostInput, jobUncheckedCreateWithoutPostInput>
+    where?: jobWhereInput
+  }
+
+  export type jobUpdateToOneWithWhereWithoutPostInput = {
+    where?: jobWhereInput
+    data: XOR<jobUpdateWithoutPostInput, jobUncheckedUpdateWithoutPostInput>
+  }
+
+  export type jobUpdateWithoutPostInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
+    history?: historyUpdateManyWithoutJobNestedInput
+    job_exp?: job_expUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUpdateManyWithoutJobNestedInput
+  }
+
+  export type jobUncheckedUpdateWithoutPostInput = {
+    job_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    budget?: IntFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
+    history?: historyUncheckedUpdateManyWithoutJobNestedInput
+    job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
+    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
+    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
   }
 
   export type userUpsertWithoutPostInput = {
@@ -20977,15 +21019,15 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
     contact?: contactUpdateManyWithoutUserNestedInput
     experience?: experienceUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUpdateManyWithoutUserNestedInput
     history?: historyUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUpdateManyWithoutUserNestedInput
   }
 
   export type userUncheckedUpdateWithoutPostInput = {
@@ -20999,93 +21041,20 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     role?: StringFieldUpdateOperationsInput | string
-    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
-    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
-    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
-    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
     contact?: contactUncheckedUpdateManyWithoutUserNestedInput
     experience?: experienceUncheckedUpdateManyWithoutUserNestedInput
-    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
     history?: historyUncheckedUpdateManyWithoutUserNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutUserNestedInput
+    rating_com1?: rating_comUncheckedUpdateManyWithoutUser1NestedInput
+    rating_com2?: rating_comUncheckedUpdateManyWithoutUser2NestedInput
+    rating_user1?: rating_userUncheckedUpdateManyWithoutUser1NestedInput
+    rating_users2?: rating_userUncheckedUpdateManyWithoutUser2NestedInput
+    user_career?: user_careerUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type jobUpsertWithoutPostInput = {
-    update: XOR<jobUpdateWithoutPostInput, jobUncheckedUpdateWithoutPostInput>
-    create: XOR<jobCreateWithoutPostInput, jobUncheckedCreateWithoutPostInput>
-    where?: jobWhereInput
-  }
-
-  export type jobUpdateToOneWithWhereWithoutPostInput = {
-    where?: jobWhereInput
-    data: XOR<jobUpdateWithoutPostInput, jobUncheckedUpdateWithoutPostInput>
-  }
-
-  export type jobUpdateWithoutPostInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    history?: historyUpdateManyWithoutJobNestedInput
-    job_exp?: job_expUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUpdateManyWithoutJobNestedInput
-  }
-
-  export type jobUncheckedUpdateWithoutPostInput = {
-    job_id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    budget?: IntFieldUpdateOperationsInput | number
-    type?: StringFieldUpdateOperationsInput | string
-    posted_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    submitted_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: StringFieldUpdateOperationsInput | string
-    history?: historyUncheckedUpdateManyWithoutJobNestedInput
-    job_exp?: job_expUncheckedUpdateManyWithoutJobNestedInput
-    rating_user?: rating_userUncheckedUpdateManyWithoutJobNestedInput
-    rating_com?: rating_comUncheckedUpdateManyWithoutJobNestedInput
-    bookmark?: bookmarkUncheckedUpdateManyWithoutJobNestedInput
-  }
-
-  export type postCreateManyUserInput = {
+  export type bookmarkCreateManyUserInput = {
     job_id: number
-  }
-
-  export type rating_userCreateManyUser1Input = {
-    rating_id?: number
-    user_id2: number
-    job_id: number
-    friendly_rating?: number
-    efficiency_rating?: number
-    accuracy_rating?: number
-  }
-
-  export type rating_userCreateManyUser2Input = {
-    rating_id?: number
-    user_id1: number
-    job_id: number
-    friendly_rating?: number
-    efficiency_rating?: number
-    accuracy_rating?: number
-  }
-
-  export type rating_comCreateManyUser1Input = {
-    rating_id?: number
-    user_id2: number
-    job_id: number
-    rating?: number
-  }
-
-  export type rating_comCreateManyUser2Input = {
-    rating_id?: number
-    user_id1: number
-    job_id: number
-    rating?: number
+    book_id?: number
   }
 
   export type contactCreateManyUserInput = {
@@ -21099,122 +21068,63 @@ export namespace Prisma {
     category_id: number
   }
 
-  export type user_careerCreateManyUserInput = {
-    career_id: number
-  }
-
   export type historyCreateManyUserInput = {
     job_id: number
     status?: string
   }
 
-  export type bookmarkCreateManyUserInput = {
-    book_id?: number
+  export type postCreateManyUserInput = {
     job_id: number
   }
 
-  export type postUpdateWithoutUserInput = {
-    job?: jobUpdateOneRequiredWithoutPostNestedInput
+  export type rating_comCreateManyUser1Input = {
+    rating_id?: number
+    job_id: number
+    rating?: number
+    user_id2: number
   }
 
-  export type postUncheckedUpdateWithoutUserInput = {
+  export type rating_comCreateManyUser2Input = {
+    rating_id?: number
+    job_id: number
+    rating?: number
+    user_id1: number
+  }
+
+  export type rating_userCreateManyUser1Input = {
+    rating_id?: number
+    job_id: number
+    friendly_rating?: number
+    efficiency_rating?: number
+    accuracy_rating?: number
+    user_id2: number
+  }
+
+  export type rating_userCreateManyUser2Input = {
+    rating_id?: number
+    job_id: number
+    friendly_rating?: number
+    efficiency_rating?: number
+    accuracy_rating?: number
+    user_id1: number
+  }
+
+  export type user_careerCreateManyUserInput = {
+    career_id: number
+  }
+
+  export type bookmarkUpdateWithoutUserInput = {
+    job?: jobUpdateOneRequiredWithoutBookmarkNestedInput
+  }
+
+  export type bookmarkUncheckedUpdateWithoutUserInput = {
     job_id?: IntFieldUpdateOperationsInput | number
+    book_id?: IntFieldUpdateOperationsInput | number
   }
 
-  export type postUncheckedUpdateManyWithoutUserInput = {
+  export type bookmarkUncheckedUpdateManyWithoutUserInput = {
     job_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type rating_userUpdateWithoutUser1Input = {
-    friendly_rating?: FloatFieldUpdateOperationsInput | number
-    efficiency_rating?: FloatFieldUpdateOperationsInput | number
-    accuracy_rating?: FloatFieldUpdateOperationsInput | number
-    user2?: userUpdateOneRequiredWithoutRating_users2NestedInput
-    job?: jobUpdateOneRequiredWithoutRating_userNestedInput
-  }
-
-  export type rating_userUncheckedUpdateWithoutUser1Input = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
-    job_id?: IntFieldUpdateOperationsInput | number
-    friendly_rating?: FloatFieldUpdateOperationsInput | number
-    efficiency_rating?: FloatFieldUpdateOperationsInput | number
-    accuracy_rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_userUncheckedUpdateManyWithoutUser1Input = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
-    job_id?: IntFieldUpdateOperationsInput | number
-    friendly_rating?: FloatFieldUpdateOperationsInput | number
-    efficiency_rating?: FloatFieldUpdateOperationsInput | number
-    accuracy_rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_userUpdateWithoutUser2Input = {
-    friendly_rating?: FloatFieldUpdateOperationsInput | number
-    efficiency_rating?: FloatFieldUpdateOperationsInput | number
-    accuracy_rating?: FloatFieldUpdateOperationsInput | number
-    user1?: userUpdateOneRequiredWithoutRating_user1NestedInput
-    job?: jobUpdateOneRequiredWithoutRating_userNestedInput
-  }
-
-  export type rating_userUncheckedUpdateWithoutUser2Input = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    job_id?: IntFieldUpdateOperationsInput | number
-    friendly_rating?: FloatFieldUpdateOperationsInput | number
-    efficiency_rating?: FloatFieldUpdateOperationsInput | number
-    accuracy_rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_userUncheckedUpdateManyWithoutUser2Input = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    job_id?: IntFieldUpdateOperationsInput | number
-    friendly_rating?: FloatFieldUpdateOperationsInput | number
-    efficiency_rating?: FloatFieldUpdateOperationsInput | number
-    accuracy_rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_comUpdateWithoutUser1Input = {
-    rating?: FloatFieldUpdateOperationsInput | number
-    user2?: userUpdateOneRequiredWithoutRating_com2NestedInput
-    job?: jobUpdateOneRequiredWithoutRating_comNestedInput
-  }
-
-  export type rating_comUncheckedUpdateWithoutUser1Input = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
-    job_id?: IntFieldUpdateOperationsInput | number
-    rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_comUncheckedUpdateManyWithoutUser1Input = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
-    job_id?: IntFieldUpdateOperationsInput | number
-    rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_comUpdateWithoutUser2Input = {
-    rating?: FloatFieldUpdateOperationsInput | number
-    user1?: userUpdateOneRequiredWithoutRating_com1NestedInput
-    job?: jobUpdateOneRequiredWithoutRating_comNestedInput
-  }
-
-  export type rating_comUncheckedUpdateWithoutUser2Input = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    job_id?: IntFieldUpdateOperationsInput | number
-    rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_comUncheckedUpdateManyWithoutUser2Input = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    job_id?: IntFieldUpdateOperationsInput | number
-    rating?: FloatFieldUpdateOperationsInput | number
+    book_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type contactUpdateWithoutUserInput = {
@@ -21249,18 +21159,6 @@ export namespace Prisma {
     category_id?: IntFieldUpdateOperationsInput | number
   }
 
-  export type user_careerUpdateWithoutUserInput = {
-    career?: careerUpdateOneRequiredWithoutUser_careerNestedInput
-  }
-
-  export type user_careerUncheckedUpdateWithoutUserInput = {
-    career_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type user_careerUncheckedUpdateManyWithoutUserInput = {
-    career_id?: IntFieldUpdateOperationsInput | number
-  }
-
   export type historyUpdateWithoutUserInput = {
     status?: StringFieldUpdateOperationsInput | string
     job?: jobUpdateOneRequiredWithoutHistoryNestedInput
@@ -21276,18 +21174,120 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
   }
 
-  export type bookmarkUpdateWithoutUserInput = {
-    job?: jobUpdateOneRequiredWithoutBookmarkNestedInput
+  export type postUpdateWithoutUserInput = {
+    job?: jobUpdateOneRequiredWithoutPostNestedInput
   }
 
-  export type bookmarkUncheckedUpdateWithoutUserInput = {
-    book_id?: IntFieldUpdateOperationsInput | number
+  export type postUncheckedUpdateWithoutUserInput = {
     job_id?: IntFieldUpdateOperationsInput | number
   }
 
-  export type bookmarkUncheckedUpdateManyWithoutUserInput = {
-    book_id?: IntFieldUpdateOperationsInput | number
+  export type postUncheckedUpdateManyWithoutUserInput = {
     job_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_comUpdateWithoutUser1Input = {
+    rating?: FloatFieldUpdateOperationsInput | number
+    job?: jobUpdateOneRequiredWithoutRating_comNestedInput
+    user2?: userUpdateOneRequiredWithoutRating_com2NestedInput
+  }
+
+  export type rating_comUncheckedUpdateWithoutUser1Input = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    job_id?: IntFieldUpdateOperationsInput | number
+    rating?: FloatFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_comUncheckedUpdateManyWithoutUser1Input = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    job_id?: IntFieldUpdateOperationsInput | number
+    rating?: FloatFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_comUpdateWithoutUser2Input = {
+    rating?: FloatFieldUpdateOperationsInput | number
+    job?: jobUpdateOneRequiredWithoutRating_comNestedInput
+    user1?: userUpdateOneRequiredWithoutRating_com1NestedInput
+  }
+
+  export type rating_comUncheckedUpdateWithoutUser2Input = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    job_id?: IntFieldUpdateOperationsInput | number
+    rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_comUncheckedUpdateManyWithoutUser2Input = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    job_id?: IntFieldUpdateOperationsInput | number
+    rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_userUpdateWithoutUser1Input = {
+    friendly_rating?: FloatFieldUpdateOperationsInput | number
+    efficiency_rating?: FloatFieldUpdateOperationsInput | number
+    accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    job?: jobUpdateOneRequiredWithoutRating_userNestedInput
+    user2?: userUpdateOneRequiredWithoutRating_users2NestedInput
+  }
+
+  export type rating_userUncheckedUpdateWithoutUser1Input = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    job_id?: IntFieldUpdateOperationsInput | number
+    friendly_rating?: FloatFieldUpdateOperationsInput | number
+    efficiency_rating?: FloatFieldUpdateOperationsInput | number
+    accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_userUncheckedUpdateManyWithoutUser1Input = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    job_id?: IntFieldUpdateOperationsInput | number
+    friendly_rating?: FloatFieldUpdateOperationsInput | number
+    efficiency_rating?: FloatFieldUpdateOperationsInput | number
+    accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_userUpdateWithoutUser2Input = {
+    friendly_rating?: FloatFieldUpdateOperationsInput | number
+    efficiency_rating?: FloatFieldUpdateOperationsInput | number
+    accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    job?: jobUpdateOneRequiredWithoutRating_userNestedInput
+    user1?: userUpdateOneRequiredWithoutRating_user1NestedInput
+  }
+
+  export type rating_userUncheckedUpdateWithoutUser2Input = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    job_id?: IntFieldUpdateOperationsInput | number
+    friendly_rating?: FloatFieldUpdateOperationsInput | number
+    efficiency_rating?: FloatFieldUpdateOperationsInput | number
+    accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_userUncheckedUpdateManyWithoutUser2Input = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    job_id?: IntFieldUpdateOperationsInput | number
+    friendly_rating?: FloatFieldUpdateOperationsInput | number
+    efficiency_rating?: FloatFieldUpdateOperationsInput | number
+    accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_careerUpdateWithoutUserInput = {
+    career?: careerUpdateOneRequiredWithoutUser_careerNestedInput
+  }
+
+  export type user_careerUncheckedUpdateWithoutUserInput = {
+    career_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_careerUncheckedUpdateManyWithoutUserInput = {
+    career_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type experienceCreateManyCategoryInput = {
@@ -21338,6 +21338,11 @@ export namespace Prisma {
     user_id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type bookmarkCreateManyJobInput = {
+    user_id: number
+    book_id?: number
+  }
+
   export type historyCreateManyJobInput = {
     user_id: number
     status?: string
@@ -21347,29 +21352,38 @@ export namespace Prisma {
     category_id: number
   }
 
-  export type rating_userCreateManyJobInput = {
-    rating_id?: number
-    user_id1: number
-    user_id2: number
-    friendly_rating?: number
-    efficiency_rating?: number
-    accuracy_rating?: number
+  export type postCreateManyJobInput = {
+    user_id: number
   }
 
   export type rating_comCreateManyJobInput = {
     rating_id?: number
+    rating?: number
     user_id1: number
     user_id2: number
-    rating?: number
   }
 
-  export type bookmarkCreateManyJobInput = {
-    book_id?: number
-    user_id: number
+  export type rating_userCreateManyJobInput = {
+    rating_id?: number
+    friendly_rating?: number
+    efficiency_rating?: number
+    accuracy_rating?: number
+    user_id1: number
+    user_id2: number
   }
 
-  export type postCreateManyJobInput = {
-    user_id: number
+  export type bookmarkUpdateWithoutJobInput = {
+    user?: userUpdateOneRequiredWithoutBookmarkNestedInput
+  }
+
+  export type bookmarkUncheckedUpdateWithoutJobInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    book_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type bookmarkUncheckedUpdateManyWithoutJobInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    book_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type historyUpdateWithoutJobInput = {
@@ -21399,66 +21413,6 @@ export namespace Prisma {
     category_id?: IntFieldUpdateOperationsInput | number
   }
 
-  export type rating_userUpdateWithoutJobInput = {
-    friendly_rating?: FloatFieldUpdateOperationsInput | number
-    efficiency_rating?: FloatFieldUpdateOperationsInput | number
-    accuracy_rating?: FloatFieldUpdateOperationsInput | number
-    user1?: userUpdateOneRequiredWithoutRating_user1NestedInput
-    user2?: userUpdateOneRequiredWithoutRating_users2NestedInput
-  }
-
-  export type rating_userUncheckedUpdateWithoutJobInput = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
-    friendly_rating?: FloatFieldUpdateOperationsInput | number
-    efficiency_rating?: FloatFieldUpdateOperationsInput | number
-    accuracy_rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_userUncheckedUpdateManyWithoutJobInput = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
-    friendly_rating?: FloatFieldUpdateOperationsInput | number
-    efficiency_rating?: FloatFieldUpdateOperationsInput | number
-    accuracy_rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_comUpdateWithoutJobInput = {
-    rating?: FloatFieldUpdateOperationsInput | number
-    user1?: userUpdateOneRequiredWithoutRating_com1NestedInput
-    user2?: userUpdateOneRequiredWithoutRating_com2NestedInput
-  }
-
-  export type rating_comUncheckedUpdateWithoutJobInput = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
-    rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type rating_comUncheckedUpdateManyWithoutJobInput = {
-    rating_id?: IntFieldUpdateOperationsInput | number
-    user_id1?: IntFieldUpdateOperationsInput | number
-    user_id2?: IntFieldUpdateOperationsInput | number
-    rating?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type bookmarkUpdateWithoutJobInput = {
-    user?: userUpdateOneRequiredWithoutBookmarkNestedInput
-  }
-
-  export type bookmarkUncheckedUpdateWithoutJobInput = {
-    book_id?: IntFieldUpdateOperationsInput | number
-    user_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type bookmarkUncheckedUpdateManyWithoutJobInput = {
-    book_id?: IntFieldUpdateOperationsInput | number
-    user_id?: IntFieldUpdateOperationsInput | number
-  }
-
   export type postUpdateWithoutJobInput = {
     user?: userUpdateOneRequiredWithoutPostNestedInput
   }
@@ -21469,6 +21423,52 @@ export namespace Prisma {
 
   export type postUncheckedUpdateManyWithoutJobInput = {
     user_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_comUpdateWithoutJobInput = {
+    rating?: FloatFieldUpdateOperationsInput | number
+    user1?: userUpdateOneRequiredWithoutRating_com1NestedInput
+    user2?: userUpdateOneRequiredWithoutRating_com2NestedInput
+  }
+
+  export type rating_comUncheckedUpdateWithoutJobInput = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_comUncheckedUpdateManyWithoutJobInput = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_userUpdateWithoutJobInput = {
+    friendly_rating?: FloatFieldUpdateOperationsInput | number
+    efficiency_rating?: FloatFieldUpdateOperationsInput | number
+    accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    user1?: userUpdateOneRequiredWithoutRating_user1NestedInput
+    user2?: userUpdateOneRequiredWithoutRating_users2NestedInput
+  }
+
+  export type rating_userUncheckedUpdateWithoutJobInput = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    friendly_rating?: FloatFieldUpdateOperationsInput | number
+    efficiency_rating?: FloatFieldUpdateOperationsInput | number
+    accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type rating_userUncheckedUpdateManyWithoutJobInput = {
+    rating_id?: IntFieldUpdateOperationsInput | number
+    friendly_rating?: FloatFieldUpdateOperationsInput | number
+    efficiency_rating?: FloatFieldUpdateOperationsInput | number
+    accuracy_rating?: FloatFieldUpdateOperationsInput | number
+    user_id1?: IntFieldUpdateOperationsInput | number
+    user_id2?: IntFieldUpdateOperationsInput | number
   }
 
 
