@@ -7,6 +7,10 @@ from prisma import Prisma
 from dotenv import load_dotenv
 import os
 from scipy.spatial.distance import pdist
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.cluster import KMeans
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.decomposition import PCA
 
 app = FastAPI()
 load_dotenv()
@@ -47,35 +51,44 @@ async def process_data(freelance_data: str = Form(...)):
             where={
                 "status": "Open"
             },
+            include={
+                'job_exp':  {
+                    "include":{
+                        "category": True
+                    }
+                },
+                "post": {
+                    "include":{
+                        "user": True
+                    }
+                }
+            }
         )
         
-        filtered_jobs = [job for job in jobs if job.description]  # Filter out jobs without descriptions
+        filtered_jobs = [job for job in jobs if job.description]  
         job_descriptions = [job.description if job.description else "No description available" for job in
                             filtered_jobs]
 
-        # Encode text data
         encoded_user_exp = model.encode(user_exp, show_progress_bar=True)
         encoded_job_descriptions = model.encode(job_descriptions, show_progress_bar=True)
+        result =  np.concatenate((encoded_user_exp, encoded_job_descriptions), axis=0)
+        exp_size = np.size(user_exp)
+        X = np.array(result)
+        cos_sim_data = pd.DataFrame(cosine_similarity(X))
+        recommendations_dict = {}
+        for i in range(exp_size):
+            index_recomm = cos_sim_data.loc[i][exp_size:].sort_values(ascending=False).index.tolist()[0:3]
+            recomm = [x - exp_size for x in index_recomm]
+            exp_recomm = [jobs[i].title for i in recomm]
+            des_recomm = [jobs[i].description for i in recomm]
+            recommendations = []
+            for name, des in zip(exp_recomm, des_recomm):
+                recommendations.append({'Name': name, 'Description': des})
+            
+            watched_company = user_exp[i]
+            recommendations_dict[watched_company] = recommendations
 
-        # Calculate cosine similarity
-        similarity_matrix = util.pytorch_cos_sim(encoded_user_exp, encoded_job_descriptions)
-
-        # Initialize an empty list to store the recommendations
-        recommendations = []
-
-        for i, exp in enumerate(user_exp):
-            # Check if similarity_matrix is properly computed and is not None
-            if similarity_matrix is not None and isinstance(similarity_matrix, np.ndarray) and similarity_matrix.size > 0:
-                top_similar_idx = np.argsort(similarity_matrix[i])[-3:][::-1]  # Get indices of top 3
-
-                # Include description snippets in recommendation string
-                job_details = [f"{job_descriptions[idx][:50]}..." for idx in top_similar_idx]  # Include snippet of the description
-
-                recommendations.append(f"Recommended job for '{exp}': {', '.join(job_details)}")
-            else:
-                recommendations.append(f"No recommendations found for '{exp}'")
-
-        return recommendations
+        return recommendations_dict
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
