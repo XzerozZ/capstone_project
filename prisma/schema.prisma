@@ -1,13 +1,5 @@
-generator client_js {
+generator client {
   provider = "prisma-client-js"
-  output   = "./generated/client_js"
-}
-
-generator client_py {
-  provider             = "prisma-client-py"
-  output               = "./generated/client_py"
-  interface            = "sync"
-  recursive_type_depth = "5"
 }
 
 datasource db {
