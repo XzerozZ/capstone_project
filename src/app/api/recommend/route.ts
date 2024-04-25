@@ -7,10 +7,10 @@ import {User} from '../interface/interface'
 
 const route = () => {
 
-    const [userID, setUserID] = useState<User>({userID:''})
+    const [dataUser, setDataUser] = useState<User>({userID:''})
 
     const PostUserID = async () => {
-        axios.post('http://localhost:3000/api/recommend', userID)
+        axios.post('http://localhost:3000/api/recommend', dataUser)
         .then(response => {
             console.log(response)
         })
