@@ -1,24 +1,16 @@
 'use server'
-import { response } from 'express'
-import React from 'react'
 import axios from 'axios'
-import { useState } from 'react'
-import {User} from '../interface/interface'
 
-const route = () => {
 
-    const [dataUser, setDataUser] = useState<User>({userID:''})
-
-    const PostUserID = async () => {
-        axios.post('http://localhost:3000/api/recommend', dataUser)
-        .then(response => {
-            console.log(response)
-        })
+export async function POST( req : Request ) {
+    try{
+        const formData = await req.formData();
+        const id = formData.get('user_id') as string
+        const data = await axios.post('http://localhost:4000/api/processdata', {
+            user_id: id
+        });
+        return Response.json(data.data)
+    } catch(error){
+        return Response.json(error)
     }
-
-    
-
-    return Response.json({
-        name:'hello world!'
-    })
 }

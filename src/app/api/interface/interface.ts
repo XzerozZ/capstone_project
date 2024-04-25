@@ -4,5 +4,5 @@ export interface Supabase {
 }
 
 export interface User {
-    userID : string
+    user_id : string
 }

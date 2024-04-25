@@ -16,8 +16,8 @@ app = FastAPI()
 load_dotenv()
 
 
-@app.post('/api/process_data')
-async def process_data(freelance_data: str = Form(...)):
+@app.post('/api/processdata')
+async def process_data(data: dict):
     prisma = Prisma()
     await prisma.connect()
     model_name = 'distilbert-base-nli-mean-tokens' 
@@ -25,10 +25,10 @@ async def process_data(freelance_data: str = Form(...)):
 
     print('Processing data...')
     try:
-        if not freelance_data:
+        if not data:
             raise HTTPException(status_code=400, detail='No JSON data provided')
 
-        user = freelance_data
+        user = data.get('user_id')
 
         if user is None:
             raise HTTPException(status_code=400, detail='Input data not found or not valid')
@@ -79,21 +79,20 @@ async def process_data(freelance_data: str = Form(...)):
         for i in range(exp_size):
             index_recomm = cos_sim_data.loc[i][exp_size:].sort_values(ascending=False).index.tolist()[0:3]
             recomm = [x - exp_size for x in index_recomm]
-            exp_recomm = [jobs[i].title for i in recomm]
-            des_recomm = [jobs[i].description for i in recomm]
+            exp_data = [jobs[i] for i in recomm]
             recommendations = []
-            for name, des in zip(exp_recomm, des_recomm):
-                recommendations.append({'Name': name, 'Description': des})
+            for alldata in zip(exp_data):
+                recommendations.append({'Data' : alldata })
             
             watched_company = user_exp[i]
             recommendations_dict[watched_company] = recommendations
 
-        return recommendations_dict
-
+        return {
+            "recommend" : recommendations_dict
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == '__main__':
     import uvicorn
-
     uvicorn.run(app, host='localhost', port=4000)
