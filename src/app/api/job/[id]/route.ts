@@ -1,5 +1,6 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
+
 // http://localhost:3000/api/job/[id]
 export async function GET(request: Request, { params }: { params: { id: string } }) {
     const prisma = new PrismaClient();
