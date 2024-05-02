@@ -1,8 +1,103 @@
 import Image from "next/image";
+import Navbar from  "@/components/Navbar";
+import CategoryBox from "./components/CategoryBox";
+import JobRecommend from "./components/JobRecommend";
+import ReactDOM from "react-dom/client";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between">
+      <Navbar/>
+      <div className="flex items-center justify-center flex-wrap flex-col mt-[100px] w-full"> {/* Margin top ให้ component เด้งลงมา */}
+        <div className="w-full bg-[#FF23F9] h-[256px] m-0 p-0"></div> {/* Banner */}
+
+        <div className="w-full my-10 px-20 flex flex-col">{/* Recommended Jobs */}
+          <div className="flex justify justify-between">
+            <p className="text-4xl font-bold text-black self-start">Recommended Jobs</p> {/* Recommended Jobs text, select box */}
+            <div>
+              <label>Sort by:</label>
+              <select name="" id=""> {/* Sort by select box */}
+                <option value="">Popular</option> {/* Mock */}
+                <option value="">Newest</option>
+              </select>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div>{"<"}</div>
+            <div className="grid overflow-x-auto grid-flow-col auto-cols-auto gap-[5rem]"> 
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+            </div>
+            <div>{">"}</div>
+          </div>
+        </div>
+        <div className="w-full my-10 px-20 flex flex-col"> {/* Category */}
+          <p className="text-3xl font-bold text-black self-start">Categories of service</p>
+          <div className="grid grid-cols-3 gap-10 px-10 py-5"> {/* Category box */}
+            <CategoryBox to="/" display="Web Development & Design"/>
+            <CategoryBox to="/" display="Programming & Software"/>
+            <CategoryBox to="/" display="Networking, Hardware & System Admin"/>
+            <CategoryBox to="/" display="Apps & Mobile"/>
+            <CategoryBox to="/" display="Database Design & Administration"/>
+            <CategoryBox to="/pages/profile/freelancer" display="QA & Testing"/>
+          </div>
+        </div>
+
+        <div className="w-full my-10 px-20 flex flex-col"> {/* Find jobs */}
+          <div className="flex justify justify-between">
+            <p className="text-3xl font-bold text-black self-start">Find Jobs</p> {/* Find Jobs text, select box */}
+            <div>{/*className="border-black border-2 rounded-2xl"*/}
+              <label>Sort by:</label>
+              <select name="" id=""> {/* Find Jobs select box */}
+                <option value="">Popular</option> {/* Mock */}
+                <option value="">Newest</option>
+              </select>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div>{"<"}</div>
+            <div className="grid overflow-x-auto grid-flow-col auto-cols-auto gap-[5rem]"> {/* ใช้ร่วมกันตอนนี้, แก้ไขได้ */}
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+              <JobRecommend/>
+            </div>
+            <div>{">"}</div>
+          </div>
+          <div className="flex flex-row-reverse pr-10"> {/*  Show more button */}
+            <a className="text-sm" href="/">View more</a>
+          </div>
+        </div> 
+
+        <div className="w-full my-5 p-0"></div> {/* Post a job */}
+      </div>
+      
+    </main>
+  );
+}
+
+
+
+      { /* 
+      <div>{"<"}</div>
+      <JobRecommend/>
+      <JobRecommend/>
+      <JobRecommend/>
+      <JobRecommend/>
+      <JobRecommend/>
+      <JobRecommend/>
+      <p>{">"}</p>
+      
+      
+      
+      
+      Original Nextjs page
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
@@ -107,7 +202,4 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
-      </div>
-    </main>
-  );
-}
+      </div> */}
