@@ -3,11 +3,12 @@ import Navbar from  "@/components/Navbar";
 import CategoryBox from "./components/CategoryBox";
 import JobRecommend from "./components/JobRecommend";
 import ReactDOM from "react-dom/client";
-
+import Clients from "./components/Slider/Slider";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
       <Navbar/>
+      <Clients/>
       <div className="flex items-center justify-center flex-wrap flex-col mt-[100px] w-full"> {/* Margin top ให้ component เด้งลงมา */}
         <div className="w-full bg-[#FF23F9] h-[256px] m-0 p-0"></div> {/* Banner */}
 

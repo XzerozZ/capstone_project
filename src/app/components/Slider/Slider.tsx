@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+"use client"
+import React, { RefObject, useRef } from 'react'
 import Slider from 'react-slick'
 import styled from 'styled-components'
 import ClientSlider from './ClientSlider';
@@ -75,27 +76,35 @@ var settings = {
     ]}
 
 const Clients = () => {
-    const arrowRef = useRef(null);
-    let clientDisc = "";
+    let clientDisc: JSX.Element[] = []; // Update the type to be an array of JSX elements
     clientDisc = clients.map((item, i) => (
         <ClientSlider item={item} key={i}/>
     ))
+    type SliderType = {
+        slickNext: () => void;
+        slickPrev: () => void;
+      };
+      
+      const arrowRef = useRef<SliderType | null>(null);
+    
   return (
     <Container id='client'>
         <Slide direction="left">
             <span className="green">testimonials</span>
             <h1>what clients say</h1>
         </Slide>
+       
+
         <Testimonials>
-            <Slider ref={arrowRef} {...settings}>
+            <Slider ref={arrowRef as RefObject<Slider> | null} {...settings}>
                 {clientDisc}
             </Slider>
             <Buttons>
                 <button
-                onClick={() => arrowRef.current.slickPrev()}
+                onClick={() => arrowRef.current?.slickPrev()} // Use optional chaining to safely access the 'slickPrev' method
                 ><IoIosArrowBack/></button>
                 <button
-                onClick={() => arrowRef.current.slickNext()}
+                onClick={() => arrowRef.current?.slickNext()} // Use optional chaining to safely access the 'slickNext' method
                 ><IoIosArrowForward/></button>
             </Buttons>
         </Testimonials>
