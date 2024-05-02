@@ -25,7 +25,13 @@ export async function POST( req: Request ) {
               categoryNames.push(value as string);
           }
       }
-
+      for await (const [name,value] of formData.entries()){
+        if(name === 'submitted_date'){
+            const date = new Date(value as string);
+            const dateString = date.toISOString();
+            formData.set(name, dateString);
+        }
+      }
       const categories = await Promise.all(categoryNames.map(async (categoryName) => {
           let category = await prisma.category.findFirst({
               where: {
@@ -50,6 +56,7 @@ export async function POST( req: Request ) {
               description: formData.get('description') as string,
               budget: parseInt(formData.get('budget') as string),
               type: formData.get('type') as string,
+              submitted_date: formData.get('submitted_date') as string, // 2000-07-17
               job_exp: {
                   create: categoryIds.map(category_id => ({
                       category: {

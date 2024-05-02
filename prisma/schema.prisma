@@ -145,6 +145,5 @@ model post {
   user_id Int
   job     job  @relation(fields: [job_id], references: [job_id])
   user    user @relation(fields: [user_id], references: [user_id])
-
   @@unique([user_id, job_id])
 }
