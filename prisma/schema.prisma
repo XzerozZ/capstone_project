@@ -6,133 +6,144 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-model user{
-  user_id       Int              @id @default(autoincrement())  
-  first_name    String           @db.VarChar(100) 
-  last_name     String           @db.VarChar(100) 
-  username      String           @db.VarChar(100) 
-  image         String?          @db.Text 
-  phone_number  String           @db.VarChar(12) 
-  id_card       String           @db.VarChar(17) 
-  email         String           @db.VarChar(255) @unique
-  password      String           @db.VarChar(255)
-  role          String           @db.VarChar @default("user")
-  rating_user   rating_user[]
-  rating_com    rating_com[]
+
+model user {
+  user_id       Int           @id @default(autoincrement())
+  first_name    String        @db.VarChar(100)
+  last_name     String        @db.VarChar(100)
+  username      String        @db.VarChar(100)
+  image         String?
+  phone_number  String        @db.VarChar(12)
+  id_card       String        @db.VarChar(17)
+  email         String        @unique @db.VarChar(255)
+  password      String        @db.VarChar(255)
+  role          String        @db.VarChar
+  bookmark      bookmark[]
   contact       contact[]
   experience    experience[]
-  user_career   user_career[]
   history       history[]
-  bookmark      bookmark[]
+  post          post[]
+  rating_com1   rating_com[]  @relation("ratings_com_given")
+  rating_com2   rating_com[]  @relation("ratings_com_received")
+  rating_user1  rating_user[] @relation("ratings_given")
+  rating_users2 rating_user[] @relation("ratings_received")
+  user_career   user_career[]
 }
-model rating_user{
-  rating_id           Int        @id @default(autoincrement())
-  company_id          Int
-  user_id             Int
-  job_id              Int
-  friendly_rating     Float      @default(0.0)
-  efficiency_rating   Float      @default(0.0)
-  accuracy_rating     Float      @default(0.0)
-  user                user       @relation(fields: [user_id], references: [user_id])
-  job                 job        @relation(fields: [job_id], references: [job_id])
-  company             company    @relation(fields: [company_id],references: [company_id])
+
+model rating_user {
+  rating_id         Int   @id @default(autoincrement())
+  job_id            Int
+  friendly_rating   Float @default(0.0)
+  efficiency_rating Float @default(0.0)
+  accuracy_rating   Float @default(0.0)
+  user_id1          Int
+  user_id2          Int
+  job               job   @relation(fields: [job_id], references: [job_id])
+  user1             user  @relation("ratings_given", fields: [user_id1], references: [user_id])
+  user2             user  @relation("ratings_received", fields: [user_id2], references: [user_id])
 }
-model rating_com{
-  rating_id           Int        @id @default(autoincrement())
-  company_id          Int
-  user_id             Int
-  job_id              Int
-  rating              Float      @default(0.0)
-  user                user       @relation(fields: [user_id], references: [user_id])
-  job                 job        @relation(fields: [job_id], references: [job_id])
-  company             company    @relation(fields: [company_id],references: [company_id])
+
+model rating_com {
+  rating_id Int   @id @default(autoincrement())
+  job_id    Int
+  rating    Float @default(0.0)
+  user_id1  Int
+  user_id2  Int
+  job       job   @relation(fields: [job_id], references: [job_id])
+  user1     user  @relation("ratings_com_given", fields: [user_id1], references: [user_id])
+  user2     user  @relation("ratings_com_received", fields: [user_id2], references: [user_id])
 }
-model contact{
-  contact_id          Int        @id @default(autoincrement())
-  user_id             Int
-  facebook            String     @db.Text
-  instagram           String     @db.Text
-  linkedin            String     @db.Text
-  user                user       @relation(fields: [user_id], references: [user_id])
+
+model contact {
+  contact_id Int    @id @default(autoincrement())
+  user_id    Int
+  facebook   String
+  instagram  String
+  linkedin   String
+  user       user   @relation(fields: [user_id], references: [user_id])
 }
-model category{
-  category_id         Int        @id @default(autoincrement())
-  name                String     @db.Text
-  experiences         experience[]
-  job_exp             job_exp[]
+
+model category {
+  category_id Int          @id @default(autoincrement())
+  name        String
+  experiences experience[]
+  job_exp     job_exp[]
 }
-model experience{
-  user_id             Int
-  category_id         Int
-  user                user       @relation(fields: [user_id], references: [user_id])
-  category            category   @relation(fields: [category_id],references: [category_id])
-  @@unique([user_id,category_id])
+
+model experience {
+  user_id     Int
+  category_id Int
+  category    category @relation(fields: [category_id], references: [category_id])
+  user        user     @relation(fields: [user_id], references: [user_id])
+
+  @@unique([user_id, category_id])
 }
-model career{
-  career_id           Int        @id @default(autoincrement())
-  name                String     @db.Text
-  user_career         user_career[]
+
+model career {
+  career_id   Int           @id @default(autoincrement())
+  name        String
+  user_career user_career[]
 }
-model user_career{
-  user_id             Int
-  career_id           Int
-  user                user       @relation(fields: [user_id], references: [user_id])
-  career              career     @relation(fields: [career_id], references: [career_id])
-  @@unique([user_id,career_id])
+
+model user_career {
+  user_id   Int
+  career_id Int
+  career    career @relation(fields: [career_id], references: [career_id])
+  user      user   @relation(fields: [user_id], references: [user_id])
+
+  @@unique([user_id, career_id])
 }
-model job{
-  job_id              Int        @id @default(autoincrement())
-  title               String     @db.Text
-  description         String     @db.Text
-  budget              Int
-  type                String     @db.VarChar(9) 
-  posted_date         DateTime   @default(now())
-  submitted_date      DateTime?
-  status              String     @db.VarChar(6)  @default("Open")
-  history             history[]
-  job_exp             job_exp[]
-  rating_user         rating_user[]
-  rating_com          rating_com[]
-  bookmark            bookmark[]
-  post                post[]
+
+model job {
+  job_id         Int           @id @default(autoincrement())
+  title          String
+  description    String
+  budget         Int
+  type           String        @db.VarChar(9)
+  posted_date    DateTime      @default(now())
+  submitted_date DateTime?
+  status         String        @default("Open") @db.VarChar(6)
+  bookmark       bookmark[]
+  history        history[]
+  job_exp        job_exp[]
+  post           post[]
+  rating_com     rating_com[]
+  rating_user    rating_user[]
 }
-model history{
-  user_id             Int
-  job_id              Int
-  user                user       @relation(fields: [user_id], references: [user_id])
-  job                 job        @relation(fields: [job_id], references: [job_id])
-  status              String     @db.Text  @default("Considering")
-  @@unique([user_id,job_id])
+
+model history {
+  user_id Int
+  job_id  Int
+  status  String @default("Considering")
+  job     job    @relation(fields: [job_id], references: [job_id])
+  user    user   @relation(fields: [user_id], references: [user_id])
+
+  @@unique([user_id, job_id])
 }
-model job_exp{
-  job_id              Int
-  category_id         Int
-  job                 job        @relation(fields: [job_id], references: [job_id])
-  category            category   @relation(fields: [category_id],references: [category_id])
-  @@unique([job_id,category_id])
+
+model job_exp {
+  job_id      Int
+  category_id Int
+  category    category @relation(fields: [category_id], references: [category_id])
+  job         job      @relation(fields: [job_id], references: [job_id])
+
+  @@unique([job_id, category_id])
 }
-model bookmark{
-  user_id             Int
-  job_id              Int
-  user                user       @relation(fields: [user_id], references: [user_id])
-  job                 job        @relation(fields: [job_id], references: [job_id])
-  @@unique([user_id,job_id])
+
+model bookmark {
+  user_id Int
+  job_id  Int
+  book_id Int  @id @default(autoincrement())
+  job     job  @relation(fields: [job_id], references: [job_id])
+  user    user @relation(fields: [user_id], references: [user_id])
+
+  @@unique([user_id, job_id])
 }
-model company{
-  company_id          Int        @id @default(autoincrement())
-  name                String     @db.Text 
-  image               String?    @db.Text 
-  phone_number        String     @db.VarChar(12) 
-  email               String     @db.VarChar(255) @unique
-  password            String     @db.VarChar(255)
-  post                post[]
-  rating_user         rating_user[]
-  rating_com          rating_com[]
-}
-model post{
-  company_id          Int
-  job_id              Int
-  company             company    @relation(fields: [company_id],references: [company_id])
-  job                 job        @relation(fields: [job_id], references: [job_id])
-  @@unique([company_id,job_id])
+
+model post {
+  job_id  Int
+  user_id Int
+  job     job  @relation(fields: [job_id], references: [job_id])
+  user    user @relation(fields: [user_id], references: [user_id])
+  @@unique([user_id, job_id])
 }

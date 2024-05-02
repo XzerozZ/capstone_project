@@ -20,10 +20,17 @@ export async function GET(request: Request, { params }: { params: { id: string }
         await prisma.$disconnect();
         if (jobID) {
             const categories = jobID.job_exp.map(exp => exp.category.name);
-            const jobWithCategories = { ...jobID, categories };
+            const jobWithCategories = { ...jobID , categories };
             return Response.json(jobWithCategories);
         } else {
-            return new Response(JSON.stringify({ error: 'Job not found' }), { status: 404 });
+            return Response.json(
+                {
+                    message : "Job is not found"
+                }, 
+                {
+                    status : 500
+                }
+            )
         }
     } catch(error){
         await prisma.$disconnect();

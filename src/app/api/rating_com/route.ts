@@ -7,9 +7,9 @@ export async function POST( req : Request ) {
         const formData = await req.formData();
         const newrating = await prisma.rating_com.create({
             data : {
-                user_id : parseInt(formData.get('user_id') as string),
+                user_id1 : parseInt(formData.get('giver') as string),
                 job_id : parseInt(formData.get('job_id') as string),
-                company_id : parseInt(formData.get('company_id') as string),
+                user_id2 : parseInt(formData.get('receiver') as string),
                 rating : parseFloat(formData.get('rating') as string)
             }
         })
