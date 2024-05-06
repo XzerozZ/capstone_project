@@ -1,12 +1,19 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
 
-export async function GET(req : Request,{ params }: { params: { id: string } }) {
+export async function GET(req : Request) {
     const prisma = new PrismaClient();
     try {
+        const formData = await req.formData();
+        const email = formData.get('email') as string
+        const user = await prisma.user.findUnique({
+            where :{
+                email : email
+            }
+        })
         const bookmark = await prisma.bookmark.findMany({
             where : {
-                user_id : parseInt(params.id)
+                user_id : user?.user_id
             },
             include : {
                 user : true ,

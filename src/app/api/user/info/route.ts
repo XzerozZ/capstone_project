@@ -1,12 +1,19 @@
 import { PrismaClient } from '@prisma/client';
 
-// localhost:3000/api/user/[id]
-export async function GET(req : Request,{ params }: { params: { id: string } }){
+// localhost:3000/api/user/info
+export async function GET(req : Request){
     const prisma = new PrismaClient();
     try{
+        const formData = await req.formData();
+        const email = formData.get('email') as string
+        const user = await prisma.user.findUnique({
+            where :{
+                email : email
+            }
+        })
         const userid = await prisma.user.findUnique({
             where: {
-                user_id: parseInt(params.id)
+                user_id: user?.user_id
             },
             include : {
                 rating_users2 : true,
