@@ -1,5 +1,6 @@
 import Navbar from "@/app/components/Navbar"
 import BookmarkComponent from "@/app/components/BookmarkComponent"
+import CardWork from "@/app/components/CardWork"
 
 const MockData = [ // ข้อมูลต้องปรับตามฐานข้อมูลจริง
         {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
@@ -116,22 +117,28 @@ const MockData = [ // ข้อมูลต้องปรับตามฐา�
 
 export default function Bookmark(/*{props}: any*/){
     return(
-        <main className="">
-            <Navbar/>
-            <div className="w-[90%] mt-[100px] flex flex-col">
-                <div>
-                    <p>Bookmark</p>
-                    <button>งาน Freelance</button>
-                    <button>งานประจำ</button>
-                </div>
-            </div>
-            <div className="flex justify-center">   {/* Wrapper */}
-                <div className="grid overflow-x-auto grid-flow-col auto-cols-auto min-h-[50vh] gap-[5rem]"> 
-                    {MockData.map((prop:any)=> 
-                        <BookmarkComponent props={prop}  key={prop.id}/>
-                    )}
-                </div>
-            </div>
-        </main>
+        <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
+        <div className='w-[1140px] flex flex-col gap-4 p-3'>
+           
+                <div className="">
+                <div className="flex flex-col gap-1">
+                                <h1 className='text-[#202192] font-bold text-3xl '>Bookmark</h1>
+                                <label>รูปแบบของงาน</label>
+                                <div className="flex flex-row gap-3 flex-wrap ">
+                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Full-time</button>
+                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Freelance</button>
+                                </div>
+                           </div>
+                    </div>
+                    <div className="flex justify-center">   {/* Wrapper */}
+                    <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
+                            {MockData.map((props: any)=>
+                            <CardWork props={props}/>)}
+                        </div>
+                    </div>
+           
+          </div>
+           
+        </div>
     )
 }

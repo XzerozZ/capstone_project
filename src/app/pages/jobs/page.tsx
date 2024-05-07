@@ -74,7 +74,7 @@ export default function Jobs(/*{props}:amy */){
          <div className="flex justify-center ">
               
               <div className="flex flex-col w-[1140px] mt-[20px] max-sm:p-1">
-                <p className="text-3xl font-bold">บอร์ดประกาศหางาน</p>
+                <p className="text-3xl font-bold text-[#202192]">บอร์ดประกาศหางาน</p>
                 <div className="flex flex-col"> {/* Filter */}
                     <div>
                     </div> {/* หมวด/ประเภทงาน, เติมเพิ่มต่อที่หลัง */}
