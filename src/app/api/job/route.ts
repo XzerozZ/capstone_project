@@ -178,6 +178,7 @@ export async function DELETE( req: Request ) {
           }
         })
     ])
+    return Response.json("Delete Successfully")
   } catch(error){
     await prisma.$disconnect();
     return Response.json({
