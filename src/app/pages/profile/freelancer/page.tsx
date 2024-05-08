@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Navbar from "@/app/components/Navbar"
-import { UserInterface } from "@/app/interface/interface"
+
 
 export default function Profile(){
     /*
