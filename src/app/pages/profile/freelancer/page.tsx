@@ -18,7 +18,7 @@ export default function Profile(){
 
     return(
         <>
-            <Navbar/>
+           
             <div className="flex items-center justify-center flex-wrap flex-col mt-[100px]"> {/* Margin top ให้ component เด้งลงมา */}
                 <form className="flex w-[70%] flex-wrap flex-col">
                     <div className="flex justify-between my-[2.5vh] h-[8vh]"> {/* Your Profile text, image */}
