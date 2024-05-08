@@ -10,7 +10,9 @@ export async function POST( req : Request ) {
                 user_id1 : parseInt(formData.get('giver') as string),
                 job_id : parseInt(formData.get('job_id') as string),
                 user_id2 : parseInt(formData.get('receiver') as string),
-                rating : parseFloat(formData.get('rating') as string)
+                comment : formData.get('comment') as string,
+                friendly_rating : parseInt(formData.get('friendly_rating') as string),
+                value_rating : parseInt(formData.get('value_rating') as string)
             }
         })
         await prisma.$disconnect();

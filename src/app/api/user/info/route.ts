@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 
 // localhost:3000/api/user/info
-export async function GET(req : Request){
+export async function POST(req : Request){
     const prisma = new PrismaClient();
     try{
         const formData = await req.formData();
@@ -46,10 +46,13 @@ export async function GET(req : Request){
             return Response.json(userwithData);
         } 
         else if (userid && userid.role === "company") {
-            const rating = userid.rating_com2.map(r => r.rating);
+            const f_rating = userid.rating_users2.map(r => r.friendly_rating);
+            const v_rating = userid.rating_com2.map(r => r.value_rating);
+            const averageRating_f = f_rating.length > 0 ? f_rating.reduce((a,b) => a + b) / f_rating.length : 0;
+            const averageRating_v = v_rating.length > 0 ? v_rating.reduce((a,b) => a + b) / v_rating.length : 0;
             const categories = userid.experience.map(exp => exp.category.name);
             const careers = userid.user_career.map(car => car.career.name);
-            const averageRating = rating.length > 0 ? rating.reduce((a,b) => a + b) / rating.length : 0;
+            const averageRating = (averageRating_f + averageRating_v) / 2
             const userwithData = { ...userid , categories , careers  , averageRating }
             return Response.json(userwithData);
         }

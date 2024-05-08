@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 
 //http://localhost:3000/api/history/user
 //GET
-export async function GET(req : Request) {
+export async function POST(req : Request) {
     const prisma = new PrismaClient();
     try {
         const formData = await req.formData();
@@ -15,7 +15,10 @@ export async function GET(req : Request) {
         })
         const userhistory = await prisma.history.findMany({
             where : {
-                user_id : user?.user_id
+                user_id : user?.user_id,
+                NOT : {
+                    status : 'Completed'
+                }
             },
             include : {
                 user : true ,

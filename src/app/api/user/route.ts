@@ -3,7 +3,6 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from 'bcrypt';
 import { formatPhoneNumber } from "../auth/format";
 import { upLoadIMG } from "../admin/supabase";
-import { log } from "console";
 
 export async function GET() {
     const prisma = new PrismaClient();
@@ -210,6 +209,11 @@ export async function DELETE( req : Request ){
                       user_id : user.user_id
                     }
                 }),
+                prisma.work.deleteMany({
+                    where : {
+                        user_id : user.user_id
+                    }
+                }),
                 prisma.user_career.deleteMany({
                     where : {
                       user_id : user.user_id
@@ -240,7 +244,6 @@ export async function DELETE( req : Request ){
         return Response.json("Delete Successfully")
     }
     catch(error){
-        log(error)
         return new Response(
             JSON.stringify({
                 error: "Server Error"

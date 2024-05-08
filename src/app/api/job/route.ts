@@ -95,9 +95,31 @@ export async function POST( req: Request ) {
 export async function GET() {
   const prisma = new PrismaClient();
   try {
-    const jobs = await prisma.job.findMany()
-    await prisma.$disconnect();
-    return Response.json(jobs)
+    const jobs = await prisma.job.findMany({
+      where : {
+        status : "Open"
+      },
+      include : {
+        job_exp : {
+          include : {
+            category : true
+          }
+        }
+      }
+    })
+    if(jobs.length > 0){
+      const jobsWithCategories = jobs.map((job) => ({
+        ...job,
+        categories: job.job_exp.map((exp) => exp.category.name),
+      }));
+      await prisma.$disconnect();
+      return Response.json(jobsWithCategories);
+    }
+    else {
+      await prisma.$disconnect();
+      return Response.json('No avaliable jobs')
+    }
+    
   } catch(error){
     await prisma.$disconnect();
     return Response.json({
@@ -157,7 +179,7 @@ export async function DELETE( req: Request ) {
           job_id: jobId
       }
     });
-    if (!job || job.status !== "Closed") {
+    if (!job || job.status === "Closed") {
         return Response.json({ error: "Job not found or status is not 'Closed', cannot delete" }, 
         { status: 400 });
     }
@@ -172,6 +194,16 @@ export async function DELETE( req: Request ) {
             job_id : jobId
           }
         }),
+        prisma.history.deleteMany({
+          where : {
+            job_id : jobId
+          }
+        }),
+        prisma.work.deleteMany({
+          where : {
+            job_id : jobId
+          }
+        }),
         prisma.job.delete({
           where : {
             job_id: jobId
@@ -181,6 +213,7 @@ export async function DELETE( req: Request ) {
     return Response.json("Delete Successfully")
   } catch(error){
     await prisma.$disconnect();
+    console.log(error)
     return Response.json({
         error
     }, {status:500})

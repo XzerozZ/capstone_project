@@ -1,7 +1,7 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
 
-export async function GET(req : Request) {
+export async function POST(req : Request) {
     const prisma = new PrismaClient();
     try {
         const formData = await req.formData();

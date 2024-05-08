@@ -7,6 +7,8 @@ export async function DELETE() {
         await prisma.job_exp.deleteMany()
         await prisma.user_career.deleteMany()
         await prisma.history.deleteMany()
+        await prisma.work.deleteMany()
+        await prisma.oTP.deleteMany()
         await prisma.post.deleteMany()
         await prisma.experience.deleteMany()
         await prisma.contact.deleteMany()
