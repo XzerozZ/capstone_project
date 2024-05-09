@@ -3,6 +3,8 @@ import Navbar from  "@/components/Navbar";
 import CategoryBox from "./components/CategoryBox";
 import JobRecommend from "./components/JobRecommend";
 import CardWorkRec from "./components/CardWorkRec";
+import { Carousel } from "flowbite-react";
+import CardWork from "./components/CardWork";
 
 
 export default function Home() {
@@ -115,7 +117,17 @@ export default function Home() {
    <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
         <div className='w-[1140px] flex flex-col gap-6 p-3'>
             <div>
-
+            <div className="h-[600px] max-sm:h-[250px]">
+              <Carousel slideInterval={5000}>
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              </Carousel>
+            </div>
+              
             </div>
             <div className="flex flex-col gap-2">
               <h1 className="text-3xl text-[#202192]">Recommended for you</h1>
@@ -144,6 +156,21 @@ export default function Home() {
                     )
                   })
                 }
+              </div>
+            </div>
+            <div className="flex gap-3 flex-col">
+              <h1 className="text-3xl text-[#202192]">Popular job</h1>
+              <div className="grid grid-cols-4 gap-3 max-sm:grid-cols-2">
+              {
+                            MockData.map((item:any, index) => {
+                                return (
+                                  
+                                     <CardWork key={index} props={item} />
+                                 
+                                    
+                                )
+                            })
+                        }
               </div>
             </div>
         </div>
