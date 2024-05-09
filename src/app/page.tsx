@@ -5,6 +5,7 @@ import JobRecommend from "./components/JobRecommend";
 import CardWorkRec from "./components/CardWorkRec";
 import { Carousel } from "flowbite-react";
 import CardWork from "./components/CardWork";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -130,7 +131,11 @@ export default function Home() {
               
             </div>
             <div className="flex flex-col gap-2">
+            <div className="flex justify-between">
               <h1 className="text-3xl text-[#202192]">Recommended for you</h1>
+              <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
+
+              </div>
               <div className='flex justify-center'>
                 <div className=' gap-5 flex overflow-auto max-sm:w-[400px] '>
                         {
@@ -147,7 +152,11 @@ export default function Home() {
                </div>
             </div>
             <div>
+              <div className="flex justify-between">
               <h1 className="text-3xl text-[#202192]">Categories for services</h1>
+              <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
+
+              </div>
               <div className="grid grid-cols-4 gap-3 max-sm:grid-cols-2">
                 {
                   Categories.map((cate, index) => {
@@ -159,8 +168,12 @@ export default function Home() {
               </div>
             </div>
             <div className="flex gap-3 flex-col">
+            <div className="flex justify-between">
               <h1 className="text-3xl text-[#202192]">Popular job</h1>
-              <div className="grid grid-cols-4 gap-3 max-sm:grid-cols-2">
+              <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
+
+              </div>
+              <div className="grid grid-cols-4 gap-4 max-sm:grid-cols-2">
               {
                             MockData.map((item:any, index) => {
                                 return (

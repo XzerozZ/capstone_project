@@ -83,16 +83,7 @@ const page = () => {
     <div >
     <h1 className='text-center text-[40px]'>Sign up</h1>
       
-        {/* <Tabs aria-label="Default tabs"  className='flex-wrap border-b border-gray-200 dark:border-gray-700'>
-        <Tabs.Item  title="Freelance" icon={SiFreelancer} >
-                <UserSignup/>
-        </Tabs.Item>
-        <Tabs.Item title="Company" icon={MdDashboard}>
-                <CompanySignup/>
-        </Tabs.Item>
-        
-        
-        </Tabs> */}
+     
     <div className='flex flex-col '>
     <div className='Tabs grid grid-cols-2 '>
             <button className='text-center text-xl flex gap-3 rounded-t-lg focus:text-[#202192] focus:bg-gray-300 hover:bg-gray-300 active:bg-gray-300 px-4 py-2 justify-center' onClick={() => setTabs(true)}>

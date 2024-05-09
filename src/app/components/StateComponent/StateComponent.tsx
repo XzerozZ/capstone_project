@@ -48,7 +48,7 @@ const StateComponent = (props: Props) => {
         }
 
     ]
-    const [isDropDownDisplayed, setIsDropDownDisplayed] = React.useState(false)
+    const [isDropDownDisplayed, setIsDropDownDisplayed] = React.useState(true)
     const [selectedState, setSelectedState] = React.useState<Record<string,boolean>>(
         state.reduce((obj, state) => ({...obj, [state.abbreviation]: false}), {}))
     console.log(selectedState)
