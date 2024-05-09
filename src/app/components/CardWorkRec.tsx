@@ -2,11 +2,11 @@ import React from 'react'
 
 type Props = {}
 
-const CardWork = ({props}: any) => {
+const CardWorkRec = ({props}: any) => {
   return (
     <>
-    <div className='rounded-lg shadow-md border-solid flex flex-col justify-between hover:scale-105 hover:shadow-xl'>
-        <img src={props.image} className='rounded-t-lg flex-none '/>
+    <div className='rounded-lg shadow-md border-solid flex flex-col justify-between hover:shadow-xl w-[250px]'>
+        <img src={props.image} className='rounded-t-lg'/>
        <div className=' p-3 grow flex flex-col gap-2 justify-between '>
        
             <div className='flex flex-col gap-2'>
@@ -33,4 +33,4 @@ const CardWork = ({props}: any) => {
     </>
   )
 }
-export default CardWork
+export default CardWorkRec

@@ -101,8 +101,8 @@ export default function Jobs(/*{props}:amy */){
                     </div> 
                 </div>
                 <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
-                    {MockData.map((props: any)=>
-                    <CardWork props={props}/>)}
+                    {MockData.map((props:any,index)=>
+                    <CardWork props={props} key={index}/>)}
                 </div>
             </div>
        
