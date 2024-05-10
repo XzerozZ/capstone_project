@@ -3,7 +3,7 @@ import 'rsuite/dist/rsuite.min.css';
 import React from 'react'
 import { HiCalendar } from 'react-icons/hi'
 import { IoCodeWorking } from "react-icons/io5";
-import StateComponent from '@/app/components/StateComponent/StateComponent';
+
 import { FaArrowRight } from 'react-icons/fa';
 
 type Props = {}

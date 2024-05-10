@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Navbar from  "@/components/Navbar";
 import CategoryBox from "./components/CategoryBox";
 import JobRecommend from "./components/JobRecommend";
 import CardWorkRec from "./components/CardWorkRec";

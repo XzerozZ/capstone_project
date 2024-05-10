@@ -1,6 +1,4 @@
 'use client'
-
-import Navbar from "@/app/components/Navbar";
 import JobComponent from "@/app/components/JobComponent";
 import CardWork from "@/app/components/CardWork";
 

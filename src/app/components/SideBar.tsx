@@ -15,7 +15,7 @@ const SideBar = ({work} : {work:any}) => {
                       work.map((item: { work_name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined ,id :String}, index: any) => {
                         return (
                           <div key={index}>
-                        <Link href={`/pages/manage/${item.id}`} className='text-black  font-medium hover:no-underline hover:text-white '>
+                        <Link href={`/pages/manage/${item.id}`} className='text-[#202192]  font-medium hover:no-underline hover:text-white '>
                         <div className='flex gap-2 p-2 rounded-md hover:bg-[#202192] hover:text-white  '>
                             
                             <div className=''>

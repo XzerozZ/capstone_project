@@ -5,7 +5,7 @@ type Props = {}
 const CardWork = ({props}: any) => {
   return (
     <>
-    <div className='rounded-lg shadow-md border-solid flex flex-col justify-between hover:scale-105 hover:shadow-xl'>
+    <div className='rounded-lg shadow-md border-solid flex flex-col justify-between hover:scale-105 hover:shadow-xl text-black'>
         <img src={props.image} className='rounded-t-lg flex-none '/>
        <div className=' p-3 grow flex flex-col gap-2 justify-between '>
        

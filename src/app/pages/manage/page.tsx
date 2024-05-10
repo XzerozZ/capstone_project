@@ -143,7 +143,11 @@ const page = (props: Props) => {
     <>
      <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
         <div className='w-[1140px] flex flex-col gap-6 p-3'>
-            <h1 className='text-3xl text-[#202192]'>จัดการผู้สมัคร</h1>
+           
+           <div className='flex justify-between'>
+              <h1 className='text-3xl text-[#202192]'>จัดการผู้สมัคร</h1>
+              <button className='border-2 border-[#202192] py-2 px-4 text-lg rounded-md text-[#202192] hover:text-white hover:bg-[]'>เพิ่มงาน</button>
+           </div>
             <div className='flex gap-3'>
               <div className='w-1/5  border border-1 rounded-md p-4 border-black flex flex-col gap-1'>
                    <SideBar work={work}/>
