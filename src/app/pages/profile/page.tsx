@@ -1,11 +1,14 @@
 "use client"
 import React, { useState } from 'react'
+import Editpassword from './changepassword/page'
+import Link from 'next/link'
 
 type Props = {}
 
 const page = (props: Props) => {
 
     const [checkFree, setCheckFree] = useState(true)
+    const [openModal, setOpenModal] = useState(false);
 
     const profile = {
         name : 'Natchapon Ponlaem',
@@ -52,7 +55,11 @@ const page = (props: Props) => {
   return (
     <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
     <div className='w-[1140px] flex flex-col gap-6 p-3'>
-        <h1 className='text-3xl text-[#202192] font-bold'>ข้อมูลส่วนตัว</h1>
+       <div className='flex justify-between'>
+            <h1 className='text-3xl text-[#202192] font-bold'>ข้อมูลส่วนตัว</h1>
+            <Link href='/pages/profile/changepassword'><button onClick={() => setOpenModal(true)} className='rounded-md border-2 bg-[#fff] border-[#202192] text-lg py-2 px-3 hover:bg-[#202192] hover:text-white'>แก้ไขข้อมูลส่วนตัว</button></Link>
+       </div>
+        
         <hr className='border-[#202192] mt-2'/> 
         <div className='flex justify-between'>
             <h1 className='my-auto text-5xl text-[#202192] font-bold w-3/4'>{profile.name} ( {profile.username} )</h1>
@@ -110,7 +117,9 @@ const page = (props: Props) => {
         </div> 
             
     </div>
+   
     </div>
+   
   )
 }
 

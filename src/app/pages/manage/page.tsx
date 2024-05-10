@@ -1,7 +1,11 @@
+"use client"
 import ProfileCard from '@/app/components/ProfileCard'
 import SideBar from '@/app/components/SideBar'
+import Link from 'next/link'
 import React from 'react'
 import { MdWorkOutline } from 'react-icons/md'
+import { Dropdown } from 'rsuite'
+import 'rsuite/dist/rsuite.min.css';
 
 
 
@@ -149,8 +153,19 @@ const page = (props: Props) => {
               <button className='border-2 border-[#202192] py-2 px-4 text-lg rounded-md text-[#202192] hover:text-white hover:bg-[]'>เพิ่มงาน</button>
            </div>
             <div className='flex gap-3'>
-              <div className='w-1/5  border border-1 rounded-md p-4 border-black flex flex-col gap-1'>
-                   <SideBar work={work}/>
+            <div className='w-1/5  border border-1 rounded-md  p-4 border-black flex flex-col gap-1 max-sm:w-full max-sm:border-0 max-sm:p-1'>
+                  <div className='max-sm:hidden'>
+                    <SideBar work={work} />
+                  </div>
+                  <div className='sm:hidden'>
+                    <Dropdown title="My Work">
+                        {
+                            work.map((item, index) => (
+                                <Dropdown.Item key={index} icon={<MdWorkOutline/>}><Link href={`/pages/manage/${item.id}`} className='text-black active:no-underline'>{item.work_name}</Link></Dropdown.Item>
+                            ))  
+                        }
+                    </Dropdown>
+                  </div>
               </div>
               <div className='w-4/5'>
                   
