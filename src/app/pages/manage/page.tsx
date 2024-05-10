@@ -150,7 +150,7 @@ const page = (props: Props) => {
            
            <div className='flex justify-between'>
               <h1 className='text-3xl text-[#202192]'>จัดการผู้สมัคร</h1>
-              <button className='border-2 border-[#202192] py-2 px-4 text-lg rounded-md text-[#202192] hover:text-white hover:bg-[]'>เพิ่มงาน</button>
+             <Link href='/pages/manage/postwork'> <button className='border-2 border-[#202192] py-2 px-4 text-lg rounded-md text-[#202192] hover:text-white hover:bg-[]'>เพิ่มงาน</button></Link>
            </div>
             <div className='flex gap-3'>
             <div className='w-1/5  border border-1 rounded-md  p-4 border-black flex flex-col gap-1 max-sm:w-full max-sm:border-0 max-sm:p-1'>

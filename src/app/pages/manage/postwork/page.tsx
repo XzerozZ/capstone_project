@@ -1,16 +1,23 @@
 "use client"
 import 'rsuite/dist/rsuite.min.css';
-import React from 'react'
+import React, { useState } from 'react'
 import { HiCalendar } from 'react-icons/hi'
 import { IoCodeWorking } from "react-icons/io5";
 
 import { FaArrowRight } from 'react-icons/fa';
+import { MultiSelect } from 'react-multi-select-component';
 
 type Props = {}
 
 
 const page = (props: Props) => {
 
+  const options = [
+    { label: "Grapes 🍇", value: "grapes" },
+    { label: "Mango 🥭", value: "mango" },
+    { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+  ];
+  const [selected, setSelected] = useState([])
     
   
       
@@ -63,6 +70,15 @@ const page = (props: Props) => {
                  </div>
 
             </div>
+            <div>
+                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ประเภทงาน</label>
+                   
+                    <MultiSelect
+options={options}
+value={selected}
+onChange={setSelected}
+labelledBy="Select"
+/>       </div>
 
             <div>
                     <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รายละเอียดงาน</label>
@@ -87,3 +103,4 @@ const page = (props: Props) => {
 }
 
 export default page
+

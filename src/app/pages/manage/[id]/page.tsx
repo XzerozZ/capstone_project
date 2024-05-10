@@ -155,7 +155,7 @@ const page = (props: Props) => {
         <div className='flex justify-between '>
               <h1 className='text-3xl text-[#202192] flex-grow'>จัดการผู้สมัคร</h1>
              <div className='flex gap-3 '>
-               <button className='flex-grow border-2 border-[#202192] py-2 px-4 text-lg rounded-md text-[#202192] hover:text-white hover:bg-[#202192]'>เพิ่มงาน</button>
+             <Link href='/pages/manage/postwork'> <button className='border-2 border-[#202192] py-2 px-4 text-lg rounded-md text-[#202192] hover:text-white hover:bg-[]'>เพิ่มงาน</button></Link>
                 <button className='text-[#ff0000] text-xl'>ลบงาน</button>
              </div>
 
