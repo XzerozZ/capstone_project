@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Poppins } from "next/font/google";
-import "./globals.css";
-import  NewNav  from "./components/NewNav";
+
+
 import { Noto_Sans_Thai } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -24,12 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={noto_sans_thai.className}>
-      <NewNav />
-        {children}
+    <>
       
-      </body>
-    </html>
+    <main>
+      {children}
+</main>
+    
+    
+    
+    
+  </>
   );
 }

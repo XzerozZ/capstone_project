@@ -1,7 +1,6 @@
 'use client'
-
-import Navbar from "@/app/components/Navbar";
 import JobComponent from "@/app/components/JobComponent";
+import CardWork from "@/app/components/CardWork";
 
 export default function Jobs(/*{props}:amy */){
 
@@ -39,7 +38,7 @@ export default function Jobs(/*{props}:amy */){
         {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
             image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
             rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
+            categories: ["Webdev", "QA", "Hardware", "System Admin"],
             type: "Full-Time",
             budget: "2000",
             posted_date: "12/12/2566",
@@ -69,27 +68,42 @@ export default function Jobs(/*{props}:amy */){
     ]
 
     return(
-        <main className="flex min-h-screen flex-col items-center justify-between">
-            <Navbar/>
-            <div className="w-[90%] mt-[100px] flex flex-col">
-                <p className="text-3xl font-bold">บอร์ดประกาศหางาน</p>
+      
+         <div className="flex justify-center ">
+              
+              <div className="flex flex-col w-[1140px] mt-[20px] max-sm:p-1">
+                <p className="text-3xl font-bold text-[#202192]">บอร์ดประกาศหางาน</p>
                 <div className="flex flex-col"> {/* Filter */}
                     <div>
                     </div> {/* หมวด/ประเภทงาน, เติมเพิ่มต่อที่หลัง */}
                     <div> {/* ราคา/ปุ่มค้นหา */}
-                        <div>
-                            <label>ราคา :</label>
-                            <input type="number" min="0"/>
-                            <label>บาท</label>
+                        <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-1">
+                                <label>หมวดหมู่งาน</label>
+                                <div className="flex flex-row gap-3 flex-wrap ">
+                                   <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</div>
+                                   <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</div>
+                                   <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</div>
+                                </div>
+                            </div>
+                            
+                           <div className="flex flex-col gap-1">
+                                <label>รูปแบบของงาน</label>
+                                <div className="flex flex-row gap-3 flex-wrap ">
+                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Full-time</button>
+                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Freelance</button>
+                                </div>
+                           </div>
                         </div>
-                        <button>ค้นหา</button>
+                       
                     </div> 
                 </div>
-                <div className="grid mx-auto grid-cols-2 gap-24 my-8"> {/* ชุดผลลัพธ์ */}
-                    {MockData.map((props: any)=>
-                    <JobComponent props={props}/>)}
+                <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
+                    {MockData.map((props:any,index)=>
+                    <CardWork props={props} key={index}/>)}
                 </div>
             </div>
-        </main>
+       
+         </div>
     )
 }

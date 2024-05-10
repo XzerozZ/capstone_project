@@ -1,205 +1,194 @@
 import Image from "next/image";
-import Navbar from  "@/components/Navbar";
 import CategoryBox from "./components/CategoryBox";
 import JobRecommend from "./components/JobRecommend";
-import ReactDOM from "react-dom/client";
+import CardWorkRec from "./components/CardWorkRec";
+import { Carousel } from "flowbite-react";
+import CardWork from "./components/CardWork";
+import Link from "next/link";
+
 
 export default function Home() {
+  
+  const Categories = [{
+    cate : 'Web development',
+    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  }, {
+    cate : 'Mobile development',
+    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  },
+  {
+    cate: 'Software development',
+    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  },{
+    cate: 'Data analysis',
+    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  },
+  {
+    cate: 'Data science',
+    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  },{
+    cate : 'Marketing',
+    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  }
+  ,{
+    cate : 'Web development',
+    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  },{
+    cate: 'Mobile development',
+    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  },
+  ]
+
+  const MockData = [ // ข้อมูลต้องปรับตามฐานข้อมูลจริง
+  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  rating:"4.5",
+      categories: ["Webdev", "QA", "Comm"],
+      type: "freelance",
+      budget: "2000",
+      posted_date: "12/12/2566",
+      status: "hiring",
+      id:1
+  },
+  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  rating:"4.5",
+      categories: ["Webdev", "QA", "Comm"],
+      type: "freelance",
+      budget: "2000",
+      posted_date: "12/12/2566",
+      status: "hiring",
+      id:2
+  },
+  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  rating:"4.5",
+      categories: ["Comm"],
+      type: "freelance",
+      budget: "2000",
+      posted_date: "12/12/2566",
+      status: "hiring",
+      id:3
+  },
+  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  rating:"4.5",
+      categories: ["Webdev", "QA",  "System Admin"],
+      type: "Full-Time",
+      budget: "2000",
+      posted_date: "12/12/2566",
+      status: "hiring",
+      id:4
+  },
+  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  rating:"4.5",
+      categories: ["QA"],
+      type: "Full-Time",
+      budget: "2000",
+      posted_date: "12/12/2566",
+      status: "hiring",
+      id:5
+  },
+  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  rating:"4.5",
+      categories: ["Webdev", "QA", "Comm"],
+      type: "Full-Time",
+      budget: "2000",
+      posted_date: "12/12/2566",
+      status: "hiring",
+      id:6
+  },
+  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
+  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
+  rating:"4.5",
+      categories: ["Webdev", "QA", "Comm"],
+      type: "Full-Time",
+      budget: "2000",
+      posted_date: "12/12/2566",
+      status: "hiring",
+      id:6
+  }
+]
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <Navbar/>
-      <div className="flex items-center justify-center flex-wrap flex-col mt-[100px] w-full"> {/* Margin top ให้ component เด้งลงมา */}
-        <div className="w-full bg-[#FF23F9] h-[256px] m-0 p-0"></div> {/* Banner */}
-
-        <div className="w-full my-10 px-20 flex flex-col">{/* Recommended Jobs */}
-          <div className="flex justify justify-between">
-            <p className="text-4xl font-bold text-black self-start">Recommended Jobs</p> {/* Recommended Jobs text, select box */}
+   <>
+   <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
+        <div className='w-[1140px] flex flex-col gap-6 p-3'>
             <div>
-              <label>Sort by:</label>
-              <select name="" id=""> {/* Sort by select box */}
-                <option value="">Popular</option> {/* Mock */}
-                <option value="">Newest</option>
-              </select>
+            <div className="h-[600px] max-sm:h-[250px]">
+              <Carousel slideInterval={5000}>
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+              </Carousel>
             </div>
-          </div>
-          <div className="flex justify-center">
-            <div>{"<"}</div>
-            <div className="grid overflow-x-auto grid-flow-col auto-cols-auto gap-[5rem]"> 
-              <JobRecommend/>
-              <JobRecommend/>
-              <JobRecommend/>
-              <JobRecommend/>
-              <JobRecommend/>
-              <JobRecommend/>
+              
             </div>
-            <div>{">"}</div>
-          </div>
-        </div>
-        <div className="w-full my-10 px-20 flex flex-col"> {/* Category */}
-          <p className="text-3xl font-bold text-black self-start">Categories of service</p>
-          <div className="grid grid-cols-3 gap-10 px-10 py-5"> {/* Category box */}
-            <CategoryBox to="/" display="Web Development & Design"/>
-            <CategoryBox to="/" display="Programming & Software"/>
-            <CategoryBox to="/" display="Networking, Hardware & System Admin"/>
-            <CategoryBox to="/" display="Apps & Mobile"/>
-            <CategoryBox to="/" display="Database Design & Administration"/>
-            <CategoryBox to="/pages/profile/freelancer" display="QA & Testing"/>
-          </div>
-        </div>
+            <div className="flex flex-col gap-2">
+            <div className="flex justify-between">
+              <h1 className="text-3xl text-[#202192]">Recommended for you</h1>
+              <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
 
-        <div className="w-full my-10 px-20 flex flex-col"> {/* Find jobs */}
-          <div className="flex justify justify-between">
-            <p className="text-3xl font-bold text-black self-start">Find Jobs</p> {/* Find Jobs text, select box */}
-            <div>{/*className="border-black border-2 rounded-2xl"*/}
-              <label>Sort by:</label>
-              <select name="" id=""> {/* Find Jobs select box */}
-                <option value="">Popular</option> {/* Mock */}
-                <option value="">Newest</option>
-              </select>
+              </div>
+              <div className='flex justify-center'>
+                <div className=' gap-5 flex overflow-auto max-sm:w-[400px] '>
+                        {
+                            MockData.map((item:any, index) => {
+                                return (
+                                   <div className="">
+                                     <CardWorkRec key={index} props={item} />
+                                   </div>
+                                    
+                                )
+                            })
+                        }
+                    </div>
+               </div>
             </div>
-          </div>
-          <div className="flex justify-center">
-            <div>{"<"}</div>
-            <div className="grid overflow-x-auto grid-flow-col auto-cols-auto gap-[5rem]"> {/* ใช้ร่วมกันตอนนี้, แก้ไขได้ */}
-              <JobRecommend/>
-              <JobRecommend/>
-              <JobRecommend/>
-              <JobRecommend/>
-              <JobRecommend/>
-              <JobRecommend/>
-            </div>
-            <div>{">"}</div>
-          </div>
-          <div className="flex flex-row-reverse pr-10"> {/*  Show more button */}
-            <a className="text-sm" href="/">View more</a>
-          </div>
-        </div> 
+            <div>
+              <div className="flex justify-between">
+              <h1 className="text-3xl text-[#202192]">Categories for services</h1>
+              <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
 
-        <div className="w-full my-5 p-0"></div> {/* Post a job */}
-      </div>
-      
-    </main>
+              </div>
+              <div className="grid grid-cols-4 gap-3 max-sm:grid-cols-2">
+                {
+                  Categories.map((cate, index) => {
+                    return (
+                      <CategoryBox key={index} data={cate}/>
+                    )
+                  })
+                }
+              </div>
+            </div>
+            <div className="flex gap-3 flex-col">
+            <div className="flex justify-between">
+              <h1 className="text-3xl text-[#202192]">Popular job</h1>
+              <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
+
+              </div>
+              <div className="grid grid-cols-4 gap-4 max-sm:grid-cols-2">
+              {
+                            MockData.map((item:any, index) => {
+                                return (
+                                  
+                                     <CardWork key={index} props={item} />
+                                 
+                                    
+                                )
+                            })
+                        }
+              </div>
+            </div>
+        </div>
+    </div>
+   </>
   );
 }
 
 
-
-      { /* 
-      <div>{"<"}</div>
-      <JobRecommend/>
-      <JobRecommend/>
-      <JobRecommend/>
-      <JobRecommend/>
-      <JobRecommend/>
-      <JobRecommend/>
-      <p>{">"}</p>
-      
-      
-      
-      
-      Original Nextjs page
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div> */}
