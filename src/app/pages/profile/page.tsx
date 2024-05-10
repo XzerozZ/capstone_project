@@ -98,8 +98,8 @@ const page = (props: Props) => {
              <label className='text-[#202192] font-bold'>ประสบการณ์</label>
              <div className="flex flex-row gap-3 flex-wrap ">
                      {
-                         profile.experience.map((item) => {
-                             return( <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">{item.name}</div>
+                         profile.experience.map((item,index) => {
+                             return( <div key={index} className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">{item.name}</div>
                          )
                          })
                      }                
