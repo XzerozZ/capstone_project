@@ -11,9 +11,10 @@ export async function POST(req: Request) {
         user_id1: parseInt(formData.get('giver') as string),
         user_id2: parseInt(formData.get('receiver') as string),
         job_id: parseInt(formData.get('job_id') as string),
-        friendly_rating: parseFloat(formData.get('friendly_rating') as string),
-        efficiency_rating: parseFloat(formData.get('efficiency_rating') as string),
-        accuracy_rating: parseFloat(formData.get('accuracy_rating') as string),
+        comment : formData.get('comment') as string,
+        friendly_rating: parseInt(formData.get('friendly_rating') as string),
+        efficiency_rating: parseInt(formData.get('efficiency_rating') as string),
+        accuracy_rating: parseInt(formData.get('accuracy_rating') as string),
       },
     });
 

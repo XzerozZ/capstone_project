@@ -6,22 +6,19 @@ export async function GET(req : Request,{ params }: { params: { id: string } }) 
     const prisma = new PrismaClient();
     try{
         const jobid = parseInt(params.id)
-        const candidate = await prisma.job.findMany({
+        const candidate = await prisma.history.findMany({
             where : {
-                job_id : jobid
+                job_id : jobid,
+                NOT : {
+                    status: "Rejected"
+                }
             },
             include : {
-                history : {
-                    include : {
-                        user : true
-                    }
-                }
+                user : true
             }
         });
         await prisma.$disconnect();
-        return Response.json(
-            candidate
-        )
+        return Response.json(candidate)
     }
     catch(error){
         return new Response(
@@ -35,64 +32,88 @@ export async function GET(req : Request,{ params }: { params: { id: string } }) 
     }
 }
 
-export async function PUT(req : Request,{ params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: { params: { id: string } }) {
     const prisma = new PrismaClient();
     try {
         const formData = await req.formData();
-        const status = formData.get('status') as string
-        const jobid = parseInt(params.id)
-        const user_id = parseInt(formData.get('id') as string)
-        const job = await prisma.job.findMany({
-            where : {
-                job_id : jobid
+        const status = formData.get('status') as string;
+        const jobId = parseInt(params.id);
+        const userId = parseInt(formData.get('id') as string);
+
+        const job = await prisma.job.findUnique({
+            where: {
+                job_id: jobId
             },
-            include : {
-                history : true
+            include: {
+                history: true
             }
         });
 
-        if(job && status === 'true'){
-            const candidate = await prisma.history.update({
-                where : {
-                    user_id_job_id: { 
-                        user_id: user_id, 
-                        job_id: jobid 
+        if (!job) {
+            throw new Error('Job not found');
+        }
+        const updatePromises: Promise<any>[] = [];
+        if (status === 'true') {
+            updatePromises.push(prisma.history.update({
+                where: {
+                    user_id_job_id: {
+                        user_id: userId,
+                        job_id: jobId
                     }
                 },
                 data: {
-                    status: "Accepted" 
+                    status: "On working"
+                }
+            }));
+
+            job.history.forEach((candidate) => {
+                if (candidate.user_id !== userId) {
+                    updatePromises.push(prisma.history.update({
+                        where: {
+                            user_id_job_id: {
+                                user_id: candidate.user_id,
+                                job_id: jobId
+                            }
+                        },
+                        data: {
+                            status: "Rejected"
+                        }
+                    }));
+                }
+            });
+            await prisma.job.update({
+                where : {
+                    job_id : jobId
+                },
+                data : {
+                    status : "Closed"
                 }
             })
-            await prisma.$disconnect();
-            return Response.json(
-                candidate
-            )
-        }
-        else if(job && status === 'false'){
-            const candidate = await prisma.history.update({
-                where : {
-                    user_id_job_id: { 
-                        user_id: user_id, 
-                        job_id: jobid 
+        } else if (status === 'false') {
+            updatePromises.push(prisma.history.update({
+                where: {
+                    user_id_job_id: {
+                        user_id: userId,
+                        job_id: jobId
                     }
                 },
                 data: {
-                    status: "Rejected" 
+                    status: "Rejected"
                 }
-            })
-            await prisma.$disconnect();
-            return Response.json(
-                candidate
-            )
+            }));
         }
-    }
-    catch(error){
+        await Promise.all(updatePromises);
+
+        await prisma.$disconnect();
+        return Response.json({ message: "Success" });
+
+    } catch (error) {
         return new Response(
             JSON.stringify({
                 error: "SERVER ERROR"
             }),
             {
-                status: 404
+                status: 500
             }
         );
     }
