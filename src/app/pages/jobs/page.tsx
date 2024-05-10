@@ -83,9 +83,9 @@ export default function Jobs(/*{props}:amy */){
                             <div className="flex flex-col gap-1">
                                 <label>หมวดหมู่งาน</label>
                                 <div className="flex flex-row gap-3 flex-wrap ">
-                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</button>
-                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</button>
-                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</button>
+                                   <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</div>
+                                   <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</div>
+                                   <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</div>
                                 </div>
                             </div>
                             
