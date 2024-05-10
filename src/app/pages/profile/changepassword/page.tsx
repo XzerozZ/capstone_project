@@ -106,7 +106,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                                       <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
                                       <input 
                                       type="text" 
-                                      id="phone_number" 
+                                      id="phone_number"  
                                       name='phone_number'
                                      
                                       onChange={handleChange}
