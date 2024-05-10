@@ -79,10 +79,18 @@ async def process_data(data: dict):
         for i in range(exp_size):
             index_recomm = cos_sim_data.loc[i][exp_size:].sort_values(ascending=False).index.tolist()[0:3]
             recomm = [x - exp_size for x in index_recomm]
-            exp_data = [jobs[i] for i in recomm]
+            exp_data = [filtered_jobs[i] for i in recomm]
             recommendations = []
-            for alldata in zip(exp_data):
-                recommendations.append({'Data' : alldata })
+            for job in exp_data:
+                categories = [category.category.name for category in job.job_exp]
+                recommendation = {
+                    "job_id" : job.job_id,
+                    "title"  : job.title,
+                    "budget" : job.budget,
+                    "posted_date" : job.posted_date,
+                    "categories": categories
+                }
+                recommendations.append( recommendation )
             
             watched_company = user_exp[i]
             recommendations_dict[watched_company] = recommendations

@@ -6,3 +6,7 @@ export interface Supabase {
 export interface User {
     user_id : string
 }
+export interface Email {
+    email : string ,
+    key : string
+}

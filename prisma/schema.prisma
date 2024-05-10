@@ -14,7 +14,7 @@ model user {
   username      String        @db.VarChar(100)
   image         String?
   phone_number  String        @db.VarChar(12)
-  id_card       String        @db.VarChar(17)
+  id_card       String        @db.VarChar(17) @unique
   email         String        @unique @db.VarChar(255)
   password      String        @db.VarChar(255)
   role          String        @db.VarChar
@@ -23,6 +23,8 @@ model user {
   experience    experience[]
   history       history[]
   post          post[]
+  OTP           OTP[]
+  work          work[]
   rating_com1   rating_com[]  @relation("ratings_com_given")
   rating_com2   rating_com[]  @relation("ratings_com_received")
   rating_user1  rating_user[] @relation("ratings_given")
@@ -33,22 +35,25 @@ model user {
 model rating_user {
   rating_id         Int   @id @default(autoincrement())
   job_id            Int
-  friendly_rating   Float @default(0.0)
-  efficiency_rating Float @default(0.0)
-  accuracy_rating   Float @default(0.0)
+  friendly_rating   Int @default(0)
+  efficiency_rating Int @default(0)
+  accuracy_rating   Int @default(0)
   user_id1          Int
   user_id2          Int
+  comment           String @db.Text
   job               job   @relation(fields: [job_id], references: [job_id])
   user1             user  @relation("ratings_given", fields: [user_id1], references: [user_id])
   user2             user  @relation("ratings_received", fields: [user_id2], references: [user_id])
 }
 
 model rating_com {
-  rating_id Int   @id @default(autoincrement())
-  job_id    Int
-  rating    Float @default(0.0)
+  rating_id          Int   @id @default(autoincrement())
+  job_id             Int
+  friendly_rating    Int @default(0)
+  value_rating       Int @default(0)
   user_id1  Int
   user_id2  Int
+  comment   String @db.Text
   job       job   @relation(fields: [job_id], references: [job_id])
   user1     user  @relation("ratings_com_given", fields: [user_id1], references: [user_id])
   user2     user  @relation("ratings_com_received", fields: [user_id2], references: [user_id])
@@ -103,12 +108,14 @@ model job {
   posted_date    DateTime      @default(now())
   submitted_date DateTime?
   status         String        @default("Open") @db.VarChar(6)
+  mass           Int?          @default(0)
   bookmark       bookmark[]
   history        history[]
   job_exp        job_exp[]
   post           post[]
   rating_com     rating_com[]
   rating_user    rating_user[]
+  work           work[]
 }
 
 model history {
@@ -117,7 +124,6 @@ model history {
   status  String @default("Considering")
   job     job    @relation(fields: [job_id], references: [job_id])
   user    user   @relation(fields: [user_id], references: [user_id])
-
   @@unique([user_id, job_id])
 }
 
@@ -145,5 +151,21 @@ model post {
   user_id Int
   job     job  @relation(fields: [job_id], references: [job_id])
   user    user @relation(fields: [user_id], references: [user_id])
+  @@unique([user_id, job_id])
+}
+
+model OTP {
+  otp_id  Int  @id @default(autoincrement())
+  user_id Int
+  OTP     String @db.VarChar(6) @unique
+  user    user @relation(fields: [user_id], references: [user_id])
+}
+
+model work {
+  job_id    Int
+  user_id   Int
+  work_link String
+  job       job     @relation(fields: [job_id], references: [job_id])
+  user      user    @relation(fields: [user_id], references: [user_id])
   @@unique([user_id, job_id])
 }
