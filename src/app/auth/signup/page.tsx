@@ -4,7 +4,7 @@ import axios from 'axios'
 import type { CustomFlowbiteTheme } from "flowbite-react";
 
 import { FaCloudUploadAlt } from 'react-icons/fa'
-import StateComponent from '@/app/components/StateComponent/StateComponent'
+
 import UserSignup from '@/app/auth/signup/component/usersignup'
 import { Tabs } from 'flowbite-react'
 import { SiFreelancer } from "react-icons/si";
