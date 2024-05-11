@@ -37,7 +37,7 @@ import { signOut } from 'next-auth/react';
                     <button className='bg-[white] text-black rounded-lg px-5 py-2 b-[#202192]'>Sign in</button>
                 </div> : 
                 <div className='flex flex-row gap-10 my-auto'>
-                <Link href='/pages/history'><FaRegHeart size={30} className='text-white'/></Link>
+                <Link href='/pages/bookmark'><FaRegHeart size={30} className='text-white'/></Link>
                
                 <Dropdown label="" dismissOnClick={false} renderTrigger={() => <span><FaUser className='w-[30px] h-[30px] text-white'/></span>}>
                   <Dropdown.Item><Link href="/pages/profile" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Profile</Link></Dropdown.Item>
@@ -45,8 +45,7 @@ import { signOut } from 'next-auth/react';
                     isCompany ? <Dropdown.Item><Link href="/pages/manage" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Company</Link></Dropdown.Item> : <div></div>
                   }
                   
-                  <Dropdown.Item><Link href="/profile/comment" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Comment</Link></Dropdown.Item>
-                  <Dropdown.Item><Link href="/profile/blog" className='hover:text-[#202192] no-underline text-black hover:no-underline'>My blog</Link></Dropdown.Item>
+                  <Dropdown.Item><Link href="/pages/history" className='hover:text-[#202192] no-underline text-black hover:no-underline'>History</Link></Dropdown.Item>
                   <Dropdown.Item><Link href="/pages/bookmark" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Save</Link></Dropdown.Item>
 
                   <Dropdown.Item onClick={() => signOut({callbackUrl:'/auth/signin'})} className='hover:text-[#202192]'>Sign out</Dropdown.Item>

@@ -7,7 +7,7 @@ type Props = {}
 
 const page = (props: Props) => {
 
-    const [checkFree, setCheckFree] = useState(true)
+    const [checkFree, setCheckFree] = useState(false)
     const [openModal, setOpenModal] = useState(false);
 
     const profile = {
