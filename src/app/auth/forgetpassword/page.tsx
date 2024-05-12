@@ -1,15 +1,28 @@
 "use client"
 import React from 'react'
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 type Props = {}
 
 const page = (props: Props) => {
-    const  Router = useRouter()
+    const  router = useRouter()
     const [email, setEmail] = React.useState('')
-    const handleClick = () => {
-        
+    const handleClick = async (e: any) => {
+        e.preventDefault()
         console.log('test')
+        const formData = new FormData();
+        formData.append("email", email);
+        try{
+          const response = await axios.post("/api/password/email", formData)
+          console.log(response);
+        }
+        catch(error)  { // must be with error handling, doesnt work
+          console.log("An Error occurred");
+          return;
+        }
+
+        router.push("/auth/verify") // Push to verify
     }
   return (
     <>

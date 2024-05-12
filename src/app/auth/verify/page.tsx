@@ -1,10 +1,29 @@
 "use client"
 import React from 'react'
+import { useRouter } from 'next/navigation'
+import axios from 'axios'
 
 type Props = {}
 
 const page = (props: Props) => {
-
+    const router = useRouter()
+    const handleSubmit = async () => {
+      const formData = new FormData()
+      formData.append("OTP", Verify)
+      try {
+        const response = await axios.post("/api/password/OTP", formData);
+        console.log(response);
+        if (response.data === "Try again"){ // Prevent if OTP is not found
+          console.log("OTP not found");
+          return;
+        }
+        router.push("/auth/changepassword") // Push to verify
+      }
+      catch(error) { // must be with error handling, doesnt work
+          console.log(error);
+          return;
+      };
+    }
     const [Verify, setVerify] = React.useState('')
   return (
     <>
@@ -22,7 +41,7 @@ const page = (props: Props) => {
                     required
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="6 digit"  />
             </div>
-            <button className='border-[#202192]  bg-[#202192] border-2 text-white py-2 rounded-md'>ยืนยัน</button>
+            <button className='border-[#202192]  bg-[#202192] border-2 text-white py-2 rounded-md' onClick={handleSubmit}>ยืนยัน</button>
            </div>
         </div>
     </div>

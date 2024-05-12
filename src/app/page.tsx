@@ -5,7 +5,7 @@ import CardWorkRec from "./components/CardWorkRec";
 import { Carousel } from "flowbite-react";
 import CardWork from "./components/CardWork";
 import Link from "next/link";
-
+// import { useSession } from "next-auth/react";
 
 export default function Home() {
   

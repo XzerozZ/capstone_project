@@ -18,22 +18,22 @@ const  LoginPage = (props: Props) => {
 
     const handleSignIn = async (e:any) => {
       
-        // e.preventDefault()
-        // try{
-        //     console.log(email)
-        //     console.log(password)
-        //     const result = await signIn('credentials', {
-        //         redirect: false,
-        //         email,
-        //         password
-        //     })
-        //     console.log(result)
-        //     Router.push('/')
+        e.preventDefault()
+        try{
+            console.log(email)
+            console.log(password)
+            const result = await signIn('credentials', {
+                redirect: false,
+                email,
+                password
+            })
+            console.log(result)
+            Router.push('/')
             
-        // }
-        // catch(err){
-        //     console.log(err)
-        // }
+        }
+        catch(err){
+            console.log(err)
+        }
     }
   return (
    <>

@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+// import { useSession } from 'next-auth/react'
 
 import Image from 'next/image'
 import Logo from '@/components/logo'
@@ -7,13 +8,14 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { Dropdown } from 'flowbite-react';
 import Link from 'next/link';
-import { signOut } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 
 
  const NewNav = () => {
-
+    // const {data: session, status} = useSession();
     const [showLogin, setShowLogin] = useState(false)
     const [isCompany, setIsCompany] = useState(true)
+    const {data: session, status} = useSession();
     return (
      <>
     <div className='bg-[#202192] w-full '>
@@ -22,7 +24,7 @@ import { signOut } from 'next-auth/react';
                 <div className='flex flex-row gap-10'>
                     <Link href='/'><Logo /></Link>
                     {
-                        showLogin ? <ul>
+                        status === "unauthenticated" ? <ul>
                             
                         </ul> : 
                         <ul className='text-2xl text-white my-auto'>
@@ -31,17 +33,17 @@ import { signOut } from 'next-auth/react';
                     } 
                 </div>
                 {
-                    showLogin ? 
+                    status === "unauthenticated" ? 
                     <div className='my-auto flex gap-5 p-1'>
                     <button className='text-white'>Sign up</button>
-                    <button className='bg-[white] text-black rounded-lg px-5 py-2 b-[#202192]'>Sign in</button>
+                    <Link href="/auth/signin" className='bg-[white] text-black rounded-lg px-5 py-2 b-[#202192]'>Sign in</Link>
                 </div> : 
                 <div className='flex flex-row gap-10 my-auto'>
                 <Link href='/pages/bookmark'><FaRegHeart size={30} className='text-white'/></Link>
                
                 <Dropdown label="" dismissOnClick={false} renderTrigger={() => <span><FaUser className='w-[30px] h-[30px] text-white'/></span>}>
                   <Dropdown.Item><Link href="/pages/profile" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Profile</Link></Dropdown.Item>
-                  {
+                  { /* session.user.role === "company" ? */
                     isCompany ? <Dropdown.Item><Link href="/pages/manage" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Company</Link></Dropdown.Item> : <div></div>
                   }
                   

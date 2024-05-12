@@ -1,6 +1,6 @@
 "use client";
 import React from 'react'
-import { signIn } from 'next-auth/react'
+import { signIn, SignInResponse } from 'next-auth/react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link';
@@ -19,22 +19,27 @@ const  LoginPage = (props: Props) => {
 
     const handleSignIn = async (e:any) => {
       
-        // e.preventDefault()
-        // try{
-        //     console.log(email)
-        //     console.log(password)
-        //     const result = await signIn('credentials', {
-        //         redirect: false,
-        //         email,
-        //         password
-        //     })
-        //     console.log(result)
-        //     Router.push('/')
+        e.preventDefault()
+        try{
+            console.log(email)
+            console.log(password)
+            const result = await signIn('credentials', {
+                redirect: false,
+                email,
+                password
+            })
+
+            if (result!.error){
+                console.log("Username or password doesn't match")
+                return false;
+            }
+            console.log(result)
+            Router.push('/')
             
-        // }
-        // catch(err){
-        //     console.log(err)
-        // }
+        }
+        catch(err){
+            console.log(err)
+        }
     }
   return (
    <>
