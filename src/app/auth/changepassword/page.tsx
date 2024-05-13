@@ -15,14 +15,14 @@ const page = (props: Props) => {
       formData.append("email", email)
       formData.append("password", password)
       try{
-        const response = await axios.post("/api/password/forgetpass", formData)
+        const response = await axios.post('/api/password/forgetpass', formData)
         console.log(response);
       }
       catch (error){
         console.log("User with such email is not registered");
         return;
       }
-      router.push("/auth/signin")
+      router.push('/auth/signin')
     }
   return (
     <>

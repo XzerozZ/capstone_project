@@ -11,7 +11,7 @@ const page = (props: Props) => {
       const formData = new FormData()
       formData.append("OTP", Verify)
       try {
-        const response = await axios.post("/api/password/OTP", formData);
+        const response = await axios.post('/api/password/OTP', formData);
         console.log(response);
         if (response.data === "Try again"){ // Prevent if OTP is not found
           console.log("OTP not found");
