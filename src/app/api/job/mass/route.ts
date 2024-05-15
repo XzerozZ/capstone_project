@@ -6,13 +6,14 @@ export async function PUT( req: Request ) {
     try{
         const formData = await req.formData();
         const id = parseInt(formData.get('id') as string)
+        const money = parseInt(formData.get('money') as string)
         const mass = parseInt(formData.get('mass') as string)
         const job = await prisma.job.findUnique({
             where: {
                 job_id: id
             }
         });
-        if(job){
+        if(job && mass === 1){
             const updateMass = await prisma.job.update({
                 where : {
                     job_id : job.job_id
