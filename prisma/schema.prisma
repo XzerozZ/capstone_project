@@ -30,6 +30,8 @@ model user {
   rating_user1  rating_user[] @relation("ratings_given")
   rating_users2 rating_user[] @relation("ratings_received")
   user_career   user_career[]
+  transaction1  transaction[] @relation("company")
+  transaction2  transaction[] @relation("user")
 }
 
 model rating_user {
@@ -110,6 +112,7 @@ model job {
   status         String        @default("Open") @db.VarChar(6)
   mass           Int?          @default(0)
   bookmark       bookmark[]
+  transaction    transaction[]
   history        history[]
   job_exp        job_exp[]
   post           post[]
@@ -168,4 +171,15 @@ model work {
   job       job     @relation(fields: [job_id], references: [job_id])
   user      user    @relation(fields: [user_id], references: [user_id])
   @@unique([user_id, job_id])
+}
+model transaction{
+  trans_id       Int           @id @default(autoincrement())
+  user_id1       Int
+  user_id2       Int
+  job_id         Int
+  amount         Int
+  date           DateTime      @default(now())
+  job            job           @relation(fields: [job_id], references: [job_id])
+  user1          user          @relation("company",fields: [user_id1], references: [user_id])
+  user2          user          @relation("user",fields: [user_id2], references: [user_id])
 }

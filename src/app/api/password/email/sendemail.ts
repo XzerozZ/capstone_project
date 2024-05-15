@@ -1,6 +1,5 @@
 import nodeemailer from "nodemailer";
 import { Email } from "../../interface/interface";
-import logo from "@/app/assets/image.png"
 const emailConfig: Email = {
   email: process.env.EMAIL || '',
   key: process.env.EMAIL_PASS || ''

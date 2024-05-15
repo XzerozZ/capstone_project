@@ -6,6 +6,7 @@ export async function PUT( req: Request ) {
     try{
         const formData = await req.formData();
         const id = parseInt(formData.get('id') as string)
+        const email = formData.get('email') as string
         const money = parseInt(formData.get('money') as string)
         const mass = parseInt(formData.get('mass') as string)
         const job = await prisma.job.findUnique({
@@ -13,8 +14,13 @@ export async function PUT( req: Request ) {
                 job_id: id
             }
         });
-        if(job && mass === 1){
-            const updateMass = await prisma.job.update({
+        const user = await prisma.user.findUnique({
+            where: {
+                email : email
+            }
+        })
+        if(job && mass === 1 && user){
+            await prisma.job.update({
                 where : {
                     job_id : job.job_id
                 },
@@ -22,8 +28,36 @@ export async function PUT( req: Request ) {
                     mass : mass
                 }
             })
+            await prisma.transaction.create({
+                data : {
+                    user_id1 : user.user_id,
+                    user_id2 : 1,
+                    job_id : job.job_id,
+                    amount : money
+                }
+            })
             await prisma.$disconnect();
-            return Response.json(updateMass)
+            return Response.json("Success")
+        }
+        else if(job && mass === 0 && user) {
+            await prisma.job.update({
+                where : {
+                    job_id : job.job_id
+                },
+                data : {
+                    mass : mass
+                }
+            })
+            await prisma.transaction.create({
+                data : {
+                    user_id1 : user.user_id,
+                    user_id2 : 1,
+                    job_id : job.job_id,
+                    amount : money
+                }
+            })
+            await prisma.$disconnect();
+            return Response.json("Success")
         }
         else {
             await prisma.$disconnect();
