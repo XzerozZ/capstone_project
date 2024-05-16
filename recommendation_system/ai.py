@@ -86,6 +86,7 @@ async def process_data(data: dict):
                 recommendation = {
                     "job_id" : job.job_id,
                     "title"  : job.title,
+                    "image"  : job.image,
                     "budget" : job.budget,
                     "posted_date" : job.posted_date,
                     "categories": categories

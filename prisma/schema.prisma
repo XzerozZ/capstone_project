@@ -19,6 +19,7 @@ model user {
   password      String        @db.VarChar(255)
   role          String        @db.VarChar
   bookmark      bookmark[]
+  wallet        wallet[]
   contact       contact[]
   experience    experience[]
   history       history[]
@@ -30,6 +31,10 @@ model user {
   rating_user1  rating_user[] @relation("ratings_given")
   rating_users2 rating_user[] @relation("ratings_received")
   user_career   user_career[]
+  transaction1  transaction[] @relation("company")
+  transaction2  transaction[] @relation("user")
+  order1        order[]       @relation("company")
+  order2        order[]       @relation("user")
 }
 
 model rating_user {
@@ -113,6 +118,7 @@ model job {
   history        history[]
   job_exp        job_exp[]
   post           post[]
+  transaction    transaction[]
   rating_com     rating_com[]
   rating_user    rating_user[]
   work           work[]
@@ -168,4 +174,42 @@ model work {
   job       job     @relation(fields: [job_id], references: [job_id])
   user      user    @relation(fields: [user_id], references: [user_id])
   @@unique([user_id, job_id])
+}
+
+model order{
+  order_id       String        @db.VarChar(255) @unique
+  user_id1       Int
+  user_id2       Int
+  amount         Int
+  product_name   String
+  session_id     String        @unique
+  date           DateTime      @default(now())
+  status         String?
+  user1          user          @relation("company",fields: [user_id1], references: [user_id])
+  user2          user          @relation("user",fields: [user_id2], references: [user_id])
+}
+
+model product {
+  product_id     Int           @id @default(autoincrement())
+  name           String        @db.VarChar(255) @unique
+  price          Int
+}
+
+model transaction {
+  trans_id       String        @db.VarChar(255) @unique
+  user_id1       Int
+  user_id2       Int
+  job_id         Int
+  amount         Int
+  product_name   String
+  date           DateTime      @default(now())
+  job            job           @relation(fields: [job_id], references: [job_id])
+  user1          user          @relation("company",fields: [user_id1], references: [user_id])
+  user2          user          @relation("user",fields: [user_id2], references: [user_id])
+}
+model wallet {
+  wallet_id      Int           @id @default(autoincrement())
+  user_id        Int
+  amount         Int           @default(0)
+  user           user          @relation(fields: [user_id], references: [user_id])
 }
