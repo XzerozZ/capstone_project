@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image";
 import CategoryBox from "./components/CategoryBox";
 import JobRecommend from "./components/JobRecommend";
@@ -5,9 +6,14 @@ import CardWorkRec from "./components/CardWorkRec";
 import { Carousel } from "flowbite-react";
 import CardWork from "./components/CardWork";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 
 export default function Home() {
+
+
+  const {data:session,status} = useSession()
+  console.log(session)
   
   const Categories = [{
     cate : 'Web development',

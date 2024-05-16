@@ -1,4 +1,3 @@
-import StateComponent from '@/app/components/StateComponent/StateComponent';
 import axios from 'axios';
 import React, { ChangeEvent, useState } from 'react'
 import { FaCloudUploadAlt } from 'react-icons/fa';
@@ -9,6 +8,8 @@ const companysignup = (props: Props) => {
     const [userData, setUserData] = React.useState({
         email: '',
         username: '',
+        first_name: '',
+        last_name: '',
         phone_number: '',
         birthday: '',
         password: '',
@@ -48,6 +49,8 @@ const handleSubmit = (e:any) => {
         const formData = new FormData();
         formData.append('email', userData.email);
         formData.append('username', userData.username);
+        formData.append('first_name', userData.first_name);
+        formData.append('last_name', userData.last_name);
         formData.append('phone_number', userData.phone_number);
         formData.append('id_card', userData.id_card);
         formData.append('birthday', userData.birthday);
@@ -106,6 +109,29 @@ const handleSubmit = (e:any) => {
                     name='username'
                     
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="company name" required />
+            </div>
+            <div className='flex flex-row gap-3 w-full justify-between'>
+                <div  className='w-full'>
+                        <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Firstname</label>
+                        <input 
+                        type="text" 
+                        id="first_name" 
+                        name='first_name'
+                        onChange={handleChange}
+                        
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="firstname" required />
+                </div>
+                <div  className='w-full'>
+                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lastname</label>
+                    <input 
+                    type="text" 
+                    id="last_name" 
+                    onChange={handleChange}
+                    name='last_name'
+                    
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="lastname" required />
+                 </div>
+
             </div>
             <div>
                     <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">id</label>

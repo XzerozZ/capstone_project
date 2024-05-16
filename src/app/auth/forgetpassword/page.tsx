@@ -1,16 +1,19 @@
 "use client"
 import React from 'react'
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 type Props = {}
 
 const page = (props: Props) => {
     const  Router = useRouter()
     const [email, setEmail] = React.useState('')
-    const handleClick = () => {
-        
-        console.log('test')
-    }
+    const handleClick = (e:any) => {
+       e.preventDefault()
+       const formData = new FormData();
+       axios.post('/api/password/email', formData).then((res) => { 
+              console.log(res)
+    })}
   return (
     <>
     <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>

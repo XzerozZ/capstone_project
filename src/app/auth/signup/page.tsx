@@ -78,7 +78,7 @@ const page = () => {
 
   return (
     <>
-     <div className='flex justify-center bg-[#FAFAFA] py-[100px] max-sm:p-[50px]'>
+     <div className='flex justify-center bg-[#FAFAFA] py-[30px] max-sm:p-[50px] max-sm:py-[10px]'>
     <div >
     <h1 className='text-center text-[40px]'>Sign up</h1>
       
