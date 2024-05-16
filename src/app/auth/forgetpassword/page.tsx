@@ -11,8 +11,11 @@ const page = (props: Props) => {
     const handleClick = (e:any) => {
        e.preventDefault()
        const formData = new FormData();
+       formData.append('email', email);
        axios.post('/api/password/email', formData).then((res) => { 
+              Router.push('/auth/OTP')
               console.log(res)
+              localStorage.setItem('verifyOTP', 'not verify')
     })}
   return (
     <>
@@ -27,7 +30,7 @@ const page = (props: Props) => {
                     <input 
                     type="text" 
                     id="email" 
-                    value={email}
+                    name='email'
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="email@email.com"  />
