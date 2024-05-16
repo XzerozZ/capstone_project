@@ -1,6 +1,8 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
 import Stripe from 'stripe';
+import { plus, vat } from '../calcutor';
+import { sentReceipt } from '../email';
 import { Stripe1 } from '../../interface/interface';
 import { Endpoint } from '../../interface/interface';
 
@@ -28,8 +30,9 @@ export async function POST(req: Request) {
     switch(event.type){
         case "checkout.session.completed" :
             const payment = event.data.object;
+            console.log(payment)
             const sessionId = payment.id
-            await prisma.order.update({
+            const order = await prisma.order.update({
                 where : {
                     session_id : sessionId
                 },
@@ -37,6 +40,17 @@ export async function POST(req: Request) {
                     status : payment.status
                 }
             })
+            const plusx = await plus(order.amount,order.user_id1)
+            await prisma.wallet.updateMany({
+                where : {
+                    user_id : order.user_id1
+                },
+                data : {
+                    amount : plusx
+                }
+            })
+            const vat1 = parseInt(await vat(order.amount))
+            await sentReceipt(order.user_id1,order.amount,vat1,order.order_id,order.product_name)
             break;
         default:
             console.log(`Unhandled event type ${event.type}`);

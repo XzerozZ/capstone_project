@@ -13,7 +13,6 @@ export async function POST(req: Request) {
     try {
       const formData = await req.formData();
       const email = formData.get("email") as string
-      const id = parseInt(formData.get("id") as string)
       const productId = parseInt(formData.get("productId") as string)
       const user = await prisma.user.findUnique({
         where : {
@@ -25,12 +24,7 @@ export async function POST(req: Request) {
             product_id : productId
         }
       })
-      const job = await prisma.job.findUnique({
-        where : {
-            job_id : id
-        }
-      })
-      if(user && product && job){
+      if(user && product ){
         const orderId = uuid()
         const seesion = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -50,12 +44,12 @@ export async function POST(req: Request) {
             success_url: 'http://localhost:3000/success.html?id=${orderId}',
             cancel_url: 'http://localhost:3000/cancel.html'
         })
+        console.log(seesion)
         const neworder = await prisma.order.create({
             data: {
                 order_id : orderId,
                 user_id1 : user.user_id,
                 user_id2 : 1,
-                job_id : job.job_id,
                 amount : product.price,
                 product_name : product.name,
                 session_id : seesion.id,
