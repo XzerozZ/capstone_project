@@ -1,7 +1,7 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
 import { sentReceipt } from '../../transaction/email'
-import { minus, vat } from '../../transaction/calcutor'
+import { minus, plus, vat } from '../../transaction/calcutor'
 import { v4 as uuid } from "uuid";
 export async function PUT( req: Request ) {
     const prisma = new PrismaClient();
@@ -50,6 +50,7 @@ export async function PUT( req: Request ) {
                         trans_id : transId,
                         user_id1 : user.user_id,
                         user_id2 : 1,
+                        job_id : job.job_id,
                         amount : product.price,
                         product_name : product.name,
                     }
@@ -61,6 +62,15 @@ export async function PUT( req: Request ) {
                     },
                     data : {
                         amount : minusOne
+                    }
+                })
+                const plusX = await plus(newtrans.amount,newtrans.user_id2)
+                await prisma.wallet.updateMany({
+                    where : {
+                        user_id : newtrans.user_id2
+                    },
+                    data : {
+                        amount : plusX
                     }
                 })
                 const vat1 = parseInt(await vat(newtrans.amount))

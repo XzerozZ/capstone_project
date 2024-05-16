@@ -28,7 +28,7 @@ export const sentReceipt = async (UserId: number, money: number, vat: number, id
   const mailOptions = {
     from: emailConfig.email,
     to: user?.email,
-    subject: "Thank you for your supporting",
+    subject: "Thank you for your purchase on Slowwork!",
     html: `
     <!DOCTYPE html>
     <html>
