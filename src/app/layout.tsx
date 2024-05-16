@@ -5,6 +5,7 @@ import "./globals.css";
 import  NewNav  from "./components/NewNav";
 import { Noto_Sans_Thai } from "next/font/google";
 import SessionProvider from "./components/sessionProvider";
+import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -31,6 +32,7 @@ export default function RootLayout({
      <body className={noto_sans_thai.className}>
       <NewNav />
         {children}
+      <Footer/  >
       </body>
      </SessionProvider>
     </html>

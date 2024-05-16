@@ -1,71 +1,38 @@
 'use client'
 import JobComponent from "@/app/components/JobComponent";
 import CardWork from "@/app/components/CardWork";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Job } from "@/interface";
+import { Loader } from "rsuite";
+import 'rsuite/dist/rsuite.min.css';
 
-export default function Jobs(/*{props}:amy */){
 
-    const MockData = [ // ข้อมูลต้องปรับตามฐานข้อมูลจริง
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            type: "freelance",
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:1
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            type: "freelance",
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:2
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Comm"],
-            type: "freelance",
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:3
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Hardware", "System Admin"],
-            type: "Full-Time",
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:4
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["QA"],
-            type: "Full-Time",
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:5
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            type: "Full-Time",
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:6
+export default function Jobs(){
+
+    const [job, setJob] = useState([] as Job[]) 
+    const [FilterData, setFilterData] = useState([] as Job[])
+
+    const fetchJob = async () => {
+        try {
+            axios.get('/api/job').then((res) => {
+                console.log(res.data)
+                setJob(res.data)
+            })
+        } catch (error) {
+            console.log(error)
         }
-    ]
+    }
+    useEffect(() => {
+        fetchJob()
+    }, [])
+
+    if (job.length === 0) {
+        return  <div className='flex justify-center h-[500px] items-center'>
+          <Loader size="md"  color='black'/>
+        </div>
+      }
+    
 
     return(
       
@@ -99,8 +66,9 @@ export default function Jobs(/*{props}:amy */){
                     </div> 
                 </div>
                 <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
-                    {MockData.map((props:any,index)=>
-                    <CardWork props={props} key={index}/>)}
+                    {job.map((props:any,index)=>
+                    <CardWork props={props} key={index} />
+                   )}
                 </div>
             </div>
        
