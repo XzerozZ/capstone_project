@@ -14,6 +14,11 @@ export async function GET(request: Request, { params }: { params: { id: string }
                     include: {
                         category: true
                     }
+                },
+                post: {
+                    include: {
+                        user: true
+                    }
                 }
             }
         });

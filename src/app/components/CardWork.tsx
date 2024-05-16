@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 type Props = {}
 
@@ -20,7 +21,8 @@ const DateFormatter = ({ timestamp }:any) => {
 
   return (
     <>
-    <div className='rounded-lg shadow-md border-solid flex flex-col justify-between hover:scale-105 hover:shadow-xl text-black'>
+   <Link href={`/pages/jobs/${props.job_id}`} className='text-black hover:no-underline'>
+   <div className='rounded-lg shadow-md border-solid flex flex-col justify-between hover:scale-105 hover:shadow-xl text-black'>
         <img src={props?.company[0]} className='rounded-t-lg flex-none '/>
        <div className=' p-3 grow flex flex-col gap-2 justify-between '>
        
@@ -43,6 +45,7 @@ const DateFormatter = ({ timestamp }:any) => {
        </div>
 
     </div>
+   </Link>
     </>
   )
 }

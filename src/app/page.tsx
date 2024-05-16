@@ -143,7 +143,7 @@ export default function Home() {
               </div>
               <div className='flex justify-center'>
                 <div className=' gap-5 flex overflow-auto max-sm:w-[400px] '>
-                        {
+                        {/* {
                             MockData.map((item:any, index) => {
                                 return (
                                    <div className="">
@@ -152,7 +152,7 @@ export default function Home() {
                                     
                                 )
                             })
-                        }
+                        } */}
                     </div>
                </div>
             </div>
@@ -179,16 +179,16 @@ export default function Home() {
 
               </div>
               <div className="grid grid-cols-4 gap-4 max-sm:grid-cols-2">
-              {
+              {/* {
                             MockData.map((item:any, index) => {
                                 return (
-                                  
-                                     <CardWork key={index} props={item} />
+                                  <></>
+                                    //  <CardWork key={index} props={item} />
                                  
                                     
                                 )
                             })
-                        }
+                        } */}
               </div>
             </div>
         </div>
