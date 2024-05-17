@@ -16,6 +16,8 @@ import { useSession, signOut } from 'next-auth/react';
     const [showLogin, setShowLogin] = useState(false)
     const [isCompany, setIsCompany] = useState(true)
     const {data: session, status} = useSession();
+    console.log(session);
+    console.log(status);
     return (
      <>
     <div className='bg-[#202192] w-full '>
@@ -35,7 +37,7 @@ import { useSession, signOut } from 'next-auth/react';
                 {
                     status === "unauthenticated" ? 
                     <div className='my-auto flex gap-5 p-1'>
-                    <button className='text-white'>Sign up</button>
+                    <button><Link href="/auth/signup" className='text-white'>Sign up</Link></button>
                     <Link href="/auth/signin" className='bg-[white] text-black rounded-lg px-5 py-2 b-[#202192]'>Sign in</Link>
                 </div> : 
                 <div className='flex flex-row gap-10 my-auto'>
@@ -44,7 +46,7 @@ import { useSession, signOut } from 'next-auth/react';
                 <Dropdown label="" dismissOnClick={false} renderTrigger={() => <span><FaUser className='w-[30px] h-[30px] text-white'/></span>}>
                   <Dropdown.Item><Link href="/pages/profile" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Profile</Link></Dropdown.Item>
                   { /* session.user.role === "company" ? */
-                    isCompany ? <Dropdown.Item><Link href="/pages/manage" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Company</Link></Dropdown.Item> : <div></div>
+                    session?.user.role === "company" ? <Dropdown.Item><Link href="/pages/manage" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Company</Link></Dropdown.Item> : <div></div>
                   }
                   
                   <Dropdown.Item><Link href="/pages/history" className='hover:text-[#202192] no-underline text-black hover:no-underline'>History</Link></Dropdown.Item>

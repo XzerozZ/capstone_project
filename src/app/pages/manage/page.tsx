@@ -6,14 +6,32 @@ import React from 'react'
 import { MdWorkOutline } from 'react-icons/md'
 import { Dropdown } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
-
-
+import { useSession } from 'next-auth/react'
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
 
 type Props = {}
 
 
 
 const page = (props: Props) => {
+  const router = useRouter()
+  const {data: session, status} = useSession();
+  const [candidates, setCandidates] = React.useState([]);
+
+  
+  React.useEffect(() => {
+    if (status === 'unauthenticated') {
+        router.push('/auth/signin')
+    }
+    const fetchData = async() =>{
+        const {data: response} = await axios.get(`/api/job`) // API ดึง Post เพื่อแยกงานที่โพสต์สำหรับแต่ละบริษัท
+        const {data: responseCandidates} = await axios.get(`/api/company/selector/${3}`)
+    }
+    fetchData();
+}, [status, router])
+
+
   const work = [
     {
       id : 1,

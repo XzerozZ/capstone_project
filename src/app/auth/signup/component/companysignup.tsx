@@ -1,12 +1,15 @@
-import StateComponent from '@/app/components/StateComponent/StateComponent';
 import axios from 'axios';
 import React, { ChangeEvent, useState } from 'react'
 import { FaCloudUploadAlt } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 type Props = {}
 
 const companysignup = (props: Props) => {
+    const router = useRouter();
     const [userData, setUserData] = React.useState({
+        first_name: '',
+        last_name: '',
         email: '',
         username: '',
         phone_number: '',
@@ -42,10 +45,12 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 };
 console.log(selectedImage)
 console.log(userData)
-const handleSubmit = (e:any) => {
+const handleSubmit = async (e:any) => {
         e.preventDefault();
         console.log(selectedImage,'image');
         const formData = new FormData();
+        formData.append('first_name', userData.first_name);
+        formData.append('last_name', userData.last_name);
         formData.append('email', userData.email);
         formData.append('username', userData.username);
         formData.append('phone_number', userData.phone_number);
@@ -57,12 +62,20 @@ const handleSubmit = (e:any) => {
                 formData.append('image', selectedImage);
             }
         console.log(formData);
-        axios.post('/api/auth/register', formData)
+        try{
+            await axios.post('/api/auth/register', formData)
                 .then((res) => {
                         console.log(res);
                 });
-        console.log(formData)
+            console.log(formData)
+            router.push('/pages/signin')
+
         
+        }
+        catch (err){
+             return;
+        }
+         
      
 }
 
@@ -95,6 +108,30 @@ const handleSubmit = (e:any) => {
                 </div>
                 
        
+            </div>
+
+            <div className='flex flex-row gap-3 w-full justify-between'>
+                <div  className='w-full'>
+                        <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+                        <input 
+                        type="text" 
+                        id="first_name" 
+                        name='first_name'
+                        onChange={handleChange}
+                        
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="First Name" required />
+                </div>
+                <div  className='w-full'>
+                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+                    <input 
+                    type="text" 
+                    id="last_name" 
+                    onChange={handleChange}
+                    name='last_name'
+                    
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="Last Name" required />
+                 </div>
+
             </div>
 
              <div>

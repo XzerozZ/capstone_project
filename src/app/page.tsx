@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import CategoryBox from "./components/CategoryBox";
 import JobRecommend from "./components/JobRecommend";
@@ -5,9 +6,29 @@ import CardWorkRec from "./components/CardWorkRec";
 import { Carousel } from "flowbite-react";
 import CardWork from "./components/CardWork";
 import Link from "next/link";
-// import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import axios from "axios";
+import { Category, Job } from '@/interface';
+import React from "react";
 
 export default function Home() {
+  const {data: session, status} = useSession()
+  const [recJobs, setRecJobs] = React.useState([]);
+  const [popularJobs, setPopularJobs] = React.useState([]);
+
+  React.useEffect(() => {
+    const fetchData = async() =>{
+        const {data: response} = await axios.get(`/api/job`) // Get all jobs
+        if (response !== "No avaliable jobs"){ // ป้องกันถ้าไม่มีรายการงานในระบบ การสะกดผิดเล็กน้อย
+          setRecJobs(response)
+          setPopularJobs(response) // รอเชื่อมกับ AI / งานสปอน
+      }
+    }
+    fetchData();
+  }, []);
+
+  console.log(recJobs);
+
   
   const Categories = [{
     cate : 'Web development',
@@ -136,9 +157,12 @@ export default function Home() {
 
               </div>
               <div className='flex justify-center'>
-                <div className=' gap-5 flex overflow-auto max-sm:w-[400px] '>
-                        {
-                            MockData.map((item:any, index) => {
+                
+                        { recJobs?.length === 0 ? 
+                          <p className="font-bold text-2xl">ไม่มีงานที่เปิดรับสมัครในตอนนี้</p>
+                        :<div className=' gap-5 flex overflow-auto max-sm:w-[400px] '>
+                          {
+                            recJobs?.map((item:any, index) => {
                                 return (
                                    <div className="">
                                      <CardWorkRec key={index} props={item} />
@@ -146,8 +170,10 @@ export default function Home() {
                                     
                                 )
                             })
+                          }
+                          </div>
                         }
-                    </div>
+                    
                </div>
             </div>
             <div>
@@ -157,7 +183,7 @@ export default function Home() {
 
               </div>
               <div className="grid grid-cols-4 gap-3 max-sm:grid-cols-2">
-                {
+                { 
                   Categories.map((cate, index) => {
                     return (
                       <CategoryBox key={index} data={cate}/>
@@ -172,18 +198,20 @@ export default function Home() {
               <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
 
               </div>
-              <div className="grid grid-cols-4 gap-4 max-sm:grid-cols-2">
-              {
-                            MockData.map((item:any, index) => {
+              
+                    { popularJobs?.length === 0 ?
+                        <p className="font-bold text-2xl text-center">ไม่มีงานที่เปิดรับสมัครในตอนนี้</p>
+                      :<div className="grid grid-cols-4 gap-4 max-sm:grid-cols-2">
+                            {popularJobs?.map((item:any, index) => {
                                 return (
                                   
                                      <CardWork key={index} props={item} />
                                  
                                     
                                 )
-                            })
+                            })}</div>
                         }
-              </div>
+              
             </div>
         </div>
     </div>

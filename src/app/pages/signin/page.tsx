@@ -27,8 +27,13 @@ const  LoginPage = (props: Props) => {
                 email,
                 password
             })
+
+            if (result!.error){
+                console.log('Username or password doesn\'t match')
+                return false;
+            }
             console.log(result)
-            Router.push('/')
+            Router.push('/pages/signin/job')
             
         }
         catch(err){

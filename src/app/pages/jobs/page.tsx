@@ -1,14 +1,41 @@
 'use client'
 import JobComponent from "@/app/components/JobComponent";
 import CardWork from "@/app/components/CardWork";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Jobs(/*{props}:amy */){
+
+    const {data: session, status} = useSession();
+    const [jobsData, setJobsData] = React.useState([]);
+    const [curCategory, setCurCategory] = React.useState("");
+    const [workType, setWorkType] = React.useState("");
+    const router = useRouter();
+
+    
+    useEffect(() => {
+        if (status === 'unauthenticated') {
+            router.push('/auth/signin')
+        }
+        const fetchData = async() =>{
+            const {data: response} = await axios.get("/api/job")
+            if (response !== "No avaliable jobs"){
+                setJobsData(response)
+            }
+        }
+        fetchData();
+        
+    }, [status, router])
+    
+    
 
     const MockData = [ // ข้อมูลต้องปรับตามฐานข้อมูลจริง
         {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
             image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
             rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
+            job_exp: ["Webdev", "QA", "Comm"],
             type: "freelance",
             budget: "2000",
             posted_date: "12/12/2566",
@@ -18,7 +45,7 @@ export default function Jobs(/*{props}:amy */){
         {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
             image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
             rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
+            job_exp: ["Webdev", "QA", "Comm"],
             type: "freelance",
             budget: "2000",
             posted_date: "12/12/2566",
@@ -28,7 +55,7 @@ export default function Jobs(/*{props}:amy */){
         {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
             image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
             rating:"4.5",
-            categories: ["Comm"],
+            job_exp: ["Comm"],
             type: "freelance",
             budget: "2000",
             posted_date: "12/12/2566",
@@ -38,7 +65,7 @@ export default function Jobs(/*{props}:amy */){
         {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
             image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
             rating:"4.5",
-            categories: ["Webdev", "QA", "Hardware", "System Admin"],
+            job_exp: ["Webdev", "QA", "Hardware", "System Admin"],
             type: "Full-Time",
             budget: "2000",
             posted_date: "12/12/2566",
@@ -48,7 +75,7 @@ export default function Jobs(/*{props}:amy */){
         {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
             image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
             rating:"4.5",
-            categories: ["QA"],
+            job_exp: ["QA"],
             type: "Full-Time",
             budget: "2000",
             posted_date: "12/12/2566",
@@ -58,7 +85,7 @@ export default function Jobs(/*{props}:amy */){
         {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
             image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
             rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
+            job_exp: ["Webdev", "QA", "Comm"],
             type: "Full-Time",
             budget: "2000",
             posted_date: "12/12/2566",
@@ -99,8 +126,12 @@ export default function Jobs(/*{props}:amy */){
                     </div> 
                 </div>
                 <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
-                    {MockData.map((props:any,index)=>
-                    <CardWork props={props} key={index}/>)}
+
+                    {jobsData.length === 0 ? 
+                        <p className="font-bold text-2xl">No available jobs at the moment</p>
+                    :
+                    jobsData.map((props:object,index)=>
+                    <CardWork props={props} key={index}/>)} 
                 </div>
             </div>
        

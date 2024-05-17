@@ -2,13 +2,24 @@
 import React, { useState } from 'react'
 import { Rate } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
+import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 
 
 type Props = {}
 
 const page = (props: Props) => {
 
+  const {data: session, status} = useSession()
+  const router = useRouter()
   const [checkComepany, setCheckComepany] = useState(true)
+
+  
+  React.useEffect(() => {
+    if (status === 'unauthenticated') {
+        router.push('/auth/signin')
+    }
+}, [status, router])
 
   return (
     <>

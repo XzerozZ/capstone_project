@@ -10,12 +10,23 @@ import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi";
 import StatusTimeline from '@/app/components/StatusTimeline';
 import axios from 'axios';
 import { Loader } from 'rsuite';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 type Props = {}
 
 const page = (props: Props) => {
+  const {data: session, status} = useSession()
   const [value, setValue] = React.useState([]);
   const [link, setLink] = React.useState('');
+  const router = useRouter()
+
+  
+  React.useEffect(() => {
+    if (status === 'unauthenticated') {
+        router.push('/auth/signin')
+    }
+}, [status, router])
 
   const handleFakeUpload = () => {
     const formData = new FormData();

@@ -10,7 +10,7 @@ const CardWorkRec = ({props}: any) => {
        <div className=' p-3 grow flex flex-col gap-2 justify-between '>
        
             <div className='flex flex-col gap-2'>
-                    <p>{props.job}</p>
+                    <p>{props.title}</p>
                     <div className='flex flex-wrap gap-2 '>
                     {props.categories.map((category: any,index:any)=>
                         <p key={index} className='bg-[#d9d9d9] py-1 px-2 rounded-2xl text-xs '>{category}</p>)

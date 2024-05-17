@@ -2,13 +2,22 @@
 import React, { useState } from 'react'
 import Editpassword from './changepassword/page'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 type Props = {}
 
 const page = (props: Props) => {
-
+    const router = useRouter()
+    const {data: session, status} = useSession();
     const [checkFree, setCheckFree] = useState(false)
     const [openModal, setOpenModal] = useState(false);
+    
+    React.useEffect(() => {
+        if (status === 'unauthenticated') {
+            router.push('/auth/signin')
+        }
+    }, [status, router])
 
     const profile = {
         name : 'Natchapon Ponlaem',

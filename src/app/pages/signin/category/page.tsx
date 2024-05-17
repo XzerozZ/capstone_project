@@ -2,12 +2,21 @@
 import React, { useState } from 'react'
 import { MultiSelect } from "react-multi-select-component";
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import axios from 'axios';
 type Props = {}
 
 
 const page = (props: Props) => {
     const router = useRouter()
     const [selected, setSelected] = useState([])
+    const {data: session, status} = useSession()
+
+    React.useEffect(() => {
+      if (status === 'unauthenticated') {
+          router.push('/auth/signin')
+      }
+  }, [status, router])
     
     console.log(selected)
   

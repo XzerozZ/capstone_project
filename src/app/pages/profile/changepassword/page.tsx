@@ -2,6 +2,8 @@
 import axios from 'axios';
 import React, { ChangeEvent, useState } from 'react'
 import { FaCloudUploadAlt } from 'react-icons/fa';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 type Props = {}
 
@@ -11,6 +13,15 @@ const editpassword = () => {
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [previewImage2, setPreviewImage2] = useState<string | null>(null);
     const [selectedImage2, setSelectedImage2] = useState<File | null>(null);
+    const router = useRouter();
+    const {data: session, status} = useSession();
+
+
+    React.useEffect(() => {
+        if (status === 'unauthenticated') {
+            router.push('/auth/signin')
+        }
+    }, [status, router])
 
 const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

@@ -1,6 +1,6 @@
 "use client";
 import React from 'react'
-import { signIn, SignInResponse } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link';
@@ -30,7 +30,7 @@ const  LoginPage = (props: Props) => {
             })
 
             if (result!.error){
-                console.log("Username or password doesn't match")
+                console.log('Username or password doesn\'t match')
                 return false;
             }
             console.log(result)

@@ -9,6 +9,8 @@ import { MdWorkOutline } from 'react-icons/md'
 import { SiD } from 'react-icons/si'
 import { Dropdown } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
+import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 
 type Props = {}
 
@@ -16,9 +18,18 @@ type Props = {}
 
 const page = (props: Props) => {
 
+  const {data: session, status} = useSession()
+  const router = useRouter()
   const params = useParams();
   const id = Number(params.id)
   console.log(id)
+
+  
+  React.useEffect(() => {
+    if (status === 'unauthenticated') {
+        router.push('/auth/signin')
+    }
+}, [status, router])
   const work = [
     {
       id : 1,

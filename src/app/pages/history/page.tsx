@@ -1,9 +1,33 @@
+'use client'
 import HistoryCard from '@/app/components/HistoryCard'
 import React from 'react'
+import axios from 'axios'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 type Props = {}
 
 const page = (props: Props) => {
+    const router = useRouter()
+    const {data: session, status} = useSession();
+    const [history, setHistory] = React.useState([]);
+    // ยังไม่เสร็จเดี๋ยวมาต่อ
+
+    
+    React.useEffect(() => {
+        if (status === 'unauthenticated') {
+            router.push('/auth/signin')
+        }
+        const fetchData = async() =>{
+            const formData = new FormData();
+            const email: any = session?.user.email // ต้องใช้ any ไปก่อน
+            formData.append('email', email)
+            const {data: response} = await axios.post("/api/history/user", formData) // ต้องลอง Data จริง
+            setHistory(response);
+        }
+        fetchData();
+    }, [status, router])
+
     const MockData = [ // ข้อมูลต้องปรับตามฐานข้อมูลจริง
     {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
         image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
@@ -88,7 +112,14 @@ const page = (props: Props) => {
             </div>
             <div className='flex flex-col gap-3'>
                 {
-                    MockData.map((props: any)=>  <HistoryCard props={props}/>)
+                    history.length !== 0 ?
+                    //MockData.map((props: any)=>  <HistoryCard props={props}/>)
+                    history.map((history: any)=>  <HistoryCard props={history.job} 
+                    image={"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg"}
+                    />
+                    )
+                    :
+                    <p className="font-bold text-2xl">ไม่มีงานที่คุณได้ยื่นสมัครในบัญชีนี้</p>
                 }
             </div>
             
