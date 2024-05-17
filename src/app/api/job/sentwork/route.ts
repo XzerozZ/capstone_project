@@ -1,11 +1,16 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
-import { minus, plus } from '../../order/calcutor'
 import { v4 as uuid } from "uuid";
-import { sentInvoice } from './email'
-import { sentSalary } from './salary'
+import Stripe from 'stripe';
+import { Stripe1 } from '../../interface/interface';
+
+const stripeConfig: Stripe1 = {
+  key: process.env.STRIPE_SECRET_KEY || ''
+};
+
 export async function PUT(req: Request) {
   const prisma = new PrismaClient();
+  const stripe = new Stripe(stripeConfig.key);
   try {
     const formData = await req.formData();
     const job_id = parseInt(formData.get('job_id') as string);
@@ -25,7 +30,7 @@ export async function PUT(req: Request) {
         email : email
       },
       include : {
-        wallet : {
+        digitalwal : {
           select : {
             amount : true
           }
@@ -36,60 +41,42 @@ export async function PUT(req: Request) {
       where : {
         user_id : work?.user_id
       },
-      include : {
-        wallet : {
-          select : {
-            amount : true
-          }
-        }
-      }
     })
     if (work && user && job && company) {
-      if(user.wallet[0].amount >= job.budget){
-          await prisma.history.update({
-            where: {
-              user_id_job_id: {
-                user_id: work.user_id,
-                job_id: work.job_id,
-              },
-            },
-            data: { 
-                status: 'Completed' 
-            },
-          });
-          const transId = uuid()
-          const newtrans = await prisma.transaction.create({
-            data : {
-              trans_id : transId,
-              user_id1 : company.user_id,
-              user_id2 : user.user_id,
-              job_id : job.job_id,
-              amount : job.budget,
-              product_name : job.title,
+      if(company.digitalwal[0].amount >= job.budget){
+          const orderId = uuid()
+          const seesion = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: [
+                {
+                    price_data: {
+                        currency: 'thb',
+                        product_data : {
+                            name: job.title,
+                        },
+                        unit_amount : (job.budget)*100
+                    },
+                    quantity: 1
+                },
+            ],
+            mode: 'payment',
+            success_url: 'http://localhost:3000/success.html?id=${orderId}',
+            cancel_url: 'http://localhost:3000/cancel.html'
+          })
+          const order = await prisma.order.create({
+            data: {
+                order_id : orderId,
+                user_id1 : company.user_id,
+                user_id2 : user.user_id,
+                job_id : job.job_id,
+                amount : job.budget,
+                product_name : job.title,
+                session_id : seesion.id,
+                status : seesion.status
             }
           })
-          const minusOne = await minus(newtrans.amount,newtrans.user_id1)
-          await prisma.wallet.updateMany({
-              where : {
-                user_id : newtrans.user_id1
-              },
-              data : {
-                amount : minusOne
-              }
-          })
-          const plusX = await plus(newtrans.amount,newtrans.user_id2)
-          await prisma.wallet.updateMany({
-            where : {
-               user_id : newtrans.user_id2
-            },
-            data : {
-               amount : plusX
-            }
-          })
-          await sentSalary(newtrans.user_id2,newtrans.amount)
-          await sentInvoice(newtrans.user_id1,newtrans.amount,newtrans.trans_id,newtrans.product_name)
           await prisma.$disconnect();
-          return Response.json("Success")
+          return Response.json(order.order_id)
       }
       else {
         await prisma.$disconnect();

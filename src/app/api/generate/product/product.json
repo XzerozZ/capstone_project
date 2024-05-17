@@ -1,0 +1,12 @@
+[
+    {
+      "name": "Post Default",
+      "price": 499,
+      "mass": 0
+    },
+    {
+      "name": "Post Advance",
+      "price": 999,
+      "mass": 1
+    }
+   ]

@@ -1,10 +1,16 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
-import { sentReceipt } from '../../order/email'
-import { minus, plus, vat } from '../../order/calcutor'
+import Stripe from 'stripe'
+import { Stripe1 } from '../../interface/interface';
 import { v4 as uuid } from "uuid";
-export async function PUT( req: Request ) {
+
+const stripeConfig: Stripe1 = {
+    key: process.env.STRIPE_SECRET_KEY || ''
+};
+
+export async function POST( req: Request ) {
     const prisma = new PrismaClient();
+    const stripe = new Stripe(stripeConfig.key);
     try{
         const formData = await req.formData();
         const id = parseInt(formData.get('id') as string)
@@ -26,7 +32,7 @@ export async function PUT( req: Request ) {
                 email : email
             },
             include : {
-                wallet : {
+                digitalwal : {
                     select : {
                         amount : true
                     }
@@ -34,48 +40,41 @@ export async function PUT( req: Request ) {
             }
         })
         if(job && user && product){
-            if(user.wallet[0].amount >= product.price){
-                 const updateMass = await prisma.job.update({
-                    where : {
-                        job_id : job.job_id
-                    },
-                    data : {
-                        mass : mass
-                    }
+            if(user.digitalwal[0].amount >= product.price){
+                const orderId = uuid()
+                const seesion = await stripe.checkout.sessions.create({
+                    payment_method_types: ['card'],
+                    line_items: [
+                        {
+                            price_data: {
+                                currency: 'thb',
+                                product_data : {
+                                    name: product.name,
+                                },
+                                unit_amount : (product.price)*100
+                            },
+                            quantity: 1
+                        },
+                    ],
+                    mode: 'payment',
+                    success_url: 'http://localhost:3000/success.html?id=${orderId}',
+                    cancel_url: 'http://localhost:3000/cancel.html'
                 })
-                const transId = uuid()
-                const newtrans = await prisma.transaction.create({
+                const order = await prisma.order.create({
                     data: {
-                        trans_id : transId,
+                        order_id : orderId,
                         user_id1 : user.user_id,
                         user_id2 : 1,
                         job_id : job.job_id,
                         amount : product.price,
                         product_name : product.name,
+                        product_mass : mass,
+                        session_id : seesion.id,
+                        status : seesion.status
                     }
                 })
-                const minusOne = await minus(newtrans.amount,newtrans.user_id1)
-                await prisma.wallet.updateMany({
-                    where : {
-                        user_id : newtrans.user_id1
-                    },
-                    data : {
-                        amount : minusOne
-                    }
-                })
-                const plusX = await plus(newtrans.amount,newtrans.user_id2)
-                await prisma.wallet.updateMany({
-                    where : {
-                        user_id : newtrans.user_id2
-                    },
-                    data : {
-                        amount : plusX
-                    }
-                })
-                const vat1 = parseInt(await vat(newtrans.amount))
-                await sentReceipt(newtrans.user_id1,newtrans.amount,vat1,newtrans.trans_id,newtrans.product_name)
                 await prisma.$disconnect();
-                return Response.json(updateMass)
+                return Response.json(order.order_id)
             }
            else {
             await prisma.$disconnect();
