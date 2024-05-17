@@ -11,7 +11,7 @@ const companysignup = (props: Props) => {
         first_name: '',
         last_name: '',
         phone_number: '',
-        birthday: '',
+      
         password: '',
         role: 'company',
         image: '',
@@ -53,7 +53,6 @@ const handleSubmit = (e:any) => {
         formData.append('last_name', userData.last_name);
         formData.append('phone_number', userData.phone_number);
         formData.append('id_card', userData.id_card);
-        formData.append('birthday', userData.birthday);
         formData.append('password', userData.password);
         formData.append('role', userData.role);
         if (selectedImage) {
@@ -64,6 +63,8 @@ const handleSubmit = (e:any) => {
                 .then((res) => {
                         console.log(res);
                 });
+
+      
         console.log(formData)
         
      
@@ -76,14 +77,14 @@ const handleSubmit = (e:any) => {
             <div className=''>
                     {previewImage ? (
                         <label htmlFor='uploadImage'>
-                            <img className='w-[100px] h-[100px] rounded-full'
+                            <img className='w-[100px] h-[100px] rounded-md'
                                 src={previewImage}
                                 alt='Preview'
                                
                             />
                         </label>
                     ) : (
-                        <label htmlFor='uploadImage' className='cursor-pointer my-auto w-[100px] h-[100px] bg-[#d9d9d9] flex justify-center rounded-full'>
+                        <label htmlFor='uploadImage' className='cursor-pointer my-auto w-[100px] h-[100px] bg-[#d9d9d9] flex justify-center rounded-md'>
                             <FaCloudUploadAlt className='my-auto text-[#b3b3b1] text-5xl' />
                         </label>
                     )}
@@ -164,16 +165,7 @@ const handleSubmit = (e:any) => {
                         
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="087-123457" required />
                 </div>
-                <div  className='w-full'>
-                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Birthday</label>
-                    <input 
-                    type="text" 
-                    id="birthday" 
-                    onChange={handleChange}
-                    name='birthday'
-                    
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="dd/mm/yy" required />
-                 </div>
+                
 
             </div>
 

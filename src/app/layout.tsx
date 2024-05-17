@@ -32,7 +32,7 @@ export default function RootLayout({
      <body className={noto_sans_thai.className}>
       <NewNav />
         {children}
-      <Footer/  >
+      <Footer />
       </body>
      </SessionProvider>
     </html>
