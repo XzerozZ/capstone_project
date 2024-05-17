@@ -1,121 +1,41 @@
-import Navbar from "@/app/components/Navbar"
+"use client"
 import BookmarkComponent from "@/app/components/BookmarkComponent"
 import CardWork from "@/app/components/CardWork"
+import axios from "axios"
+import { useSession } from "next-auth/react"
+import { useEffect, useState } from "react"
+import { Loader } from "rsuite"
 
-const MockData = [ // ข้อมูลต้องปรับตามฐานข้อมูลจริง
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:1
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:2
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:3
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:4
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:5
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:6
-        },
-        
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:7
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:8
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:9
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:10
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:11
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:12
-        }
-    ]
 
 
 export default function Bookmark(/*{props}: any*/){
+    const {data:session,status} = useSession()
+    const [email, setEmail] = useState(session?.user?.email)
+    const [bookmark, setBookmark] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    const fetchBookmark = async (email:any) => {
+        const formData = new FormData()
+        formData.append('email', email)
+        axios.post('/api/bookmark/user',formData).then((res) => {
+            console.log(res)
+            setBookmark(res.data)
+        })
+    }
+    useEffect(() => {
+        fetchBookmark(email)
+        if (bookmark !== undefined || bookmark !== null) {
+            setIsLoading(false)
+        }
+        
+    }, [email])
+
+    if (isLoading) {
+        return  <div className='flex justify-center h-[500px] items-center'>
+          <Loader size="md"  color='black'/>
+        </div>
+    }else {
+
     return(
         <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
         <div className='w-[1140px] flex flex-col gap-4 p-3'>
@@ -132,7 +52,7 @@ export default function Bookmark(/*{props}: any*/){
                     </div>
                     <div className="flex justify-center">   {/* Wrapper */}
                     <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
-                            {MockData.map((props: any)=>
+                            {bookmark.map((props: any)=>
                             <CardWork props={props}/>)}
                         </div>
                     </div>
@@ -140,5 +60,5 @@ export default function Bookmark(/*{props}: any*/){
           </div>
            
         </div>
-    )
+    )}
 }

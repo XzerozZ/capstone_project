@@ -1,28 +1,93 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import 'rsuite/dist/rsuite.min.css';
-import { Rate } from 'rsuite';
-import { FaRegHeart } from 'react-icons/fa';
+import { Loader, Rate } from 'rsuite';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import axios from 'axios';
 import { Job } from '@/interface';
 import { useParams } from 'next/navigation';
-
+import { useSession } from 'next-auth/react';
 
 
 const page = () => {
 
     const params = useParams()
+    const {data:session,status} = useSession()
     const [jobData, setJobData] = useState<Job>()
+    const [isFav, setIsFav] = useState(false);
+    const [userid, setUserId] = useState(session?.user?.id)
+    const [isLoading, setIsLoading] = useState(true)
+
     const fetchJobbyId = async () => {
         axios.get(`http://localhost:3000/api/job/${params.id}`).then((res) => {
-            console.log(res.data)
+           
             setJobData(res.data)
         
         })
     }
+    const handleJob = (user_id:any,job_id:any) => {
+        const formData = new FormData()
+        formData.append('user_id', user_id)
+        formData.append('job_id', job_id)
+        axios.post('/api/history', formData).then((res) => {
+           console.log(res)
+
+        })
+    }
+
+    const handleFav = (user_id:any,job_id:any) => {
+        const formData = new FormData()
+        formData.append('user_id', user_id)
+        formData.append('job_id', job_id)
+       
+        axios.post('/api/bookmark', formData).then((res) => {
+           
+        })
+        setIsFav(true)
+    };
+    const deleteFav = (user_id:any,job_id:any) => {
+        const formData = new FormData()
+        console.log(user_id,job_id)
+        formData.append('user_id', user_id)
+        formData.append('job_id', job_id)
+        axios.delete('/api/bookmark', { data: formData }).then((res) => {
+           
+        })
+        setIsFav(false)
+    };
+    const checkFav = (user_id:any,job_id:any) => {
+        const formData = new FormData()
+      
+        formData.append('user_id', user_id)
+        formData.append('job_id', job_id)
+        axios.post('/api/checkbookmark',formData).then((res) => {
+       
+            if (res.data.message === 'Not Added') {
+                setIsFav(false)
+            }
+            else if (res.data.message === 'Already Added') {
+                setIsFav(true)
+            }
+            
+        })
+    }
     useEffect(() => {
         fetchJobbyId()
-    }, [])
+        if (jobData !== undefined || jobData !== null && session !== undefined || session !== null) {
+            setIsLoading(false)
+            checkFav(userid,params.id)
+        }
+
+
+    }, [jobData,userid,params.id])
+  if (isLoading) {
+    return  <div className='flex justify-center h-[500px] items-center'>
+      <Loader size="md"  color='black'/>
+    </div>
+  }
+  else {
+
+  
 
   
   return (
@@ -38,8 +103,14 @@ const page = () => {
                 </div>
                 <div className=''>
                     <div className='flex  gap-2'>
-                    <button className='bg-[#202192] px-3 py-1 rounded-md text-white text-xl'>สมัครงาน</button>
-                    <FaRegHeart size={30}/>
+                    <button className='bg-[#202192] px-3 py-1 rounded-md text-white text-xl' onClick={()=> handleJob(userid,params.id)}>สมัครงาน</button>
+                    {isFav ? (
+                      <FaHeart onClick={() => deleteFav(userid,params.id)} className='text-[#ff0000]' size={35} />
+                    ) : (
+                        
+                      <FaRegHeart onClick={() => handleFav(userid,params.id)} size={35} />
+                    )}
+
 
                     </div>
                 </div>
@@ -48,7 +119,7 @@ const page = () => {
                {
                 jobData?.categories.map((item:any,index) => {
                     return (
-                        <button key={index} className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe] text-sm">{item}</button>
+                        <div key={index} className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe] text-sm">{item}</div>
                     )
                 
                 })
@@ -63,5 +134,5 @@ const page = () => {
 
    </>
   )
-}
+}}
 export default page
