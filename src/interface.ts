@@ -98,3 +98,26 @@ export interface Career {
     career_id: number;
     name:      string;
 }
+
+
+
+export interface History {
+    user_id: number;
+    job_id:  number;
+    status:  string;
+    user:    User;
+    job:     JobHis;
+}
+
+export interface JobHis {
+    job_id:         number;
+    title:          string;
+    description:    string;
+    budget:         number;
+    type:           string;
+    posted_date:    Date;
+    submitted_date: Date;
+    status:         string;
+    mass:           number;
+}
+

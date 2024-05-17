@@ -1,78 +1,47 @@
+"use client"
 import HistoryCard from '@/app/components/HistoryCard'
-import React from 'react'
+import axios from 'axios'
+import { useSession } from 'next-auth/react'
+import React, { useEffect } from 'react'
+import { Loader } from 'rsuite'
 
 type Props = {}
 
 const page = (props: Props) => {
-    const MockData = [ // ข้อมูลต้องปรับตามฐานข้อมูลจริง
-    {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-        image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-        rating:"4.5",
-        categories: ["Webdev", "QA", "Comm"],
-        type: "freelance",
-        budget: "2000",
-        posted_date: "12/12/2566",
-        status: "hiring",
-        id:1,
-        work_status: "done"
-    },
-    {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-        image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-        rating:"4.5",
-        categories: ["Webdev", "QA", "Comm"],
-        type: "freelance",
-        budget: "2000",
-        posted_date: "12/12/2566",
-        status: "hiring",
-        id:2,
-        work_status: "done"
-    },
-    {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-        image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-        rating:"4.5",
-        categories: ["Comm"],
-        type: "freelance",
-        budget: "2000",
-        posted_date: "12/12/2566",
-        status: "hiring",
-        id:3,
-        work_status: "done"
-    },
-    {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-        image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-        rating:"4.5",
-        categories: ["Webdev", "QA", "Hardware", "System Admin"],
-        type: "Full-Time",
-        budget: "2000",
-        posted_date: "12/12/2566",
-        status: "hiring",
-        id:4,
-        work_status: "done"
 
-    },
-    {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-        image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-        rating:"4.5",
-        categories: ["QA"],
-        type: "Full-Time",
-        budget: "2000",
-        posted_date: "12/12/2566",
-        status: "hiring",
-        id:5,
-        work_status: "done"
-    },
-    {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-        image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-        rating:"4.5",
-        categories: ["Webdev", "QA", "Comm"],
-        type: "Full-Time",
-        budget: "2000",
-        posted_date: "12/12/2566",
-        status: "hiring",
-        id:6,
-        work_status: "done"
+    const [history , setHistory] = React.useState([])
+    const [isLoading, setIsLoading] = React.useState(true)
+    const {data:session,status} = useSession()
+    const [emailUser, setEmailUser] = React.useState(session?.user?.email)
+    const fetchHistory = async (email:any) => {
+        const formData = new FormData()
+        formData.append('email', email)
+        axios.post('/api/history/user', formData).then((res) => {
+            console.log(res)
+            setHistory(res.data)
+            
+        })
     }
-]
+
+    useEffect(() => {
+        fetchHistory(emailUser)
+        if (history !== undefined || history !== null && session !== undefined || session !== null) {
+            setIsLoading(false)
+        }
+        else {
+            setIsLoading(true)
+        }
+    },[])
+  
+    if (isLoading) {
+        return  <div className='flex justify-center h-[500px] items-center'>
+          <Loader size="md"  color='black'/>
+        </div>
+      }
+      else {
+
+
+
 
   return (
     <>
@@ -88,7 +57,7 @@ const page = (props: Props) => {
             </div>
             <div className='flex flex-col gap-3'>
                 {
-                    MockData.map((props: any)=>  <HistoryCard props={props}/>)
+                    history.map((item,index)=>  <HistoryCard data={item} key={index}/>)
                 }
             </div>
             
@@ -96,5 +65,5 @@ const page = (props: Props) => {
         </div>
     </>
 )
-}
+}}
 export default page
