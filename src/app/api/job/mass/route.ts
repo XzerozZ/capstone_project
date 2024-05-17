@@ -1,7 +1,7 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
-import { sentReceipt } from '../../transaction/email'
-import { minus, plus, vat } from '../../transaction/calcutor'
+import { sentReceipt } from '../../order/email'
+import { minus, plus, vat } from '../../order/calcutor'
 import { v4 as uuid } from "uuid";
 export async function PUT( req: Request ) {
     const prisma = new PrismaClient();
@@ -9,7 +9,6 @@ export async function PUT( req: Request ) {
         const formData = await req.formData();
         const id = parseInt(formData.get('id') as string)
         const email = formData.get('email') as string
-        const money = parseInt(formData.get('money') as string)
         const mass = parseInt(formData.get('mass') as string)
         const productId = parseInt(formData.get("productId") as string)
         const job = await prisma.job.findUnique({
@@ -35,7 +34,7 @@ export async function PUT( req: Request ) {
             }
         })
         if(job && user && product){
-            if(user.wallet[0].amount >= money){
+            if(user.wallet[0].amount >= product.price){
                  const updateMass = await prisma.job.update({
                     where : {
                         job_id : job.job_id

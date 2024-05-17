@@ -1,6 +1,6 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
-import { minus, plus } from '../../transaction/calcutor'
+import { minus, plus } from '../../order/calcutor'
 import { v4 as uuid } from "uuid";
 import { sentInvoice } from './email'
 import { sentSalary } from './salary'
@@ -9,8 +9,7 @@ export async function PUT(req: Request) {
   try {
     const formData = await req.formData();
     const job_id = parseInt(formData.get('job_id') as string);
-    const email1 = formData.get("company_email") as string
-    const email2 = formData.get("user_email") as string
+    const email = formData.get("email") as string
     const job = await prisma.job.findUnique({
       where : {
         job_id : job_id
@@ -23,7 +22,7 @@ export async function PUT(req: Request) {
     });
     const company = await prisma.user.findUnique({
       where : {
-        email : email1
+        email : email
       },
       include : {
         wallet : {
@@ -35,7 +34,7 @@ export async function PUT(req: Request) {
     })
     const user = await prisma.user.findUnique({
       where : {
-        email : email2
+        user_id : work?.user_id
       },
       include : {
         wallet : {
