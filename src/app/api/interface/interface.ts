@@ -10,3 +10,9 @@ export interface Email {
     email : string ,
     key : string
 }
+export interface Stripe1 {
+    key : string
+}
+export interface Endpoint {
+    endpoint : string
+}

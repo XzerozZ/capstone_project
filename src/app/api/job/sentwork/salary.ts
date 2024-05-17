@@ -1,23 +1,30 @@
 import nodeemailer from "nodemailer";
 import { Email } from "../../interface/interface";
+import { PrismaClient } from '@prisma/client';
 const emailConfig: Email = {
   email: process.env.EMAIL || '',
   key: process.env.EMAIL_PASS || ''
 };
 
-export const sentEmail = async (emailUser: string, OTP: string) => {
-  const transporter = nodeemailer.createTransport({
-    service: "Gmail",
-    auth: {
-      user: emailConfig.email,
-      pass: emailConfig.key,
-    },
-  });
+export const sentSalary = async (UserId: number, money: number) => {
+    const prisma = new PrismaClient();
+    const user = await prisma.user.findUnique({
+        where : {
+          user_id : UserId
+        }
+    })
+    const transporter = nodeemailer.createTransport({
+        service: "Gmail",
+        auth: {
+        user: emailConfig.email,
+        pass: emailConfig.key,
+        },
+    });
 
   const mailOptions = {
     from: emailConfig.email,
-    to: emailUser,
-    subject: "Recovery password",
+    to: user?.email,
+    subject: "Thank you for your hard work on Slowwork",
     html: `
     <!DOCTYPE html>
     <html>
@@ -56,21 +63,12 @@ export const sentEmail = async (emailUser: string, OTP: string) => {
                         <h1
                           style='font-weight:bold;text-align:center;margin:0;font-family:"Nimbus Mono PS", "Courier New", "Cutive Mono", monospace;font-size:32px;padding:16px 24px 16px 24px'
                         >
-                          ${OTP}
+                          ${money} THB
                         </h1>
                         <div
                           style="color:#FFFFFF;font-size:16px;font-weight:normal;text-align:center;padding:16px 24px 16px 24px"
                         >
                           This code will expire in 5 minutes.
-                        </div>
-                        <div
-                          style="font-size:10px;font-weight:bold;color:white;padding:16px 24px 16px 24px"
-                        >
-                          Do not share this code. We will never contact you to ask for it.
-                          If you did not request this code, there is no further action you
-                          need to take. If you received numerous codes you did not
-                          request, strongly encourage you to link a different email to
-                          your account(s)
                         </div>
                         <div
                           style="font-size:12px;font-weight:bold;color:white;padding:16px 24px 16px 24px"

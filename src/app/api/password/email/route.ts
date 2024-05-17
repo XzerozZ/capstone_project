@@ -13,6 +13,11 @@ export async function POST( req : Request ) {
         })
         if(user){
             const OTP = `${randomMath(0,9)}${randomMath(0,9)}${randomMath(0,9)}${randomMath(0,9)}${randomMath(0,9)}${randomMath(0,9)}`
+            await prisma.oTP.deleteMany({
+                where : {
+                    user_id : user?.user_id,
+                }
+            })
             const record = await prisma.oTP.create({
                 data : {
                     user_id : user?.user_id,

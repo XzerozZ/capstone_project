@@ -36,6 +36,11 @@ export async function POST(req: Request) {
                 role: formData.get('role') as string,
             },
         });
+        await prisma.wallet.create({
+            data: {
+                user_id : newuser.user_id
+            }
+        })
         await prisma.$disconnect();
         return Response.json(newuser);
     } catch (error) {
