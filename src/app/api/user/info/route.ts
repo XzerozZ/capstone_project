@@ -56,6 +56,19 @@ export async function POST(req : Request){
             const userwithData = { ...userid , categories , careers  , averageRating }
             return Response.json(userwithData);
         }
+        else if (userid && userid.role === "admin") {
+            const f_rating = userid.rating_users2.map(r => r.friendly_rating);
+            const e_rating = userid.rating_users2.map(r => r.efficiency_rating);
+            const a_rating = userid.rating_users2.map(r => r.accuracy_rating);
+            const averageRating_f = f_rating.length > 0 ? f_rating.reduce((a,b) => a + b) / f_rating.length : 0;
+            const averageRating_e = e_rating.length > 0 ? e_rating.reduce((a,b) => a + b) / e_rating.length : 0;
+            const averageRating_a = a_rating.length > 0 ? a_rating.reduce((a,b) => a + b) / a_rating.length : 0;
+            const averageRating = (averageRating_a + averageRating_e + averageRating_f) / 3
+            const categories = userid.experience.map(exp => exp.category.name);
+            const careers = userid.user_career.map(car => car.career.name);
+            const userwithData = { ...userid , categories , careers ,  averageRating_f , averageRating_e , averageRating_a , averageRating }
+            return Response.json(userwithData);
+        }
         else {
             return Response.json({
                 message : "Didn't found this User"

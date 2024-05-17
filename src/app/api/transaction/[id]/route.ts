@@ -4,13 +4,13 @@ import { PrismaClient } from '@prisma/client';
 export async function GET(req: Request, { params }: { params: { id: string } }){
     const prisma = new PrismaClient();
     try {
-        const order = await prisma.order.findUnique({
+        const trans = await prisma.transaction.findUnique({
             where : {
-                order_id : params.id
+                trans_id : params.id
             }
         })
         await prisma.$disconnect();
-        return Response.json(order);
+        return Response.json(trans);
     }
     catch(error){
         await prisma.$disconnect();
