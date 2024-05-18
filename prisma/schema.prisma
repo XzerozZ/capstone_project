@@ -12,7 +12,7 @@ model user {
   first_name    String        @db.VarChar(100)
   last_name     String        @db.VarChar(100)
   username      String        @db.VarChar(100)
-  image         String?
+  image         String?       @default("https://snrrdhiyvhvbhpplnuch.supabase.co/storage/v1/object/public/CAPSTONE/images/09776bb9-94eb-4157-9b5e-dad935353285.jpg")
   phone_number  String        @db.VarChar(12)
   id_card       String        @db.VarChar(17) @unique
   email         String        @unique @db.VarChar(255)
