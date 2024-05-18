@@ -8,7 +8,8 @@ export async function POST(req: Request) {
       const newProduct = await prisma.product.create({
         data: {
             name : formData.get('name') as string,
-            price : parseInt(formData.get('price') as string)
+            price : parseInt(formData.get('price') as string),
+            mass : parseInt(formData.get('mass') as string)
         },
       });
   
