@@ -7,7 +7,14 @@ import { FaCloudUploadAlt } from 'react-icons/fa';
 type Props = {}
 
 const editCompany = ({ModalProps,dataID}:{ModalProps:boolean,dataID:any}) => {
-    const [data, setData] = useState(dataID)
+    const [data, setData] = useState({
+                id: dataID,
+                email: '',
+                name: '',
+                phone_number: '',
+                password: '',
+        
+    })
     const [previewImage, setPreviewImage] = useState<string | null>(null);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [previewImage2, setPreviewImage2] = useState<string | null>(null);
@@ -34,18 +41,39 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             [name]: value,
     }));
 };
-const handleModal = () => {
-        setOpenModal(false)
+
+const handleSubmit = (e:any) => {
+        e.preventDefault();
+        console.log(selectedImage,'image');
+        
+        const formData = new FormData();
+        formData.append('id', data.id);
+        formData.append('email', data.email);
+        formData.append('name', data.name);
+        formData.append('phone_number', data.phone_number);
+        formData.append('password', data.password);
+        if (selectedImage) {
+                formData.append('image', selectedImage);
+                }
+                axios.put(`/api/user`,formData)
+                .then((res) => {
+                console.log(res)
+                })
+                .catch((err) => {
+                console.log(err)
+                })
+        
 }
-useEffect(() => {
-        setOpenModal(ModalProps)
+
+// useEffect(() => {
+//       if ()
       
-    }, [data,ModalProps,])
+//     }, [data,openModal,ModalProps])
 
 
   return (
    <>
-       <Modal dismissible show={openModal} onClose={() => handleModal}>
+       <Modal dismissible show={openModal} onClose={() =>  setOpenModal(false)} >
         <Modal.Header>Change information</Modal.Header>
         <Modal.Body>
         <form className='flex flex-col gap-5 max-sm:p-10  w-full mx-auto'>
