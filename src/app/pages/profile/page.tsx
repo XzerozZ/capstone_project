@@ -8,17 +8,19 @@ import { Loader } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
 import EditUser from './component/editUser'
 import EditCompany from './component/editCompany'
+import { set } from 'rsuite/esm/utils/dateUtils'
+import { open } from 'fs/promises'
 
 
-type Props = {}
 
-const page = (props: Props) => {
+const page = () => {
 
     const {data:session,status} = useSession()
     const [checkFree, setCheckFree] = useState(false)
     const [openModal, setOpenModal] = useState(false);
     const [user, setUser] = useState<User>({} as User)
     const [isLoading, setIsLoading] = useState(true)
+    const [UserId, setUserId] = useState(session?.user?.id)
     const [userData, setUserData] = React.useState({
         email: '',
         username: '',
@@ -36,21 +38,30 @@ const page = (props: Props) => {
             setUser(res.data)
         })
     }
+    console.log(openModal)
+    console.log(session)
     useEffect(() => {
-        fetchUser()
-       if (user !== undefined || user !== null) {
-        if (user.role === 'user') {
-            setCheckFree(true)
-            setIsLoading(false)
+        
+       
 
-          }
-        else if (user.role === 'company'){
-            setCheckFree(false)
-            setIsLoading(false)
-        }
+       if (session) {
+        fetchUser()
+        if (user !== undefined || user !== null) {
+       
+            if (user.role === 'user') {
+                setCheckFree(true)
+                setIsLoading(false)
+                
+    
+              }
+            else if (user.role === 'company'){
+                setCheckFree(false)
+                setIsLoading(false)
+            }
+           }
        }
       
-    }, [user])
+    }, [user,openModal,session])
 
   
     if (isLoading) {
@@ -97,7 +108,7 @@ const page = (props: Props) => {
         <div className='flex gap-5'>
             <div className='w-1/2'>
                 <label className='text-[#202192] font-bold'>อาชีพ</label>
-                <p className='p-2 border border-[#202192] rounded-md'>{user?.careers[0] || 'Freelance'}</p>
+                <p className='p-2 border border-[#202192] rounded-md'>{user?.careers[0] || 'Company'}</p>
             </div>
             <div className='w-1/2'>
                 <label className='text-[#202192] font-bold'>สถานะ</label>
@@ -151,7 +162,7 @@ const page = (props: Props) => {
     </div>
     
    {
-    checkFree ? <EditUser email={user?.email} Open={openModal}/> : <EditCompany/>
+    checkFree ? <EditUser email={user?.email} Open={openModal}/> : <EditCompany ModalProps={openModal} dataID={UserId}/>
    }
     </div>
    

@@ -1,18 +1,19 @@
 "use client"
 import axios from 'axios';
 import { Modal } from 'flowbite-react';
-import React, { ChangeEvent, useState } from 'react'
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import { FaCloudUploadAlt } from 'react-icons/fa';
 
 type Props = {}
 
-const editCompany = () => {
-    const [data, setData] = useState()
+const editCompany = ({ModalProps,dataID}:{ModalProps:boolean,dataID:any}) => {
+    const [data, setData] = useState(dataID)
     const [previewImage, setPreviewImage] = useState<string | null>(null);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [previewImage2, setPreviewImage2] = useState<string | null>(null);
     const [selectedImage2, setSelectedImage2] = useState<File | null>(null);
-    const [openModal,setOpenModal] = useState(false)
+    const [openModal,setOpenModal] = useState(ModalProps)
+    const [openModalClose,setOpenModalClose] = useState(openModal)
 
 const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -33,11 +34,18 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             [name]: value,
     }));
 };
+const handleModal = () => {
+        setOpenModal(false)
+}
+useEffect(() => {
+        setOpenModal(ModalProps)
+      
+    }, [data,ModalProps,])
 
-    
+
   return (
    <>
-       <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
+       <Modal dismissible show={openModal} onClose={() => handleModal}>
         <Modal.Header>Change information</Modal.Header>
         <Modal.Body>
         <form className='flex flex-col gap-5 max-sm:p-10  w-full mx-auto'>
