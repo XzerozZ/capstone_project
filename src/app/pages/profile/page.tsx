@@ -8,8 +8,7 @@ import { Loader } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
 import EditUser from './component/editUser'
 import EditCompany from './component/editCompany'
-import { set } from 'rsuite/esm/utils/dateUtils'
-import { open } from 'fs/promises'
+
 
 
 
@@ -34,12 +33,11 @@ const page = () => {
         const formData = new FormData()
         formData.append('email', session?.user?.email as string)
         axios.post('/api/user/info', formData).then((res) => {
-            console.log(res.data)
+          
             setUser(res.data)
         })
     }
-    console.log(openModal)
-    console.log(session)
+   
     useEffect(() => {
         
        

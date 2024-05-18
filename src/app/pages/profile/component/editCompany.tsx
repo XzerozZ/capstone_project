@@ -9,17 +9,19 @@ type Props = {}
 const editCompany = ({ModalProps,dataID}:{ModalProps:boolean,dataID:any}) => {
     const [data, setData] = useState({
                 id: dataID,
-                email: '',
+                first_name: '',
+                last_name: '',
                 name: '',
                 phone_number: '',
                 password: '',
         
     })
+    console.log(dataID)
     const [previewImage, setPreviewImage] = useState<string | null>(null);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [previewImage2, setPreviewImage2] = useState<string | null>(null);
     const [selectedImage2, setSelectedImage2] = useState<File | null>(null);
-    const [openModal,setOpenModal] = useState(ModalProps)
+    const [openModal,setOpenModal] = useState(true)
     const [openModalClose,setOpenModalClose] = useState(openModal)
 
 const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -48,14 +50,15 @@ const handleSubmit = (e:any) => {
         
         const formData = new FormData();
         formData.append('id', data.id);
-        formData.append('email', data.email);
-        formData.append('name', data.name);
+        formData.append('username', data.name);
+        formData.append('first_name', data.first_name);
+        formData.append('last_name', data.last_name);
         formData.append('phone_number', data.phone_number);
         formData.append('password', data.password);
         if (selectedImage) {
                 formData.append('image', selectedImage);
-                }
-                axios.put(`/api/user`,formData)
+        }
+        axios.put('/api/user',formData)
                 .then((res) => {
                 console.log(res)
                 })
@@ -76,7 +79,7 @@ const handleSubmit = (e:any) => {
        <Modal dismissible show={openModal} onClose={() =>  setOpenModal(false)} >
         <Modal.Header>Change information</Modal.Header>
         <Modal.Body>
-        <form className='flex flex-col gap-5 max-sm:p-10  w-full mx-auto'>
+        <form className='flex flex-col gap-5 max-sm:p-10  w-full mx-auto' onSubmit={handleSubmit}>
                       <div className='flex justify-center gap-3'>
                       <div className='w-full'>
                               {previewImage ? (
@@ -116,20 +119,31 @@ const handleSubmit = (e:any) => {
                               
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="name or company name" required />
                       </div>
-                      
-                      <div className='flex flex-row gap-3 w-full justify-between'>
-                              <div  className='w-full'>
-                                      <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                      <input 
-                                      type="text" 
-                                      id="email" 
-                                      name='email'
-                                     
-                                      onChange={handleChange}
-                                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="email" required />
-                              </div>
-                      
+                    <div>
+                    <div className='flex gap-3'>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Firstname</label>
+                              <input 
+                              type="text" 
+                              id="first_name" 
+                             
+                              onChange={handleChange}
+                              name='first_name'
+                              
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="firstname" required />
+                      </div> <div>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lastname</label>
+                              <input 
+                              type="text" 
+                              id="last_name" 
+                             
+                              onChange={handleChange}
+                              name='last_name'
+                              
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="lastname" required />
                       </div>
+                    </div>
+                      
+                    
                       <div className='flex flex-row gap-3 w-full justify-between'>
                               <div  className='w-full'>
                                       <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
@@ -148,9 +162,8 @@ const handleSubmit = (e:any) => {
                       <div>
                               <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                               <input 
-                              type="text" 
-                              id="password" 
-                            
+                              type="password" 
+                              id="password"
                               name='password'
                               onChange={handleChange}
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="Password" required />
