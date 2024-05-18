@@ -40,8 +40,8 @@ const page = (props: Props) => {
 
   const handleCompany = (giver:any,receiver:any,job_id:any) => {
       const formData = new FormData()
-      formData.append('giver',giver);
-      formData.append('receiver',receiver);
+      formData.append('email',giver);
+   
       formData.append('comment', UserCommentbyCompany.comment);
       formData.append('job_id', job_id);
       formData.append('friendly_rating',hoverValueCom1.toString());
@@ -53,8 +53,8 @@ const page = (props: Props) => {
   }
   const handleUser = (giver:any,receiver:any,job_id:any) => {
     const formData = new FormData()
-    formData.append('giver', giver);
-    formData.append('receiver', receiver);
+    formData.append('email', giver);
+   
     formData.append('job_id', job_id);
     formData.append('friendly_rating', hoverValueUser1.toString());
     formData.append('price_rating', hoverValueUser2.toString());
