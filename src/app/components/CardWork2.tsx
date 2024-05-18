@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 type Props = {}
 
-const CardWork = ({props}: any) => {
+const CardWork2 = ({props}: any) => {
 
 const DateFormatter = ({ timestamp }:any) => {
         if (!timestamp) {
@@ -23,22 +23,22 @@ const DateFormatter = ({ timestamp }:any) => {
     <>
    <Link href={`/pages/jobs/${props.job_id}`} className='text-black hover:no-underline'>
    <div className='rounded-lg shadow-md border-solid flex flex-col justify-between hover:scale-105 hover:shadow-xl text-black'>
-        <img src={props?.company || ''} className='rounded-t-lg flex-none '/>
+        <img src={props?.user.image || ''} className='rounded-t-lg flex-none aspect-ratio'/>
        <div className=' p-3 grow flex flex-col gap-2 justify-between '>
        
             <div className='flex flex-col gap-2'>
-                    <p>{props.title}</p>
+                    <p>{props.job.title}</p>
                     <div className='flex flex-wrap gap-2 '>
-                    {props?.categories?.map((category: any,index:any)=>
+                    {/* {props?.categories?.map((category: any,index:any)=>
                         <p key={index} className='bg-[#d9d9d9] py-1 px-2 rounded-2xl text-xs '>{category}</p>)
-                    }
+                    } */}
                     </div>
                 </div>
 
                 <div className='flex flex-row justify-between'>
-                    <DateFormatter timestamp={props?.posted_date} />
+                    <DateFormatter timestamp={props?.job.posted_date} />
                     <div className='font-bold text-sm text-right'>
-                        งบประมาณ : {props?.budget} บาท
+                        งบประมาณ : {props?.job.budget} บาท
                     </div>
                 </div>
        
@@ -49,4 +49,4 @@ const DateFormatter = ({ timestamp }:any) => {
     </>
   )
 }
-export default CardWork
+export default CardWork2

@@ -2,7 +2,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import Link from 'next/link'
 import axios from 'axios'
-import { User } from '@/interface'
+import { Category, User } from '@/interface'
 import { useSession } from 'next-auth/react'
 import { Loader } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
@@ -20,6 +20,7 @@ const page = () => {
     const [user, setUser] = useState<User>({} as User)
     const [isLoading, setIsLoading] = useState(true)
     const [UserId, setUserId] = useState(session?.user?.id)
+    const [category, setCate] = useState<Category[]>([] as Category[])
     const [userData, setUserData] = React.useState({
         email: '',
         username: '',
@@ -37,6 +38,12 @@ const page = () => {
             setUser(res.data)
         })
     }
+    const fetchCategory = async () => {
+        axios.get('/api/category').then((res) => {
+            // console.log(res)
+            setCate(res.data)
+        })
+    }
    
     useEffect(() => {
         
@@ -44,6 +51,7 @@ const page = () => {
 
        if (session) {
         fetchUser()
+        fetchCategory()
         if (user !== undefined || user !== null) {
        
             if (user.role === 'user') {
@@ -160,7 +168,7 @@ const page = () => {
     </div>
     
    {
-    checkFree ? <EditUser email={user?.email} Open={openModal}/> : <EditCompany ModalProps={openModal} dataID={UserId}/>
+    checkFree ? <EditUser ModalProps={openModal} dataID={UserId} Cate={category}/> : <EditCompany ModalProps={openModal} dataID={UserId}/>
    }
     </div>
    

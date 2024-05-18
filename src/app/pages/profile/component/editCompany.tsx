@@ -16,12 +16,12 @@ const editCompany = ({ModalProps,dataID}:{ModalProps:boolean,dataID:any}) => {
                 password: '',
         
     })
-    console.log(dataID)
+   
     const [previewImage, setPreviewImage] = useState<string | null>(null);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
     const [previewImage2, setPreviewImage2] = useState<string | null>(null);
     const [selectedImage2, setSelectedImage2] = useState<File | null>(null);
-    const [openModal,setOpenModal] = useState(true)
+    const [openModal,setOpenModal] = useState(false)
     const [openModalClose,setOpenModalClose] = useState(openModal)
 
 const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -119,8 +119,8 @@ const handleSubmit = (e:any) => {
                               
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="name or company name" required />
                       </div>
-                    <div>
-                    <div className='flex gap-3'>
+                    <div className='flex gap-3 w-full'>
+                    <div className='w-full'>
                               <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Firstname</label>
                               <input 
                               type="text" 
@@ -130,7 +130,8 @@ const handleSubmit = (e:any) => {
                               name='first_name'
                               
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="firstname" required />
-                      </div> <div>
+                      </div> 
+                      <div className='w-full'>
                               <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lastname</label>
                               <input 
                               type="text" 

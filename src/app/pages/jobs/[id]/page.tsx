@@ -72,14 +72,16 @@ const page = () => {
         })
     }
     useEffect(() => {
-        fetchJobbyId()
-        if (jobData !== undefined || jobData !== null && session !== undefined || session !== null) {
-            setIsLoading(false)
-            checkFav(userid,params.id)
-        }
-
-
-    }, [jobData,userid,params.id])
+            if (session){
+                fetchJobbyId()
+                if (jobData !== undefined || jobData !== null && session !== undefined || session !== null) {
+                    setIsLoading(false)
+                    checkFav(userid,params.id)
+                }
+        
+        
+            }
+    }, [jobData,userid,params.id,session])
   if (isLoading) {
     return  <div className='flex justify-center h-[500px] items-center'>
       <Loader size="md"  color='black'/>

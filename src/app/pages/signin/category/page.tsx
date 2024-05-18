@@ -4,12 +4,14 @@ import { MultiSelect } from "react-multi-select-component";
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
+import { Category } from '@/interface';
 
 
 
 const page = () => {
   const {data:session,status} = useSession()
   const router = useRouter()
+  const [Cate, setCate] = useState<Category[]>([])
   console.log(session?.user?.id)
   const [idUser, setId] = React.useState(session?.user?.id)
     const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
@@ -25,13 +27,15 @@ const page = () => {
   //       setCate(res.data)
   //   })
   //  }
- 
+  const fetchCategory = async () => {
+    axios.get('/api/category').then((res) => {
+        // console.log(res)
+        setCate(res.data)
+    })
+}
+
   
-    const options = [
-        { label: "Game Developer", value: "Game Developer" },
-        { label: "React Developer", value: "React Developer" },
-        { label: "Next Developer", value: "Next Developer" },
-      ];
+    
       const handleSubmit = (id:any) => {
        
         console.log(selected)
@@ -61,7 +65,7 @@ const page = () => {
                 <div className='w-full '>
                                 <label className="block mb-2 text-xl font-medium text-[#202192] dark:text-white">ความถนัด</label>
                                 <MultiSelect
-                                    options={options}
+                                    options={Cate.map((cate)=>({label:cate.name,value:cate.name}))}
                                     value={selected}
                                     onChange={setSelected}
                                     labelledBy="Select"

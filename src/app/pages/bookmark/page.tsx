@@ -1,6 +1,6 @@
 "use client"
 import BookmarkComponent from "@/app/components/BookmarkComponent"
-import CardWork from "@/app/components/CardWork"
+import CardWork2 from "@/app/components/CardWork2"
 import axios from "axios"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
@@ -17,18 +17,25 @@ export default function Bookmark(/*{props}: any*/){
     const fetchBookmark = async (email:any) => {
         const formData = new FormData()
         formData.append('email', email)
-        axios.post('/api/bookmark/user',formData).then((res) => {
-            console.log(res)
-            setBookmark(res.data)
-        })
+        try {
+            const res = await axios.post('/api/bookmark/user', formData);
+            
+            setBookmark(res.data);
+        } catch (error) {
+            console.error(error);
+            // Handle the error here
+        }
     }
     useEffect(() => {
-        fetchBookmark(email)
-        if (bookmark !== undefined || bookmark !== null) {
-            setIsLoading(false)
+      
+        if (session) {
+            fetchBookmark(email)
+            if (bookmark !== undefined || bookmark !== null) {
+                setIsLoading(false)
+            }
         }
         
-    }, [email])
+    }, [email,session,bookmark])
 
     if (isLoading) {
         return  <div className='flex justify-center h-[500px] items-center'>
@@ -53,7 +60,7 @@ export default function Bookmark(/*{props}: any*/){
                     <div className="flex justify-center">   {/* Wrapper */}
                     <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
                             {bookmark.map((props: any)=>
-                            <CardWork props={props}/>)}
+                            <CardWork2 props={props}/>)}
                         </div>
                     </div>
            
