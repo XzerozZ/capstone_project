@@ -8,7 +8,7 @@ const stripeConfig: Stripe1 = {
   key: process.env.STRIPE_SECRET_KEY || ''
 };
 
-export async function PUT(req: Request) {
+export async function POST(req: Request) {
   const prisma = new PrismaClient();
   const stripe = new Stripe(stripeConfig.key);
   try {
@@ -54,7 +54,7 @@ export async function PUT(req: Request) {
                         product_data : {
                             name: job.title,
                         },
-                        unit_amount : (job.budget)*100
+                        unit_amount : ( job.budget ) * 100
                     },
                     quantity: 1
                 },
@@ -63,6 +63,7 @@ export async function PUT(req: Request) {
             success_url: 'http://localhost:3000/success.html?id=${orderId}',
             cancel_url: 'http://localhost:3000/cancel.html'
           })
+          console.log(seesion)
           const order = await prisma.order.create({
             data: {
                 order_id : orderId,

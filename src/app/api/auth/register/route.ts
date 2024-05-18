@@ -41,6 +41,7 @@ export async function POST(req: Request) {
                 role: formData.get('role') as string,
             },
         });
+          
         if(newuser.role === 'company') {
             const wal = await stripe.customers.create({
                 name: newuser.username,

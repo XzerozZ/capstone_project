@@ -45,7 +45,7 @@ export async function PUT(req : Request) {
                     metadata : {
                         order_id : order.order_id
                     },
-                    balance : (wal[0]?.amount - ( order.amount * 100 ))*10 
+                    balance : (order.amount - wal[0]?.amount) * 100
                 }
             )
             await prisma.digitalwal.update({

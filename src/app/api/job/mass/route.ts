@@ -15,7 +15,6 @@ export async function POST( req: Request ) {
         const formData = await req.formData();
         const id = parseInt(formData.get('id') as string)
         const email = formData.get('email') as string
-        const mass = parseInt(formData.get('mass') as string)
         const productId = parseInt(formData.get("productId") as string)
         const job = await prisma.job.findUnique({
             where: {
@@ -60,6 +59,7 @@ export async function POST( req: Request ) {
                     success_url: 'http://localhost:3000/success.html?id=${orderId}',
                     cancel_url: 'http://localhost:3000/cancel.html'
                 })
+                console.log(seesion)
                 const order = await prisma.order.create({
                     data: {
                         order_id : orderId,
@@ -68,7 +68,7 @@ export async function POST( req: Request ) {
                         job_id : job.job_id,
                         amount : product.price,
                         product_name : product.name,
-                        product_mass : mass,
+                        product_mass : product.mass,
                         session_id : seesion.id,
                         status : seesion.status
                     }

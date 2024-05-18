@@ -1,6 +1,5 @@
 'use server'
 import { PrismaClient } from '@prisma/client';
-import { vat } from '@/app/api/order/calcutor';
 import Stripe from 'stripe';
 import { Stripe1 } from '@/app/api/interface/interface';
 import { sentInvoice } from '../email';
@@ -59,15 +58,18 @@ export async function PUT(req : Request) {
                     metadata : {
                         order_id : order.order_id
                     },
-                    balance : (wal1[0]?.amount - ( order.amount * 100 ))*10 
+                    balance : (order.amount - wal1[0]?.amount) * 100 
                 }
             )
-            await stripe.payouts.create({
-                amount: order.amount * 10,
-                currency : "thb",
-                destination: customer2.id,
-                metadata : { "order_id" : order.order_id}
-            })
+            await stripe.customers.update(
+                customer2.id,
+                {
+                    metadata : {
+                        order_id : order.order_id
+                    },
+                    balance : -(order.amount + wal2[0]?.amount) * 100 
+                }
+            )
             await prisma.digitalwal.update({
                 where :{
                     wal_id : wal2[0]?.wal_id
@@ -84,13 +86,13 @@ export async function PUT(req : Request) {
                     amount : - ( order.amount - wal1[0]?.amount )
                 }
             })
-            const vat1 = parseInt(await vat(order.amount))
             await sentSalary(order.user_id2,order.amount)
             await sentInvoice(order.user_id1,order.amount,order.order_id,order.product_name)
             return Response.json("Success")
         }
     }
     catch(error){
+        console.log(error)
         await prisma.$disconnect();
         return Response.json({
             error
