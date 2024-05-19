@@ -5,7 +5,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
 import { MdWorkOutline } from 'react-icons/md'
-import { Dropdown } from 'rsuite'
+import { Dropdown, Loader } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
 
 
@@ -17,22 +17,45 @@ type Props = {}
 const page = (props: Props) => {
 
   const [Person, setPerson] = React.useState([] as any[])
+  const [work, setWork] = React.useState([] as any[])
+  const [isLoading, setIsLoading] = React.useState(true)
 
   const fetchWork = async () => {
     try {
       axios.get('/api/company/selector/43').then((res) => {
         setPerson(res.data)
+        
       })
     } catch (error) {
       
     }
   }
-  useEffect(() => {
-   
-      fetchWork()
-    
-  }, [])
 
+  const fetchPostWork = async () => {
+    try {
+      axios.get('/api/job').then((res) => {
+        setPerson(res.data)
+      })
+    } catch (error) {
+      
+    }
+  
+  }
+  console.log(Person)
+  useEffect(() => {
+      if (Person !== undefined || Person !== null) {
+        fetchWork()
+        fetchPostWork()
+        setIsLoading(false)
+      }
+    
+  }, [Person,work])
+
+  if (isLoading) {
+    return  <div className='flex justify-center h-[500px] items-center'>
+      <Loader size="md"  color='black'/>
+    </div>
+  }else {
 
  
 
@@ -62,13 +85,13 @@ const page = (props: Props) => {
               </div>
               <div className='w-4/5'>
                  <div className='grid grid-cols-3 gap-3'>
-                 {
+                 {/* {
                       Person.map((item,index) => {
                           return (
                               <ProfileCard key={index} Person={item} />
                           )
                       })
-                  }
+                  } */}
                  </div>
               </div>
             </div>
@@ -76,5 +99,5 @@ const page = (props: Props) => {
     </div>
     </>
   )
-}
+}}
 export default page
