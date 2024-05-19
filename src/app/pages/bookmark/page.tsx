@@ -22,7 +22,7 @@ export default function Bookmark(/*{props}: any*/){
             
             setBookmark(res.data);
         } catch (error) {
-            console.error(error);
+            
             // Handle the error here
         }
     }

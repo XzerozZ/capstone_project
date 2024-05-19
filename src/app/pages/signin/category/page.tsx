@@ -52,6 +52,11 @@ const page = () => {
         });
       }
 
+
+    useEffect(() => {
+      fetchCategory()
+    },[Cate])
+
   return (
     <>
     <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>

@@ -1,131 +1,115 @@
-import { Rate } from 'rsuite';
+"use client"
+import { Loader, Rate } from 'rsuite';
 import Link from 'next/link'
-import React from 'react'
+import React, { use, useEffect } from 'react'
 import 'rsuite/dist/rsuite.min.css';
 import { FaFacebookSquare, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { useParams } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import axios from 'axios';
+import { UserProfile } from '@/interface';
+import 'rsuite/dist/rsuite.min.css';
+import { set } from 'rsuite/esm/utils/dateUtils';
 
 type Props = {}
 
 const page = (props: Props) => {
-    const MockData = [ {
-        image: 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-        name: 'Natchapon Ponlaem',
-        Rating: 4.5,
-        categories: ['Web Development', 'QA Testing', 'Communication'],
-        Facebook: 'https://www.facebook.com/',
-        Instagram: 'https://www.instagram.com/',
-        Linkedin: 'https://www.linkedin.com/',
+    const params = useParams()
+    const {data:session} = useSession()
+    console.log(params.id)
+    const [freelance, setFreelance] = React.useState<UserProfile>({} as UserProfile)
+    const [isLoading, setIsLoading] = React.useState(true)
+    const [history, setHistory] = React.useState([] as any[])
+    const [comment, setComment] = React.useState([] as any[])
+   
+    const fetchFreelance = async (email:any) => {
+        const formData = new FormData()
+        formData.append('email', email.replace('%40','@') as string)
+        axios.post(`/api/user/info/`,formData).then((res) => {
+         
+            setFreelance(res.data)
 
-        
-    }]
-    const history = [
-        {
-            image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-            name: 'UX/UI Design',
-            rating: 4.5,
-        },
-        {
-            image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-            name: 'UX/UI Design',
-            rating: 4.5,
-        },
-        {
-            image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-            name: 'UX/UI Design',
-            rating: 4.5,
-        },
-        {
-            image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-            name: 'UX/UI Design',
-            rating: 4.5,
-        },
-        {
-            image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-            name: 'UX/UI Design',
-            rating: 4.5,
-        },
-        {
-            image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-            name: 'UX/UI Design',
-            rating: 4.5,
-        }, {
-            image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-            name: 'UX/UI Design',
-            rating: 4.5,
-        },
-        {
-            image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-            name: 'UX/UI Design',
-            rating: 4.5,
-        }
-    ]
-    const comment = [{
-        image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-        name: 'BIZ Company',
-            comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-    },
-    {
-        image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-        name: 'BIZ Company',
-            comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-    },
-    {
-        image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-        name: 'BIZ Company',
-        comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-    },
-    {
-        image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-        name: 'BIZ Company',
-        comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-    },
-    {
-        image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-        name: 'BIZ Company',
-        comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-    },
-    {
-        image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-        name: 'BIZ Company',
-        comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
-    },
-    {
-        image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-        name: 'BIZ Company',
-        comment: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.',
+        })
     }
-    ]
+    const fetchWorkHistory = async (email:any) => {
+        const formData = new FormData()
+        formData.append('email', email.replace('%40','@') as string)
+        axios.post(`/api/history/user/complete`,formData).then((res) => {
+           
+            setHistory(res.data)
+        })
+    
+    }
+    const fetchComment = async (email:any) => {
+        const formData = new FormData()
+        formData.append('email', email.replace('%40','@') as string)
+        axios.post(`/api/user/comment`,formData).then((res) => {
+            
+            setComment(res.data)
+        })
+
+    }
+    useEffect(() => {
+       if (freelance !== undefined || freelance !== null) {
+        fetchFreelance(params.id)
+        fetchWorkHistory(params.id)
+        fetchComment(params.id)
+        setIsLoading(false)
+       }
+    }, [freelance,history,comment])
+    
+
+    if (isLoading) {
+        return  <div className='flex justify-center h-[500px] items-center'>
+          <Loader size="md"  color='black'/>
+        </div>
+      }
+      else {
+   
+   
+   
 
   return (
     <>
       <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
         <div className='w-[1140px] flex flex-col gap-6 p-3'>
             <div className='flex gap-7 max-sm:flex-col'>
-                <img src={MockData[0].image} alt="" className='w-3/5 max-sm:w-full rounded-md'/>
+                <img src={freelance?.image} alt="" className='w-3/5 max-sm:w-full rounded-md'/>
                 <div className='w-2/5 max-sm:w-full flex flex-col gap-3'>
-                    <h1 className='text-3xl text-[#202192] font-bold'>{MockData[0].name}</h1>
-                    <h3 className='text-xl text-black'><Rate max={5} defaultValue={MockData[0].Rating} readOnly color='yellow'/>{MockData[0].Rating}</h3>
+                    <h1 className='text-3xl text-[#202192] font-bold'>{freelance?.first_name} {freelance?.last_name}</h1>
+                    <h3 className='text-xl text-black'><Rate max={5} defaultValue={freelance?.averageRating} allowHalf readOnly color='yellow'/>{freelance?.averageRating}</h3>
                     <div className='flex flex-col gap-2'>
                         <h1 className='text-black text-2xl'>ความถนัด</h1>
                         
                         <div className='flex flex-wrap gap-3'>
-                               {
-                                MockData[0].categories.map((item, index) => {
+                               {/* {
+                                freelance?.categories?.map((item, index) => {
                                     return (
-                                        <button key={index} className='px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe] text-sm'>{item}</button>
+                                        <button key={index} className='px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe] text-sm'>{item || 'no data'}</button>
                                     )
                                 })
-                               }
+                               } */}
                               
                         </div>
                     </div>
                     <div className='flex flex-col gap-2'>
                         <h1 className='text-black text-2xl'>Contact</h1>
-                        <div className='flex gap-1 flex-col bg-gray-200 rounded-lg '>
-                            <Link href={MockData[0].Facebook} className='hover:bg-[#202192]/5 text-black px-5 py-3  hover:text-[#202192] rounded-t-md  hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaFacebookSquare size={40}/> <span className='my-auto text-xl text-black'>Facebook</span></h3></Link>
-                            <Link href={MockData[0].Instagram} className='hover:bg-[#202192]/5 text-black px-5 py-3 hover:text-[#202192]   hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaInstagram size={40}/><span className='my-auto text-xl text-black'>Instagram</span></h3></Link>
-                            <Link href={MockData[0].Linkedin} className='hover:bg-[#202192]/5 text-black px-5 py-3 hover:text-[#202192] rounded-b-md   hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaLinkedin size={40}/> <span className='my-auto text-xl text-black'>Linkedin</span></h3></Link>
-                        </div>
+                       
+                           {
+                            freelance?.contact?.map((item, index) => {
+                                return (
+                                    <div className='flex gap-1 flex-col bg-gray-200 rounded-lg '>
+
+                                        <Link href={item?.facebook || 'no data'} className='hover:bg-[#202192]/5 text-black px-5 py-3  hover:text-[#202192] rounded-t-md  hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaFacebookSquare size={40}/> <span className='my-auto text-xl text-black'>Facebook</span></h3></Link>
+                                        <Link href={item?.instagram || 'no data'} className='hover:bg-[#202192]/5 text-black px-5 py-3 hover:text-[#202192]   hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaInstagram size={40}/><span className='my-auto text-xl text-black'>Instagram</span></h3></Link>
+                                        <Link href={item?.linkedin || 'no data'} className='hover:bg-[#202192]/5 text-black px-5 py-3 hover:text-[#202192] rounded-b-md   hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaLinkedin size={40}/> <span className='my-auto text-xl text-black'>Linkedin</span></h3></Link>
+              
+                                    </div>
+                                )
+                            })
+                           }
+
+                      
                     </div>
                     
                     
@@ -134,15 +118,15 @@ const page = (props: Props) => {
             <div className='flex flex-col gap-3'>
                 <h1 className='text-2xl text-black'>ประวัติการทำงาน</h1>
                <div className='flex justify-center'>
-                <div className=' gap-5 flex overflow-x-auto overflow-hidden max-sm:w-[400px]'>
+                <div className=' gap-5 flex overflow-x-auto overflow-hidden max-sm:w-[400px] '>
                         {
                             history.map((item, index) => {
                                 return (
                                     <div key={index} className=''>
-                                        <img src={item.image} alt="" className='rounded-md'/>
+                                        <img src={item?.post[0]?.user?.image} alt="" className='rounded-md'/>
                                         <div className='flex flex-col gap-3 p-3'>
-                                            <h1 className='text-xl text-[#202192] font-bold'>{item.name}</h1>
-                                            <h3 className='text-lg text-black flex '><Rate max={5} size='xs' defaultValue={item.rating} readOnly color='yellow'/>{item.rating}</h3>
+                                            <h1 className='text-xl text-[#202192] font-bold'>{item.title}</h1>
+                                            <h3 className='text-lg text-black flex '><Rate max={5} size='xs' defaultValue={item.averageRating} readOnly color='yellow'/>{item.averageRating}</h3>
                                         </div>
                                     </div>
                                     
@@ -160,13 +144,13 @@ const page = (props: Props) => {
                      {
                         comment.map((item, index) => {
                             return (
-                            <div className='bg-gray-300 flex p-3 gap-3 rounded-md '>
+                            <div className='bg-gray-300 flex p-3 gap-3 rounded-md ' key={index}>
                                 <div className='max-sm:w-1/5'>
-                                   <img src={item.image} alt="" className='rounded-full w-[50px] h-[50px] max-sm:my-2'/>
+                                   <img src={item?.user?.image} alt="" className='rounded-full w-[50px] h-[50px] max-sm:my-2'/>
                                 </div>
                                 <div>
-                                    <h1 className='text-lg'>{item.name}</h1>
-                                    <p>{item.comment}</p>
+                                    <h1 className='text-lg'>{item?.user?.username}</h1>
+                                    <p>{item?.comment}</p>
                                 </div>
 
                             </div>
@@ -179,6 +163,6 @@ const page = (props: Props) => {
       </div>
     </>
   )
-}
+}}
 
 export default page

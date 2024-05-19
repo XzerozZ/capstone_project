@@ -125,3 +125,48 @@ export interface Category {
     category_id: number;
     name:        string;
 }
+
+
+
+export interface UserProfile {
+    user_id:         number;
+    first_name:      string;
+    last_name:       string;
+    username:        string;
+    image:           string;
+    phone_number:    string;
+    id_card:         string;
+    email:           string;
+    password:        string;
+    role:            string;
+    rating_users2:   any[];
+    rating_com2:     any[];
+    contact:         Contact[];
+    experience:      any[];
+    user_career:     UserCareer[];
+    categories:      any[];
+    careers:         string[];
+    averageRating_f: number;
+    averageRating_e: number;
+    averageRating_a: number;
+    averageRating:   number;
+}
+
+export interface Contact {
+    contact_id: number;
+    user_id:    number;
+    facebook:   string;
+    instagram:  string;
+    linkedin:   string;
+}
+
+export interface UserCareer {
+    user_id:   number;
+    career_id: number;
+    career:    Career;
+}
+
+export interface Career {
+    career_id: number;
+    name:      string;
+}
