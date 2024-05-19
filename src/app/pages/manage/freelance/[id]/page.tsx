@@ -77,7 +77,7 @@ const page = (props: Props) => {
                 <img src={freelance?.image} alt="" className='w-3/5 max-sm:w-full rounded-md'/>
                 <div className='w-2/5 max-sm:w-full flex flex-col gap-3'>
                     <h1 className='text-3xl text-[#202192] font-bold'>{freelance?.first_name} {freelance?.last_name}</h1>
-                    <h3 className='text-xl text-black'><Rate max={5} defaultValue={freelance?.averageRating} allowHalf readOnly color='yellow'/>{freelance?.averageRating}</h3>
+                    <h3 className='text-xl text-black'><Rate max={5} defaultValue={freelance?.averageRating} allowHalf readOnly color='yellow'/>{freelance?.averageRating.toFixed(2)}</h3>
                     <div className='flex flex-col gap-2'>
                         <h1 className='text-black text-2xl'>ความถนัด</h1>
                         
@@ -126,7 +126,7 @@ const page = (props: Props) => {
                                         <img src={item?.post[0]?.user?.image} alt="" className='rounded-md'/>
                                         <div className='flex flex-col gap-3 p-3'>
                                             <h1 className='text-xl text-[#202192] font-bold'>{item.title}</h1>
-                                            <h3 className='text-lg text-black flex '><Rate max={5} size='xs' defaultValue={item.averageRating} readOnly color='yellow'/>{item.averageRating}</h3>
+                                            <h3 className='text-lg text-black flex '><Rate max={5} size='xs' defaultValue={item.averageRating} readOnly color='yellow'/>{item.averageRating.toFixed(2)}</h3>
                                         </div>
                                     </div>
                                     
