@@ -6,12 +6,29 @@ import axios from "axios";
 import { Job } from "@/interface";
 import { Loader } from "rsuite";
 import 'rsuite/dist/rsuite.min.css';
+import { log } from "console";
 
 
 export default function Jobs(){
 
     const [job, setJob] = useState([] as Job[]) 
     const [FilterData, setFilterData] = useState([] as Job[])
+    const [filter, setFilter] = useState('All');
+    const [categoryFilter, setCategoryFilter] = useState('All');
+    const [category, setCategory] = useState([] as any[])
+
+
+    const fetchCategory = async () => {
+        try {
+            axios.get('/api/category').then((res) => {
+                
+                setCategory(res.data)
+            })
+        } catch (error) {
+         
+        }
+    }
+    
 
     const fetchJob = async () => {
         try {
@@ -20,12 +37,33 @@ export default function Jobs(){
                 setJob(res.data)
             })
         } catch (error) {
-            console.log(error)
+          
         }
     }
+
+    
+
     useEffect(() => {
+       if (job !== undefined || job !== null && category !== undefined || category !== null) {
         fetchJob()
-    }, [])
+        fetchCategory()
+        let updatedJobs = job;
+        if (filter === 'All') {
+            setFilterData(job);
+        } 
+
+        if (filter !== 'All') {
+            updatedJobs = updatedJobs.filter(job => job.type === filter);
+        }
+        
+        if (categoryFilter !== 'All') {
+            updatedJobs = updatedJobs.filter(job => job.categories.includes(categoryFilter));
+        }
+       setFilterData(updatedJobs);
+       }
+    }, [filter,job,category,categoryFilter])
+    const uniqueCategories = Array.from(new Set(job.flatMap(job => job.categories)));
+
 
     if (job.length === 0) {
         return  <div className='flex justify-center h-[500px] items-center'>
@@ -48,17 +86,22 @@ export default function Jobs(){
                             <div className="flex flex-col gap-1">
                                 <label>หมวดหมู่งาน</label>
                                 <div className="flex flex-row gap-3 flex-wrap ">
-                                   <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</div>
-                                   <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</div>
-                                   <div className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Web Development</div>
+                                <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" onClick={() => setCategoryFilter('All')}>All</button>
+
+                                    {
+                                        category.map((cate,index) => (
+                                            <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" key={index} onClick={() => setCategoryFilter(cate.name)}>{cate.name}</button>
+                                        ))
+                                    }
                                 </div>
                             </div>
                             
                            <div className="flex flex-col gap-1">
                                 <label>รูปแบบของงาน</label>
                                 <div className="flex flex-row gap-3 flex-wrap ">
-                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Full-time</button>
-                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Freelance</button>
+                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" onClick={() => setFilter('All')}>All</button>
+                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" onClick={() => setFilter('Full-time')}>Full-time</button>
+                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" onClick={() => setFilter('Freelance')}>Freelance</button>
                                 </div>
                            </div>
                         </div>
@@ -66,7 +109,7 @@ export default function Jobs(){
                     </div> 
                 </div>
                 <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
-                    {job.map((props:any,index)=>
+                    {FilterData.map((props:any,index)=>
                     <CardWork props={props} key={index} />
                    )}
                 </div>
