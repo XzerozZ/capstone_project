@@ -19,10 +19,9 @@ const editCompany = ({ModalProps,dataID}:{ModalProps:boolean,dataID:any}) => {
    
     const [previewImage, setPreviewImage] = useState<string | null>(null);
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
-    const [previewImage2, setPreviewImage2] = useState<string | null>(null);
-    const [selectedImage2, setSelectedImage2] = useState<File | null>(null);
+ 
     const [openModal,setOpenModal] = useState(false)
-    const [openModalClose,setOpenModalClose] = useState(openModal)
+   
 
 const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
