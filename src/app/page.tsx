@@ -106,8 +106,8 @@ export default function Home() {
 
   return (
    <>
-   <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
-        <div className='w-[1140px] flex flex-col gap-6 p-3'>
+   <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px]'>
+        <div className='w-[1140px] flex flex-col gap-6 p-3  min-h-screen'>
             <div>
             <div className="h-[600px] max-sm:h-[250px]">
               <Carousel slideInterval={5000}>

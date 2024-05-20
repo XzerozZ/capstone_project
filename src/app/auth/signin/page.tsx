@@ -38,7 +38,7 @@ const  LoginPage = (props: Props) => {
     }
   return (
    <>
-   <div className='flex justify-center bg-[#FAFAFA] py-[150px] max-sm:p-[75px]'>
+   <div className='flex justify-center bg-[#FAFAFA] py-[150px] max-sm:p-[75px] min-h-screen'>
     <div >
         <form onSubmit={handleSignIn} className='flex flex-col w-[450px] gap-5 max-sm:p-10'>
         <h1 className='text-center text-[40px]'>Sign in</h1>

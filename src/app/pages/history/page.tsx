@@ -13,6 +13,7 @@ const page = (props: Props) => {
     const [isLoading, setIsLoading] = React.useState(true)
     const {data:session,status} = useSession()
     const [emailUser, setEmailUser] = React.useState(session?.user?.email)
+    const [isFreelance, setIsFreelance] = React.useState(true)
     const fetchHistory = async (email:any) => {
         const formData = new FormData()
         formData.append('email', email)
@@ -22,6 +23,9 @@ const page = (props: Props) => {
             
         })
     }
+    console.log(session)
+
+  
 
     useEffect(() => {
         fetchHistory(emailUser)

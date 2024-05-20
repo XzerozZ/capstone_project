@@ -55,9 +55,9 @@ const page = (props: Props) => {
   return (
     <>
      <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
-        <div className='w-[1140px] flex flex-col gap-6 p-3'>
+        <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen'>
            
-           <div className='flex justify-between'>
+           <div className='flex justify-between '>
               <h1 className='text-3xl text-[#202192]'>จัดการผู้สมัคร</h1>
              <Link href='/pages/manage/postwork'> <button className='border-2 border-[#202192] py-2 px-4 text-lg rounded-md text-[#202192] hover:text-white hover:bg-[#202192]'>เพิ่มงาน</button></Link>
            </div>

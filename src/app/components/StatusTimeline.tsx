@@ -18,12 +18,11 @@ const StatusTimeline = ({data} : {data:Job}) => {
   useEffect(() => {
     setStatus(data.status)
   }, [data])
-  console.log(status)
 
 
 
 
-  if (status === 'On Working'){
+  if (status === 'On working'){
     return <Timeline2 />
   } else if (status === 'Rejected'){
     return <Timeline4 />

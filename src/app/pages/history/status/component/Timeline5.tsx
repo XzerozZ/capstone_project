@@ -30,12 +30,7 @@ const Timeline1 = () => {
       body: 'We are checking the project. We will update you with the progress of the project.',
       status: 'checking'
     },
-    {
-      month:'',
-      title: 'Completed',
-      body: 'The project has been completed. You can check the project and give us feedback.',
-      status: 'done'
-    },
+   
   ]
 
   return (

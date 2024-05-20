@@ -1,5 +1,6 @@
 import React from 'react'
 import { History } from '@/interface'
+import Link from 'next/link'
 type Props = {}
 
 const HistoryCard = ({data} : {data: History}) => {
@@ -23,7 +24,8 @@ const HistoryCard = ({data} : {data: History}) => {
   const color = CheckColorStatus(data.status);
     
   return (
-    <div className='flex gap-3 rounded-lg bg-[#f5f5f5]'>
+     <Link href={`/pages/history/status/${data.job_id}`}>
+       <div className='flex gap-3 rounded-lg bg-[#f5f5f5]'>
         <div className='w-1/4'>
             <img className='aspect-square rounded-l-lg' src={data.user.image} alt="" />
         </div>
@@ -32,6 +34,7 @@ const HistoryCard = ({data} : {data: History}) => {
             <p className={`${color}`}>{data.status}</p>
         </div>
     </div>
+      </Link>
   )
 }
 export default HistoryCard

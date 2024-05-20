@@ -19,6 +19,7 @@ const page = (props: Props) => {
   const [UserID, setUserID] = React.useState(session?.user?.id)
   const [status, setStatus] = useState<String>()
   const params = useParams()
+  const [isAdmin, setIsAdmin] = useState(false)
   
 
   const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +42,7 @@ const page = (props: Props) => {
           console.log(res.data)
       })}
 
-  
+  console.log(status)
   
 
   useEffect(() => {
@@ -49,7 +50,7 @@ const page = (props: Props) => {
     if (session !== undefined || session !== null && dataJob !== undefined || dataJob !== null) {
       fetchDataJob(session?.user?.email,params.id)
       setIsLoading(false)
-      console.log(dataJob)
+     
       setStatus(dataJob.status)
       }
     else {
@@ -66,42 +67,64 @@ const page = (props: Props) => {
       <Loader size="md"  color='black'/>
     </div>
   }
-  return (
-    <>
-     <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
+  else {
+    if (status === 'Completed' || status === 'Considering' || status === 'Rejected' ) {
+      return (
+        <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] h-[500px]'>
         <div className='w-[1140px] flex flex-col gap-4 p-3'>
           <h1 className='text-3xl text-[#202192] font-bold'>สถานะของงาน</h1>
        <div className=''>
       <StatusTimeline data={dataJob}/>
        </div>
-{
-  status !== 'Considering' || status !== "Complete" ?   <div>
-     <div>
-  <div className="mb-2 block">
-  <div >
-            <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Github Link</label>
-            <input 
-            type="text" 
-            id="link" 
-            name='link'
-            onChange={(e) => setLink(e.target.value)}
-            required
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="Github Link"  />
-    </div>
+        </div>
+        </div>
 
+      )
+    }
+    else {
+
+return (
+  <>
+   <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] min-h-screen'>
+      <div className='w-[1140px] flex flex-col gap-4 p-3'>
+        <h1 className='text-3xl text-[#202192] font-bold'>สถานะของงาน</h1>
+     <div className=''>
+    <StatusTimeline data={dataJob}/>
+     </div>
+{
+<div>
+   <div>
+<div className="mb-2 block">
+<div >
+          <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Github Link</label>
+          <input 
+          type="text" 
+          id="link" 
+          name='link'
+          onChange={(e) => setLink(e.target.value)}
+          required
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="Github Link"  />
   </div>
-  
+
+</div>
+
 </div>
 <div className='flex justify-center '>
-  <button className='px-4 py-2 bg-[#202192] text-2xl text-white rounded-lg w-full' onClick={() => handleSendWork(UserID,params.id)}>ส่งงาน</button>
+<button className='px-4 py-2 bg-[#202192] text-2xl text-white rounded-lg w-full' onClick={() => handleSendWork(UserID,params.id)}>ส่งงาน</button>
 </div>
-  </div> : <div></div>
+</div> 
 }
-        </div>
-        
-    </div>
+      </div>
+      
+  </div>
 
-    </>
-  )
+  </>
+)
+
+    }
+  }
 }
 export default page
+
+
+
