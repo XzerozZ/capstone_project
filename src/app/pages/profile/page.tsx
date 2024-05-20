@@ -67,7 +67,7 @@ const page = () => {
            }
        }
       
-    }, [user,openModal,session])
+    })
 
   
     if (isLoading) {
