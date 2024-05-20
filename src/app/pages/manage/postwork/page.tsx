@@ -25,7 +25,7 @@ const page = (props: Props) => {
     submitted_date: '',
   
   })
-
+  console.log(work.type)
  
 
   const fetchCategory = async () => {
@@ -110,8 +110,8 @@ const page = (props: Props) => {
                     onChange={handleChange}
                     
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" required >
-                        <option value="1">Fulltime</option>
-                        <option value="2">Freelance</option>
+                        <option value="Fulltime">Fulltime</option>
+                        <option value="Freelance">Freelance</option>
                     </select>
                  </div>
 

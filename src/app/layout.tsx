@@ -29,11 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en">
      <SessionProvider>
+    
      <body className={noto_sans_thai.className}>
-      <NewNav />
+     <NewNav />
         {children}
-      <Footer />
+        <Footer />
       </body>
+
      </SessionProvider>
     </html>
   );
