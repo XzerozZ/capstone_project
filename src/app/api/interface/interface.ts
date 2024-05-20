@@ -16,3 +16,6 @@ export interface Stripe1 {
 export interface Endpoint {
     endpoint : string
 }
+export interface Auth {
+    key : string
+}
