@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Cloud Computing"
+    },
+    {
+        "name": "Data Analytics"
+    },
+    {
+        "name": "Web Development"
+    },
+    {
+        "name": "Cybersecurity"
+    },
+    {
+        "name": "Mobile Development"
+    },
+    {
+        "name" : "Software Development"
+    },
+    {
+        "name" : "Robotics"
+    },
+    {
+        "name" : "Artificial Intelligence"
+    }
+]

@@ -109,7 +109,7 @@ model job {
   type           String        @db.VarChar(9)
   posted_date    DateTime      @default(now())
   submitted_date DateTime?
-  status         String        @default("Open") @db.VarChar(6)
+  status         String        @default("Incomplete") @db.VarChar(6)
   mass           Int?          @default(0)
   bookmark       bookmark[]
   history        history[]
