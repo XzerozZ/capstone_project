@@ -14,7 +14,7 @@ import { SiBrave } from "react-icons/si";
 
 const StatusTimelineCompany = ({data} : {data:StatusWork}) => {
   const [status, setStatus] = useState<String>()
-  console.log(data)
+  
   useEffect(() => {
     setStatus(data?.job?.history[0]?.status)
   }, [data])
@@ -32,10 +32,8 @@ const StatusTimelineCompany = ({data} : {data:StatusWork}) => {
       return <Timeline5 />
     }
   } else {
-    return  <div className='flex justify-center h-[100px] items-center'>
-      <div>
-        wait freelance sending register your work
-      </div>
+    return  <div>
+      
     </div>
   }
 

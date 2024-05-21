@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { useParams } from 'next/navigation';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Rate } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
 
@@ -14,7 +14,7 @@ const page = (props: Props) => {
 
   const {data:session} = useSession()
   const params = useParams()
-  const [UserID, setUserID] = React.useState(session?.user?.id)
+  const [UserEmail, setUserEmail] = React.useState(session?.user?.email)
   const [RecId, setRecId] = React.useState('mock')
   
   const [checkComepany, setCheckComepany] = useState(true)
@@ -37,21 +37,23 @@ const page = (props: Props) => {
             [name]: value,
     }));
   }
-
-  const handleCompany = (giver:any,receiver:any,job_id:any) => {
+  
+  const handleCompany = (giver:any,job_id:any) => {
       const formData = new FormData()
       formData.append('email',giver);
-   
+      console.log(giver,job_id)
       formData.append('comment', UserCommentbyCompany.comment);
       formData.append('job_id', job_id);
       formData.append('friendly_rating',hoverValueCom1.toString());
       formData.append('efficiency_rating', hoverValueCom2.toString());
-      formData.append('accuracy_rating', hoverValueCom3.toString()); // Convert Com3 to a string
+      formData.append('accuracy_rating', hoverValueCom3.toString()); 
+      console.log(UserCommentbyCompany)
+      console.log(hoverValueCom1,hoverValueCom2,hoverValueCom3)
       axios.post('/api/rating_user', formData).then((res) => {
         console.log(res.data)
       })
   }
-  const handleUser = (giver:any,receiver:any,job_id:any) => {
+  const handleUser = (giver:any,job_id:any) => {
     const formData = new FormData()
     formData.append('email', giver);
    
@@ -63,6 +65,17 @@ const page = (props: Props) => {
     })
 
   }
+  useEffect(() => {
+   if (session){
+    if (session?.user?.role === 'company') {
+      setUserEmail(session?.user?.email)
+      setCheckComepany(true)
+    } else {
+      setCheckComepany(false)
+    }
+   }
+  },[session])
+
 
   return (
     <>
@@ -102,7 +115,7 @@ const page = (props: Props) => {
             </div>
              
             <div className='flex justify-center'>
-                <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleCompany(UserID,RecId,params.id)}>แสดงความคิดเห็น</button> 
+                <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleCompany(UserEmail,params.id)}>แสดงความคิดเห็น</button> 
             </div>
             
         
@@ -122,7 +135,7 @@ const page = (props: Props) => {
                   </div>
             </div>
             <div className='flex justify-center'>
-                  <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleUser(UserID,RecId,params.id)}>แสดงความคิดเห็น</button> 
+                  <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleUser(UserEmail,params.id)}>แสดงความคิดเห็น</button> 
               </div>
           </div>}
          

@@ -144,7 +144,7 @@ const page = (props: Props) => {
                             {
                                 history?.map((item:any,index:any) => {
                                     return (
-                                        <div className='flex gap-3 bg-gray-200 p-3 rounded-md'>
+                                        <div className='flex gap-3 bg-gray-200 p-3 rounded-md' key={index}>
                                             <div>
                                                 <h1 className='text-lg'>{item?.job?.title}</h1>
                                                 <p>{item?.job?.description}</p>

@@ -16,11 +16,8 @@ import 'rsuite/dist/rsuite.min.css';
 
 
 
-type Props = {}
 
-
-
-const page = (props: Props) => {
+const page = () => {
   const {data:session,status} = useSession()
   const params = useParams()
   const [work, setWork] = React.useState([] as any[])
@@ -29,6 +26,7 @@ const page = (props: Props) => {
   const [Person, setPerson] = React.useState([] as any[])
   const Router = useRouter()
   const [JobStatus, setJobStatus] = React.useState<StatusWork>({} as StatusWork)
+  const [OrderID, setOrderID] = React.useState<string>('')
   const fetchPerson = async (id:any) => {
    
     axios.get(`/api/company/selector/${id}`).then((res) => {
@@ -37,17 +35,6 @@ const page = (props: Props) => {
     })
   }
   
-  const ComfirmWork = async (email:string,job_id:any)=> {
-    const formData = new FormData()
-    console.log(email,job_id,'user email')
-
-    formData.append('email', email)
-    formData.append('job_id', job_id)
-    axios.post('/api/job/sentwork',formData).then((res) => {
-      console.log(res.data,'sent work success')
-    })
-
-  }
 
   const fetchPostWork = async (email:any) => {
     const formData = new FormData()
@@ -84,6 +71,30 @@ const page = (props: Props) => {
       
     }
  }
+ const ComfirmWork = async (email:string,job_id:any,orderid:string)=> {
+  const formData = new FormData()
+  console.log(email,job_id,'user email')
+
+  formData.append('email', email)
+  formData.append('job_id', job_id)
+  await axios.post('/api/job/sentwork',formData).then((res) => {
+    console.log(res.data,'sent work success')
+    setOrderID(res.data)
+    const formData = new FormData()
+    formData.append('orderId', res.data)
+    console.log(res.data,'then 2')
+    axios.put('/api/job/sentwork/payment',formData).then((res) => {
+      console.log(res.data)
+      
+    }
+  )
+  
+  
+    
+  })
+ 
+  
+}
  
  
   useEffect(() => {
@@ -143,7 +154,7 @@ const page = (props: Props) => {
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]"  >
                         {JobStatus.work_link || 'no data'}</div>
                         <button 
-                          onClick={() => ComfirmWork(UserEmail,params.id)}
+                          onClick={() => ComfirmWork(UserEmail,params.id,OrderID)}
                         className="bg-[#202192] border border-[#202192]  text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192] text-white"  >
                        ยอมรับ</button>
               </div>
