@@ -176,10 +176,10 @@ export interface StatusWork {
     job_id:    number;
     user_id:   number;
     work_link: string;
-    job:       Job;
+    job:       JobStatus;
 }
 
-export interface Job {
+export interface JobStatus {
     history: History2[];
 }
 

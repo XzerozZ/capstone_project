@@ -12,7 +12,7 @@ import React, { useEffect } from 'react'
 import { MdWorkOutline } from 'react-icons/md'
 import { Dropdown, Loader, Rate } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
-import Tab from 'rsuite/esm/Tabs/Tab'
+
 
 
 
@@ -25,7 +25,7 @@ const page = (props: Props) => {
   const params = useParams()
   const [work, setWork] = React.useState([] as any[])
   const [isLoading, setIsLoading] = React.useState(true)
-  const [UserEmail, setUserEmail] = React.useState(session?.user?.email)
+  const [UserEmail, setUserEmail] = React.useState<string>('')
   const [Person, setPerson] = React.useState([] as any[])
   const Router = useRouter()
   const [JobStatus, setJobStatus] = React.useState<StatusWork>({} as StatusWork)
@@ -36,13 +36,25 @@ const page = (props: Props) => {
         setPerson(res.data)
     })
   }
+  
+  const ComfirmWork = async (email:string,job_id:any)=> {
+    const formData = new FormData()
+    console.log(email,job_id,'user email')
+
+    formData.append('email', email)
+    formData.append('job_id', job_id)
+    axios.post('/api/job/sentwork',formData).then((res) => {
+      console.log(res.data,'sent work success')
+    })
+
+  }
 
   const fetchPostWork = async (email:any) => {
     const formData = new FormData()
     formData.append('email', email)
     try {
       await axios.post('/api/post/user',formData).then((res) => {
-         
+          
           setWork(res.data)
       })
     } catch (error) {
@@ -50,7 +62,7 @@ const page = (props: Props) => {
     }
   
   }
-  console.log(JobStatus)
+  
   const handleSubmit = async (job_id:any,freelance_id:any,status:any) => {
     console.log(job_id,freelance_id,status)
     const formData = new FormData()
@@ -60,19 +72,19 @@ const page = (props: Props) => {
       console.log(res.data)
     })
   }
- console.log(Person)
  const fetchStatusWork = async (job_id:any) => {
     const formData = new FormData()
     formData.append('id', job_id)
     try {
       await axios.post('/api/work/job',formData).then((res) => {
         setJobStatus(res.data)
-          console.log(res.data)
+        
       })
     } catch (error) {
       
     }
  }
+ 
  
   useEffect(() => {
      if (session){
@@ -81,6 +93,7 @@ const page = (props: Props) => {
           fetchPostWork(UserEmail)
           setIsLoading(false)
           fetchStatusWork(params.id)
+          setUserEmail(session?.user?.email)
         }
      }
     
@@ -119,8 +132,22 @@ const page = (props: Props) => {
                     </Dropdown>
                   </div>
               </div>
-              <div className='w-4/5 max-sm:w-full'>
+              <div className='w-4/5 max-sm:w-full flex flex-col gap-3 mt-[10px]'>
               <StatusTimelineCompany data={JobStatus}/>
+              <div className='flex flex-col gap-2'>
+                      <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Github Link</label>
+                      <div 
+                     
+                    
+                      
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]"  >
+                        {JobStatus.work_link || 'no data'}</div>
+                        <button 
+                          onClick={() => ComfirmWork(UserEmail,params.id)}
+                        className="bg-[#202192] border border-[#202192]  text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192] text-white"  >
+                       ยอมรับ</button>
+              </div>
+
                   <div className="overflow-x-auto">
                         <Table hoverable>
                           <Table.Head>

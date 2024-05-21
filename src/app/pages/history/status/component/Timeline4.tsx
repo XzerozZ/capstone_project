@@ -31,7 +31,7 @@ const Timeline1 = () => {
     <Timeline horizontal>
       {
         timeline.map((item, index) => (
-          <Timeline.Item>
+          <Timeline.Item key={index}>
           <Timeline.Point icon={HiCalendar} />
           <Timeline.Content>
             <Timeline.Time>{item.month}</Timeline.Time>
