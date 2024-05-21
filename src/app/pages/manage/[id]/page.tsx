@@ -1,6 +1,8 @@
 "use client"
 import ProfileCard from '@/app/components/ProfileCard'
 import SideBar from '@/app/components/SideBar'
+import StatusTimelineCompany from '@/app/components/StatusTimelineCompany'
+import { StatusWork } from '@/interface'
 import axios from 'axios'
 import { Table } from 'flowbite-react'
 import { useSession } from 'next-auth/react'
@@ -26,6 +28,7 @@ const page = (props: Props) => {
   const [UserEmail, setUserEmail] = React.useState(session?.user?.email)
   const [Person, setPerson] = React.useState([] as any[])
   const Router = useRouter()
+  const [JobStatus, setJobStatus] = React.useState<StatusWork>({} as StatusWork)
   const fetchPerson = async (id:any) => {
    
     axios.get(`/api/company/selector/${id}`).then((res) => {
@@ -47,6 +50,7 @@ const page = (props: Props) => {
     }
   
   }
+  console.log(JobStatus)
   const handleSubmit = async (job_id:any,freelance_id:any,status:any) => {
     console.log(job_id,freelance_id,status)
     const formData = new FormData()
@@ -57,6 +61,18 @@ const page = (props: Props) => {
     })
   }
  console.log(Person)
+ const fetchStatusWork = async (job_id:any) => {
+    const formData = new FormData()
+    formData.append('id', job_id)
+    try {
+      await axios.post('/api/work/job',formData).then((res) => {
+        setJobStatus(res.data)
+          console.log(res.data)
+      })
+    } catch (error) {
+      
+    }
+ }
  
   useEffect(() => {
      if (session){
@@ -64,6 +80,7 @@ const page = (props: Props) => {
           fetchPerson(params.id)
           fetchPostWork(UserEmail)
           setIsLoading(false)
+          fetchStatusWork(params.id)
         }
      }
     
@@ -103,15 +120,7 @@ const page = (props: Props) => {
                   </div>
               </div>
               <div className='w-4/5 max-sm:w-full'>
-                 {/* <div className='grid grid-cols-3 gap-3 max-sm:grid-cols-2'>
-                 {
-                      Person.map((item,index) => {
-                          return (
-                              <ProfileCard key={index} Person={item} />
-                          )
-                      })
-                  }
-                 </div> */}
+              <StatusTimelineCompany data={JobStatus}/>
                   <div className="overflow-x-auto">
                         <Table hoverable>
                           <Table.Head>

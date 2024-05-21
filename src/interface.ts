@@ -170,3 +170,33 @@ export interface Career {
     career_id: number;
     name:      string;
 }
+
+
+export interface StatusWork {
+    job_id:    number;
+    user_id:   number;
+    work_link: string;
+    job:       Job;
+}
+
+export interface Job {
+    history: History2[];
+}
+
+export interface History2 {
+    status: string;
+    user:   User2;
+}
+
+export interface User2 {
+    user_id:      number;
+    first_name:   string;
+    last_name:    string;
+    username:     string;
+    image:        string;
+    phone_number: string;
+    id_card:      string;
+    email:        string;
+    password:     string;
+    role:         string;
+}
