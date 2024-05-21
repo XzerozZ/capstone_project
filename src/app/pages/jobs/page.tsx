@@ -23,6 +23,7 @@ export default function Jobs(){
             axios.get('/api/category').then((res) => {
                 
                 setCategory(res.data)
+                console.log(res.data)
             })
         } catch (error) {
          
@@ -40,6 +41,7 @@ export default function Jobs(){
           
         }
     }
+ 
 
     
 

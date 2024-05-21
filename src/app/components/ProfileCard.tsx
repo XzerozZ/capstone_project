@@ -2,6 +2,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import React from 'react'
 import { Rate } from 'rsuite'
+import { Table } from "flowbite-react";
 
 
 
@@ -34,7 +35,7 @@ const ProfileCard = ({Person} : {Person :any}) => {
                                             <button className='text-[#202192]' onClick={() => handleSubmit(Person.job_id,Person?.user_id,'true')}>ยอมรับ</button>
                                             <button className='text-[#ff0000]' onClick={() => handleSubmit(Person.job_id,Person?.user_id,'false')}>ลบ</button>
        
-                                        </div>
+     </div>
     </div>
     
    </>
@@ -42,3 +43,9 @@ const ProfileCard = ({Person} : {Person :any}) => {
 }
 
 export default ProfileCard
+
+
+
+
+
+

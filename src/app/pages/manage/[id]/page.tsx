@@ -2,13 +2,15 @@
 import ProfileCard from '@/app/components/ProfileCard'
 import SideBar from '@/app/components/SideBar'
 import axios from 'axios'
+import { Table } from 'flowbite-react'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { MdWorkOutline } from 'react-icons/md'
-import { Dropdown, Loader } from 'rsuite'
+import { Dropdown, Loader, Rate } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
+import Tab from 'rsuite/esm/Tabs/Tab'
 
 
 
@@ -23,7 +25,7 @@ const page = (props: Props) => {
   const [isLoading, setIsLoading] = React.useState(true)
   const [UserEmail, setUserEmail] = React.useState(session?.user?.email)
   const [Person, setPerson] = React.useState([] as any[])
-
+  const Router = useRouter()
   const fetchPerson = async (id:any) => {
    
     axios.get(`/api/company/selector/${id}`).then((res) => {
@@ -36,7 +38,7 @@ const page = (props: Props) => {
     const formData = new FormData()
     formData.append('email', email)
     try {
-      axios.post('/api/post/user',formData).then((res) => {
+      await axios.post('/api/post/user',formData).then((res) => {
          
           setWork(res.data)
       })
@@ -45,17 +47,27 @@ const page = (props: Props) => {
     }
   
   }
+  const handleSubmit = async (job_id:any,freelance_id:any,status:any) => {
+    console.log(job_id,freelance_id,status)
+    const formData = new FormData()
+    formData.append('id', freelance_id)
+    formData.append('status', status)
+    axios.put(`/api/company/selector/${job_id}`,formData).then((res) => {
+      console.log(res.data)
+    })
+  }
+ console.log(Person)
  
   useEffect(() => {
      if (session){
-        if (work !== undefined || work !== null ) {
+        if (Person !== undefined || Person !== null ) {
           fetchPerson(params.id)
           fetchPostWork(UserEmail)
           setIsLoading(false)
         }
      }
     
-  }, [work,session,Person])
+  }, [session,Person])
 
   if (isLoading) {
     return  <div className='flex justify-center h-[500px] items-center'>
@@ -91,7 +103,7 @@ const page = (props: Props) => {
                   </div>
               </div>
               <div className='w-4/5 max-sm:w-full'>
-                 <div className='grid grid-cols-3 gap-3 max-sm:grid-cols-2'>
+                 {/* <div className='grid grid-cols-3 gap-3 max-sm:grid-cols-2'>
                  {
                       Person.map((item,index) => {
                           return (
@@ -99,7 +111,47 @@ const page = (props: Props) => {
                           )
                       })
                   }
-                 </div>
+                 </div> */}
+                  <div className="overflow-x-auto">
+                        <Table hoverable>
+                          <Table.Head>
+                            <Table.HeadCell>Number</Table.HeadCell>
+                            <Table.HeadCell>Image</Table.HeadCell>
+                            <Table.HeadCell>Name</Table.HeadCell>
+                          
+                            <Table.HeadCell className=''>Email</Table.HeadCell>
+                            <Table.HeadCell className=''>Status</Table.HeadCell>
+                            <Table.HeadCell className=''></Table.HeadCell>
+                         
+                            <Table.HeadCell>
+                              <span className=""></span>
+                            </Table.HeadCell>
+                          </Table.Head>
+                          <Table.Body className="divide-y">
+                          {
+                            Person.map((item,index) => 
+                             (
+                              
+                                <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={index} >
+                                  <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{index+1} </Table.Cell>
+                                  <Table.Cell><img src={item.user.image || ''} className='rounded-full w-[40px] h-[40px]'/></Table.Cell>
+                                  <Table.Cell>{item?.user?.first_name || "no data"} {item?.user?.last_name || "no data"}</Table.Cell>
+                                  <Table.Cell>{item?.user?.email}</Table.Cell>
+                                  <Table.Cell>{item?.status}</Table.Cell>
+                                  <Table.Cell><Link href={`/pages/manage/freelance/${item?.user?.email}`} className='text-[#202192]'>Profile</Link></Table.Cell>
+                                  <Table.Cell>
+                                    <div className='flex gap-5' >
+                                      <button className='text-[#202192]' onClick={() => handleSubmit(item.job_id,item?.user_id,'true')}>ยอมรับ</button>
+                                      <button className='text-[#ff0000]' onClick={() => handleSubmit(item.job_id,item?.user_id,'false')}>ลบ</button>
+                                    </div>
+                                  </Table.Cell>
+                                </Table.Row>
+                            ))
+                          }
+                          
+                          </Table.Body>
+                        </Table>
+                      </div>
               </div>
             </div>
         </div>
@@ -108,3 +160,5 @@ const page = (props: Props) => {
   )
 }}
 export default page
+
+

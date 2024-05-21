@@ -19,7 +19,7 @@ const page = () => {
     const [isLoading, setIsLoading] = useState(true)
 
     const fetchJobbyId = async () => {
-        axios.get(`http://localhost:3000/api/job/${params.id}`).then((res) => {
+        await axios.get(`http://localhost:3000/api/job/${params.id}`).then((res) => {
            
             setJobData(res.data)
         
@@ -55,12 +55,12 @@ const page = () => {
         })
         setIsFav(false)
     };
-    const checkFav = (user_id:any,job_id:any) => {
+    const checkFav = async (user_id:any,job_id:any) => {
         const formData = new FormData()
       
         formData.append('user_id', user_id)
         formData.append('job_id', job_id)
-        axios.post('/api/checkbookmark',formData).then((res) => {
+        await axios.post('/api/checkbookmark',formData).then((res) => {
        
             if (res.data.message === 'Not Added') {
                 setIsFav(false)
@@ -71,6 +71,20 @@ const page = () => {
             
         })
     }
+    const DateFormatter = ({ timestamp }:any) => {
+        if (!timestamp) {
+          return <div>No timestamp provided</div>;
+        }
+      
+        // Extract the date part
+        const date = timestamp.substring(0, 10);
+        // Replace hyphens with slashes
+        const formattedDate = date.replace(/-/g, '/');
+      
+        return <span className='text-lg text-black'>{formattedDate}</span>;
+      };
+      
+
     useEffect(() => {
             if (session){
                 fetchJobbyId()
@@ -81,7 +95,7 @@ const page = () => {
         
         
             }
-    }, [jobData,userid,params.id,session])
+    }, [params.id,session])
   if (isLoading) {
     return  <div className='flex justify-center h-[500px] items-center'>
       <Loader size="md"  color='black'/>
@@ -99,7 +113,7 @@ const page = () => {
              <div className='flex flex-row justify-between max-sm:flex-col gap-3'>
                 <div className='flex gap-2 flex-col'>
                     <h1 className='text-[#202192] font-bold text-3xl '>{jobData?.title}   <span className='text-black text-xl'>โดย {jobData?.post[0]?.user?.username}</span> </h1>
-                    <h3 className='text-lg text-black'>Publish {jobData?.posted_date}</h3>
+                    <h3 className='text-lg text-black'>Publish <DateFormatter timestamp={jobData?.posted_date}/></h3>
                     <h3 className='text-lg text-[#202192] '>งบประมาณ : {jobData?.budget} THB</h3>
                     <h3 className='text-lg text-black'>สถานะ : {jobData?.status}</h3>
                 </div>

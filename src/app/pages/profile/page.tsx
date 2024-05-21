@@ -127,7 +127,7 @@ const handleSubmit = (e:any,id:any) => {
            }
        }
       
-    })
+    },[session,user])
 
   
     if (isLoading) {
@@ -146,7 +146,7 @@ const handleSubmit = (e:any,id:any) => {
         
         <hr className='border-[#202192] mt-2'/> 
         <div className='flex justify-between'>
-            <h1 className='my-auto text-5xl text-[#202192] font-bold w-3/4'>{user.first_name} {user.last_name} ( {user.username} )</h1>
+            <h1 className='my-auto text-5xl text-[#202192] font-bold w-3/4 max-sm:text-2xl'>{user.first_name} {user.last_name} ( {user.username} )</h1>
             <div className=''>
                 <img src={user?.image}    
                 className='w-[120px] h-[150px] rounded-md'
@@ -199,8 +199,7 @@ const handleSubmit = (e:any,id:any) => {
            }
         
         </div> 
-           {
-             checkFree ?    <div>
+             <div>
                    <div className='flex gap-5'>
             <div className='w-full'>
                 <label className='text-[#202192] font-bold'>Facebook</label>
@@ -223,7 +222,7 @@ const handleSubmit = (e:any,id:any) => {
             
         </div>
              </div>
-            : <div></div>}
+          
             
     </div>
     <Modal  show={openModal} onClose={() =>  setOpenModal(false)} >
@@ -332,9 +331,7 @@ const handleSubmit = (e:any,id:any) => {
         </Modal.Body>
       
       </Modal>
-   {/* {
-    checkFree ? <EditUser ModalProps={openModal} dataID={UserId} Cate={category}/> : <EditCompany ModalProps={openModal} dataID={UserId}/>
-   } */}
+  
     </div>
    
   )

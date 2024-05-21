@@ -40,7 +40,10 @@ export default function Bookmark(/*{props}: any*/){
 
     useEffect(() => {
         applyFilter(filter);
-    }, [filter]);
+        if (bookmark.length > 0) {
+            setIsLoading(false);
+        }
+    }, [filter,bookmark]);
     console.log(bookmark)
     const applyFilter = (filter:any) => {
         if (filter === 'All') {

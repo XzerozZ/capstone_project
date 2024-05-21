@@ -1,10 +1,12 @@
 import axios from 'axios';
-import React, { ChangeEvent, useState } from 'react'
+import { useRouter } from 'next/navigation';
+import React, { ChangeEvent, use, useState } from 'react'
 import { FaCloudUploadAlt } from 'react-icons/fa';
 
 type Props = {}
 
 const companysignup = (props: Props) => {
+    const Router = useRouter();
     const [userData, setUserData] = React.useState({
         email: '',
         username: '',
@@ -62,6 +64,7 @@ const handleSubmit = (e:any) => {
         axios.post('/api/auth/register', formData)
                 .then((res) => {
                         console.log(res);
+                        Router.push('/pages/signin/company')
                 });
 
       

@@ -19,8 +19,11 @@ const page = (props: Props) => {
    
     const [freelance, setFreelance] = React.useState<UserProfile>({} as UserProfile)
     const [isLoading, setIsLoading] = React.useState(true)
-    const [history, setHistory] = React.useState([] as any[] || {})
+    const [history, setHistory] = React.useState([] as any[])
     const [comment, setComment] = React.useState([] as any[])
+    const [CheckType, setCheckType] = React.useState(true)
+    const [CheckArray, setCheckArray] = React.useState(true)
+    
    
     const fetchFreelance = async (email:any) => {
         const formData = new FormData()
@@ -31,25 +34,40 @@ const page = (props: Props) => {
 
         })
     }
-    console.log(history)
+    
     const fetchWorkHistory = async (email:any) => {
         const formData = new FormData()
         formData.append('email', email.replace('%40','@') as string)
         axios.post(`/api/history/user/complete`,formData).then((res) => {
-           
             setHistory(res.data)
+            if (res.data.message === 'Not have any history') {
+                setCheckType(false)
+            }
         })
     
     }
+
+    console.log(CheckType,'history');
+    console.log(CheckArray,'Array');
+    
+    console.log(history)
     const fetchComment = async (email:any) => {
         const formData = new FormData()
         formData.append('email', email.replace('%40','@') as string)
         axios.post(`/api/user/comment`,formData).then((res) => {
-            
+            console.log(res.data)
             setComment(res.data)
+          
+            setHistory(res.data.message)
+            if (comment.length === 0) {
+                setCheckArray(false)
+            }
+          
         })
 
+
     }
+    console.log(CheckType)
     useEffect(() => {
        if (freelance !== undefined || freelance !== null) {
         fetchFreelance(params.id)
@@ -118,28 +136,32 @@ const page = (props: Props) => {
                 </div>
                 <div className='flex flex-col gap-3'>
                     <h1 className='text-2xl text-black'>ประวัติการทำงาน</h1>
-                   <div className='flex justify-center'>
+                   <div className='flex justify-center mb-10'>
                     <div className=' gap-5 flex overflow-x-auto overflow-hidden max-sm:w-[400px] '>
-                           {/* {
-                            history !== any[]  ? <h1>no data</h1> :  <div>
-                                {
-                                    history.map((item,index) => {
-                                        return (
-                                            <div className='flex gap-3 bg-gray-200 p-3 rounded-md'>
-                                                <div>
-                                                    <h1 className='text-lg'>{item?.job?.title}</h1>
-                                                    <p>{item?.job?.description}</p>
-                                                </div>
-                                                <div>
-                                                    <h1 className='text-lg'>{item?.job?.payment}</h1>
-                                                    <p>{item?.job?.date}</p>
-                                                </div>
+                           {
+                         CheckType ? <div>
+                            {
+                                history?.map((item:any,index:any) => {
+                                    return (
+                                        <div className='flex gap-3 bg-gray-200 p-3 rounded-md'>
+                                            <div>
+                                                <h1 className='text-lg'>{item?.job?.title}</h1>
+                                                <p>{item?.job?.description}</p>
                                             </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                           } */}
+                                            <div>
+                                                <h1 className='text-lg'>{item?.job?.payment}</h1>
+                                                <p>{item?.job?.date}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>   :  
+                        <div>
+                                <h1>ไม่มีประวัติการทำงาน</h1>     
+                        </div>
+                   
+                           }
                         </div>
                    </div>
 
@@ -148,22 +170,30 @@ const page = (props: Props) => {
                 <div>
                 <h1 className='text-2xl text-black'>ความคิดเห็น</h1>
                          <div className='flex flex-col gap-3 '>
-                         {
-                            comment.map((item, index) => {
-                                return (
-                                <div className='bg-gray-300 flex p-3 gap-3 rounded-md ' key={index}>
-                                    <div className='max-sm:w-1/5'>
-                                       <img src={item?.user?.image} alt="" className='rounded-full w-[50px] h-[50px] max-sm:my-2'/>
-                                    </div>
-                                    <div>
-                                        <h1 className='text-lg'>{item?.user?.username}</h1>
-                                        <p>{item?.comment}</p>
-                                    </div>
-
+                       
+                               {
+                                CheckArray ? <div>
+                                     {
+                                    comment.map((item:any,index:number) => {
+                                        return (
+                                            <div className='flex gap-3 bg-gray-200 p-3 rounded-md' key={index}>
+                                                <div>
+                                                    <h1 className='text-lg'>{item?.comment}</h1>
+                                                    <p>{item?.date}</p>
+                                                </div>
+                                                <div>
+                                                    <h1 className='text-lg'>{item?.rating}</h1>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                                </div> : 
+                                <div>
+                                    <h1 className='text-center'>ไม่มีความคิดเห็น</h1>
                                 </div>
-                            )
-                            })
-                          }
+                               }
+                         
                          </div>
                 </div>
             </div>
