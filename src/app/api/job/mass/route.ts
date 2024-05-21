@@ -74,7 +74,10 @@ export async function POST( req: Request ) {
                     }
                 })
                 await prisma.$disconnect();
-                return Response.json(order.order_id)
+                return Response.json({
+                    order : order.order_id ,
+                    URL : seesion.url
+                })
             }
            else {
             await prisma.$disconnect();
