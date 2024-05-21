@@ -13,6 +13,9 @@ import { MdWorkOutline } from 'react-icons/md'
 import { Dropdown, Loader, Rate } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
 
+////////////////////////
+import { loadStripe } from '@stripe/stripe-js'
+const stripePromise = loadStripe('process.env.PUBLISHABLE_KEY')
 
 
 
@@ -27,7 +30,25 @@ const page = () => {
   const Router = useRouter()
   const [JobStatus, setJobStatus] = React.useState<StatusWork>({} as StatusWork)
   const [OrderID, setOrderID] = React.useState<string>('')
+
+  //////////////////////////////////////////////////////
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    if (query.get('success')) {
+      console.log('Order placed! You will receive an email confirmation.');
+    }
+    if (query.get('canceled')) {
+      console.log(
+        'Order canceled -- continue to shop around and checkout when you’re ready.'
+      );
+    }
+  }, [])
+
+
+
+ //////////////////////////////////////////////////////
   const fetchPerson = async (id:any) => {
+  
    
     axios.get(`/api/company/selector/${id}`).then((res) => {
        
@@ -83,11 +104,11 @@ const page = () => {
     const formData = new FormData()
     formData.append('orderId', res.data)
     console.log(res.data,'then 2')
-    axios.put('/api/job/sentwork/payment',formData).then((res) => {
-      console.log(res.data)
+  //   axios.put('/api/job/sentwork/payment',formData).then((res) => {
+  //     console.log(res.data)
       
-    }
-  )
+  //   }
+  // )
   
   
     
