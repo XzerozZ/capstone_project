@@ -1,5 +1,5 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../utils/prisma';
 import Stripe from 'stripe';
 import { Stripe1 } from '../../interface/interface';
 import { Endpoint } from '../../interface/interface';
@@ -13,7 +13,6 @@ const endpointConfig: Endpoint = {
 
 export async function POST(req: Request) {
     const rawBody = await req.text()
-    const prisma = new PrismaClient();
     const stripe = new Stripe(stripeConfig.key);
     const sig = req.headers.get('stripe-signature');
     let event;

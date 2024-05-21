@@ -1,5 +1,5 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../../utils/prisma';
 import Stripe from 'stripe';
 import { Stripe1 } from '@/app/api/interface/interface';
 import { sentInvoice } from '../email';
@@ -10,7 +10,6 @@ const stripeConfig: Stripe1 = {
 };
 
 export async function PUT(req : Request) {
-    const prisma = new PrismaClient();
     const stripe = new Stripe(stripeConfig.key);
     try{
         const formData = await req.formData();

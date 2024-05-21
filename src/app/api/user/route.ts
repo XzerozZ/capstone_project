@@ -1,11 +1,10 @@
 'use server'
-import { PrismaClient } from "@prisma/client";
+import prisma from '../utils/prisma';
 import bcrypt from 'bcrypt';
 import { formatPhoneNumber } from "../auth/format";
 import { upLoadIMG } from "../admin/supabase";
 
 export async function GET() {
-    const prisma = new PrismaClient();
     try{
         const comid = await prisma.user.findMany();
         await prisma.$disconnect();
@@ -26,7 +25,6 @@ export async function GET() {
 }
 
 export async function PUT( req : Request ){
-    const prisma = new PrismaClient();
     try {
         const formData = await req.formData();
         const id = parseInt(formData.get('id') as string)
@@ -144,7 +142,6 @@ export async function PUT( req : Request ){
 }
 
 export async function DELETE( req : Request ){
-    const prisma = new PrismaClient();
     try{
         const formData = await req.formData();
         const id = formData.get('id') as string

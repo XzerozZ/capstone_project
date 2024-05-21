@@ -1,10 +1,9 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../utils/prisma';
 
 //http://localhost:3000/api/history
 //POST
 export async function POST( req : Request ) {
-    const prisma = new PrismaClient();
     try{
         const formData = await req.formData();
         const history =  await prisma.history.create({

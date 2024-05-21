@@ -1,9 +1,8 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../../utils/prisma';
 
 // localhost:3000/api/company/selector/[id]
 export async function GET(req : Request,{ params }: { params: { id: string } }) {
-    const prisma = new PrismaClient();
     try{
         const jobid = parseInt(params.id)
         const candidate = await prisma.history.findMany({
@@ -33,7 +32,6 @@ export async function GET(req : Request,{ params }: { params: { id: string } }) 
 }
 
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
-    const prisma = new PrismaClient();
     try {
         const formData = await req.formData();
         const status = formData.get('status') as string;

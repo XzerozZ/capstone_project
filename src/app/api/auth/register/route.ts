@@ -1,6 +1,6 @@
 'use server'
 import bcrypt from 'bcrypt';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../utils/prisma';
 import Stripe from "stripe" ;
 import { Stripe1 } from '../../interface/interface';
 import { formatIdcard , formatPhoneNumber } from '../format';
@@ -9,7 +9,6 @@ const stripeConfig: Stripe1 = {
     key: process.env.STRIPE_SECRET_KEY || ''
 };
 export async function POST(req: Request) {
-    const prisma = new PrismaClient();
     const stripe = new Stripe(stripeConfig.key);
     try {
         const formData = await req.formData();

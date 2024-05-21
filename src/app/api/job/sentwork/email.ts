@@ -1,6 +1,6 @@
 import nodeemailer from "nodemailer";
 import { Email } from '../../interface/interface'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../utils/prisma';
 
 const emailConfig: Email = {
   email: process.env.EMAIL || '',
@@ -8,7 +8,6 @@ const emailConfig: Email = {
 };
 
 export const sentInvoice = async (UserId: number, money: number, id: string, name:string) => {
-  const prisma = new PrismaClient();
   const user = await prisma.user.findUnique({
     where : {
       user_id : UserId
