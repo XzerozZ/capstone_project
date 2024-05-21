@@ -1,9 +1,8 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../utils/prisma';
 
 // localhost:3000/api/company
 export async function GET(){
-    const prisma = new PrismaClient();
     try{
         const comid = await prisma.user.findMany({
             where : {

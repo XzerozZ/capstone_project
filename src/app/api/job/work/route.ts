@@ -1,8 +1,7 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../utils/prisma';
 
-export async function POST( req: Request ) {
-    const prisma = new PrismaClient();
+export async function POST( req: Request ) {;
     try{
         const formData = await req.formData();
         const user_id = parseInt(formData.get('user_id') as string)

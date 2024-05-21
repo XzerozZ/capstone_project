@@ -1,8 +1,7 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../utils/prisma';
 
 export async function GET(req: Request, { params }: { params: { id: string } }){
-    const prisma = new PrismaClient();
     try {
         const order = await prisma.order.findUnique({
             where : {

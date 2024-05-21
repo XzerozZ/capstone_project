@@ -1,9 +1,8 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../utils/prisma';
 
 //http://localhost:3000/api/job
 export async function POST( req: Request ) {
-  const prisma = new PrismaClient();
   try {
       const formData = await req.formData();
       const id = parseInt(formData.get('id') as string);
@@ -93,7 +92,6 @@ export async function POST( req: Request ) {
 
 
 export async function GET() {
-  const prisma = new PrismaClient();
   try {
     const jobs = await prisma.job.findMany({
       where : {
@@ -129,7 +127,6 @@ export async function GET() {
 }
 
 export async function PUT( req: Request ){
-  const prisma = new PrismaClient();
   try {
     const formData = await req.formData();
     const id = parseInt(formData.get('id') as string);
@@ -170,7 +167,6 @@ export async function PUT( req: Request ){
 }
 
 export async function DELETE( req: Request ) {
-  const prisma = new PrismaClient();
   try {
     const formData = await req.formData();
     const jobId = parseInt(formData.get('id') as string);

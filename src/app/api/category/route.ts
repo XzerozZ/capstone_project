@@ -1,8 +1,7 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../utils/prisma';
 
 export async function GET() {
-    const prisma = new PrismaClient();
     try{
         const cate = await prisma.category.findMany()
         await prisma.$disconnect();

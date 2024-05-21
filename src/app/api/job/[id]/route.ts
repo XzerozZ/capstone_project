@@ -1,9 +1,8 @@
 'use server'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../utils/prisma';
 
 // http://localhost:3000/api/job/[id]
 export async function GET(request: Request, { params }: { params: { id: string } }) {
-    const prisma = new PrismaClient();
     try {
         const jobID = await prisma.job.findUnique({
             where: {

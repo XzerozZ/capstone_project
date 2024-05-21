@@ -1,9 +1,8 @@
 'use server'
 import axios from 'axios'
-import { PrismaClient } from '@prisma/client';
+import prisma from '../utils/prisma';
 
 export async function POST( req : Request ) {
-    const prisma = new PrismaClient();
     try{
         const formData = await req.formData();
         const email = formData.get('email') as string

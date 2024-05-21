@@ -1,13 +1,12 @@
 import nodeemailer from "nodemailer";
 import { Email } from "../../interface/interface";
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../utils/prisma';
 const emailConfig: Email = {
   email: process.env.EMAIL || '',
   key: process.env.EMAIL_PASS || ''
 };
 
 export const sentSalary = async (UserId: number, money: number) => {
-    const prisma = new PrismaClient();
     const user = await prisma.user.findUnique({
         where : {
           user_id : UserId
