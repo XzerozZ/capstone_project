@@ -26,7 +26,8 @@ export async function PUT(req : Request) {
                     job_id : order.job_id
                 },
                 data : {
-                    mass : order.product_mass
+                    mass : order.product_mass,
+                    status : 'Open'
                 }
             })
             const wal = await prisma.digitalwal.findMany({
