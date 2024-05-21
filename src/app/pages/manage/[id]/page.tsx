@@ -31,6 +31,7 @@ const page = () => {
   const Router = useRouter()
   const [JobStatus, setJobStatus] = React.useState<StatusWork>({} as StatusWork)
   const [OrderID, setOrderID] = React.useState<string>('')
+  const [URLPayment,setURLPayment] = React.useState<string>('')
 
   //////////////////////////////////////////////////////
 
@@ -45,7 +46,7 @@ const page = () => {
     })
   }
   
-  console.log(session)
+ 
   const fetchPostWork = async (email:any) => {
     const formData = new FormData()
     formData.append('email', email)
@@ -75,6 +76,7 @@ const page = () => {
     try {
       await axios.post('/api/work/job',formData).then((res) => {
         setJobStatus(res.data)
+      
         
       })
     } catch (error) {
@@ -89,7 +91,9 @@ const page = () => {
   formData.append('job_id', job_id)
   await axios.post('/api/job/sentwork',formData).then((res) => {
     console.log(res.data)
-    setOrderID(res.data)
+    Router.push(res.data.URL)
+    setURLPayment(res.data)
+    // setOrderID(res.data)
     // const formData = new FormData()
     // formData.append('orderId', res.data)
     // console.log(res.data,'then 2')
@@ -108,15 +112,9 @@ const page = () => {
  
  
   useEffect(() => {
-      const query = new URLSearchParams(window.location.search);
-    if (query.get('success')) {
-      console.log('Order placed! You will receive an email confirmation.');
-    }
-    if (query.get('canceled')) {
-      console.log(
-        'Order canceled -- continue to shop around and checkout when you’re ready.'
-      );
-    }
+      // if (URLPayment !== '') {
+      //   Router.push(URLPayment)
+      // }
   
      if (session){
         if (Person !== undefined || Person !== null ) {
@@ -125,10 +123,11 @@ const page = () => {
           setIsLoading(false)
           fetchStatusWork(params.id)
           setUserEmail(session?.user?.email)
+          
         }
      }
     
-  }, [session,Person])
+  }, [session,Person,URLPayment])
 
   if (isLoading) {
     return  <div className='flex justify-center h-[500px] items-center'>
