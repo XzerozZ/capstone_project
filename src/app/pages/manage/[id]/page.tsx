@@ -14,13 +14,14 @@ import { Dropdown, Loader, Rate } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
 
 ////////////////////////
-import { loadStripe } from '@stripe/stripe-js'
-const stripePromise = loadStripe('process.env.PUBLISHABLE_KEY')
+// import { loadStripe } from '@stripe/stripe-js'
+// const stripePromise = loadStripe('process.env.PUBLISHABLE_KEY')
 
 
 
 
 const page = () => {
+  
   const {data:session,status} = useSession()
   const params = useParams()
   const [work, setWork] = React.useState([] as any[])
@@ -32,18 +33,6 @@ const page = () => {
   const [OrderID, setOrderID] = React.useState<string>('')
 
   //////////////////////////////////////////////////////
-  useEffect(() => {
-    const query = new URLSearchParams(window.location.search);
-    if (query.get('success')) {
-      console.log('Order placed! You will receive an email confirmation.');
-    }
-    if (query.get('canceled')) {
-      console.log(
-        'Order canceled -- continue to shop around and checkout when you’re ready.'
-      );
-    }
-  }, [])
-
 
 
  //////////////////////////////////////////////////////
@@ -56,7 +45,7 @@ const page = () => {
     })
   }
   
-
+  console.log(session)
   const fetchPostWork = async (email:any) => {
     const formData = new FormData()
     formData.append('email', email)
@@ -99,11 +88,11 @@ const page = () => {
   formData.append('email', email)
   formData.append('job_id', job_id)
   await axios.post('/api/job/sentwork',formData).then((res) => {
-    console.log(res.data,'sent work success')
+    console.log(res.data)
     setOrderID(res.data)
-    const formData = new FormData()
-    formData.append('orderId', res.data)
-    console.log(res.data,'then 2')
+    // const formData = new FormData()
+    // formData.append('orderId', res.data)
+    // console.log(res.data,'then 2')
   //   axios.put('/api/job/sentwork/payment',formData).then((res) => {
   //     console.log(res.data)
       
@@ -119,6 +108,16 @@ const page = () => {
  
  
   useEffect(() => {
+      const query = new URLSearchParams(window.location.search);
+    if (query.get('success')) {
+      console.log('Order placed! You will receive an email confirmation.');
+    }
+    if (query.get('canceled')) {
+      console.log(
+        'Order canceled -- continue to shop around and checkout when you’re ready.'
+      );
+    }
+  
      if (session){
         if (Person !== undefined || Person !== null ) {
           fetchPerson(params.id)
