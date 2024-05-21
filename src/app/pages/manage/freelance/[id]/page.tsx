@@ -28,46 +28,47 @@ const page = (props: Props) => {
     const fetchFreelance = async (email:any) => {
         const formData = new FormData()
         formData.append('email', email.replace('%40','@') as string)
-        axios.post(`/api/user/info/`,formData).then((res) => {
-         
-            setFreelance(res.data)
-
-        })
+        try {
+            const res = await axios.post(`/api/user/info/`, formData);
+            setFreelance(res.data);
+        } catch (error) {
+            // Handle error here
+        }
     }
     
     const fetchWorkHistory = async (email:any) => {
         const formData = new FormData()
         formData.append('email', email.replace('%40','@') as string)
-        axios.post(`/api/history/user/complete`,formData).then((res) => {
-            setHistory(res.data)
+        try {
+            const res = await axios.post(`/api/history/user/complete`, formData);
+            setHistory(res.data);
             if (res.data.message === 'Not have any history') {
-                setCheckType(false)
+                setCheckType(false);
             }
-        })
+        } catch (error) {
+            // Handle error here
+        }
     
     }
 
-    console.log(CheckType,'history');
-    console.log(CheckArray,'Array');
-    
-    console.log(history)
+  
     const fetchComment = async (email:any) => {
         const formData = new FormData()
         formData.append('email', email.replace('%40','@') as string)
-        axios.post(`/api/user/comment`,formData).then((res) => {
-            console.log(res.data)
-            setComment(res.data)
-          
-            setHistory(res.data.message)
+        try {
+            const res = await axios.post(`/api/user/comment`, formData);
+            setComment(res.data);
+            setHistory(res.data.message);
             if (comment.length === 0) {
-                setCheckArray(false)
+                setCheckArray(false);
             }
-          
-        })
+        } catch (error) {
+           
+        }
 
 
     }
-    console.log(CheckType)
+    
     useEffect(() => {
        if (freelance !== undefined || freelance !== null) {
         fetchFreelance(params.id)
@@ -88,36 +89,36 @@ const page = (props: Props) => {
        
        
 
-      return (
-        <>
-          <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
-            <div className='w-[1140px] flex flex-col gap-6 p-3'>
-                <div className='flex gap-7 max-sm:flex-col'>
-                    <img src={freelance?.image} alt="" className='w-3/5 max-sm:w-full rounded-md aspect-square'/>
-                    <div className='w-2/5 max-sm:w-full flex flex-col gap-3'>
-                        <h1 className='text-3xl text-[#202192] font-bold'>{freelance?.first_name} {freelance?.last_name}</h1>
-                        <h3 className='text-xl text-black'><Rate max={5} defaultValue={freelance?.averageRating} allowHalf readOnly color='yellow'/>{freelance?.averageRating?.toFixed(2) || 'no data'}</h3>
-                        <div className='flex flex-col gap-2'>
-                            <h1 className='text-black text-2xl'>ความถนัด</h1>
-                            
-                            <div className='flex flex-wrap gap-3'>
-                                   {/* {
-                                    freelance?.categories?.map((item, index) => {
-                                        return (
-                                            <button key={index} className='px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe] text-sm'>{item || 'no data'}</button>
-                                        )
-                                    })
-                                   } */}
-                                  
-                            </div>
-                        </div>
-                        <div className='flex flex-col gap-2'>
-                            <h1 className='text-black text-2xl'>Contact</h1>
-                           
-                               {
-                                freelance?.contact?.map((item, index) => {
-                                    return (
-                                        <div className='flex gap-1 flex-col bg-gray-200 rounded-lg '>
+    return (
+      <>
+        <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
+        <div className='w-[1140px] flex flex-col gap-6 p-3'>
+            <div className='flex gap-7 max-sm:flex-col'>
+              <img src={freelance?.image} alt="" className='w-3/5 max-sm:w-full rounded-md aspect-square'/>
+              <div className='w-2/5 max-sm:w-full flex flex-col gap-3'>
+                <h1 className='text-3xl text-[#202192] font-bold'>{freelance?.first_name} {freelance?.last_name}</h1>
+                <h3 className='text-xl text-black'><Rate max={5} defaultValue={5} allowHalf readOnly color='yellow'/>{freelance?.averageRating?.toFixed(2) || 'no data'}</h3>
+                <div className='flex flex-col gap-2'>
+                    <h1 className='text-black text-2xl'>ความถนัด</h1>
+                    
+                    <div className='flex flex-wrap gap-3'>
+                         {/* {
+                        freelance?.categories?.map((item, index) => {
+                            return (
+                              <button key={index} className='px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe] text-sm'>{item || 'no data'}</button>
+                            )
+                        })
+                         } */}
+                        
+                    </div>
+                </div>
+                <div className='flex flex-col gap-2'>
+                    <h1 className='text-black text-2xl'>Contact</h1>
+                   
+                     {
+                      freelance?.contact?.map((item, index) => {
+                        return (
+                            <div className='flex gap-1 flex-col bg-gray-200 rounded-lg '>
 
                                             <Link href={item?.facebook || 'no data'} className='hover:bg-[#202192]/5 text-black px-5 py-3  hover:text-[#202192] rounded-t-md  hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaFacebookSquare size={40}/> <span className='my-auto text-xl text-black'>Facebook</span></h3></Link>
                                             <Link href={item?.instagram || 'no data'} className='hover:bg-[#202192]/5 text-black px-5 py-3 hover:text-[#202192]   hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaInstagram size={40}/><span className='my-auto text-xl text-black'>Instagram</span></h3></Link>

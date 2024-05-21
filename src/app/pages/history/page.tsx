@@ -17,11 +17,14 @@ const page = (props: Props) => {
     const fetchHistory = async (email:any) => {
         const formData = new FormData()
         formData.append('email', email)
-        axios.post('/api/history/user', formData).then((res) => {
-            console.log(res)
-            setHistory(res.data)
+        try {
+            const res = await axios.post('/api/history/user', formData)
             
-        })
+            setHistory(res.data)
+        } catch (error) {
+            
+            // Handle error here
+        }
     }
     console.log(session)
 
