@@ -1,15 +1,10 @@
 'use server'
 import bcrypt from 'bcrypt';
 import prisma from '../../utils/prisma';
-import Stripe from "stripe" ;
-import { Stripe1 } from '../../interface/interface';
 import { formatIdcard , formatPhoneNumber } from '../format';
 import { upLoadIMG } from '../../admin/supabase';
-const stripeConfig: Stripe1 = {
-    key: process.env.STRIPE_SECRET_KEY || ''
-};
+
 export async function POST(req: Request) {
-    const stripe = new Stripe(stripeConfig.key);
     try {
         const formData = await req.formData();
         let image: string | null = null;
@@ -40,43 +35,8 @@ export async function POST(req: Request) {
                 role: formData.get('role') as string,
             },
         });
-          
-        if(newuser.role === 'company') {
-            const wal = await stripe.customers.create({
-                name: newuser.username,
-                email: newuser.email,
-                balance: -10000000
-            });
-            await prisma.digitalwal.create({
-                data : {
-                    wal_id : wal.id,
-                    user_id : newuser.user_id,
-                    amount : -(wal.balance) / 100
-                }
-            })
-            await prisma.$disconnect();
-            return Response.json(newuser);
-        }
-        else if(newuser.role === 'user'){
-            const wal = await stripe.customers.create({
-                name: newuser.username,
-                email: newuser.email,
-                balance: 0
-            });
-            await prisma.digitalwal.create({
-                data : {
-                    wal_id : wal.id,
-                    user_id : newuser.user_id,
-                    amount : wal.balance
-                }
-            })
-            await prisma.$disconnect();
-            return Response.json(newuser);
-        }
-        else {
-            await prisma.$disconnect();
-            return Response.json(newuser);
-        }    
+        await prisma.$disconnect();
+        return Response.json(newuser);
     } catch (error) {
         await prisma.$disconnect();
         console.log(error);

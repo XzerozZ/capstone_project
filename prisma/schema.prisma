@@ -24,6 +24,7 @@ model user {
   history       history[]
   post          post[]
   OTP           OTP[]
+  wallet        wallet[]
   work          work[]
   rating_com1   rating_com[]  @relation("ratings_com_given")
   rating_com2   rating_com[]  @relation("ratings_com_received")
@@ -109,7 +110,7 @@ model job {
   type           String        @db.VarChar(9)
   posted_date    DateTime      @default(now())
   submitted_date DateTime?
-  status         String        @default("Incomplete") @db.VarChar(6)
+  status         String        @default("Incomplete") @db.VarChar(20)
   mass           Int?          @default(0)
   bookmark       bookmark[]
   history        history[]
@@ -201,4 +202,11 @@ model digitalwal {
   user_id        Int
   amount         Int
   user           user          @relation(fields: [user_id], references: [user_id])
+}
+
+model wallet {
+   wal_id         String        @db.VarChar(255) @unique
+   card_number    String        @db.VarChar(16)
+   user_id        Int
+   user           user          @relation(fields: [user_id], references: [user_id])
 }
