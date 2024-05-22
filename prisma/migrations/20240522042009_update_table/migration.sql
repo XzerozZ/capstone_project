@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "job" ALTER COLUMN "status" SET DATA TYPE VARCHAR(20);

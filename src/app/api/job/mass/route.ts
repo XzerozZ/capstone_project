@@ -1,15 +1,15 @@
 'use server'
 import prisma from '../../utils/prisma';
-import Stripe from 'stripe'
-import { Stripe1 } from '../../interface/interface';
+import Omise from "omise";
+import { IOptions } from 'omise';
 import { v4 as uuid } from "uuid";
 
-const stripeConfig: Stripe1 = {
-    key: process.env.STRIPE_SECRET_KEY || ''
-};
+const omiseConfig : IOptions = {
+    secretKey : process.env.OMISE_SECRET_KEY || ''
+}
 
 export async function POST( req: Request ) {
-    const stripe = new Stripe(stripeConfig.key);
+    const omise =  Omise(omiseConfig);
     try{
         const formData = await req.formData();
         const id = parseInt(formData.get('id') as string)
@@ -30,58 +30,39 @@ export async function POST( req: Request ) {
                 email : email
             },
             include : {
-                digitalwal : {
+                wallet : {
                     select : {
-                        amount : true
+                        wal_id : true
                     }
                 }
             }
         })
         if(job && user && product){
-            if(user.digitalwal[0].amount >= product.price){
-                const orderId = uuid()
-                const seesion = await stripe.checkout.sessions.create({
-                    payment_method_types: ['card'],
-                    line_items: [
-                        {
-                            price_data: {
-                                currency: 'thb',
-                                product_data : {
-                                    name: product.name,
-                                },
-                                unit_amount : (product.price)*100
-                            },
-                            quantity: 1
-                        },
-                    ],
-                    mode: 'payment',
-                    success_url: `http://localhost:3000/success.html?id=${orderId}`,
-                    cancel_url: `http://localhost:3000/cancel.html`
-                })
-                console.log(seesion)
-                const order = await prisma.order.create({
-                    data: {
-                        order_id : orderId,
-                        user_id1 : user.user_id,
-                        user_id2 : 1,
-                        job_id : job.job_id,
-                        amount : product.price,
-                        product_name : product.name,
-                        product_mass : product.mass,
-                        session_id : seesion.id,
-                        status : seesion.status
-                    }
-                })
-                await prisma.$disconnect();
-                return Response.json({
-                    order : order.order_id ,
-                    URL : seesion.url
-                })
-            }
-           else {
+            const orderId = uuid()
+            const customer = await omise.customers.retrieve(user.wallet[0].wal_id);
+            const session = await omise.charges.create({
+                currency: 'thb',
+                customer: customer.id,
+                card: customer.cards.data[0].id,
+                amount: product.price*100
+            })
+            const order = await prisma.order.create({
+                data: {
+                    order_id : orderId,
+                    user_id1 : user.user_id,
+                    user_id2 : 1,
+                    job_id : job.job_id,
+                    amount : product.price,
+                    product_name : product.name,
+                    product_mass : product.mass,
+                    session_id : session.id,
+                    status : 'success'
+                }
+            })
             await prisma.$disconnect();
-            return Response.json("Don't have enough money")
-           }
+            return Response.json(
+                order.order_id
+            )
         }
         else {
             await prisma.$disconnect();
@@ -91,6 +72,7 @@ export async function POST( req: Request ) {
         }
     }
     catch(error){
+        console.log(error)
         await prisma.$disconnect();
         return Response.json({
             error
