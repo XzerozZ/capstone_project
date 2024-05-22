@@ -59,8 +59,8 @@ export async function POST(req: Request) {
                 },
             ],
             mode: 'payment',
-            success_url: `http://localhost:3000/success.html?id=${orderId}`,
-            cancel_url: 'http://localhost:3000/cancel.html'
+            success_url: `http://localhost:3000/pages/payment/success/${orderId}`,
+            cancel_url: 'http://localhost:3000/pages/payment/failed/'
           })
           console.log(seesion)
           const order = await prisma.order.create({

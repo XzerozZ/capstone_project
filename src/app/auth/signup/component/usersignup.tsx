@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { ChangeEvent, useState } from 'react'
 import { FaCloudUploadAlt } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
 type Props = {}
 
 const usersignup = (props: Props) => {
@@ -47,8 +48,6 @@ console.log(selectedImage)
 console.log(userData)
 const handleSubmit = (e:any) => {
         e.preventDefault();
-        console.log(selectedImage,'image');
-
         const formData = new FormData();
         formData.append('email', userData.email);
         formData.append('username', userData.username);
@@ -61,12 +60,41 @@ const handleSubmit = (e:any) => {
         if (selectedImage) {
                 formData.append('image', selectedImage);
             }
-        console.log(formData);
+       
+      try {
         axios.post('/api/auth/register', formData)
-                .then((res) => {
-                        console.log(res);
-                        router.push('/pages/signin')
+        .then((res) => {
+            
+            
+                       
+               if (res.status === 200){
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Register success",
                 });
+                router.push('/pages/signin/user')
+               }
+               else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                });
+               }
+            
+            
+      
+        })
+      } catch (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+        });
+
+      }
+           
         
         console.log(formData)
         
