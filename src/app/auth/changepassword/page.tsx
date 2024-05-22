@@ -2,6 +2,7 @@
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import Swal from 'sweetalert2'
 
 type Props = {}
 
@@ -18,6 +19,15 @@ const page = (props: Props) => {
         formData.append('password', password)
         axios.post('/api/password/forgetpass', formData).then((res) => {
             console.log(res)
+         
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Please check your email to reset your password',
+            })
+            Router.push('/auth/signin')
+          
+
         })
         
     }

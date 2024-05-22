@@ -1,12 +1,11 @@
 "use client"
-import BookmarkComponent from "@/app/components/BookmarkComponent"
 import CardWork2 from "@/app/components/CardWork2"
 import axios from "axios"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
 import { Loader } from "rsuite"
 
-export default function Bookmark(/*{props}: any*/){
+const Bookmark = () => {
     const {data:session,status} = useSession()
     const [email, setEmail] = useState(session?.user?.email)
     const [bookmark, setBookmark] = useState([])
@@ -62,8 +61,11 @@ export default function Bookmark(/*{props}: any*/){
         )
     } else {
         return (
+            
+          <>
+          
             <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px]'>
-                <div className='w-[1140px] flex flex-col gap-4 p-3'>
+                <div className='w-[1140px] flex flex-col gap-4 p-3 min-h-screen mb-[-300px]'>
                     <div className="">
                         <div className="flex flex-col gap-1">
                             <h1 className='text-[#202192] font-bold text-3xl '>Bookmark</h1>
@@ -83,7 +85,8 @@ export default function Bookmark(/*{props}: any*/){
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></>
         )
     }
 }
+export default Bookmark

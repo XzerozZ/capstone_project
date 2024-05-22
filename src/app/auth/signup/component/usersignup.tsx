@@ -73,7 +73,7 @@ const handleSubmit = (e:any) => {
                     title: "Success",
                     text: "Register success",
                 });
-                router.push('/pages/signin/user')
+                router.push('/pages/signin')
                }
                else {
                 Swal.fire({

@@ -14,8 +14,10 @@ const page = (props: Props) => {
        formData.append('email', email);
        axios.post('/api/password/email', formData).then((res) => { 
               Router.push('/auth/OTP')
-              console.log(res)
+              console.log(res.data)
               localStorage.setItem('verifyOTP', 'not verify')
+              
+
     })}
   return (
     <>

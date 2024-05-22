@@ -53,7 +53,7 @@ const page = (props: Props) => {
   return (
     <>
        <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
-        <div className='w-[1140px] flex flex-col gap-4 p-3'>
+        <div className='w-[1140px] flex flex-col gap-4 p-3 min-h-screen mb-[-300px]'>
             <h1 className='text-3xl text-[#202192] font-bold'>ประวัติการทำงาน</h1>
             <div className="flex flex-col gap-1">
                                 <label>รูปแบบของงาน</label>

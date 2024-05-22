@@ -6,10 +6,11 @@ import { Category, User } from '@/interface'
 import { useSession } from 'next-auth/react'
 import { Loader } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
-import EditUser from './component/editUser'
-import EditCompany from './component/editCompany'
+
 import { Modal } from 'flowbite-react'
 import { FaCloudUploadAlt } from 'react-icons/fa'
+import Swal from 'sweetalert2'
+import { link } from 'fs'
 
 
 
@@ -23,20 +24,17 @@ const page = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [UserId, setUserId] = useState(session?.user?.id)
     const [category, setCate] = useState<Category[]>([] as Category[])
-    const [userData, setUserData] = React.useState({
-        email: '',
-        username: '',
-        phone_number: '',
-        password: '',
-        role: 'user',
-        image: '',})
-        const [data, setData] = useState({
+    
+    const [data, setData] = useState({
             id: UserId,
             first_name: '',
             last_name: '',
             name: '',
             phone_number: '',
             password: '',
+            facebook:'',
+            instagram:'',
+            linkedin:'',
     
 })
 
@@ -75,30 +73,39 @@ const handleSubmit = (e:any,id:any) => {
     formData.append('last_name', data.last_name);
     formData.append('phone_number', data.phone_number);
     formData.append('password', data.password);
+    formData.append('facebook', data.facebook);
+    formData.append('instagram', data.instagram);
+    formData.append('linkedin', data.linkedin);
     if (selectedImage) {
             formData.append('image', selectedImage);
     }
     axios.put('/api/user',formData)
             .then((res) => {
             console.log(res)
+            Swal.fire({
+                icon: 'success',
+                title: 'เปลี่ยนข้อมูลโปรไฟล์สำเร็จ',
+                showConfirmButton: false,
+                timer: 1500
+        })
+       
+       
             })
-            .catch((err) => {
-            console.log(err)
-            })
+           
     
-}
-
+} 
+    console.log(user)
     
     const fetchUser = async () => {
         const formData = new FormData()
         formData.append('email', session?.user?.email as string)
-        axios.post('/api/user/info', formData).then((res) => {
+        await axios.post('/api/user/info', formData).then((res) => {
           
             setUser(res.data)
         })
     }
     const fetchCategory = async () => {
-        axios.get('/api/category').then((res) => {
+        await axios.get('/api/category').then((res) => {
             // console.log(res)
             setCate(res.data)
         })
@@ -109,8 +116,9 @@ const handleSubmit = (e:any,id:any) => {
        
 
        if (session) {
-        fetchUser()
         fetchCategory()
+        fetchUser()
+        
         setUserId(session?.user?.id)
         if (user !== undefined || user !== null) {
              
@@ -145,7 +153,13 @@ const handleSubmit = (e:any,id:any) => {
        </div>
         
         <hr className='border-[#202192] mt-2'/> 
-        <div className='flex justify-between'>
+       
+        <div className='flex flex-col gap-3'>
+          
+           {
+             checkFree ?   <div className='flex flex-col gap-3'>
+
+<div className='flex justify-between '>
             <h1 className='my-auto text-5xl text-[#202192] font-bold w-3/4 max-sm:text-2xl'>{user.first_name} {user.last_name} ( {user.username} )</h1>
             <div className=''>
                 <img src={user?.image}    
@@ -182,10 +196,6 @@ const handleSubmit = (e:any,id:any) => {
             </div>
            
         </div>
-        <div className='flex flex-col gap-3'>
-          
-           {
-             checkFree ?   <div>
              <label className='text-[#202192] font-bold'>ประสบการณ์</label>
              <div className="flex flex-row gap-3 flex-wrap ">
                      {
@@ -195,29 +205,61 @@ const handleSubmit = (e:any,id:any) => {
                          })
                      }                
              </div>
-             </div> : <div></div>
+             </div> : <div>
+             <div className='flex justify-between'>
+            <h1 className='my-auto text-5xl text-[#202192] font-bold w-3/4 max-sm:text-2xl'>{user.username}</h1>
+            <div className=''>
+                <img src={user?.image}    
+                className='w-[120px] h-[150px] rounded-md'
+                 alt="" />
+            </div>
+
+        </div>
+        <div className='flex gap-5'>
+            <div className='w-full'>
+                <label className='text-[#202192] font-bold'>อีเมล</label>
+                <p className='p-2 border border-[#202192] rounded-md'>{user?.email}</p>
+            </div>
+            
+        </div>
+        <div className='flex gap-5'>
+            
+            <div className='w-full'>
+                <label className='text-[#202192] font-bold'>เบอร์โทรศัพท์</label>
+                <p className='p-2 border border-[#202192] rounded-md'>{user?.phone_number}</p>
+            </div>
+        </div>
+        <div className='flex gap-5'>
+            
+            <div className='w-full'>
+                <label className='text-[#202192] font-bold'>สถานะ</label>
+                <p className='p-2 border border-[#202192] rounded-md'>{user?.role}</p>
+            </div>
+           
+        </div>
+             </div>
            }
         
         </div> 
-             <div>
+             <div className='flex flex-col gap-3'>
                    <div className='flex gap-5'>
             <div className='w-full'>
                 <label className='text-[#202192] font-bold'>Facebook</label>
-                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0].facebook}>{user?.contact[0].facebook || ''}</Link></p>
+                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0]?.facebook}>{user?.contact[0]?.facebook || ''}</Link></p>
             </div>
             
         </div>
         <div className='flex gap-5'>
             <div className='w-full'>
                 <label className='text-[#202192] font-bold'>Instagram</label>
-                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0].instagram}>{user?.contact[0].instagram || ''}</Link></p>
+                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0]?.instagram}>{user?.contact[0]?.instagram || ''}</Link></p>
             </div>
             
         </div>
         <div className='flex gap-5'>
             <div className='w-full'>
                 <label className='text-[#202192] font-bold'>Linkedin</label>
-                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0].linkedin}>{user?.contact[0].linkedin || ''}</Link></p>
+                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0]?.linkedin}>{user?.contact[0]?.linkedin || ''}</Link></p>
             </div>
             
         </div>
@@ -225,10 +267,12 @@ const handleSubmit = (e:any,id:any) => {
           
             
     </div>
-    <Modal  show={openModal} onClose={() =>  setOpenModal(false)} >
-        <Modal.Header>Change information</Modal.Header>
+   {
+    checkFree ? <div>
+         <Modal  show={openModal} onClose={() =>  setOpenModal(false)} >
+        <Modal.Header>Change user information</Modal.Header>
         <Modal.Body>
-        <div className='flex flex-col gap-5 max-sm:p-10  w-full mx-auto' >
+        <div className='flex flex-col gap-5 max-sm:p-5  w-full mx-auto' >
                       <div className='flex justify-center gap-3'>
                       <div className='w-full'>
                               {previewImage ? (
@@ -258,7 +302,7 @@ const handleSubmit = (e:any,id:any) => {
                       </div>
 
                       <div>
-                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name or company name</label>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name </label>
                               <input 
                               type="text" 
                               id="name" 
@@ -308,6 +352,34 @@ const handleSubmit = (e:any,id:any) => {
                               </div>
                       
                       </div>
+                      <div>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook</label>
+                              <input 
+                              type="text" 
+                              id="facebook"
+                              name='facebook'
+                              onChange={handleChange}
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="input your facebook"  />
+                      </div>
+                      <div>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instagram</label>
+                              <input 
+                              type="text" 
+                              id="instagram"
+                              name='instagram'
+                              onChange={handleChange}
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="input your instagram"  />
+                      </div>
+
+                      <div>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Linkedin</label>
+                              <input 
+                              type="text" 
+                              id="linkedin"
+                              name='linkedin'
+                              onChange={handleChange}
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="input your linkedin"  />
+                      </div>
 
                       <div>
                               <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
@@ -332,6 +404,122 @@ const handleSubmit = (e:any,id:any) => {
       
       </Modal>
   
+    </div> : <div>
+    <Modal  show={openModal} onClose={() =>  setOpenModal(false)} >
+        <Modal.Header>Change company information</Modal.Header>
+        <Modal.Body>
+        <div className='flex flex-col gap-5 max-sm:p-5  w-full mx-auto' >
+                      <div className='flex justify-center gap-3'>
+                      <div className='w-full'>
+                              {previewImage ? (
+                                      <label htmlFor='uploadImage'>
+                                      <img className='w-[100px] h-[100px] rounded-md'
+                                              src={previewImage}
+                                              alt='Preview'
+                                      
+                                      />
+                                      </label>
+                              ) : (
+                                      <label htmlFor='uploadImage' className='cursor-pointer my-auto  bg-[#d9d9d9] flex justify-center rounded-md h-[200px]'>
+                                      <FaCloudUploadAlt className='my-auto text-[#b3b3b1] text-5xl' />
+                                      </label>
+                              )}
+                              
+                              <input
+                                      id='uploadImage'
+                                      type='file'
+                                      style={{ display: 'none' }}
+                                      onChange={handleImageChange}
+                                      
+                              />
+                              </div>
+                             
+              
+                      </div>
+
+                      <div>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Company name</label>
+                              <input 
+                              type="text" 
+                              id="name" 
+                             
+                              onChange={handleChange}
+                              name='name'
+                              
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="Company name"  />
+                      </div>
+                  
+                      
+                    
+                      <div className='flex flex-row gap-3 w-full justify-between'>
+                              <div  className='w-full'>
+                                      <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone number</label>
+                                      <input 
+                                      type="text" 
+                                      id="phone_number"  
+                                      name='phone_number'
+                                     
+                                      onChange={handleChange}
+                                      
+                                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="phone number"  />
+                              </div>
+                      
+                      </div>
+                      <div>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Facebook</label>
+                              <input 
+                              type="text" 
+                              id="facebook"
+                              name='facebook'
+                              onChange={handleChange}
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="input your facebook"  />
+                      </div>
+                      <div>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Instagram</label>
+                              <input 
+                              type="text" 
+                              id="instagram"
+                              name='instagram'
+                              onChange={handleChange}
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="input your instagram"  />
+                      </div>
+
+                      <div>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Linkedin</label>
+                              <input 
+                              type="text" 
+                              id="linkedin"
+                              name='linkedin'
+                              onChange={handleChange}
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="input your linkedin"  />
+                      </div>
+
+
+                      <div>
+                              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                              <input 
+                              type="password" 
+                              id="password"
+                              name='password'
+                              onChange={handleChange}
+                              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="Password"  />
+                      </div>
+                     
+                   
+
+                      
+
+
+                      <button onClick={(e)=> handleSubmit(e,UserId)} className="w-full text-white bg-[#202192] hover:bg-[#202192]/90 focus:ring-3 focus:ring-[#202192]/60 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#202192]/60 dark:hover:bg-[#202192]/70 focus:outline-none dark:focus:ring-[#202192]/80">Update</button>
+
+              
+                      </div>
+        </Modal.Body>
+      
+      </Modal>
+  
+    </div>
+   }
     </div>
    
   )

@@ -64,7 +64,7 @@ export default function Jobs(){
        setFilterData(updatedJobs);
        }
     }, [filter,job,category,categoryFilter])
-    const uniqueCategories = Array.from(new Set(job.flatMap(job => job.categories)));
+    const uniqueCategories = Array.from(new Set(job?.flatMap(job => job?.categories)));
 
 
     if (job.length === 0) {

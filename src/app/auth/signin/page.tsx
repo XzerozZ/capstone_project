@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link';
+import Swal from 'sweetalert2';
 
 type Props = {}
 
@@ -27,9 +28,29 @@ const  LoginPage = (props: Props) => {
                 redirect: false,
                 email,
                 password
+            }).then((res) => {
+                console.log(res);
+                
+                if(res && res.error){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: res.error,
+                    })
+                }
+                else{
+                   
+                    Router.push('/pages/profile')
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'You have successfully logged in',
+                    })
+                  
+                }
+                
             })
-            console.log(result)
-            Router.push('/')
+
             
         }
         catch(err){

@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import { Category } from '@/interface';
+import Option from '@/app/components/Options';
+import Swal from 'sweetalert2';
 
 
 
@@ -15,6 +17,7 @@ const page = () => {
   console.log(session?.user?.id)
   const [idUser, setId] = React.useState(session?.user?.id)
     const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
+
 
   
       
@@ -48,6 +51,12 @@ const page = () => {
         }
         axios.post('/api/user/category', formData).then((res) => {
           console.log(res);
+          Swal.fire({
+            icon: 'success',
+            title: 'เพิ่มข้อมูลโปรไฟล์สำเร็จ',
+            showConfirmButton: false,
+            timer: 1500
+            })
           router.push('/pages/profile')
         });
       }
@@ -70,7 +79,8 @@ const page = () => {
                 <div className='w-full '>
                                 <label className="block mb-2 text-xl font-medium text-[#202192] dark:text-white">ความถนัด</label>
                                 <MultiSelect
-                                    options={Cate.map((cate)=>({label:cate.name,value:cate.name}))}
+                                    // options={Cate.map((cate)=>({label:cate.name,value:cate.name}))}
+                                    options={Option}
                                     value={selected}
                                     onChange={setSelected}
                                     labelledBy="Select"

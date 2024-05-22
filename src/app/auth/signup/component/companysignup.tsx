@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, use, useState } from 'react'
 import { FaCloudUploadAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 type Props = {}
 
@@ -63,8 +64,23 @@ const handleSubmit = (e:any) => {
         console.log(formData);
         axios.post('/api/auth/register', formData)
                 .then((res) => {
+                    if (res.status === 200){
+                        Swal.fire({
+                            icon: "success",
+                            title: "Success",
+                            text: "Register success",
+                        });
                         console.log(res);
                         Router.push('/pages/signin/company')
+                       }
+                       else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Something went wrong!",
+                        });
+                       }
+                       
                 });
 
       

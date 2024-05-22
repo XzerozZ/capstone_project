@@ -2,6 +2,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 type Props = {}
 
@@ -15,11 +16,21 @@ const page = (props: Props) => {
        axios.post('/api/password/OTP', formData).then((res) => { 
         console.log(res.data)
              if (res.data === 'Success') {
+               Swal.fire({
+                  icon: 'success',
+                  title: 'Success',
+                  text: 'Verify OTP success',
+               })
                 Router.push('/auth/changepassword')
                 localStorage.setItem('verifyOTP', 'verify')
              }
                 else {
-                    alert('OTP ไม่ถูกต้อง')}
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'OTP is incorrect',
+                  })
+                }
 
           
     })}

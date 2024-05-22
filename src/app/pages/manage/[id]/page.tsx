@@ -15,6 +15,7 @@ import 'rsuite/dist/rsuite.min.css';
 
 ////////////////////////
 import { loadStripe } from '@stripe/stripe-js'
+import Swal from 'sweetalert2'
 const stripePromise = loadStripe('process.env.PUBLISHABLE_KEY')
 
 
@@ -68,6 +69,13 @@ const page = () => {
     formData.append('status', status)
     axios.put(`/api/company/selector/${job_id}`,formData).then((res) => {
       console.log(res.data)
+      Swal.fire({
+        icon: 'success',
+        title: 'เลือกผู้สมัครสำเร็จ',
+        showConfirmButton: false,
+        timer: 1500
+        
+      })
     })
   }
  const fetchStatusWork = async (job_id:any) => {

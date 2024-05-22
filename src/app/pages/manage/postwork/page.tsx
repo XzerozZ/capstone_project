@@ -8,6 +8,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import { MultiSelect } from 'react-multi-select-component';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import options from '@/app/components/Options';
 
 type Props = {}
 
@@ -28,12 +29,12 @@ const page = (props: Props) => {
   console.log(work.type)
  
 
-  const fetchCategory = async () => {
-    axios.get('/api/category').then((res) => {
+  // const fetchCategory = async () => {
+  //   axios.get('/api/category').then((res) => {
        
-        setCategory(res.data)
-    })
-  }
+  //       setCategory(res.data)
+  //   })
+  // }
   const handlePostWork = (id:any) => {
     const formData = new FormData()
     formData.append('title', work.title)
@@ -62,7 +63,7 @@ const page = (props: Props) => {
  
   useEffect(() => {
     if (session) {
-      fetchCategory()
+      // fetchCategory()
       
     }
   }, [category,session])
@@ -120,7 +121,8 @@ const page = (props: Props) => {
                     <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ประเภทงาน</label>
                    
                     <MultiSelect
-                        options={category.map((cate)=>({label:cate.name,value:cate.name}))}
+                        // options={category.map((cate)=>({label:cate.name,value:cate.name}))}
+                        options={options}
                         value={selected}
                         onChange={setSelected}
                         labelledBy="Select"
