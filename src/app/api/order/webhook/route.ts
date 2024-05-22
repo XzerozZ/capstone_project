@@ -2,6 +2,12 @@
 import prisma from '../../utils/prisma';
 import Stripe from 'stripe';
 import { Stripe1 } from '../../interface/interface';
+import Omise from "omise";
+import { IOptions } from 'omise';
+
+const omiseConfig : IOptions = {
+  secretKey : process.env.OMISE_SECRET_KEY || ''
+}
 import { Endpoint } from '../../interface/interface';
 
 const stripeConfig: Stripe1 = {
@@ -13,6 +19,7 @@ const endpointConfig: Endpoint = {
 
 export async function POST(req: Request) {
     const rawBody = await req.text()
+    const omise =  Omise(omiseConfig);
     const stripe = new Stripe(stripeConfig.key);
     const sig = req.headers.get('stripe-signature');
     let event;
