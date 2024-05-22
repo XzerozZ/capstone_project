@@ -1,16 +1,9 @@
 'use server'
 import prisma from '../../../utils/prisma';
-import Stripe from 'stripe';
-import { Stripe1 } from '@/app/api/interface/interface';
 import { sentInvoice } from '../email';
 import { sentSalary } from '../salary';
 
-const stripeConfig: Stripe1 = {
-    key: process.env.STRIPE_SECRET_KEY || ''
-};
-
 export async function PUT(req : Request) {
-    const stripe = new Stripe(stripeConfig.key);
     try{
         const formData = await req.formData();
         const orderId = formData.get('orderId') as string
@@ -29,60 +22,6 @@ export async function PUT(req : Request) {
                   },
                 data : {
                     status: 'Completed'
-                }
-            })
-            const wal1 = await prisma.digitalwal.findMany({
-                where : {
-                    user_id : order.user_id1
-                },
-                select : {
-                    wal_id : true,
-                    amount : true
-                }
-            })
-            const wal2 = await prisma.digitalwal.findMany({
-                where : {
-                    user_id : order.user_id2
-                },
-                select : {
-                    wal_id : true,
-                    amount : true
-                }
-            })
-            const customer1 = await stripe.customers.retrieve(wal1[0]?.wal_id);
-            const customer2 = await stripe.customers.retrieve(wal2[0]?.wal_id)
-            await stripe.customers.update(
-                customer1.id,
-                {
-                    metadata : {
-                        order_id : order.order_id
-                    },
-                    balance : (order.amount - wal1[0]?.amount) * 100 
-                }
-            )
-            await stripe.customers.update(
-                customer2.id,
-                {
-                    metadata : {
-                        order_id : order.order_id
-                    },
-                    balance : -(order.amount + wal2[0]?.amount) * 100 
-                }
-            )
-            await prisma.digitalwal.update({
-                where :{
-                    wal_id : wal2[0]?.wal_id
-                },
-                data : {
-                    amount :  order.amount + wal2[0]?.amount 
-                }
-            })
-            await prisma.digitalwal.update({
-                where : {
-                    wal_id : wal1[0]?.wal_id
-                },
-                data : {
-                    amount : - ( order.amount - wal1[0]?.amount )
                 }
             })
             await sentSalary(order.user_id2,order.amount)
