@@ -4,8 +4,9 @@ import axios from "axios"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
 import { Loader } from "rsuite"
+import 'rsuite/dist/rsuite.min.css';
 
-const Bookmark = () => {
+const page = () => {
     const {data:session,status} = useSession()
     const [email, setEmail] = useState(session?.user?.email)
     const [bookmark, setBookmark] = useState([])
@@ -23,27 +24,6 @@ const Bookmark = () => {
             // Handle the error here
         }
     }
-
-    useEffect(() => {
-        if (session) {
-            fetchBookmark(email);
-        }
-    }, [email, session]);
-
-    useEffect(() => {
-        if (bookmark.length > 0) {
-            setIsLoading(false);
-            applyFilter(filter);
-        }
-    }, [bookmark]);
-
-    useEffect(() => {
-        applyFilter(filter);
-        if (bookmark.length > 0) {
-            setIsLoading(false);
-        }
-    }, [filter,bookmark]);
-    console.log(bookmark)
     const applyFilter = (filter:any) => {
         if (filter === 'All') {
             setFilteredBookmark(bookmark);
@@ -52,6 +32,21 @@ const Bookmark = () => {
             setFilteredBookmark(filtered);
         }
     }
+
+    useEffect(() => {
+        if (session) {
+            fetchBookmark(email);
+            if (bookmark.length >= 0) {
+                setIsLoading(false);
+                applyFilter(filter);
+               
+            }
+        }
+    }, [email, session, bookmark, filter]);
+
+ 
+   
+  
 
     if (isLoading) {
         return (
@@ -89,4 +84,6 @@ const Bookmark = () => {
         )
     }
 }
-export default Bookmark
+export default page
+
+
