@@ -1,25 +1,37 @@
 "use client"
-import React, { useState } from 'react'
-import { Tabs } from 'rsuite'
+import React, { useEffect, useState } from 'react'
+import { Loader, Tabs } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
 import image from '@/app/assets/visa.png'
 import { CiCreditCard1 } from "react-icons/ci";
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Chip from '@/app/assets/chip.png';
-
+import CitiesInThailand from '@/components/CityOptions';
+import { MultiSelect } from 'react-multi-select-component';
+import { useSession } from 'next-auth/react';
+import 'rsuite/dist/rsuite.min.css';
 type Props = {}
 
 const page = (props: Props) => {
+  const {data:session,status} = useSession()
   const [value, setValue] = useState(false);
-  const [CheckCredit , setCheckCredit] = useState(true)
+  const [CheckCredit , setCheckCredit] = useState(false)
+  const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
+  const [cvc, setCvc] = useState('')
+  const [UserEmail, setUserEmail] = useState('' as any)
+  const [isLoading, setIsLoading] = useState(true)
+
+  
+
   const [CreditCard, setCreditCard] = useState(
     {
       email: '',
-      country: '',
+      city: '',
       postal_code:'',
       card: '',
-      expire: '',
+      exp_month: '',
+      exp_year: '',
       cvc: ''
     }
   )
@@ -32,28 +44,30 @@ const page = (props: Props) => {
       [name]: value
     }))
   }
-  const handleSubmit = (e:any) => {
-    e.preventDefault()
+  const handleSubmit = (cvc:any) => {
+    const [month, year] = cvc.split("/");
+   
     console.log(CreditCard)
     const formData = new FormData()
     formData.append('email', CreditCard.email)
-    formData.append('country', CreditCard.country)
+    formData.append('city', CreditCard.city)
     formData.append('postal_code', CreditCard.postal_code)
-    formData.append('card', CreditCard.card)
-    formData.append('expire', CreditCard.expire)
-    formData.append('cvc', CreditCard.cvc)
+    formData.append('card_number', CreditCard.card)
+    formData.append('exp_month', String(parseInt(month, 10))) 
+    formData.append('exp_year', String(2000 + parseInt(year, 10))) 
+    formData.append('code', CreditCard.cvc)
     if (value === true) {
-      // axios.post('/api/payment', formData).then((res) => {
-      //   console.log(res.data)
-      //   if (res.status === 200) {
-      //     Swal.fire({
-      //       icon: 'success',
-      //       title: 'Payment success',
-      //       showConfirmButton: false,
-      //       timer: 1500
-      //     })
-      //   }
-      // })
+      axios.post('/api/card', formData).then((res) => {
+        console.log(res.data)
+        if (res.status === 200) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Payment success',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      })
     }else {
       Swal.fire({
         icon: 'error',
@@ -63,9 +77,21 @@ const page = (props: Props) => {
       })
     }
   }
+  useEffect(() => {
+    if (session) {
+      setUserEmail(session?.user?.email)
+      setCheckCredit(true)
+      setIsLoading(false)
+    }
 
+  }, [session])
 
-  
+  if (isLoading) {
+    return  <div className='flex justify-center h-[500px] items-center'>
+      <Loader size="md"  color='black'/>
+    </div>
+  }else {
+
 
   
   return (
@@ -85,8 +111,8 @@ const page = (props: Props) => {
         </div>
       </Tabs.Tab>
       <Tabs.Tab eventKey="2" title="Credit card">
-       <div>
-         <div className='flex justify-between'>
+       <div className='flex flex-col gap-3'>
+         <div className='flex justify-between '>
           <h2 className='text-black'>Payment</h2>
           <button className='border border-[#ff0000] rounded-md  px-2 text-[#ff0000] hover:bg-[#ff0000] hover:text-white'>Delete card</button>
          </div>
@@ -152,14 +178,19 @@ const page = (props: Props) => {
              </div>
              <div className='flex gap-3'>
             <div className='w-1/2'>
-             <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
-                        <input 
-                        type="text" 
-                        id="country" 
-                        name='country'
-                        onChange={handleChange}
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="country" required />
-             </div> 
+            <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+
+                                <MultiSelect
+                                  
+                                    options={CitiesInThailand}
+                                    value={selected}
+                                    onChange={setSelected}
+                                    labelledBy="Select"
+                                    hasSelectAll={false}
+                                    className='bg-gray-50'
+                                />
+                               
+                            </div>
              <div className='w-1/2'>
              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Card number</label>
                         <input 
@@ -195,7 +226,7 @@ const page = (props: Props) => {
                         type="text" 
                         id="cvc" 
                         name='cvc'
-                        onChange={handleChange}
+                        onChange={(e) => setCvc(e.target.value)}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="CVC" required />
              </div>
             </div>
@@ -205,21 +236,23 @@ const page = (props: Props) => {
     
            </div>
            <div className='flex justify-end'>
-              <button className='py-2 px-5 bg-[#202192] rounded-md text-white' onClick={handleSubmit}>Add creditcard</button>
+              <button className='py-2 px-5 bg-[#202192] rounded-md text-white' onClick={() => handleSubmit(cvc)}>Add creditcard</button>
            </div>
             </div>
           </div>
        </div>
+
       </Tabs.Tab>
       
       </Tabs>
     </div>
     </div>
     </div>
+   
   }
      
     </>
   )
-}
+}}
 
 export default page
