@@ -12,11 +12,7 @@ import React, { useEffect } from 'react'
 import { MdWorkOutline } from 'react-icons/md'
 import { Dropdown, Loader, Rate } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
-
-////////////////////////
-import { loadStripe } from '@stripe/stripe-js'
 import Swal from 'sweetalert2'
-const stripePromise = loadStripe('process.env.PUBLISHABLE_KEY')
 
 
 
@@ -32,10 +28,10 @@ const page = () => {
   const Router = useRouter()
   const [JobStatus, setJobStatus] = React.useState<StatusWork>({} as StatusWork)
  
-  const [URLPayment,setURLPayment] = React.useState<string>('')
-
+  
   //////////////////////////////////////////////////////
 
+console.log(Person);
 
  //////////////////////////////////////////////////////
   const fetchPerson = async (id:any) => {
@@ -91,6 +87,17 @@ const page = () => {
       
     }
  }
+ 
+ const ConfirmPayment = async (order_id:any) => {
+  const formData = new FormData()
+  formData.append('orderId', order_id)
+  console.log(order_id)
+  await axios.put(`/api/job/sentwork/payment`, formData).then((res) => {
+      console.log(res.data)
+     
+  })
+  
+}
  const ComfirmWork = async (email:string,job_id:any)=> {
   const formData = new FormData()
   console.log(email,job_id,'user email')
@@ -99,18 +106,32 @@ const page = () => {
   formData.append('job_id', job_id)
   await axios.post('/api/job/sentwork',formData).then((res) => {
     console.log(res.data)
-    Router.push(res.data.URL)
-    setURLPayment(res.data)
-    
-    
-  
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to finish work?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, do it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        ConfirmPayment(res.data)
+      
+        Swal.fire({
+          title: "Success!",
+          text: "Thanks you for payment.",
+          icon: "success"
+        });
+      }
+    });
     
   })
  
   
 }
  
- console.log(JobStatus?.job?.history[0]?.status)
+
   useEffect(() => {
       // if (URLPayment !== '') {
       //   Router.push(URLPayment)
@@ -127,7 +148,7 @@ const page = () => {
         }
      }
     
-  }, [session,Person,URLPayment])
+  }, [session,Person])
 
   if (isLoading) {
     return  <div className='flex justify-center h-[500px] items-center'>
@@ -164,7 +185,7 @@ const page = () => {
                       </div>
                   </div>
                   <div className='w-4/5 max-sm:w-full flex flex-col gap-3 mt-[10px]'>
-                  <StatusTimelineCompany data={JobStatus}/>
+                  <StatusTimelineCompany data={Person}/>
                   <div className='flex flex-col gap-2'>
                           <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Github Link</label>
                           <div 

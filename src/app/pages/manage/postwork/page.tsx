@@ -1,19 +1,18 @@
 "use client"
 import 'rsuite/dist/rsuite.min.css';
 import React, { useEffect, useState } from 'react'
-import { HiCalendar } from 'react-icons/hi'
-import { IoCodeWorking } from "react-icons/io5";
 
-import { FaArrowRight } from 'react-icons/fa';
 import { MultiSelect } from 'react-multi-select-component';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import options from '@/app/components/Options';
+import { useRouter } from 'next/navigation';
 
 type Props = {}
 
 
 const page = (props: Props) => {
+  const Router = useRouter()
   const [category, setCategory] = useState([] as any[])
   const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
   const {data:session,status} = useSession()
@@ -26,7 +25,7 @@ const page = (props: Props) => {
     submitted_date: '',
   
   })
-  console.log(work.type)
+
  
 
   // const fetchCategory = async () => {
@@ -35,7 +34,8 @@ const page = (props: Props) => {
   //       setCategory(res.data)
   //   })
   // }
-  const handlePostWork = (id:any) => {
+  const handlePostWork = async (e:any,id:any) => {
+    e.preventDefault()
     const formData = new FormData()
     formData.append('title', work.title)
     formData.append('budget', work.budget)
@@ -48,9 +48,12 @@ const page = (props: Props) => {
       console.log(selected[i].value)
     }
     
-    axios.post('/api/job', formData).then((res) => {
+    await axios.post('/api/job', formData).then((res) => {
+      console.log(res.data)
+      Router.push(`/pages/manage/postwork/package/${res.data.job_id}`)
        
     })
+    
   }
   const handleChange = (e:any) => {
     const {name, value} = e.target
@@ -64,6 +67,7 @@ const page = (props: Props) => {
   useEffect(() => {
     if (session) {
       // fetchCategory()
+      setUserID(session?.user?.id)
       
     }
   }, [category,session])
@@ -141,7 +145,7 @@ const page = (props: Props) => {
             </div>
 
 
-            <button type="submit" className="w-full text-white bg-[#202192] hover:bg-[#202192]/90 focus:ring-3 focus:ring-[#202192]/60 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#202192]/60 dark:hover:bg-[#202192]/70 focus:outline-none dark:focus:ring-[#202192]/80" onClick={() => {handlePostWork(UserID)}}><span>ต่อไป</span></button>
+            <button type="submit" className="w-full text-white bg-[#202192] hover:bg-[#202192]/90 focus:ring-3 focus:ring-[#202192]/60 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#202192]/60 dark:hover:bg-[#202192]/70 focus:outline-none dark:focus:ring-[#202192]/80" onClick={(e) => {handlePostWork(e,UserID)}}><span>ต่อไป</span></button>
 
             
         </form>

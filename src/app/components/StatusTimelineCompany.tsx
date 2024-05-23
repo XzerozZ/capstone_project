@@ -12,14 +12,16 @@ import { Loader } from "rsuite";
 import 'rsuite/dist/rsuite.min.css';
 import { SiBrave } from "react-icons/si";
 
-const StatusTimelineCompany = ({data} : {data:StatusWork}) => {
+const StatusTimelineCompany = ({data} : {data:any}) => {
   const [status, setStatus] = useState<String>()
   
   useEffect(() => {
-    setStatus(data?.job?.history[0]?.status)
+    setStatus(data[0]?.status)
+    console.log(data[0]?.status,'status')
+    console.log(status,'data')
   }, [data])
 
-  if (data && data.job) {
+  if (data) {
     if (status === 'On working'){
       return <Timeline2 />
     } else if (status === 'Rejected'){
@@ -33,7 +35,7 @@ const StatusTimelineCompany = ({data} : {data:StatusWork}) => {
     }
   } else {
     return  <div>
-      
+      don't have data
     </div>
   }
 

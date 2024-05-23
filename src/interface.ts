@@ -271,3 +271,58 @@ export interface UserCredit {
     card_number: string;
     user_id:     number;
 }
+
+
+
+
+
+
+export interface Banking {
+    customer: CustomerBanking;
+    user:     UserBanking;
+}
+
+export interface CustomerBanking {
+    object:       string;
+    id:           string;
+    livemode:     boolean;
+    location:     string;
+    deleted:      boolean;
+    bank_account: BankAccount;
+    active:       boolean;
+    default:      boolean;
+    verified:     boolean;
+    description:  null;
+    email:        string;
+    failure_code: null;
+    name:         string;
+    tax_id:       null;
+    type:         string;
+    created_at:   Date;
+    schedule:     null;
+    metadata:     Metadata;
+    verified_at:  null;
+    activated_at: null;
+}
+
+export interface BankAccount {
+    object:         string;
+    livemode:       boolean;
+    last_digits:    string;
+    account_number: string;
+    name:           string;
+    type:           null;
+    created_at:     Date;
+    brand:          string;
+    bank_code:      string;
+    branch_code:    null;
+}
+
+
+export interface UserBanking {
+    rep_id:       string;
+    user_id:      number;
+    brand:        string;
+    card_number:  string;
+    created_date: Date;
+}

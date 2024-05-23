@@ -75,7 +75,8 @@ else {
                 
                    <Dropdown.Item><Link href="/pages/manage" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Company</Link></Dropdown.Item> 
                 
-                
+                   <Dropdown.Item><Link href="/pages/payment" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Payment</Link></Dropdown.Item>
+
                 <Dropdown.Item><Link href="/pages/history" className='hover:text-[#202192] no-underline text-black hover:no-underline'>History</Link></Dropdown.Item>
                 <Dropdown.Item><Link href="/pages/bookmark" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Bookmark</Link></Dropdown.Item>
         
@@ -115,7 +116,8 @@ else {
             <Dropdown label="" dismissOnClick={false} renderTrigger={() => <span><FaUser className='w-[30px] h-[30px] text-white'/></span>}>
               <Dropdown.Item><Link href="/pages/profile" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Profile</Link></Dropdown.Item>
               
-              
+              <Dropdown.Item><Link href="/pages/payment" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Payment</Link></Dropdown.Item>
+
               
               
               <Dropdown.Item><Link href="/pages/history" className='hover:text-[#202192] no-underline text-black hover:no-underline'>History</Link></Dropdown.Item>
