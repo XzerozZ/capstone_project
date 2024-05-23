@@ -42,6 +42,7 @@ export async function POST(req: Request) {
     })
     if (work && user && job && company) {
           const orderId = uuid()
+          const transfersId = uuid()
           const customer = await omise.customers.retrieve(company.wallet[0].wal_id);
           const session = await omise.charges.create({
               currency: 'thb',
@@ -53,6 +54,17 @@ export async function POST(req: Request) {
               amount: job.budget*100,
               recipient: user.rep[0].rep_id
           });
+          await prisma.transfer.create({
+            data : {
+              transfer_id : transfersId,
+              user_id1 : company.user_id,
+              user_id2 : user.user_id,
+              job_id : job.job_id,
+              amount : job.budget,
+              product_name : job.title,
+              session_id : session.id,
+            }
+          })
           const order = await prisma.order.create({
             data: {
                 order_id : orderId,
