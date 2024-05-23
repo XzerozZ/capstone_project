@@ -22,21 +22,36 @@ export async function POST(req: Request) {
                 formData.set(name, hashedPassword);
             }
         }
-        const newuser = await prisma.user.create({
-            data: {
-                first_name: formData.get('first_name') as string,
-                last_name: formData.get('last_name') as string,
-                username: formData.get('username') as string,
-                image: image,
-                phone_number: formData.get('phone_number') as string, // 1234567890
-                id_card: formData.get('id_card') as string, // 1234567891234
-                email: formData.get('email') as string,
-                password: formData.get('password') as string,
-                role: formData.get('role') as string,
-            },
-        });
-        await prisma.$disconnect();
-        return Response.json(newuser);
+        const email = formData.get('email') as string
+        const user = await prisma.user.findUnique({
+            where : {
+                email : email
+            }
+        })
+        if(!user){
+            const newuser = await prisma.user.create({
+                data: {
+                    first_name: formData.get('first_name') as string,
+                    last_name: formData.get('last_name') as string,
+                    username: formData.get('username') as string,
+                    image: image,
+                    phone_number: formData.get('phone_number') as string, // 1234567890
+                    id_card: formData.get('id_card') as string, // 1234567891234
+                    email: email,
+                    password: formData.get('password') as string,
+                    role: formData.get('role') as string,
+                },
+            });
+            await prisma.$disconnect();
+            return Response.json(newuser);
+        }
+        else{
+            await prisma.$disconnect();
+            return Response.json({
+                message : "Email already used"
+            }, { status: 404 });
+        }
+        
     } catch (error) {
         await prisma.$disconnect();
         console.log(error);

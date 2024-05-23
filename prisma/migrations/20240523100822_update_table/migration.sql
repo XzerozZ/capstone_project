@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "rep" ALTER COLUMN "created_date" SET DEFAULT CURRENT_TIMESTAMP;
