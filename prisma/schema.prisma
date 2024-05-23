@@ -23,6 +23,7 @@ model user {
   experience    experience[]
   history       history[]
   post          post[]
+  rep           rep[]
   OTP           OTP[]
   wallet        wallet[]
   work          work[]
@@ -209,4 +210,13 @@ model wallet {
    card_number    String        @db.VarChar(16)
    user_id        Int
    user           user          @relation(fields: [user_id], references: [user_id])
+}
+
+model rep {
+  rep_id          String        @db.VarChar(255) @unique
+  user_id         Int 
+  brand           String        @db.VarChar(20)
+  card_number     String        @db.VarChar(16)
+  created_date    DateTime      @default(now())
+  user            user          @relation(fields: [user_id], references: [user_id])
 }

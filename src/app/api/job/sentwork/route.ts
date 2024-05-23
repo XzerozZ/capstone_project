@@ -1,7 +1,6 @@
 'use server'
 import prisma from '../../utils/prisma';
-import { v4 as uuid } from "uuid";
-import Omise from "omise";
+import { v4 as uuid } from "uuid";;
 import { IOptions } from 'omise';
 
 const omiseConfig : IOptions = {
@@ -9,6 +8,7 @@ const omiseConfig : IOptions = {
 }
 
 export async function POST(req: Request) {
+  const Omise = require('omise');
   const omise =  Omise(omiseConfig);
   try {
     const formData = await req.formData();
@@ -36,6 +36,9 @@ export async function POST(req: Request) {
       where : {
         user_id : work?.user_id
       },
+      include : {
+        rep : true
+      }
     })
     if (work && user && job && company) {
           const orderId = uuid()
@@ -46,8 +49,9 @@ export async function POST(req: Request) {
               card: customer.cards.data[0].id,
               amount: job.budget*100
           })
-          const trans = await omise.transfers.create({ 
-              amount: job.budget*100
+          await omise.transfers.create({ 
+              amount: job.budget*100,
+              recipient: user.rep[0].rep_id
           });
           const order = await prisma.order.create({
             data: {
