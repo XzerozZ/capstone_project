@@ -21,13 +21,17 @@ export async function POST( req : Request ) {
                     message : "Have card"
                 })
             }
-            else{
+            else if(!wallet){
                 const bank = await prisma.rep.findFirst({
                     where : {
                         user_id : user.user_id
                     }
                 })
                 if(bank){
+                    await prisma.$disconnect();
+                    return Response.json("Have bank account")
+                }
+                else if(!bank){
                     await prisma.$disconnect();
                     return Response.json({
                         message : "Not found card or bank account"

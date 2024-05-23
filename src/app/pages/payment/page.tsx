@@ -16,11 +16,12 @@ type Props = {}
 const page = (props: Props) => {
   const {data:session,status} = useSession()
   const [value, setValue] = useState(false);
-  const [CheckCredit , setCheckCredit] = useState(false)
+  const [CheckCredit , setCheckCredit] = useState(true)
   const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
-  const [cvc, setCvc] = useState('')
+  const [Expire, setExpire] = useState('')
   const [UserEmail, setUserEmail] = useState('' as any)
   const [isLoading, setIsLoading] = useState(true)
+  
 
   
 
@@ -35,8 +36,8 @@ const page = (props: Props) => {
       cvc: ''
     }
   )
-  console.log(value);
   
+  console.log(selected[0]?.value)
   const handleChange = (e:any) => {
     const {name, value} = e.target
     setCreditCard((prev) => ({
@@ -44,18 +45,27 @@ const page = (props: Props) => {
       [name]: value
     }))
   }
-  const handleSubmit = (cvc:any) => {
-    const [month, year] = cvc.split("/");
+  const handleSubmit = async (email:any,Expire:any) => {
+    const [month, year] = Expire.split("/");
    
-    console.log(CreditCard)
+    console.log(CreditCard,'test')
     const formData = new FormData()
-    formData.append('email', CreditCard.email)
-    formData.append('city', CreditCard.city)
-    formData.append('postal_code', CreditCard.postal_code)
-    formData.append('card_number', CreditCard.card)
+    formData.append('email', email)
+    formData.append('city', selected[0]?.label)
+    formData.append('postal_code', CreditCard?.postal_code)
+    formData.append('card_number', CreditCard?.card)
     formData.append('exp_month', String(parseInt(month, 10))) 
     formData.append('exp_year', String(2000 + parseInt(year, 10))) 
     formData.append('code', CreditCard.cvc)
+    console.log(email)
+    console.log(selected[0]?.label)
+    console.log(CreditCard?.postal_code)
+    console.log(CreditCard?.card)
+    console.log(String(parseInt(month, 10)))
+    console.log(String(2000 + parseInt(year, 10)))
+    console.log(CreditCard.cvc)
+    
+
     if (value === true) {
       axios.post('/api/card', formData).then((res) => {
         console.log(res.data)
@@ -77,14 +87,40 @@ const page = (props: Props) => {
       })
     }
   }
+  
+  const CheckCreditCard = async (email:any) => {
+    const formData = new FormData()
+    formData.append('email', email)
+    await axios.post(`/api/checkcard`,formData).then((res) => {
+        console.log(res.data)
+        if (res.data.message === 'Not found card or bank account') {
+          setCheckCredit(false)
+          setIsLoading(false)
+        }
+        else{
+          setCheckCredit(true)
+          setIsLoading(false)
+        }
+    })
+  }
+  console.log(UserEmail)
+ console.log(CreditCard);
+ const DeleteCard = async (email:any) => {
+  
+ }
+ 
+
   useEffect(() => {
+
     if (session) {
       setUserEmail(session?.user?.email)
-      setCheckCredit(true)
+      setCheckCredit(UserEmail)
       setIsLoading(false)
+      CheckCreditCard(UserEmail)
+       
     }
 
-  }, [session])
+  }, [session,CheckCredit])
 
   if (isLoading) {
     return  <div className='flex justify-center h-[500px] items-center'>
@@ -99,8 +135,8 @@ const page = (props: Props) => {
   {
     CheckCredit ? 
 
-  <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#F9FAFA]'>
-    <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen mb-[-250px]'>
+  <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#F9FAFA] '>
+    <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen '>
     <div className='rounded-md bg-white p-3 border border-[#F5F6F7]  '> 
     <Tabs defaultActiveKey="1" appearance="subtle">
       <Tabs.Tab eventKey="1" title="History">
@@ -142,7 +178,7 @@ const page = (props: Props) => {
       </div>
       </div>
       </div>:    <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#F9FAFA]'>
-    <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen mb-[-250px]'>
+    <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen '>
     <div className='rounded-md bg-white p-3 border border-[#F5F6F7]'> 
     <Tabs defaultActiveKey="1" appearance="subtle">
       <Tabs.Tab eventKey="1" title="History">
@@ -172,6 +208,7 @@ const page = (props: Props) => {
                         <input 
                         type="text" 
                         id="email" 
+                        value={UserEmail}
                         name='email'
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="1234 1234 1234 1234" required />
@@ -192,11 +229,11 @@ const page = (props: Props) => {
                                
                             </div>
              <div className='w-1/2'>
-             <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Card number</label>
+             <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Postal code</label>
                         <input 
                         type="text" 
-                        id="postalcode" 
-                        name='postalcode'
+                        id="postal_code" 
+                        name='postal_code'
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="12345" required />
              </div>
@@ -217,7 +254,7 @@ const page = (props: Props) => {
                         type="text" 
                         id="expire" 
                         name='expire'
-                        onChange={handleChange}
+                        onChange={(e) => setExpire(e.target.value)}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="MM/YY" required />
              </div> 
              <div className='w-1/2'>
@@ -226,7 +263,7 @@ const page = (props: Props) => {
                         type="text" 
                         id="cvc" 
                         name='cvc'
-                        onChange={(e) => setCvc(e.target.value)}
+                        onChange={(e) => handleChange(e)}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="CVC" required />
              </div>
             </div>
@@ -236,7 +273,7 @@ const page = (props: Props) => {
     
            </div>
            <div className='flex justify-end'>
-              <button className='py-2 px-5 bg-[#202192] rounded-md text-white' onClick={() => handleSubmit(cvc)}>Add creditcard</button>
+              <button className='py-2 px-5 bg-[#202192] rounded-md text-white' onClick={() => handleSubmit(UserEmail,Expire)}>Add creditcard</button>
            </div>
             </div>
           </div>
