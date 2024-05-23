@@ -28,7 +28,7 @@ const  LoginPage = (props: Props) => {
                 password
             })
                 console.log(result)
-                Router.push('/pages/signin/job')
+                Router.push('/pages/signin/company/job')
             
             
         }

@@ -11,14 +11,14 @@ const companysignup = (props: Props) => {
     const [userData, setUserData] = React.useState({
         email: '',
         username: '',
-        first_name: '',
-        last_name: '',
+        first_name: 'company',
+        last_name: 'company',
         phone_number: '',
       
         password: '',
         role: 'company',
         image: '',
-        id_card: '',
+        id_card: '9999999999999',
 });
 const [selectedImage, setSelectedImage] = useState<File | null>(null);
 const [previewImage, setPreviewImage] = useState<string | null>(null);
@@ -92,18 +92,18 @@ const handleSubmit = (e:any) => {
   return (
     <>
      <form onSubmit={handleSubmit} className='flex flex-col w-[450px] gap-5 max-sm:p-10'>
-            <div className='flex justify-center'>
-            <div className=''>
+            <div className='flex justify-center w'>
+            <div className='w-full'>
                     {previewImage ? (
                         <label htmlFor='uploadImage'>
-                            <img className='w-[100px] h-[100px] rounded-md'
+                            <img className='w-full h-[100px] rounded-md'
                                 src={previewImage}
                                 alt='Preview'
                                
                             />
                         </label>
                     ) : (
-                        <label htmlFor='uploadImage' className='cursor-pointer my-auto w-[100px] h-[100px] bg-[#d9d9d9] flex justify-center rounded-md'>
+                        <label htmlFor='uploadImage' className='cursor-pointer my-auto w-full h-[200px] bg-[#d9d9d9] flex justify-center rounded-md'>
                             <FaCloudUploadAlt className='my-auto text-[#b3b3b1] text-5xl' />
                         </label>
                     )}
@@ -130,39 +130,8 @@ const handleSubmit = (e:any) => {
                     
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="company name" required />
             </div>
-            <div className='flex flex-row gap-3 w-full justify-between'>
-                <div  className='w-full'>
-                        <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Firstname</label>
-                        <input 
-                        type="text" 
-                        id="first_name" 
-                        name='first_name'
-                        onChange={handleChange}
-                        
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="firstname" required />
-                </div>
-                <div  className='w-full'>
-                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lastname</label>
-                    <input 
-                    type="text" 
-                    id="last_name" 
-                    onChange={handleChange}
-                    name='last_name'
-                    
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="lastname" required />
-                 </div>
-
-            </div>
-            <div>
-                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">id</label>
-                    <input 
-                    type="text" 
-                    id="id_card" 
-                    onChange={handleChange}
-                    name='id_card'
-                    
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="personal id" required />
-            </div>
+           
+         
             <div>
                     <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                     <input 

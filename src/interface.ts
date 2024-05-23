@@ -200,3 +200,74 @@ export interface User2 {
     password:     string;
     role:         string;
 }
+
+
+
+
+export interface CreditCard {
+    customer: CustomerCredit;
+    user:     UserCredit;
+}
+
+export interface CustomerCredit {
+    object:          string;
+    id:              string;
+    livemode:        boolean;
+    location:        string;
+    deleted:         boolean;
+    metadata:        Metadata;
+    cards:           Cards;
+    default_card:    string;
+    linked_accounts: Cards;
+    description:     null;
+    email:           string;
+    created_at:      Date;
+}
+
+export interface Cards {
+    object:   string;
+    data:     Datum[];
+    limit:    number;
+    offset:   number;
+    total:    number;
+    location: string;
+    order:    string;
+    from:     Date;
+    to:       Date;
+}
+
+export interface Datum {
+    object:              string;
+    id:                  string;
+    livemode:            boolean;
+    location:            string;
+    deleted:             boolean;
+    street1:             null;
+    street2:             null;
+    city:                string;
+    state:               null;
+    phone_number:        null;
+    postal_code:         string;
+    country:             string;
+    financing:           string;
+    bank:                string;
+    brand:               string;
+    fingerprint:         string;
+    first_digits:        null;
+    last_digits:         string;
+    name:                string;
+    expiration_month:    number;
+    expiration_year:     number;
+    security_code_check: boolean;
+    tokenization_method: null;
+    created_at:          Date;
+}
+
+export interface Metadata {
+}
+
+export interface UserCredit {
+    wal_id:      string;
+    card_number: string;
+    user_id:     number;
+}

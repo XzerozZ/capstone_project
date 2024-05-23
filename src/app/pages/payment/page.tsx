@@ -11,16 +11,19 @@ import CitiesInThailand from '@/components/CityOptions';
 import { MultiSelect } from 'react-multi-select-component';
 import { useSession } from 'next-auth/react';
 import 'rsuite/dist/rsuite.min.css';
+import { CreditCard } from '@/interface';
+import { set } from 'rsuite/esm/utils/dateUtils';
 type Props = {}
 
 const page = (props: Props) => {
   const {data:session,status} = useSession()
   const [value, setValue] = useState(false);
-  const [CheckCredit , setCheckCredit] = useState(true)
+  const [CheckCredit , setCheckCredit] = useState(false)
   const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
   const [Expire, setExpire] = useState('')
   const [UserEmail, setUserEmail] = useState('' as any)
   const [isLoading, setIsLoading] = useState(true)
+  const [CreditInfo, setCreditInfo] = useState<CreditCard>({} as CreditCard)
   
 
   
@@ -37,7 +40,7 @@ const page = (props: Props) => {
     }
   )
   
-  console.log(selected[0]?.value)
+ 
   const handleChange = (e:any) => {
     const {name, value} = e.target
     setCreditCard((prev) => ({
@@ -57,19 +60,11 @@ const page = (props: Props) => {
     formData.append('exp_month', String(parseInt(month, 10))) 
     formData.append('exp_year', String(2000 + parseInt(year, 10))) 
     formData.append('code', CreditCard.cvc)
-    console.log(email)
-    console.log(selected[0]?.label)
-    console.log(CreditCard?.postal_code)
-    console.log(CreditCard?.card)
-    console.log(String(parseInt(month, 10)))
-    console.log(String(2000 + parseInt(year, 10)))
-    console.log(CreditCard.cvc)
-    
-
     if (value === true) {
-      axios.post('/api/card', formData).then((res) => {
+      axios.post('/api/card/company', formData).then((res) => {
         console.log(res.data)
-        if (res.status === 200) {
+        if (res.data === 'Add Credit Card Successfully') {
+          setCheckCredit(true)
           Swal.fire({
             icon: 'success',
             title: 'Payment success',
@@ -87,7 +82,6 @@ const page = (props: Props) => {
       })
     }
   }
-  
   const CheckCreditCard = async (email:any) => {
     const formData = new FormData()
     formData.append('email', email)
@@ -103,20 +97,57 @@ const page = (props: Props) => {
         }
     })
   }
-  console.log(UserEmail)
- console.log(CreditCard);
- const DeleteCard = async (email:any) => {
   
- }
+  const fetchCreditCard = async (email:any) => {
+    const formData = new FormData()
+    formData.append('email', email)
+    await axios.post(`/api/card/company/email`,formData).then((res) => {
+        console.log(res.data)
+        setCreditInfo(res.data)
+       
+    })
+  }
+
+
  
+  
+ const DeleteCard = async (email:any) => {
+  setIsLoading(true)
+  setCheckCredit(false)
+  const formData = new FormData()
+  formData.append('email', email)
+  await axios.delete(`/api/card/company/email`, { data: formData }).then((res) => {
+      console.log(res.data)
+      if (res.status === 200) {
+        setCheckCredit(false)
+        setIsLoading(false)
+        Swal.fire({
+          icon: 'success',
+          title: 'Delete card success',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+      else{
+        setCheckCredit(true)
+        setIsLoading(false)
+      }
+  })
+ }
 
   useEffect(() => {
 
     if (session) {
       setUserEmail(session?.user?.email)
       setCheckCredit(UserEmail)
-      setIsLoading(false)
+     
       CheckCreditCard(UserEmail)
+      if (CheckCredit === true) {
+          fetchCreditCard(UserEmail)
+      }
+      else if (CheckCredit === false) {
+        setIsLoading(false)
+      }
        
     }
 
@@ -150,7 +181,7 @@ const page = (props: Props) => {
        <div className='flex flex-col gap-3'>
          <div className='flex justify-between '>
           <h2 className='text-black'>Payment</h2>
-          <button className='border border-[#ff0000] rounded-md  px-2 text-[#ff0000] hover:bg-[#ff0000] hover:text-white'>Delete card</button>
+          <button onClick={() => DeleteCard(UserEmail)} className='border border-[#ff0000] rounded-md  px-2 text-[#ff0000] hover:bg-[#ff0000] hover:text-white'>Delete card</button>
          </div>
           <div className='flex flex-col  justify-between px-3 pb-2 credit-card w-[300px] h-[170px] border border-[f5f6f7] rounded-md bg-gradient-to-r from-sky-500 to-indigo-500'>
              <div>
@@ -163,11 +194,11 @@ const page = (props: Props) => {
               </div>
              </div>
               <div>
-                  <h6 className='text-[#C0C0C0]'> 1234 1234 1234 1234</h6>
+                <h6 className='text-white'>{CreditInfo?.user?.card_number?.match(/.{1,4}/g)?.join(' ') || '1234 1234 1234 1234'}</h6>
               </div>
               <div className='flex justify-between text-white'>
-                  <h6 >Natchapon Ponlaem</h6>
-                  <h6 >05/24</h6>
+                  <h6 >{CreditInfo?.customer?.cards?.data[0]?.name}</h6>
+                  <h6 >{CreditInfo?.customer?.cards?.data[0]?.expiration_month}/{CreditInfo?.customer?.cards?.data[0]?.expiration_year}</h6>
               </div>
           </div>
           

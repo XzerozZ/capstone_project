@@ -22,16 +22,27 @@ export async function POST( req : Request ){
             }
         })
         if(user){
-            const customer = await omise.customers.listCards(user.wallet[0].wal_id)
             const wallet = await prisma.wallet.findFirst({
                 where : {
                     user_id : user.user_id
                 }
             })
-            return Response.json({
-                "customer" : customer,
-                "user"  : wallet
-            })
+            if(wallet){
+                const customer = await omise.customers.retrieve(user.wallet[0].wal_id)
+                await prisma.$disconnect();
+                return Response.json({
+                    "customer" : customer,
+                    "user"  : wallet
+                })
+            }
+            else{
+                await prisma.$disconnect();
+                return Response.json("Not Found Card(s)")
+            }
+        }
+        else{
+            await prisma.$disconnect();
+            return Response.json("Not Found This user")
         }
     }
     catch(error){
