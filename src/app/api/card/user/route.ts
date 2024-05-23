@@ -17,7 +17,6 @@ export async function POST( req : Request ) {
         if(card_number.length !== 16){
             return Response.json("Card_number's length is not right ")
         }
-
         const user = await prisma.user.findUnique({
             where : {
                 email : email
@@ -28,11 +27,10 @@ export async function POST( req : Request ) {
                 name: user.first_name + ' ' + user.last_name,
                 email: user.email,
                 type: 'individual',
-                verified : true,
                 bank_account: {
                     brand: 'kbank',
                     number: card_number,
-                    name: user.first_name + '' + user.last_name,
+                    name: user.first_name + ' ' + user.last_name,
                     last_digits: card_number.toString().slice(-4),
                     created : Date(),
                     object: 'bank_account'
