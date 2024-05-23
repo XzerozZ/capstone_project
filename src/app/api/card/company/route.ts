@@ -52,29 +52,6 @@ export async function POST( req : Request ) {
                   security_code: "123",
                 },
             });
-
-            const cus = await omise.recipients.create({
-                name: user.first_name + ' ' + user.last_name,
-                email: user.email,
-                type: 'individual',
-                verified : true,
-                bank_account: {
-                    brand: 'kbank',
-                    number: card_number,
-                    name: user.first_name + '' + user.last_name,
-                    last_digits: card_number.toString().slice(-4),
-                    created : Date(),
-                    object: ''
-                },
-            })
-            await prisma.rep.create({
-                data : {
-                    rep_id : cus.id,
-                    user_id : user.user_id,
-                    brand : cus.bank_account.brand,
-                    card_number : card_number,
-                }
-            })
             const wallet = await omise.customers.create({
                 email : user.email,
                 card : token.id

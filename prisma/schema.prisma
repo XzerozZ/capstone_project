@@ -32,7 +32,6 @@ model user {
   rating_user1  rating_user[] @relation("ratings_given")
   rating_users2 rating_user[] @relation("ratings_received")
   user_career   user_career[]
-  digitalwal    digitalwal[]
   order1        order[]       @relation("company")
   order2        order[]       @relation("user")
   transfer1     transfer[]       @relation("company")
@@ -199,13 +198,6 @@ model product {
   name           String        @db.VarChar(255) @unique
   price          Int
   mass           Int
-}
-
-model digitalwal {
-  wal_id         String        @db.VarChar(255) @unique
-  user_id        Int
-  amount         Int
-  user           user          @relation(fields: [user_id], references: [user_id])
 }
 
 model wallet {
