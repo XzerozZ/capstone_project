@@ -30,12 +30,6 @@ const page = () => {
   //       setCate(res.data)
   //   })
   //  }
-  const fetchCategory = async () => {
-    axios.get('/api/category').then((res) => {
-        // console.log(res)
-        setCate(res.data)
-    })
-}
 
   
     
@@ -62,9 +56,7 @@ const page = () => {
       }
 
 
-    useEffect(() => {
-      fetchCategory()
-    },[Cate])
+  
 
   return (
     <>
