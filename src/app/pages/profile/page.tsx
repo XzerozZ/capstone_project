@@ -245,21 +245,21 @@ const handleSubmit = (e:any,id:any) => {
                    <div className='flex gap-5'>
             <div className='w-full'>
                 <label className='text-[#202192] font-bold'>Facebook</label>
-                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0]?.facebook}>{user?.contact[0]?.facebook || ''}</Link></p>
+                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0]?.facebook || ''}>{user?.contact[0]?.facebook || ''}</Link></p>
             </div>
             
         </div>
         <div className='flex gap-5'>
             <div className='w-full'>
                 <label className='text-[#202192] font-bold'>Instagram</label>
-                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0]?.instagram}>{user?.contact[0]?.instagram || ''}</Link></p>
+                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0]?.instagram || ''}>{user?.contact[0]?.instagram || ''}</Link></p>
             </div>
             
         </div>
         <div className='flex gap-5'>
             <div className='w-full'>
                 <label className='text-[#202192] font-bold'>Linkedin</label>
-                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0]?.linkedin}>{user?.contact[0]?.linkedin || ''}</Link></p>
+                <p className='p-2 border border-[#202192] rounded-md'><Link href={user?.contact[0]?.linkedin || ''}>{user?.contact[0]?.linkedin || ''}</Link></p>
             </div>
             
         </div>

@@ -1,61 +1,43 @@
 "use client"
-import Script from 'next/script';
-import Omise from 'omise';
-import React, { useEffect } from 'react';
+import React from 'react'
+import { Placeholder, Tabs } from 'rsuite'
+import 'rsuite/dist/rsuite.min.css';
 
-let OmiseCard : any;
+type Props = {}
 
-const CheckoutCreditsCard = () => {
-   
-
-
-  const creditCardConfigure = () => {
-      OmiseCard.configure({
-          defaultPaymentMethod: 'credit_card',
-          otherPaymentMethods: []
-      })
-
-  }
-  const handleClick = (e:any) => {
-      e.preventDefault()
-      creditCardConfigure()
-
-  }
-  const handleLoadScript = () => {
-    let OmiseCard = (window as any).OmiseCard
-    OmiseCard.configure({
-      publicKey: 'pkey_test_5n8w2z5l1k6t3w5n8w2',
-      currency: 'thb',
-      frameLabel: 'FastWork',
-      frameDescription: 'Description',
-      submitLabel: 'PAY NOW',
-      buttonLabel: 'Pay with Omise',
-     
-
-    });
-    OmiseCard.configureButton('#credit-card');
-    OmiseCard.attach()
-}
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://cdn.omise.co/omise.js";
-    script.onload = handleLoadScript;
-    document.body.appendChild(script);
-
-    // Clean up the script when the component unmounts
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-  
-
+const page = (props: Props) => {
   return (
-    <div>
-      <form>
-        <button id='credit-card' className='btn' type='button' onClick={(e) => handleClick}>Payment with credit card</button>
-      </form>
+    <>
+     <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#F9FAFA]'>
+    <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen '>
+    <div className='rounded-md bg-white p-3 border border-[#F5F6F7] min-h-screen'> 
+    <Tabs defaultActiveKey="1" appearance="subtle">
+      <Tabs.Tab eventKey="1" title="History">
+      
+      </Tabs.Tab>
+      <Tabs.Tab eventKey="2" title="Credit card">
+       <div>
+          <h2>Payment</h2>
+          <div>
+            <h3>Payment method</h3>
+            <div className='flex gap-3'>
+              <div className=''>
+                <img src='' alt='test' width={100} height={100} />
+                <h5>Card</h5>
+                
+              </div>
+            </div>
+          </div>
+       </div>
+      </Tabs.Tab>
+      
+      </Tabs>
     </div>
-  );
+    </div>
+    </div>
+     
+    </>
+  )
 }
 
-export default CheckoutCreditsCard;
+export default page
