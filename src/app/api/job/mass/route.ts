@@ -38,6 +38,7 @@ export async function POST( req: Request ) {
             }
         })
         if(job && user && product){
+<<<<<<< HEAD
             const orderId = uuid()
             const customer = await omise.customers.retrieve(user.wallet[0].wal_id);
             const session = await omise.charges.create({
@@ -59,6 +60,49 @@ export async function POST( req: Request ) {
                     status : 'success'
                 }
             })
+=======
+            if(user.digitalwal[0].amount >= product.price){
+                const orderId = uuid()
+                const seesion = await stripe.checkout.sessions.create({
+                    payment_method_types: ['card'],
+                    line_items: [
+                        {
+                            price_data: {
+                                currency: 'thb',
+                                product_data : {
+                                    name: product.name,
+                                },
+                                unit_amount : (product.price)*100
+                            },
+                            quantity: 1
+                        },
+                    ],
+                    mode: 'payment',
+                    success_url: 'http://localhost:3000/success.html?id=${orderId}',
+                    cancel_url: 'http://localhost:3000/cancel.html'
+                })
+                console.log(seesion)
+                const order = await prisma.order.create({
+                    data: {
+                        order_id : orderId,
+                        user_id1 : user.user_id,
+                        user_id2 : 1,
+                        job_id : job.job_id,
+                        amount : product.price,
+                        product_name : product.name,
+                        product_mass : product.mass,
+                        session_id : seesion.id,
+                        status : seesion.status
+                    }
+                })
+                await prisma.$disconnect();
+                return Response.json({
+                    order : order.order_id ,
+                    URL : seesion.url
+                })
+            }
+           else {
+>>>>>>> parent of 9321c93 (Merge branch 'main' into connect-api)
             await prisma.$disconnect();
             return Response.json(
                 order.order_id

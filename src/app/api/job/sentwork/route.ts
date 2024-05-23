@@ -39,12 +39,32 @@ export async function POST(req: Request) {
     })
     if (work && user && job && company) {
           const orderId = uuid()
+<<<<<<< HEAD
           const customer = await omise.customers.retrieve(company.wallet[0].wal_id);
           const session = await omise.charges.create({
               currency: 'thb',
               customer: customer.id,
               card: customer.cards.data[0].id,
               amount: job.budget*100
+=======
+          const seesion = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: [
+                {
+                    price_data: {
+                        currency: 'thb',
+                        product_data : {
+                            name: job.title,
+                        },
+                        unit_amount : ( job.budget ) * 100
+                    },
+                    quantity: 1
+                },
+            ],
+            mode: 'payment',
+            success_url: 'http://localhost:3000/success.html?id=${orderId}',
+            cancel_url: 'http://localhost:3000/cancel.html'
+>>>>>>> parent of 9321c93 (Merge branch 'main' into connect-api)
           })
           const trans = await omise.transfers.create({ 
               amount: job.budget*100
