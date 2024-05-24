@@ -1,6 +1,6 @@
 'use client'
 import JobComponent from "@/app/components/JobComponent";
-import CardWork from "@/app/components/CardWork";
+import CardWork from "@/app/components/card/CardWork";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Job } from "@/interface";

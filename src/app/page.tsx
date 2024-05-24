@@ -2,14 +2,14 @@
 import Image from "next/image";
 import CategoryBox from "./components/CategoryBox";
 import JobRecommend from "./components/JobRecommend";
-import CardWorkRec from "./components/CardWorkRec";
+import CardWorkRec from "./components/card/CardWorkRec";
 import { Carousel } from "flowbite-react";
-import CardWork from "./components/CardWork";
+import CardWork from "./components/card/CardWork";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import CardSportlight from "./components/card/CardWork";
 
 export default function Home() {
 
@@ -22,7 +22,7 @@ export default function Home() {
 
   const fetchSportlight = async () => {
     try {
-      await axios.get('/api/sportlight').then((res) => {
+      await axios.get('/api/sponsor').then((res) => {
         console.log(res.data)
         setSportlight(res.data)
       })
@@ -32,9 +32,12 @@ export default function Home() {
   }
   useEffect(() => {
     if (session){
-      fetchSportlight()
+      if (Sportlight.length !== null){
+        fetchSportlight()
+
+      }
     }
-  },[session])
+  },[session,Sportlight])
 
 
   return (
@@ -75,22 +78,22 @@ export default function Home() {
                     </div>
                </div>
             </div>
-            <div>
+            {/* <div>
               <div className="flex justify-between">
               <h1 className="text-3xl text-[#202192]">Categories for services</h1>
               <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
 
               </div>
               <div className="grid grid-cols-4 gap-3 max-sm:grid-cols-2">
-                {/* {
+                {
                   Categories.map((cate, index) => {
                     return (
                       <CategoryBox key={index} data={cate}/>
                     )
                   })
-                } */}
+                }
               </div>
-            </div>
+            </div> */}
             <div className="flex gap-3 flex-col">
             <div className="flex justify-between">
               <h1 className="text-3xl text-[#202192]">Sportlight job</h1>
@@ -98,16 +101,16 @@ export default function Home() {
 
               </div>
               <div className="grid grid-cols-4 gap-4 max-sm:grid-cols-2">
-              {/* {
-                            MockData.map((item:any, index) => {
+              {
+                            Sportlight.map((item:any, index) => {
                                 return (
-                                  <></>
-                                    //  <CardWork key={index} props={item} />
+                                  
+                                     <CardSportlight key={index} props={item} />
                                  
                                     
                                 )
                             })
-                        } */}
+                        }
               </div>
             </div>
         </div>

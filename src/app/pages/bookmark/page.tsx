@@ -1,5 +1,5 @@
 "use client"
-import CardWork2 from "@/app/components/CardWork2"
+import CardWork2 from "@/app/components/card/CardWork2"
 import axios from "axios"
 import { useSession } from "next-auth/react"
 import { useEffect, useState } from "react"
