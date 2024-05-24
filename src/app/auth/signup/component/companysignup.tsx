@@ -11,14 +11,13 @@ const companysignup = (props: Props) => {
     const [userData, setUserData] = React.useState({
         email: '',
         username: '',
-        first_name: 'company',
-        last_name: 'company',
+       
         phone_number: '',
       
         password: '',
         role: 'company',
         image: '',
-        id_card: '9999999999999',
+        
 });
 const [selectedImage, setSelectedImage] = useState<File | null>(null);
 const [previewImage, setPreviewImage] = useState<string | null>(null);
@@ -52,17 +51,16 @@ const handleSubmit = (e:any) => {
         const formData = new FormData();
         formData.append('email', userData.email);
         formData.append('username', userData.username);
-        formData.append('first_name', userData.first_name);
-        formData.append('last_name', userData.last_name);
+       
         formData.append('phone_number', userData.phone_number);
-        formData.append('id_card', userData.id_card);
+      
         formData.append('password', userData.password);
         formData.append('role', userData.role);
         if (selectedImage) {
                 formData.append('image', selectedImage);
             }
         console.log(formData);
-        axios.post('/api/auth/register', formData)
+        axios.post('/api/auth/registercom', formData)
                 .then((res) => {
                     if (res.status === 200){
                         Swal.fire({

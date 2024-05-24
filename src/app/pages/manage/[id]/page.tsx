@@ -27,17 +27,18 @@ const page = () => {
   const [Person, setPerson] = React.useState([] as any[])
   const Router = useRouter()
   const [JobStatus, setJobStatus] = React.useState<StatusWork>({} as StatusWork)
+  const [CheckCreditCard , setCheckCredit] = React.useState(false)
  
   
   //////////////////////////////////////////////////////
 
-console.log(Person);
 
+ 
  //////////////////////////////////////////////////////
   const fetchPerson = async (id:any) => {
   
    
-    axios.get(`/api/company/selector/${id}`).then((res) => {
+    await axios.get(`/api/company/selector/${id}`).then((res) => {
        
         setPerson(res.data)
     })
@@ -57,9 +58,29 @@ console.log(Person);
     }
   
   }
+  const CheckCredit = async (email:any) => {
+    const formData = new FormData()
+    formData.append('email', email)
+    try {
+      await axios.post('/api/checkcard',formData).then((res) => {
+          console.log(res.data)
+          if (res.data.message === 'Not found card or bank account') {
+            setCheckCredit(false)
+            setIsLoading(false)
+          }
+          else{
+            setCheckCredit(true)
+            setIsLoading(false)
+          }
+      })
+    } catch (error) {
+      
+    }
+  
+  
+  }
   
   const handleSubmit = async (job_id:any,freelance_id:any,status:any) => {
-    console.log(job_id,freelance_id,status)
     const formData = new FormData()
     formData.append('id', freelance_id)
     formData.append('status', status)
@@ -98,39 +119,66 @@ console.log(Person);
   })
   
 }
- const ComfirmWork = async (email:string,job_id:any)=> {
-  const formData = new FormData()
-  console.log(email,job_id,'user email')
+ const ComfirmWork = async (email:string,job_id:any,Check:any)=> {
+  if (Check === true){
+    const formData = new FormData()
+  
 
-  formData.append('email', email)
-  formData.append('job_id', job_id)
-  await axios.post('/api/job/sentwork',formData).then((res) => {
-    console.log(res.data)
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You want to finish work?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, do it!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        ConfirmPayment(res.data)
+    formData.append('email', email)
+    formData.append('job_id', job_id)
+    await axios.post('/api/job/sentwork',formData).then((res) => {
+      console.log(res.data)
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You want to finish work?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, do it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          ConfirmPayment(res.data)
+        
+          Swal.fire({
+            title: "Success!",
+            text: "Thanks you for payment.",
+            icon: "success"
+          });
+        }
+      });
       
-        Swal.fire({
-          title: "Success!",
-          text: "Thanks you for payment.",
-          icon: "success"
-        });
-      }
-    });
-    
-  })
- 
+    })
+   
+  }
+  else if (CheckCreditCard === false){
+    Swal.fire({
+      icon: 'error',
+      title: 'You dont have credit card or bank account',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    Router.push('/pages/payment')
+  }
   
 }
- 
+const handlePostwork = async (Check:boolean) => {
+  console.log(Check);
+  
+  if (CheckCreditCard === true) {
+    Router.push('/pages/manage/postwork')
+
+}
+else if (CheckCreditCard === false){
+  Swal.fire({
+    icon: 'error',
+    title: 'You dont have credit card or bank account',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  Router.push('/pages/payment')
+}
+}
 
   useEffect(() => {
       // if (URLPayment !== '') {
@@ -141,14 +189,17 @@ console.log(Person);
         if (Person !== undefined || Person !== null ) {
           fetchPerson(params.id)
           fetchPostWork(UserEmail)
+          CheckCredit(UserEmail)
           setIsLoading(false)
           fetchStatusWork(params.id)
           setUserEmail(session?.user?.email)
           
+
+          
         }
      }
     
-  }, [session,Person])
+  }, [session,Person,CheckCreditCard])
 
   if (isLoading) {
     return  <div className='flex justify-center h-[500px] items-center'>
@@ -167,7 +218,7 @@ console.log(Person);
                
                <div className='flex justify-between'>
                   <h1 className='text-3xl text-[#202192]'>จัดการผู้สมัคร</h1>
-                 <Link href='/pages/manage/postwork'> <button className='border-2 border-[#202192] py-2 px-4 text-lg rounded-md text-[#202192] hover:text-white hover:bg-[#202192]'>เพิ่มงาน</button></Link>
+                  <button onClick={() => handlePostwork(CheckCreditCard)} className='border-2 border-[#202192] py-2 px-4 text-lg rounded-md text-[#202192] hover:text-white hover:bg-[#202192]'>เพิ่มงาน</button>
                </div>
                 <div className='flex gap-5 max-sm:flex-col'>
                 <div className='w-1/5  border border-1 rounded-md  p-4 border-black flex flex-col gap-1 max-sm:w-full max-sm:border-0 max-sm:p-1'>
@@ -195,7 +246,7 @@ console.log(Person);
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]"  >
                             {JobStatus.work_link || 'no data'}</div>
                             <button 
-                              onClick={() => ComfirmWork(UserEmail,params.id)}
+                              onClick={() => ComfirmWork(UserEmail,params.id,CheckCreditCard)}
                             className="bg-[#202192] border border-[#202192]  text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192] text-white"  >
                            ยอมรับ</button>
                   </div>

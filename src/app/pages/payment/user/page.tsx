@@ -60,6 +60,8 @@ const page = (props: Props) => {
         console.log(res.data)
         if (res.data === 'Add Banking Successfully') {
           setCheckCredit(true)
+          setIsLoading(true)
+
           Swal.fire({
             icon: 'success',
             title: 'Add banking success',
@@ -248,11 +250,17 @@ const page = (props: Props) => {
                         onChange={handleChange}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="1234 1234 1234 1234" required />
               </div>
+              <div className='flex gap-2'>
+           <input className='rounded-sm' type="checkbox" id="checkbox" name="checkbox" value="true" onChange={(e) => setValue(e.target.checked)}/>
+            <label htmlFor="checkbox" className="text-sm text-gray-900 dark:text-white">Billing is same as information</label>
+    
+           </div>
               
           
            <div className='flex justify-end'>
               <button className='py-2 px-5 bg-[#202192] rounded-md text-white' onClick={() => handleSubmit(UserEmail)}>Add creditcard</button>
            </div>
+
             </div>
           </div>
        </div>

@@ -3,18 +3,20 @@ import React, { use, useEffect } from 'react'
 import { FaCheck } from 'react-icons/fa';
 import { RiVipDiamondFill } from "react-icons/ri";
 import { MdClose } from 'react-icons/md';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import { Loader } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 import { set } from 'rsuite/esm/utils/dateUtils';
 import Swal from 'sweetalert2';
+import { Router } from 'express';
 
 type Props = {}
 
 const page = (props: Props) => {
     const params = useParams()
+    const Router = useRouter()
    
     const {data:session,status} = useSession() 
     const [UserEmail, setUserEmail] = React.useState(session?.user?.email)
@@ -57,8 +59,11 @@ const page = (props: Props) => {
                     text: "Thanks you for payment.",
                     icon: "success"
                   });
+                  Router.push('/pages/manage/postwork')
                 }
-              });
+               
+              }
+             );
 
         })
     }

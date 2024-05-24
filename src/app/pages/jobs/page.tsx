@@ -7,6 +7,8 @@ import { Job } from "@/interface";
 import { Loader } from "rsuite";
 import 'rsuite/dist/rsuite.min.css';
 import { log } from "console";
+import { useSession } from "next-auth/react";
+import { set } from "rsuite/esm/utils/dateUtils";
 
 
 export default function Jobs(){
@@ -16,7 +18,7 @@ export default function Jobs(){
     const [filter, setFilter] = useState('All');
     const [categoryFilter, setCategoryFilter] = useState('All');
     const [category, setCategory] = useState([] as any[])
-
+   
 
     const fetchCategory = async () => {
         try {
@@ -40,29 +42,34 @@ export default function Jobs(){
         } catch (error) {
           
         }
-    }
+    } 
+
+  
  
 
     
 
     useEffect(() => {
-       if (job !== undefined || job !== null && category !== undefined || category !== null) {
-        fetchJob()
-        fetchCategory()
-        let updatedJobs = job;
-        if (filter === 'All') {
-            setFilterData(job);
-        } 
-
-        if (filter !== 'All') {
-            updatedJobs = updatedJobs.filter(job => job.type === filter);
-        }
-        
-        if (categoryFilter !== 'All') {
-            updatedJobs = updatedJobs.filter(job => job.categories.includes(categoryFilter));
-        }
-       setFilterData(updatedJobs);
-       }
+   
+       
+        if (job !== undefined || job !== null && category !== undefined || category !== null) {
+            fetchJob()
+            fetchCategory()
+            let updatedJobs = job;
+            if (filter === 'All') {
+                setFilterData(job);
+            } 
+    
+            if (filter !== 'All') {
+                updatedJobs = updatedJobs.filter(job => job.type === filter);
+            }
+            
+            if (categoryFilter !== 'All') {
+                updatedJobs = updatedJobs.filter(job => job.categories.includes(categoryFilter));
+            }
+           setFilterData(updatedJobs);
+           }
+     
     }, [filter,job,category,categoryFilter])
     const uniqueCategories = Array.from(new Set(job?.flatMap(job => job?.categories)));
 

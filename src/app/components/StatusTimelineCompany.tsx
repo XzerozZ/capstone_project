@@ -17,8 +17,7 @@ const StatusTimelineCompany = ({data} : {data:any}) => {
   
   useEffect(() => {
     setStatus(data[0]?.status)
-    console.log(data[0]?.status,'status')
-    console.log(status,'data')
+   
   }, [data])
 
   if (data) {
