@@ -9,6 +9,13 @@ export async function GET() {
             NOT : {
                 mass : 0,
             }
+        },
+        include : {
+          post : {
+            include : {
+              user : true
+            }
+          }
         }
       })
       await prisma.$disconnect();
