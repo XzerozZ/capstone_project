@@ -7,6 +7,8 @@ import { Carousel } from "flowbite-react";
 import CardWork from "./components/CardWork";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 export default function Home() {
@@ -15,94 +17,25 @@ export default function Home() {
   const {data:session,status} = useSession()
   console.log(session)
   
-  const Categories = [{
-    cate : 'Web development',
-    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  }, {
-    cate : 'Mobile development',
-    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  },
-  {
-    cate: 'Software development',
-    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  },{
-    cate: 'Data analysis',
-    image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  }
-  ]
+  const [Sportlight,setSportlight] = useState([] as any[])
 
-  const MockData = [ // ข้อมูลต้องปรับตามฐานข้อมูลจริง
-  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  rating:"4.5",
-      categories: ["Webdev", "QA", "Comm"],
-      type: "freelance",
-      budget: "2000",
-      posted_date: "12/12/2566",
-      status: "hiring",
-      id:1
-  },
-  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  rating:"4.5",
-      categories: ["Webdev", "QA", "Comm"],
-      type: "freelance",
-      budget: "2000",
-      posted_date: "12/12/2566",
-      status: "hiring",
-      id:2
-  },
-  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  rating:"4.5",
-      categories: ["Comm"],
-      type: "freelance",
-      budget: "2000",
-      posted_date: "12/12/2566",
-      status: "hiring",
-      id:3
-  },
-  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  rating:"4.5",
-      categories: ["Webdev", "QA",  "System Admin"],
-      type: "Full-Time",
-      budget: "2000",
-      posted_date: "12/12/2566",
-      status: "hiring",
-      id:4
-  },
-  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  rating:"4.5",
-      categories: ["QA"],
-      type: "Full-Time",
-      budget: "2000",
-      posted_date: "12/12/2566",
-      status: "hiring",
-      id:5
-  },
-  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  rating:"4.5",
-      categories: ["Webdev", "QA", "Comm"],
-      type: "Full-Time",
-      budget: "2000",
-      posted_date: "12/12/2566",
-      status: "hiring",
-      id:6
-  },
-  {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-  image : 'https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg',
-  rating:"4.5",
-      categories: ["Webdev", "QA", "Comm"],
-      type: "Full-Time",
-      budget: "2000",
-      posted_date: "12/12/2566",
-      status: "hiring",
-      id:6
+
+  const fetchSportlight = async () => {
+    try {
+      await axios.get('/api/sportlight').then((res) => {
+        console.log(res.data)
+        setSportlight(res.data)
+      })
+    } catch (error) {
+      
+    }
   }
-]
+  useEffect(() => {
+    if (session){
+      fetchSportlight()
+    }
+  },[session])
+
 
   return (
    <>
@@ -149,18 +82,18 @@ export default function Home() {
 
               </div>
               <div className="grid grid-cols-4 gap-3 max-sm:grid-cols-2">
-                {
+                {/* {
                   Categories.map((cate, index) => {
                     return (
                       <CategoryBox key={index} data={cate}/>
                     )
                   })
-                }
+                } */}
               </div>
             </div>
             <div className="flex gap-3 flex-col">
             <div className="flex justify-between">
-              <h1 className="text-3xl text-[#202192]">Popular job</h1>
+              <h1 className="text-3xl text-[#202192]">Sportlight job</h1>
               <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
 
               </div>

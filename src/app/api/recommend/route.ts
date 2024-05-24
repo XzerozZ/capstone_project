@@ -11,10 +11,20 @@ export async function POST( req : Request ) {
                 email : email
             }
         })
-        const data = await axios.post('http://localhost:4000/api/processdata', {
-            user_id: user?.user_id
-        });
-        return Response.json(data.data)
+        if(user){
+            const data = await axios.post('http://localhost:4000/api/processdata', {
+                user_id: user.user_id
+            });
+            if(data){
+                return Response.json(data.data)
+            }
+            else{
+                return Response.json({message: 'Data not found'})
+            }
+        }
+        else{
+            return Response.json({message: 'User not found'})
+        }
     } catch(error){
         return Response.json(error)
     }
