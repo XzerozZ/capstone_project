@@ -48,7 +48,7 @@ export async function POST(req : Request) {
           },
           post: {
               create: {
-                user_id: 30
+                user_id: 6
               }
           }
         }
