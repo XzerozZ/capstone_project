@@ -119,6 +119,7 @@ const page = () => {
   })
   
 }
+ 
  const ComfirmWork = async (email:string,job_id:any,Check:any)=> {
   if (Check === true){
     const formData = new FormData()
@@ -251,6 +252,7 @@ else if (CheckCreditCard === false){
                            ยอมรับ</button>
                   </div>
     
+                      <div>
                       <div className="overflow-x-auto">
                             <Table hoverable>
                               <Table.Head>
@@ -291,6 +293,7 @@ else if (CheckCreditCard === false){
                               </Table.Body>
                             </Table>
                           </div>
+                      </div>
                   </div>
                 </div>
             </div>

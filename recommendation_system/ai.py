@@ -92,7 +92,7 @@ async def process_data(data: dict):
                     "image": job.get('image'),
                     "budget": job.get('budget'),
                     "posted_date": job.get('posted_date'),
-                    "categories": job.get('category_name')
+                    "categories": categories
                 }
                 recommendations.append(recommendation)
             

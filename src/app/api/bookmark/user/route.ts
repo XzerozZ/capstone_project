@@ -10,20 +10,37 @@ export async function POST(req : Request) {
                 email : email
             }
         })
-        const bookmark = await prisma.bookmark.findMany({
-            where : {
-                user_id : user?.user_id
-            },
-            include : {
-                user : true ,
-                job : true
+        if(user){
+            const bookmark = await prisma.bookmark.findMany({
+                where : {
+                    user_id : user.user_id
+                },
+                include : {
+                    user : true ,
+                    job : {
+                        include : {
+                            post : {
+                                include : {
+                                    user : true
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+            if(bookmark){
+                return Response.json(bookmark)
+            } 
+            else {
+                return Response.json({
+                    message : "Not habe any your bookmark Job(s)"
+                })
             }
-        })
-        if(bookmark){
-            return Response.json(bookmark)
-        } else {
+        }
+        else {
+            await prisma.$disconnect();
             return Response.json({
-                message : "Not habe any your bookmark Job(s)"
+                message : "Not Found User or Job"
             })
         }
     }

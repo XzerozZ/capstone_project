@@ -18,6 +18,8 @@ const DateFormatter = ({ timestamp }:any) => {
         return <div className='text-sm'>{formattedDate}</div>;
       };
       
+    console.log(props,'test');
+    
 
   return (
     <>

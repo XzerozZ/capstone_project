@@ -326,3 +326,13 @@ export interface UserBanking {
     card_number:  string;
     created_date: Date;
 }
+
+
+export interface JobPosting {
+    job_id: number;
+    title: string;
+    image: string | null;
+    budget: number;
+    posted_date: string;
+    categories: string[];
+  }

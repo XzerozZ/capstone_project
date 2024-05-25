@@ -24,8 +24,8 @@ const page = (props: Props) => {
   const [UserEmail, setUserEmail] = useState('' as any)
   const [isLoading, setIsLoading] = useState(true)
   const [CreditInfo, setCreditInfo] = useState<CreditCard>({} as CreditCard)
-  
-
+  const [PaymentHistory, setPaymentHistory] = useState([] as any[])
+ 
   
 
   const [CreditCard, setCreditCard] = useState(
@@ -134,12 +134,21 @@ const page = (props: Props) => {
       }
   })
  }
+ const fetchPaymentHistory = async (email:any) => {
+  const formData = new FormData()
+  formData.append('email', email)
+  await axios.post(`/api/order/history`,formData).then((res) => {
+      console.log(res.data)
+      setPaymentHistory(res.data)
+  })
+ }
 
   useEffect(() => {
 
     if (session) {
       setUserEmail(session?.user?.email)
       setCheckCredit(UserEmail)
+      fetchPaymentHistory(UserEmail)
      
       CheckCreditCard(UserEmail)
       if (CheckCredit === true) {

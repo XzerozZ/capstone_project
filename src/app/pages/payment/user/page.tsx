@@ -11,6 +11,7 @@ import { useSession } from 'next-auth/react';
 import 'rsuite/dist/rsuite.min.css';
 import {  Banking } from '@/interface';
 import kbank from '@/app/assets/kbank.png'
+import { set } from 'rsuite/esm/utils/dateUtils';
 type Props = {}
 
 const page = (props: Props) => {
@@ -21,6 +22,7 @@ const page = (props: Props) => {
   const [UserEmail, setUserEmail] = useState('' as any)
   const [isLoading, setIsLoading] = useState(true)
   const [CreditInfo, setCreditInfo] = useState<Banking>({} as Banking)
+  const [PaymentHistory, setPaymentHistory] = useState([] as any[])
   
 
   
@@ -113,7 +115,7 @@ const page = (props: Props) => {
   setCheckCredit(false)
   const formData = new FormData()
   formData.append('email', email)
-  await axios.delete(`/api/card/user`, { data: formData }).then((res) => {
+  await axios.delete(`/api/card/user/email`, { data: formData }).then((res) => {
       console.log(res.data)
       if (res.status === 200) {
         setCheckCredit(false)
@@ -132,11 +134,21 @@ const page = (props: Props) => {
   })
  }
 
+  const fetchUserHistory = async (email:any) => {
+    const formData = new FormData()
+    formData.append('email', email)
+    await axios.post('/api/transfer/history',formData).then((res) => {
+      console.log(res.data)
+      setPaymentHistory(res.data)
+    })
+  
+  }
   useEffect(() => {
 
     if (session) {
       setUserEmail(session?.user?.email)
       setCheckCredit(UserEmail)
+      fetchUserHistory(UserEmail)
      
       CheckCreditCard(UserEmail)
       if (CheckCredit === true) {

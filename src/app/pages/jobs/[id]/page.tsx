@@ -42,6 +42,13 @@ const page = () => {
         formData.append('job_id', job_id)
         axios.post('/api/history', formData).then((res) => {
             console.log(res.data)
+            Swal.fire({
+                icon: 'success',
+                title: 'Regiter job success',
+                showConfirmButton: false,
+                timer: 1500
+            })
+
         })
        }
        else if (role === 'company') {
