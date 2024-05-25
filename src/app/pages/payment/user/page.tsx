@@ -12,6 +12,8 @@ import 'rsuite/dist/rsuite.min.css';
 import {  Banking } from '@/interface';
 import kbank from '@/app/assets/kbank.png'
 import { set } from 'rsuite/esm/utils/dateUtils';
+import { Table } from 'flowbite-react';
+import PaymentTable from '@/app/components/Table/PaymentTable';
 type Props = {}
 
 const page = (props: Props) => {
@@ -22,7 +24,7 @@ const page = (props: Props) => {
   const [UserEmail, setUserEmail] = useState('' as any)
   const [isLoading, setIsLoading] = useState(true)
   const [CreditInfo, setCreditInfo] = useState<Banking>({} as Banking)
-  const [PaymentHistory, setPaymentHistory] = useState([] as any[])
+  const [Payment, setPayment] = useState([] as any[])
   
 
   
@@ -81,6 +83,24 @@ const page = (props: Props) => {
       })
     }
   }
+
+  const fetchPaymentHistory = async (email:any) => {
+    const formData = new FormData()
+    formData.append('email', email)
+    await axios.post(`/api/transfer/history`,formData).then((res) => {
+        console.log(res.data)
+        if (res.data === 'Something went wrong') {
+          setPayment([])
+        }
+        else {
+          setPayment(res.data)
+        }
+        
+    })
+   }
+
+
+   
   const CheckCreditCard = async (email:any) => {
     const formData = new FormData()
     formData.append('email', email)
@@ -134,21 +154,13 @@ const page = (props: Props) => {
   })
  }
 
-  const fetchUserHistory = async (email:any) => {
-    const formData = new FormData()
-    formData.append('email', email)
-    await axios.post('/api/transfer/history',formData).then((res) => {
-      console.log(res.data)
-      setPaymentHistory(res.data)
-    })
-  
-  }
+
   useEffect(() => {
 
     if (session) {
       setUserEmail(session?.user?.email)
       setCheckCredit(UserEmail)
-      fetchUserHistory(UserEmail)
+      fetchPaymentHistory(UserEmail)
      
       CheckCreditCard(UserEmail)
       if (CheckCredit === true) {
@@ -180,10 +192,27 @@ const page = (props: Props) => {
     <div className='rounded-md bg-white p-3 border border-[#F5F6F7]  '> 
     <Tabs defaultActiveKey="1" appearance="subtle">
       <Tabs.Tab eventKey="1" title="History">
-        <div className='flex justify-center h-[300px]'>
-          <div className=' my-auto'>
-            no transaction
-          </div>
+        <div className=''>
+        <Table hoverable>
+        <Table.Head>
+          <Table.HeadCell>Product name</Table.HeadCell>
+          <Table.HeadCell>Order id</Table.HeadCell>
+          <Table.HeadCell>Price</Table.HeadCell>
+          <Table.HeadCell>Data</Table.HeadCell>
+          <Table.HeadCell>
+            Status
+          </Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+        {
+          Payment?.map((data, index) => { 
+            return (
+            <PaymentTable key={index} data={data} />
+            )
+          })
+        }
+        </Table.Body>
+      </Table>
         </div>
       </Tabs.Tab>
       <Tabs.Tab eventKey="2" title="Credit card">

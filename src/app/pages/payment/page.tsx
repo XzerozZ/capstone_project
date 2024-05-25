@@ -150,7 +150,7 @@ const page = (props: Props) => {
       
   })
  }
-  console.log(Payment)
+ 
 
   useEffect(() => {
     

@@ -1,5 +1,5 @@
 "use client"
-import HistoryCardCom from '@/app/components/HistoryCardCompany'
+import HistoryCardCom from '@/app/components/History/HistoryCardCompany'
 import axios from 'axios'
 import { log } from 'console'
 import { useSession } from 'next-auth/react'

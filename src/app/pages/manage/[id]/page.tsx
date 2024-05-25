@@ -146,6 +146,7 @@ const page = () => {
             text: "Thanks you for payment.",
             icon: "success"
           });
+          Router.push(`/pages/history/comment/${job_id}`)
         }
       });
       

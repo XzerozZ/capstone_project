@@ -24,11 +24,11 @@ const PaymentTable = ({data} : {data:any}) => {
     return (
                     <Table.Row >
                     <Table.Cell>{data?.product_name}</Table.Cell>
-                    <Table.Cell>{data?.order_id}</Table.Cell>
+                    <Table.Cell>{data?.order_id || data?.transfer_id}</Table.Cell>
                     <Table.Cell>{data?.amount}</Table.Cell>
-                    <Table.Cell><DateFormatter timestamp={data?.posted_date} /></Table.Cell>
+                    <Table.Cell><DateFormatter timestamp={data?.posted_date || data?.date} /></Table.Cell>
                     <Table.Cell>
-                        <div className="text-[#39db4a]">{data?.status}</div>
+                        <div className="text-[#39db4a]">{data?.status || 'succces'}</div>
                     </Table.Cell>
                     </Table.Row>
                 )

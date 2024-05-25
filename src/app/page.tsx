@@ -30,9 +30,6 @@ export default function Home() {
 
   //////////////////////////////
 
-  const combinedData: JobPosting[] = (Object.values(Recommended.recommend) as JobPosting[][]).flatMap((category) => category.slice(0, 4));
-  const firstFourData = combinedData.slice(0, 2);
-
   //////////////////////////////
 
 
@@ -57,6 +54,12 @@ export default function Home() {
       setRecommended(res.data)
     })
   }
+
+  const recommendKeys: string[] = Object.keys(Recommended.recommend);
+
+  const JobRecomm = recommendKeys.map((item: string) => Recommended.recommend[item as keyof typeof Recommended.recommend]).flat();
+
+  console.log(JobRecomm);
   useEffect(() => {
     if (session){
       setCheckUser(session?.user?.role)
@@ -109,9 +112,9 @@ export default function Home() {
 
              </div>
              <div className='flex justify-center'>
-               <div className=' gap-5 flex  max-sm:w-[400px] '>
+               <div className=' gap-5 flex  max-sm:w-[400px] overflow-x-auto'>
                           {
-                            firstFourData.map((item, index) => (
+                            JobRecomm.map((item, index) => (
                               <div key={index} className="flex justify-between">
                                 <CardWorkRec props={item} />
                               </div>
@@ -132,7 +135,7 @@ export default function Home() {
                            Sportlight.map((item:any, index) => {
                                return (
                                  
-                                  <div key={index} className="bg-white">
+                                  <div key={index} className=" flex justify-between">
                                       <CardSportlight key={index} props={item} />
                                   </div>
                                 
