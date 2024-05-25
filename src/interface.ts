@@ -336,3 +336,19 @@ export interface JobPosting {
     posted_date: string;
     categories: string[];
   }
+
+
+
+  export interface HistoryPayment {
+    order_id:     string;
+    user_id1:     number;
+    user_id2:     number;
+    job_id:       number;
+    amount:       number;
+    product_name: string;
+    product_mass: number | null;
+    session_id:   string;
+    date:         string;
+    status:       string;
+}
+

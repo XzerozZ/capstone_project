@@ -11,7 +11,10 @@ import CitiesInThailand from '@/components/CityOptions';
 import { MultiSelect } from 'react-multi-select-component';
 import { useSession } from 'next-auth/react';
 import 'rsuite/dist/rsuite.min.css';
-import { CreditCard } from '@/interface';
+import { CreditCard, HistoryPayment } from '@/interface';
+import TablePayment from '@/components/Table/PaymentTable';
+import { Table } from 'flowbite-react';
+import PaymentTable from '@/components/Table/PaymentTable';
 import { set } from 'rsuite/esm/utils/dateUtils';
 type Props = {}
 
@@ -24,8 +27,7 @@ const page = (props: Props) => {
   const [UserEmail, setUserEmail] = useState('' as any)
   const [isLoading, setIsLoading] = useState(true)
   const [CreditInfo, setCreditInfo] = useState<CreditCard>({} as CreditCard)
-  const [PaymentHistory, setPaymentHistory] = useState([] as any[])
- 
+  const [Payment, setPayment] =useState([] as any[])
   
 
   const [CreditCard, setCreditCard] = useState(
@@ -51,7 +53,7 @@ const page = (props: Props) => {
   const handleSubmit = async (email:any,Expire:any) => {
     const [month, year] = Expire.split("/");
    
-    console.log(CreditCard,'test')
+    
     const formData = new FormData()
     formData.append('email', email)
     formData.append('city', selected[0]?.label)
@@ -62,7 +64,7 @@ const page = (props: Props) => {
     formData.append('code', CreditCard.cvc)
     if (value === true) {
       axios.post('/api/card/company', formData).then((res) => {
-        console.log(res.data)
+      
         if (res.data === 'Add Credit Card Successfully') {
           setCheckCredit(true)
           Swal.fire({
@@ -86,7 +88,7 @@ const page = (props: Props) => {
     const formData = new FormData()
     formData.append('email', email)
     await axios.post(`/api/checkcard`,formData).then((res) => {
-        console.log(res.data)
+     
         if (res.data.message === 'Not found card or bank account') {
           setCheckCredit(false)
           setIsLoading(false)
@@ -102,7 +104,7 @@ const page = (props: Props) => {
     const formData = new FormData()
     formData.append('email', email)
     await axios.post(`/api/card/company/email`,formData).then((res) => {
-        console.log(res.data)
+      
         setCreditInfo(res.data)
        
     })
@@ -138,21 +140,30 @@ const page = (props: Props) => {
   const formData = new FormData()
   formData.append('email', email)
   await axios.post(`/api/order/history`,formData).then((res) => {
-      console.log(res.data)
-      setPaymentHistory(res.data)
+      // console.log(res.data)
+      if (res.data === 'Something went wrong') {
+        setPayment([])
+      }
+      else {
+        setPayment(res.data)
+      }
+      
   })
  }
+  console.log(Payment)
 
   useEffect(() => {
-
+    
     if (session) {
       setUserEmail(session?.user?.email)
       setCheckCredit(UserEmail)
       fetchPaymentHistory(UserEmail)
      
+     
       CheckCreditCard(UserEmail)
       if (CheckCredit === true) {
           fetchCreditCard(UserEmail)
+          setIsLoading(false)
       }
       else if (CheckCredit === false) {
         setIsLoading(false)
@@ -180,10 +191,27 @@ const page = (props: Props) => {
     <div className='rounded-md bg-white p-3 border border-[#F5F6F7]  '> 
     <Tabs defaultActiveKey="1" appearance="subtle">
       <Tabs.Tab eventKey="1" title="History">
-        <div className='flex justify-center h-[300px]'>
-          <div className=' my-auto'>
-            no transaction
-          </div>
+        <div>
+        <Table hoverable>
+        <Table.Head>
+          <Table.HeadCell>Product name</Table.HeadCell>
+          <Table.HeadCell>Order id</Table.HeadCell>
+          <Table.HeadCell>Price</Table.HeadCell>
+          <Table.HeadCell>Data</Table.HeadCell>
+          <Table.HeadCell>
+            Status
+          </Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+        {
+          Payment?.map((data, index) => { 
+            return (
+            <PaymentTable key={index} data={data} />
+            )
+          })
+        }
+        </Table.Body>
+      </Table>
         </div>
       </Tabs.Tab>
       <Tabs.Tab eventKey="2" title="Credit card">
