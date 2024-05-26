@@ -35,6 +35,10 @@ const page = (props: Props) => {
             // Handle error here
         }
     }
+    console.log(freelance);
+    console.log(history);
+    console.log(comment);
+    
     
     const fetchWorkHistory = async (email:any) => {
         const formData = new FormData()
