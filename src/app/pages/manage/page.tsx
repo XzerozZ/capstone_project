@@ -92,7 +92,7 @@ const page = (props: Props) => {
   }, [work,session])
 
   if (isLoading) {
-    return  <div className='flex justify-center h-[500px] items-center'>
+    return  <div className='flex justify-center h-[1000px] items-center'>
       <Loader size="md"  color='black'/>
     </div>
   }else {

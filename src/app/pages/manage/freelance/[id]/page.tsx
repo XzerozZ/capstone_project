@@ -9,7 +9,7 @@ import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import { UserProfile } from '@/interface';
 import 'rsuite/dist/rsuite.min.css';
-import { set } from 'rsuite/esm/utils/dateUtils';
+import CardProfile from '@/app/components/card/CardProfile';
 
 type Props = {}
 
@@ -35,9 +35,9 @@ const page = (props: Props) => {
             // Handle error here
         }
     }
-    console.log(freelance);
+   
     console.log(history);
-    console.log(comment);
+  
     
     
     const fetchWorkHistory = async (email:any) => {
@@ -45,9 +45,12 @@ const page = (props: Props) => {
         formData.append('email', email.replace('%40','@') as string)
         try {
             const res = await axios.post(`/api/history/user/complete`, formData);
-            setHistory(res.data);
+          
             if (res.data.message === 'Not have any history') {
-                setCheckType(false);
+                setHistory([])
+            }
+            else{
+                setHistory(res.data)
             }
         } catch (error) {
             // Handle error here
@@ -61,16 +64,17 @@ const page = (props: Props) => {
         formData.append('email', email.replace('%40','@') as string)
         try {
             const res = await axios.post(`/api/user/comment`, formData);
-            setComment(res.data);
-            setHistory(res.data.message);
-            if (comment.length === 0) {
-                setCheckArray(false);
-            }
+            
+         
+               
+                setComment(res.data);
+        
         } catch (error) {
            
         }
 
 
+        
     }
     
     useEffect(() => {
@@ -84,7 +88,7 @@ const page = (props: Props) => {
     
 
         if (isLoading) {
-            return  <div className='flex justify-center h-[500px] items-center'>
+            return  <div className='flex justify-center h-[1000px] items-center'>
               <Loader size="md"  color='black'/>
             </div>
           }
@@ -106,13 +110,13 @@ const page = (props: Props) => {
                     <h1 className='text-black text-2xl'>ความถนัด</h1>
                     
                     <div className='flex flex-wrap gap-3'>
-                         {/* {
+                         {
                         freelance?.categories?.map((item, index) => {
                             return (
                               <button key={index} className='px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe] text-sm'>{item || 'no data'}</button>
                             )
                         })
-                         } */}
+                         }
                         
                     </div>
                 </div>
@@ -122,7 +126,7 @@ const page = (props: Props) => {
                      {
                       freelance?.contact?.map((item, index) => {
                         return (
-                            <div className='flex gap-1 flex-col bg-gray-200 rounded-lg '>
+                            <div className='flex gap-1 flex-col bg-gray-200 rounded-lg ' key={index}>
 
                                             <Link href={item?.facebook || 'no data'} className='hover:bg-[#202192]/5 text-black px-5 py-3  hover:text-[#202192] rounded-t-md  hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaFacebookSquare size={40}/> <span className='my-auto text-xl text-black'>Facebook</span></h3></Link>
                                             <Link href={item?.instagram || 'no data'} className='hover:bg-[#202192]/5 text-black px-5 py-3 hover:text-[#202192]   hover:no-underline  active:no-underline'><h3 className='flex gap-3'><FaInstagram size={40}/><span className='my-auto text-xl text-black'>Instagram</span></h3></Link>
@@ -142,31 +146,19 @@ const page = (props: Props) => {
                 <div className='flex flex-col gap-3'>
                     <h1 className='text-2xl text-black'>ประวัติการทำงาน</h1>
                    <div className='flex justify-center mb-10'>
-                    <div className=' gap-5 flex overflow-x-auto overflow-hidden max-sm:w-[400px] '>
+                    <div className=' gap-5 flex  overflow-x-auto max-sm:w-[400px] '>
                            {
-                         CheckType ? <div>
-                            {
+                       
                                 history?.map((item:any,index:any) => {
                                     return (
-                                        <div className='flex gap-3 bg-gray-200 p-3 rounded-md' key={index}>
-                                            <div>
-                                                <h1 className='text-lg'>{item?.job?.title}</h1>
-                                                <p>{item?.job?.description}</p>
-                                            </div>
-                                            <div>
-                                                <h1 className='text-lg'>{item?.job?.payment}</h1>
-                                                <p>{item?.job?.date}</p>
-                                            </div>
-                                        </div>
+                                      <div>
+                                        <CardProfile props={item} key={index}/>
+                                      </div>
                                     )
                                 })
                             }
-                        </div>   :  
-                        <div>
-                                <h1>ไม่มีประวัติการทำงาน</h1>     
-                        </div>
-                   
-                           }
+                      
+                           
                         </div>
                    </div>
 
@@ -177,27 +169,31 @@ const page = (props: Props) => {
                          <div className='flex flex-col gap-3 '>
                        
                                {
-                                CheckArray ? <div>
-                                     {
+                               
                                     comment.map((item:any,index:number) => {
                                         return (
-                                            <div className='flex gap-3 bg-gray-200 p-3 rounded-md' key={index}>
-                                                <div>
-                                                    <h1 className='text-lg'>{item?.comment}</h1>
-                                                    <p>{item?.date}</p>
+                                            <div className='flex gap-3 bg-white p-3 rounded-md shadow-sm' key={index}>
+                                                <img src={item.user1.image} alt="" className='w-[50px] h-[50px] rounded-full'/>
+                                               <div className='flex flex-col gap-1'>
+                                               <div>
+                                                    <div className='flex gap-2'>
+                                                    <h1 className='text-2xl text-black font-bold'>{item?.user1.username}</h1>
+                                                    <div className='flex '>
+
+                                                        <Rate size='xs' max={1} defaultValue={1} allowHalf readOnly color='yellow'/>
+                                                        <h1 className='text-lg text-black '>{item?.accuracy_rating}</h1>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <h1 className='text-lg'>{item?.rating}</h1>
+                                                    <h1 className='text-lg text-black'>{item?.comment}</h1>
+                                                    
                                                 </div>
+                                               
+                                               </div>
                                             </div>
                                         )
                                     })
                                 }
-                                </div> : 
-                                <div>
-                                    <h1 className='text-center'>ไม่มีความคิดเห็น</h1>
-                                </div>
-                               }
+                               
                          
                          </div>
                 </div>
