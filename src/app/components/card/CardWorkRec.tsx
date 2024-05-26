@@ -20,8 +20,8 @@ const CardWorkRec = ({props}: {props:any}) => {
   return (
     <>
     <div className='rounded-lg shadow-md border-solid flex flex-col justify-between hover:shadow-xl w-[250px]'>
-        <img src={props.image} className='rounded-t-lg'/>
-       <div className=' p-3 grow flex flex-col gap-2 justify-between bg-white'>
+        {/* <img src={props.image} className='rounded-t-lg'/> */}
+       <div className=' p-3 grow flex flex-col gap-2 justify-between bg-white rounded-lg'>
        
             <div className='flex flex-col gap-2 '>
                     <p>{props?.title}</p>

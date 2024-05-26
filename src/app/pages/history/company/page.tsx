@@ -25,7 +25,7 @@ const page = (props: Props) => {
         })
     }
   
-
+    console.log(history)
     useEffect(() => {
         fetchHistoryCompany(emailUser)
         if (history !== undefined || history !== null && session !== undefined || session !== null) {
@@ -48,16 +48,10 @@ const page = (props: Props) => {
 
   return (
     <>
-       <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
+       <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#f9fafa]'>
         <div className='w-[1140px] flex flex-col gap-4 p-3'>
-            <h1 className='text-3xl text-[#202192] font-bold'>ประวัติการทำงาน</h1>
-            <div className="flex flex-col gap-1">
-                                <label>รูปแบบของงาน</label>
-                                <div className="flex flex-row gap-3 flex-wrap ">
-                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Full-time</button>
-                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Freelance</button>
-                                </div>
-            </div>
+            <h1 className='text-3xl text-[#202192] font-bold'>Work history</h1>
+           
             <div className='flex flex-col gap-3'>
                 {
                     history.map((item,index)=>  <HistoryCardCom data={item} key={index}/>)

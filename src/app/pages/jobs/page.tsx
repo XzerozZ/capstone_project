@@ -75,7 +75,7 @@ export default function Jobs(){
 
 
     if (job.length === 0) {
-        return  <div className='flex justify-center h-[500px] items-center'>
+        return  <div className='flex justify-center h-[1000px] items-center'>
           <Loader size="md"  color='black'/>
         </div>
       }
@@ -83,7 +83,7 @@ export default function Jobs(){
 
     return(
       
-         <div className="flex justify-center ">
+         <div className="flex justify-center bg-[#f9fafa]">
               
               <div className="flex flex-col w-[1140px] mt-[20px] max-sm:p-1">
                 <p className="text-3xl font-bold text-[#202192]">บอร์ดประกาศหางาน</p>

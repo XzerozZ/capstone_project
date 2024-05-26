@@ -83,8 +83,8 @@ const page = (props: Props) => {
     
   return (
    <>
-   <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] max-sm:mb-[250px]'>
-        <div className='w-[1140px] flex flex-col gap-6 max-sm:gap-3 max-sm:p-8 min-h-screen mb-[-300px]'>
+   <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] max-sm:mb-[250px]  bg-[#f9fafa]'>
+        <div className='w-[1140px] flex flex-col gap-6 max-sm:gap-3 max-sm:p-8 min-h-screen '>
            <div>
                 <h1 className='text-4xl font-bold text-center'>Choose your package</h1>
 

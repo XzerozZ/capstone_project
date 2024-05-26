@@ -37,7 +37,12 @@ const page = (props: Props) => {
         formData.append('email', email)
         try {
             await axios.post('/api/history/user/complete', formData).then((res) => {
-                setCompleteWork(res.data)
+                if (res.data.message === 'Not have any history') {
+                    setCompleteWork([])
+                }
+                else {
+                    setCompleteWork(res.data)
+                }
             })
            
            
@@ -76,7 +81,7 @@ const page = (props: Props) => {
     <>
        <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
         <div className='w-[1140px] flex flex-col gap-4 p-3 min-h-screen '>
-            <h1 className='text-3xl text-[#202192] font-bold'>ประวัติการทำงาน</h1>
+            <h1 className='text-3xl text-[#202192] font-bold'>Work history</h1>
             <div className="flex flex-col gap-1">
                                 <label>Work status</label>
                                 <div className="flex flex-row gap-3 flex-wrap ">

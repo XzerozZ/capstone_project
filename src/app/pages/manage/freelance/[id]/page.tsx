@@ -91,7 +91,7 @@ const page = (props: Props) => {
 
     return (
       <>
-        <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
+        <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px]   bg-[#f9fafa]'>
         <div className='w-[1140px] flex flex-col gap-6 p-3'>
             <div className='flex gap-7 max-sm:flex-col'>
               <img src={freelance?.image} alt="" className='w-3/5 max-sm:w-full rounded-md aspect-square'/>

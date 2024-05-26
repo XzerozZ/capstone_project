@@ -74,7 +74,7 @@ const page = (props: Props) => {
       
   return (
     <>
-     <div className='w-full flex justify-center my-[70px] max-sm:my-[10px] '>
+     <div className='w-full flex justify-center py-[70px] max-sm:py-[10px]  bg-[#f9fafa]'>
         <div className='w-[500px] flex flex-col gap-1 p-3 min-h-screen'>
             <h1 className='text-3xl text-[#202192] font-bold'>ลงรับสมัครงาน</h1>
             <form className='flex flex-col w-full gap-5 max-sm:p-5'>

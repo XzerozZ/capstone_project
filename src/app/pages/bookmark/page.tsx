@@ -35,6 +35,7 @@ const page = () => {
 
     useEffect(() => {
         if (session) {
+            setEmail(session?.user?.email);
             fetchBookmark(email);
             if (bookmark.length >= 0) {
                 setIsLoading(false);
@@ -50,7 +51,7 @@ const page = () => {
 
     if (isLoading) {
         return (
-            <div className='flex justify-center h-[500px] items-center'>
+            <div className='flex justify-center h-[1000px] items-center'>
                 <Loader size="md" color='black'/>
             </div>
         )
@@ -59,7 +60,7 @@ const page = () => {
             
           <>
           
-            <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px]'>
+            <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#f9fafa]'>
                 <div className='w-[1140px] flex flex-col gap-4 p-3 min-h-screen mb-[-300px]'>
                     <div className="">
                         <div className="flex flex-col gap-1">
@@ -75,7 +76,9 @@ const page = () => {
                     <div className="flex justify-center">
                         <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1">
                             {filteredBookmark.map((props, index) => (
-                                <CardWork2 props={props} key={index}/>
+                              <div className="flex justify-between">
+                                  <CardWork2 props={props} key={index}/>
+                              </div>
                             ))}
                         </div>
                     </div>

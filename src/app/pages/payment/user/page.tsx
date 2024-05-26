@@ -27,7 +27,7 @@ const page = (props: Props) => {
   const [Payment, setPayment] = useState([] as any[])
   
 
-  
+
 
   const [CreditCard, setCreditCard] = useState(
     {
@@ -110,9 +110,10 @@ const page = (props: Props) => {
           setCheckCredit(false)
           setIsLoading(false)
         }
-        else{
+        else if (res.data.message === 'Have card'){
           setCheckCredit(true)
           setIsLoading(false)
+
         }
     })
   }
@@ -175,7 +176,7 @@ const page = (props: Props) => {
   }, [session,CheckCredit])
 
   if (isLoading) {
-    return  <div className='flex justify-center h-[500px] items-center'>
+    return  <div className='flex justify-center h-[1000px] items-center'>
       <Loader size="md"  color='black'/>
     </div>
   }else {
@@ -189,7 +190,7 @@ const page = (props: Props) => {
 
   <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#F9FAFA] '>
     <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen '>
-    <div className='rounded-md bg-white p-3 border border-[#F5F6F7]  '> 
+    <div className='rounded-md bg-white p-3 border border-[#F5F6F7]  shadow-sm'> 
     <Tabs defaultActiveKey="1" appearance="subtle">
       <Tabs.Tab eventKey="1" title="History">
         <div className=''>
@@ -247,13 +248,30 @@ const page = (props: Props) => {
       </div>
       </div>:    <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#F9FAFA]'>
     <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen '>
-    <div className='rounded-md bg-white p-3 border border-[#F5F6F7]'> 
+    <div className='rounded-md bg-white p-3 border border-[#F5F6F7] shadow-sm'> 
     <Tabs defaultActiveKey="1" appearance="subtle">
-      <Tabs.Tab eventKey="1" title="History">
-      <div className='flex justify-center h-[300px]'>
-          <div className=' my-auto'>
-            no transaction
-          </div>
+    <Tabs.Tab eventKey="1" title="History">
+        <div className=''>
+        <Table hoverable>
+        <Table.Head>
+          <Table.HeadCell>Product name</Table.HeadCell>
+          <Table.HeadCell>Order id</Table.HeadCell>
+          <Table.HeadCell>Price</Table.HeadCell>
+          <Table.HeadCell>Data</Table.HeadCell>
+          <Table.HeadCell>
+            Status
+          </Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+        {
+          Payment?.map((data, index) => { 
+            return (
+            <PaymentTable key={index} data={data} />
+            )
+          })
+        }
+        </Table.Body>
+      </Table>
         </div>
       </Tabs.Tab>
       <Tabs.Tab eventKey="2" title="Credit card">
@@ -264,8 +282,8 @@ const page = (props: Props) => {
             <div className='flex gap-3'>
               <button className='py-2 px-5 bg-[#F9FBFD] focus:border focus:border-[#202192] rounded-md border border-[#f9fbbfd]'>
                 {/* <CiCreditCard1 size={30} className='text-[#202192]'/> */}
-                 <img src={image.src} alt='test' width={100} height={100} />
-                <h6 className='text-sm text-[#202192]'>Card</h6>
+                 <img src={kbank.src} alt='test' width={100} height={100} />
+                <h6 className='text-sm text-[#202192]'>Kbank</h6>
                 
               </button>
             

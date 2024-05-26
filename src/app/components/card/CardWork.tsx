@@ -24,7 +24,7 @@ const DateFormatter = ({ timestamp }:any) => {
    <Link href={`/pages/jobs/${props.job_id}`} className='text-black hover:no-underline'>
    <div className='rounded-lg shadow-md border-solid flex flex-col justify-between hover:scale-105 hover:shadow-xl text-black'>
         <img src={props?.post[0]?.user?.image || ''} className='rounded-t-lg flex-none aspect-square'/>
-       <div className=' p-3 grow flex flex-col gap-2 justify-between '>
+       <div className=' p-3 grow flex flex-col gap-2 justify-between bg-white rounded-lg'>
        
             <div className='flex flex-col gap-2'>
                     <p>{props.title}</p>

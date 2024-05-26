@@ -62,7 +62,7 @@ const page = (props: Props) => {
           showConfirmButton: false,
           timer: 1500
         })
-        Router.push('/history')
+        Router.push('/pages/history/company')
       })
   }
   const handleUser = (giver:any,job_id:any) => {
@@ -80,6 +80,7 @@ const page = (props: Props) => {
         showConfirmButton: false,
         timer: 1500
       })
+      Router.push('/pages/history')
      })
 
   }
@@ -106,44 +107,44 @@ const page = (props: Props) => {
 
   return (
     <>
-     <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
+     <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#f9fafa]'>
         <div className='w-[1140px] flex flex-col gap-4 p-3 min-h-screen'>
-          <h1 className='text-3xl text-[#202192] font-bold'>ให้คะแนนความพึงพอใจ </h1>
+          <h1 className='text-3xl text-[#202192] font-bold'>Rating </h1>
          {checkComepany ?  <div className='flex flex-col gap-3 '>
             <div className='flex flex-row justify-between max-sm:flex-col'>
-                  <h3 className='text-xl max-sm:text-center text-black'>ความเป็นมิตร</h3>
+                  <h3 className='text-xl max-sm:text-center text-black'>Friendly</h3>
                   <div className='flex justify-center '>
                   <Rate defaultValue={hoverValueCom1} onChangeActive={setHoverValue1} color='yellow'/>
                   </div>
             </div>
             <div className='flex flex-row justify-between max-sm:flex-col'>
-                  <h3 className='text-xl max-sm:text-center text-black'>ความรวดเร็วในการทำงาน</h3>
+                  <h3 className='text-xl max-sm:text-center text-black'>Efficiency</h3>
                   <div className='flex justify-center '>
                   <Rate defaultValue={hoverValueCom2} onChangeActive={setHoverValue2} color='yellow'/>
                   </div>
             </div>
             <div className='flex flex-row justify-between max-sm:flex-col'>
-                  <h3 className='text-xl max-sm:text-center text-black'>ความแม่นยำในการทำงาน</h3>
+                  <h3 className='text-xl max-sm:text-center text-black'>Accuracy</h3>
                   <div className='flex justify-center '>
                   <Rate defaultValue={hoverValueCom3} onChangeActive={setHoverValue3} color='yellow'/>
                   </div>
             </div>
             <div className='flex justify-between flex-col '>
-                  <h3 className='text-xl max-sm:text-center text-black'>แสดงความคิดเห็น</h3>
+                  <h3 className='text-xl max-sm:text-center text-black'>Comment</h3>
                   <div className='flex justify-center '>
                   <input 
                     type="text" 
                     id="comment"          
                     name='comment' 
                     onChange={handleChange}
-                    placeholder='แสดงความคิดเห็น'
+                    placeholder='comment'
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]"  required />
   
                   </div>
             </div>
              
             <div className='flex justify-center'>
-                <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleCompany(UserEmail,params.id)}>แสดงความคิดเห็น</button> 
+                <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleCompany(UserEmail,params.id)}>submiy</button> 
             </div>
             
         
@@ -151,19 +152,19 @@ const page = (props: Props) => {
           :  
           <div className='flex flex-col gap-3 '>
             <div className='flex flex-row justify-between max-sm:flex-col'>
-                    <h3 className='text-xl max-sm:text-center text-black'>ความเป็นมิตร</h3>
+                    <h3 className='text-xl max-sm:text-center text-black'>Friendly</h3>
                     <div className='flex justify-center '>
                             <Rate defaultValue={hoverValueUser1} onChange={setHoverValueUser1} color='yellow'/>
                     </div>
               </div>
               <div className='flex flex-row justify-between max-sm:flex-col'>
-                  <h3 className='text-xl max-sm:text-center text-black'>ความเหมาะสมระหว่างงานกับราคา</h3>
+                  <h3 className='text-xl max-sm:text-center text-black'>Price for product</h3>
                   <div className='flex justify-center '>
                           <Rate defaultValue={hoverValueUser2} onChange={setHoverValueUser2} color='yellow'/>
                   </div>
             </div>
             <div className='flex justify-center'>
-                  <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleUser(UserEmail,params.id)}>แสดงความคิดเห็น</button> 
+                  <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleUser(UserEmail,params.id)}>submit</button> 
               </div>
           </div>}
          

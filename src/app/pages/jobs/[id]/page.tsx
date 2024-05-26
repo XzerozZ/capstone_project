@@ -48,6 +48,7 @@ const page = () => {
                 showConfirmButton: false,
                 timer: 1500
             })
+            Router.push('/pages/history')
 
         })
        }
@@ -168,7 +169,7 @@ const page = () => {
             }
     }, [CheckCreditCard,session,userid])
   if (isLoading) {
-    return  <div className='flex justify-center h-[500px] items-center'>
+    return  <div className='flex justify-center h-[1000px] items-center'>
       <Loader size="md"  color='black'/>
     </div>
   }
@@ -179,10 +180,11 @@ const page = () => {
   
   return (
    <>
-   <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
-        <div className='w-[1140px] flex flex-col gap-4 p-3'>
-             <div className='flex flex-row justify-between max-sm:flex-col gap-3'>
-                <div className='flex gap-2 flex-col'>
+   <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#f9fafa] min-h-screen'>
+        <div className='w-[1140px] flex flex-col gap-4 p-3 '>
+           <div className='bg-white rounded-md p-3 shadow-md'>
+           <div className='flex flex-row justify-between max-sm:flex-col gap-3'>
+                <div className='flex gap-3 flex-col'>
                     <h1 className='text-[#202192] font-bold text-3xl '>{jobData?.title}   <span className='text-black text-xl'>โดย {jobData?.post[0]?.user?.username}</span> </h1>
                     <h3 className='text-lg text-black'>Publish <DateFormatter timestamp={jobData?.posted_date}/></h3>
                     <h3 className='text-lg text-[#202192] '>งบประมาณ : {jobData?.budget} THB</h3>
@@ -202,7 +204,7 @@ const page = () => {
                     </div>
                 </div>
              </div>
-             <div className="flex flex-row gap-3 flex-wrap ">
+             <div className="flex flex-row gap-3 flex-wrap py-3">
                {
                 jobData?.categories.map((item:any,index) => {
                     return (
@@ -212,9 +214,10 @@ const page = () => {
                 })
                }
              </div>
-            <img src={jobData?.post[0]?.user?.image} alt="" />
-            <p className='text-xl'>{jobData?.description}</p>
+         
+            <p className='text-xl text-black'>{jobData?.description}</p>
              
+           </div>
 
         </div>
    </div>

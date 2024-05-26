@@ -88,14 +88,14 @@ const page = (props: Props) => {
     const formData = new FormData()
     formData.append('email', email)
     await axios.post(`/api/checkcard`,formData).then((res) => {
-     
+        console.log(res.data)
         if (res.data.message === 'Not found card or bank account') {
           setCheckCredit(false)
-          setIsLoading(false)
+         
         }
-        else{
+        else if (res.data.message === 'Have card'){
           setCheckCredit(true)
-          setIsLoading(false)
+
         }
     })
   }
@@ -129,6 +129,7 @@ const page = (props: Props) => {
           showConfirmButton: false,
           timer: 1500
         })
+     
       }
       else{
         setCheckCredit(true)
@@ -150,7 +151,7 @@ const page = (props: Props) => {
       
   })
  }
- 
+//  console.log(CheckCredit)
 
   useEffect(() => {
     
@@ -174,7 +175,7 @@ const page = (props: Props) => {
   }, [session,CheckCredit])
 
   if (isLoading) {
-    return  <div className='flex justify-center h-[500px] items-center'>
+    return  <div className='flex justify-center h-[1000px] items-center'>
       <Loader size="md"  color='black'/>
     </div>
   }else {
@@ -188,7 +189,7 @@ const page = (props: Props) => {
 
   <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#F9FAFA] '>
     <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen '>
-    <div className='rounded-md bg-white p-3 border border-[#F5F6F7]  '> 
+    <div className='rounded-md bg-white p-3 border border-[#F5F6F7] shadow-sm '> 
     <Tabs defaultActiveKey="1" appearance="subtle">
       <Tabs.Tab eventKey="1" title="History">
         <div>
@@ -247,13 +248,30 @@ const page = (props: Props) => {
       </div>
       </div>:    <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#F9FAFA]'>
     <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen '>
-    <div className='rounded-md bg-white p-3 border border-[#F5F6F7]'> 
+    <div className='rounded-md bg-white p-3 border border-[#F5F6F7] shadow-sm'> 
     <Tabs defaultActiveKey="1" appearance="subtle">
-      <Tabs.Tab eventKey="1" title="History">
-      <div className='flex justify-center h-[300px]'>
-          <div className=' my-auto'>
-            no transaction
-          </div>
+    <Tabs.Tab eventKey="1" title="History">
+        <div>
+        <Table hoverable>
+        <Table.Head>
+          <Table.HeadCell>Product name</Table.HeadCell>
+          <Table.HeadCell>Order id</Table.HeadCell>
+          <Table.HeadCell>Price</Table.HeadCell>
+          <Table.HeadCell>Data</Table.HeadCell>
+          <Table.HeadCell>
+            Status
+          </Table.HeadCell>
+        </Table.Head>
+        <Table.Body className="divide-y">
+        {
+          Payment?.map((data, index) => { 
+            return (
+            <PaymentTable key={index} data={data} />
+            )
+          })
+        }
+        </Table.Body>
+      </Table>
         </div>
       </Tabs.Tab>
       <Tabs.Tab eventKey="2" title="Credit card">

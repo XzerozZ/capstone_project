@@ -77,7 +77,7 @@ else {
                 
                    <Dropdown.Item><Link href="/pages/payment" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Payment</Link></Dropdown.Item>
 
-                <Dropdown.Item><Link href="/pages/history" className='hover:text-[#202192] no-underline text-black hover:no-underline'>History</Link></Dropdown.Item>
+                <Dropdown.Item><Link href="/pages/history/company" className='hover:text-[#202192] no-underline text-black hover:no-underline'>History</Link></Dropdown.Item>
                 <Dropdown.Item><Link href="/pages/bookmark" className='hover:text-[#202192] no-underline text-black hover:no-underline'>Bookmark</Link></Dropdown.Item>
         
                 <Dropdown.Item onClick={() => signOut({callbackUrl:'/auth/signin'})} className='hover:text-[#202192]'>Sign out</Dropdown.Item>
