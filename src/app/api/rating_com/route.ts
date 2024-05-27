@@ -4,7 +4,7 @@ import prisma from '../utils/prisma';
 export async function POST( req : Request ) {
     try {
         const formData = await req.formData();
-        const email = formData.get('giver') as string
+        const email = formData.get('email') as string
         const id = parseInt(formData.get('job_id') as string)
         const job = await prisma.job.findUnique({
             where : {
@@ -32,7 +32,9 @@ export async function POST( req : Request ) {
             await prisma.$disconnect();
             return Response.json(newrating)
         }
+
         else{
+            console.log(user, job)
             await prisma.$disconnect();
             return Response.json("Can't find user or job")
         }

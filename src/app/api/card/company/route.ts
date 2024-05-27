@@ -63,9 +63,11 @@ export async function POST( req : Request ) {
                     card_number : card_number
                 }
             })
+            await prisma.$disconnect();
             return Response.json("Add Credit Card Successfully")
         }
         else{
+            await prisma.$disconnect();
             return Response.json("Not Found This user")
         }
     }

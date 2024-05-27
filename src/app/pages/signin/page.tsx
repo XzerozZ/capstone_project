@@ -3,6 +3,7 @@ import React from 'react'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Swal from 'sweetalert2';
 
 type Props = {}
 
@@ -18,22 +19,43 @@ const  LoginPage = (props: Props) => {
 
     const handleSignIn = async (e:any) => {
       
-        // e.preventDefault()
-        // try{
-        //     console.log(email)
-        //     console.log(password)
-        //     const result = await signIn('credentials', {
-        //         redirect: false,
-        //         email,
-        //         password
-        //     })
-        //     console.log(result)
-        //     Router.push('/')
+        e.preventDefault()
+        try{
+            console.log(email)
+            console.log(password)
+            const result = await signIn('credentials', {
+                redirect: false,
+                email,
+                password
+            }).then((res) => {
+                 
+                if(res && res.error){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: res.error,
+                    })
+                }
+                else{
+                   
+                    Router.push('/pages/profile')
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'You have successfully logged in',
+                    })
+                    Router.push('/pages/signin/job')
+                  
+                }
+            })
+                console.log(result)
+                Router.push('/pages/signin/job')
             
-        // }
-        // catch(err){
-        //     console.log(err)
-        // }
+            
+        }
+        catch(err){
+            console.log(err)
+        }
     }
   return (
    <>

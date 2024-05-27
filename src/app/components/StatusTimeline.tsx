@@ -1,64 +1,47 @@
 import { Button, Timeline } from "flowbite-react";
 import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi";
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Job } from "@/interface";
+import Timeline1 from "../pages/history/status/component/Timeline1";
+import Timeline2 from "../pages/history/status/component/Timeline2";
+import Timeline3 from "../pages/history/status/component/Timeline3";
+import Timeline4 from "../pages/history/status/component/Timeline4";
+import Timeline5 from "../pages/history/status/component/Timeline5";
+import { Loader } from "rsuite";
+import 'rsuite/dist/rsuite.min.css';
 
 type Props = {}
 
-const StatusTimeline = (props: Props) => {
+const StatusTimeline = ({data} : {data:Job}) => {
+  const [status, setStatus] = useState<String>()
+  useEffect(() => {
+    setStatus(data.status)
+  }, [data])
 
 
-  const timeline = [
-    {
-      month: 'February 2022',
-      title: 'Application UI code in Tailwind CSS',
-      body: 'Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.',
-      status: 'done'
-    },
-    {
-      month: 'March 2022',
-      title: 'Marketing UI design in Figma',
-      body: 'All of the pages and components are first designed in Figma and we keep a parity between the two versions even as we update the project.',
-      status: 'done'
-    },
-    {
-      month: 'April 2022',
-      title: 'E-Commerce UI code in Tailwind CSS',
-      body: 'Get started with dozens of web components and interactive elements built on top of Tailwind CSS.',
-      status: 'done'
-    }
-  ]
 
-  return (
-   <>
-    <Timeline horizontal>
-      {
-        timeline.map((item, index) => (
-          <Timeline.Item>
-          <Timeline.Point icon={HiCalendar} />
-          <Timeline.Content>
-            <Timeline.Time>{item.month}</Timeline.Time>
-            <Timeline.Title>{item.title}</Timeline.Title>
-            <Timeline.Body>
-             {
-                item.body
 
-             }
-             <br />
-             {
-              item.status
-             }
-            </Timeline.Body>
-           
-          </Timeline.Content>
-        </Timeline.Item>
-        ))
-      }
+  if (status === 'On working'){
+    return <Timeline2 />
+  } else if (status === 'Rejected'){
+    return <Timeline4 />
+  } else if (status === 'Considering'){
+    return <Timeline1 />
+  } else if (status === 'Completed'){
+    return <Timeline3 />
+  } else if (status === 'Checking'){
+    return <Timeline5 />
+  }
+  else {
+    return  <div className='flex justify-center h-[500px] items-center'>
+      <Loader size="md"  color='black'/>
+    </div>
+  }
 
-   
-    </Timeline>
-    
-   </>
-  )
+
+
+ 
+
 }
 export default StatusTimeline

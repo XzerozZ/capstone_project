@@ -4,6 +4,7 @@ import Link from "next/link"; // react-router-dom
 export default function JobComponent({props}: any){
     const [hover, setHover] = useState(false); {/* display information when hovered*/}
 
+    
     const onHover = () => {
         setHover(true);
     }

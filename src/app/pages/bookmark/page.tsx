@@ -1,144 +1,92 @@
-import Navbar from "@/app/components/Navbar"
-import BookmarkComponent from "@/app/components/BookmarkComponent"
-import CardWork from "@/app/components/CardWork"
+"use client"
+import CardWork2 from "@/app/components/card/CardWork2"
+import axios from "axios"
+import { useSession } from "next-auth/react"
+import { useEffect, useState } from "react"
+import { Loader } from "rsuite"
+import 'rsuite/dist/rsuite.min.css';
 
-const MockData = [ // ข้อมูลต้องปรับตามฐานข้อมูลจริง
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:1
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:2
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:3
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:4
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:5
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:6
-        },
-        
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:7
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:8
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:9
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:10
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:11
-        },
-        {job:"รับฟรีแลนซ์พัฒนา UI/UX สำหรับเว็บโฆษณาเกม fps",
-            image:"https://www.investopedia.com/thmb/MSwQ4mUpjDu1BJDBSzzbx4uwobY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/freelancer.aspfinal-735c7be9a7d642eabcafa5a0117e4823.jpg",
-            rating:"4.5",
-            categories: ["Webdev", "QA", "Comm"],
-            budget: "2000",
-            posted_date: "12/12/2566",
-            status: "hiring",
-            id:12
+const page = () => {
+    const {data:session,status} = useSession()
+    const [email, setEmail] = useState(session?.user?.email)
+    const [bookmark, setBookmark] = useState([])
+    const [filteredBookmark, setFilteredBookmark] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+    const [filter, setFilter] = useState('All');
+
+    const fetchBookmark = async (email:any) => {
+        const formData = new FormData()
+        formData.append('email', email)
+        try {
+            const res = await axios.post('/api/bookmark/user', formData);
+            setBookmark(res.data);
+        } catch (error) {
+            // Handle the error here
         }
-    ]
+    }
+    const applyFilter = (filter:any) => {
+        if (filter === 'All') {
+            setFilteredBookmark(bookmark);
+        } else {
+            const filtered = bookmark.filter((item: { type: string, job: { type: string } }) => item.job.type === filter);
+            setFilteredBookmark(filtered);
+        }
+    }
 
+    useEffect(() => {
+        if (session) {
+            setEmail(session?.user?.email);
+            fetchBookmark(email);
+            if (bookmark.length >= 0) {
+                setIsLoading(false);
+                applyFilter(filter);
+               
+            }
+        }
+    }, [email, session, bookmark, filter]);
 
-export default function Bookmark(/*{props}: any*/){
-    return(
-        <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
-        <div className='w-[1140px] flex flex-col gap-4 p-3'>
-           
-                <div className="">
-                <div className="flex flex-col gap-1">
-                                <h1 className='text-[#202192] font-bold text-3xl '>Bookmark</h1>
-                                <label>รูปแบบของงาน</label>
-                                <div className="flex flex-row gap-3 flex-wrap ">
-                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Full-time</button>
-                                   <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">Freelance</button>
-                                </div>
-                           </div>
-                    </div>
-                    <div className="flex justify-center">   {/* Wrapper */}
-                    <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
-                            {MockData.map((props: any)=>
-                            <CardWork props={props}/>)}
+ 
+   
+  
+
+    if (isLoading) {
+        return (
+            <div className='flex justify-center h-[1000px] items-center'>
+                <Loader size="md" color='black'/>
+            </div>
+        )
+    } else {
+        return (
+            
+          <>
+          
+            <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#f9fafa]'>
+                <div className='w-[1140px] flex flex-col gap-4 p-3 min-h-screen mb-[-300px]'>
+                    <div className="">
+                        <div className="flex flex-col gap-1">
+                            <h1 className='text-[#202192] font-bold text-3xl '>Bookmark</h1>
+                            <label>รูปแบบของงาน</label>
+                            <div className="flex flex-row gap-3 flex-wrap ">
+                                <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" onClick={() => setFilter('All')}>All</button>
+                                <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" onClick={() => setFilter('Fulltime')}>Fulltime</button>
+                                <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" onClick={() => setFilter('Freelance')}>Freelance</button>
+                            </div>
                         </div>
                     </div>
-           
-          </div>
-           
-        </div>
-    )
+                    <div className="flex justify-center">
+                        <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1">
+                            {filteredBookmark.map((props, index) => (
+                              <div className="flex justify-between">
+                                  <CardWork2 props={props} key={index}/>
+                              </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div></>
+        )
+    }
 }
+export default page
+
+

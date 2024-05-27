@@ -128,6 +128,7 @@ export async function PUT( req : Request ){
         })
     }
     catch (error) {
+       
         await prisma.$disconnect();
         return Response.json(
             {
@@ -251,6 +252,7 @@ export async function DELETE( req : Request ){
         return Response.json("Delete Successfully")
     }
     catch(error){
+      
         return new Response(
             JSON.stringify({
                 error: "Server Error"

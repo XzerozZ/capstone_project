@@ -102,6 +102,11 @@ export async function GET() {
           include : {
             category : true
           }
+        },
+        post : {
+          include : {
+            user : true
+          }
         }
       }
     })
@@ -109,6 +114,7 @@ export async function GET() {
       const jobsWithCategories = jobs.map((job) => ({
         ...job,
         categories: job.job_exp.map((exp) => exp.category.name),
+        company: job.post.map((post) => post.user.image)
       }));
       await prisma.$disconnect();
       return Response.json(jobsWithCategories);

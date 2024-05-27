@@ -85,8 +85,9 @@ export async function POST(req: Request) {
         return Response.json("Don't have enough money")
       }
     }
-     catch (error) {
-    await prisma.$disconnect();
-    return Response.json({ error }, { status: 500 });
+    catch (error) {
+      console.log(error)
+      await prisma.$disconnect();
+      return Response.json({ error }, { status: 500 });
   }
 }

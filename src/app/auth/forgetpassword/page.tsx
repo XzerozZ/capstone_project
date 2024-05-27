@@ -1,16 +1,24 @@
 "use client"
 import React from 'react'
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 
 type Props = {}
 
 const page = (props: Props) => {
     const  Router = useRouter()
     const [email, setEmail] = React.useState('')
-    const handleClick = () => {
-        
-        console.log('test')
-    }
+    const handleClick = (e:any) => {
+       e.preventDefault()
+       const formData = new FormData();
+       formData.append('email', email);
+       axios.post('/api/password/email', formData).then((res) => { 
+              Router.push('/auth/OTP')
+              console.log(res.data)
+              localStorage.setItem('verifyOTP', 'not verify')
+              
+
+    })}
   return (
     <>
     <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
@@ -24,7 +32,7 @@ const page = (props: Props) => {
                     <input 
                     type="text" 
                     id="email" 
-                    value={email}
+                    name='email'
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="email@email.com"  />

@@ -22,16 +22,27 @@ export async function POST( req : Request ){
             }
         })
         if(user){
-            const customer = await omise.recipients.retrieve(user.rep[0].rep_id)
             const rep = await prisma.rep.findFirst({
                 where : {
                     user_id : user.user_id
                 }
             })
-            return Response.json({
-                "customer" : customer,
-                "user"  : rep
-            })
+            if(rep){
+                const customer = await omise.recipients.retrieve(user.rep[0].rep_id)
+                await prisma.$disconnect();
+                return Response.json({
+                    "customer" : customer,
+                    "user"  : rep
+                })
+            }
+            else{
+                await prisma.$disconnect();
+                return Response.json("Not Found Card(s)")
+            }
+        }
+        else{
+            await prisma.$disconnect();
+            return Response.json("Not Found This user")
         }
     }
     catch(error){
@@ -66,6 +77,7 @@ export async function DELETE( req : Request ){
             return Response.json("Delete Success")
         }
         else{
+            await prisma.$disconnect();
             return Response.json("Not Found This user")
         }
     }

@@ -4,6 +4,7 @@ import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link';
+import Swal from 'sweetalert2';
 
 type Props = {}
 
@@ -19,26 +20,46 @@ const  LoginPage = (props: Props) => {
 
     const handleSignIn = async (e:any) => {
       
-        // e.preventDefault()
-        // try{
-        //     console.log(email)
-        //     console.log(password)
-        //     const result = await signIn('credentials', {
-        //         redirect: false,
-        //         email,
-        //         password
-        //     })
-        //     console.log(result)
-        //     Router.push('/')
+        e.preventDefault()
+        try{
+            console.log(email)
+            console.log(password)
+            const result = await signIn('credentials', {
+                redirect: false,
+                email,
+                password
+            }).then((res) => {
+                console.log(res);
+                
+                if(res && res.error){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: res.error,
+                    })
+                }
+                else{
+                   
+                    Router.push('/pages/profile')
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'You have successfully logged in',
+                    })
+                  
+                }
+                
+            })
+
             
-        // }
-        // catch(err){
-        //     console.log(err)
-        // }
+        }
+        catch(err){
+            console.log(err)
+        }
     }
   return (
    <>
-   <div className='flex justify-center bg-[#FAFAFA] py-[150px] max-sm:p-[75px]'>
+   <div className='flex justify-center bg-[#FAFAFA] py-[150px] max-sm:p-[75px] min-h-screen'>
     <div >
         <form onSubmit={handleSignIn} className='flex flex-col w-[450px] gap-5 max-sm:p-10'>
         <h1 className='text-center text-[40px]'>Sign in</h1>

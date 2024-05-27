@@ -1,45 +1,94 @@
 "use client"
 import 'rsuite/dist/rsuite.min.css';
-import React, { useState } from 'react'
-import { HiCalendar } from 'react-icons/hi'
-import { IoCodeWorking } from "react-icons/io5";
+import React, { useEffect, useState } from 'react'
 
-import { FaArrowRight } from 'react-icons/fa';
 import { MultiSelect } from 'react-multi-select-component';
+import axios from 'axios';
+import { useSession } from 'next-auth/react';
+import options from '@/app/components/Options';
+import { useRouter } from 'next/navigation';
 
 type Props = {}
 
 
 const page = (props: Props) => {
-
-  const options = [
-    { label: "Grapes 🍇", value: "grapes" },
-    { label: "Mango 🥭", value: "mango" },
-    { label: "Strawberry 🍓", value: "strawberry", disabled: true },
-  ];
-  const [selected, setSelected] = useState([])
-    
+  const Router = useRouter()
+  const [category, setCategory] = useState([] as any[])
+  const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
+  const {data:session,status} = useSession()
+  const [UserID, setUserID] = React.useState(session?.user?.id)
+  const [work, setWork] = useState({
+    title: '',
+    budget: '',
+    type: '',
+    description: '',
+    submitted_date: '',
   
+  })
+
+ 
+
+  // const fetchCategory = async () => {
+  //   axios.get('/api/category').then((res) => {
+       
+  //       setCategory(res.data)
+  //   })
+  // }
+  const handlePostWork = async (e:any,id:any) => {
+    e.preventDefault()
+    const formData = new FormData()
+    formData.append('title', work.title)
+    formData.append('budget', work.budget)
+    formData.append('type', work.type)
+    formData.append('description', work.description)
+    formData.append('submitted_date', new Date().toISOString())
+    formData.append('id',id)
+    for (let i = 0; i < selected.length; i++) {
+      formData.append('category', selected[i].value);
+      console.log(selected[i].value)
+    }
+    
+    await axios.post('/api/job', formData).then((res) => {
+      console.log(res.data)
+      Router.push(`/pages/manage/postwork/package/${res.data.job_id}`)
+       
+    })
+    
+  }
+  const handleChange = (e:any) => {
+    const {name, value} = e.target
+    setWork((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+ 
+  useEffect(() => {
+    if (session) {
+      // fetchCategory()
+      setUserID(session?.user?.id)
+      
+    }
+  }, [category,session])
       
   return (
     <>
-     <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
-        <div className='w-[500px] flex flex-col gap-6 p-3'>
+     <div className='w-full flex justify-center py-[70px] max-sm:py-[10px]  bg-[#f9fafa]'>
+        <div className='w-[500px] flex flex-col gap-1 p-3 min-h-screen'>
             <h1 className='text-3xl text-[#202192] font-bold'>ลงรับสมัครงาน</h1>
-            <form className='flex flex-col w-full gap-5 max-sm:p-10'>
+            <form className='flex flex-col w-full gap-5 max-sm:p-5'>
             <div className='flex justify-center'>
          
-                
-       
             </div>
 
              <div>
                     <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ชื่องาน</label>
                     <input 
                     type="text" 
-                    id="name" 
-                   
-                    name='name'
+                    id="title" 
+                    onChange={handleChange}
+                    name='title'
                     
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="ชื่องาน" required />
             </div>
@@ -51,6 +100,7 @@ const page = (props: Props) => {
                         type="text" 
                         id="budget" 
                         name='budget'
+                        onChange={handleChange}
                        
                         
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="10000" required />
@@ -62,10 +112,11 @@ const page = (props: Props) => {
                     id="type" 
                    
                     name='type'
+                    onChange={handleChange}
                     
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" required >
-                        <option value="1">Fulltime</option>
-                        <option value="2">Freelance</option>
+                        <option value="Fulltime">Fulltime</option>
+                        <option value="Freelance">Freelance</option>
                     </select>
                  </div>
 
@@ -74,25 +125,27 @@ const page = (props: Props) => {
                     <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ประเภทงาน</label>
                    
                     <MultiSelect
-options={options}
-value={selected}
-onChange={setSelected}
-labelledBy="Select"
-/>       </div>
+                        // options={category.map((cate)=>({label:cate.name,value:cate.name}))}
+                        options={options}
+                        value={selected}
+                        onChange={setSelected}
+                        labelledBy="Select"
+                        />       </div>
 
             <div>
-                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">รายละเอียดงาน</label>
-                    <input 
-                    type="text" 
+                    <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white ">รายละเอียดงาน</label>
+                    <textarea
+                  
                     id="description" 
-                   
+                    onChange={handleChange}
                     name='description'
                     
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="รายละเอียดงาน" required />
+                    className="h-[100px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="รายละเอียดงาน" required >
+                    </textarea>
             </div>
 
 
-            <button type="submit" className="w-full text-white bg-[#202192] hover:bg-[#202192]/90 focus:ring-3 focus:ring-[#202192]/60 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#202192]/60 dark:hover:bg-[#202192]/70 focus:outline-none dark:focus:ring-[#202192]/80"><span>ต่อไป</span></button>
+            <button type="submit" className="w-full text-white bg-[#202192] hover:bg-[#202192]/90 focus:ring-3 focus:ring-[#202192]/60 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#202192]/60 dark:hover:bg-[#202192]/70 focus:outline-none dark:focus:ring-[#202192]/80" onClick={(e) => {handlePostWork(e,UserID)}}><span>ต่อไป</span></button>
 
             
         </form>
