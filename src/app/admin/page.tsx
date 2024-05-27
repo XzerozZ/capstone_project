@@ -38,19 +38,19 @@ const page = () => {
    
    
 
-    const deleteRestaurant = (id:any) => {
-        const formData = new FormData();
-        formData.append('id',id)
-        axios.delete(`/api/user`, { data: formData })
-        .then((res) => {
-            Swal.fire({
-                icon: 'success',
-                title: 'Delete Success',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        });
-    }
+    // const deleteRestaurant = (id:any) => {
+    //     const formData = new FormData();
+    //     formData.append('id',id)
+    //     axios.delete(`/api/user`, { data: formData })
+    //     .then((res) => {
+    //         Swal.fire({
+    //             icon: 'success',
+    //             title: 'Delete Success',
+    //             showConfirmButton: false,
+    //             timer: 1500
+    //         })
+    //     });
+    // }
    
 
 
@@ -124,9 +124,7 @@ const page = () => {
          
           <Table.HeadCell>Email</Table.HeadCell>
           <Table.HeadCell>role</Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Edit</span>
-          </Table.HeadCell>
+         
         </Table.Head>
         <Table.Body className="divide-y">
          {
@@ -139,14 +137,7 @@ const page = () => {
                     <Table.Cell>{item?.username}</Table.Cell>
                     <Table.Cell>{item?.email}</Table.Cell>
                     <Table.Cell>{item?.role}</Table.Cell>
-                    <Table.Cell>
-                        <div className='flex gap-5'>
-                           
-                            <button onClick={() => deleteRestaurant(item.user_id)} className="font-medium text-[#ff0000] hover:underline dark:text-[#ff0000]/50">
-                                Delete
-                            </button>
-                        </div>
-                    </Table.Cell>
+                   
                   </Table.Row>
                 )
             })
