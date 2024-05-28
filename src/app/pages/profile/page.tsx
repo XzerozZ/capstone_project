@@ -6,12 +6,12 @@ import { Category, User } from '@/interface'
 import { useSession } from 'next-auth/react'
 import { Loader } from 'rsuite'
 import 'rsuite/dist/rsuite.min.css';
-
 import { Modal } from 'flowbite-react'
 import { FaCloudUploadAlt } from 'react-icons/fa'
 import Swal from 'sweetalert2'
-import { link } from 'fs'
-
+import { MultiSelect } from 'react-multi-select-component'
+import Option from '@/app/components/Options'
+import { set } from 'rsuite/esm/utils/dateUtils'
 
 
 
@@ -24,6 +24,9 @@ const page = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [UserId, setUserId] = useState(session?.user?.id)
     const [category, setCate] = useState<Category[]>([] as Category[])
+    const [modalCate, setModalCate] = useState(false)
+    const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
+    const [UserEmail, setUserEmail] = useState(session?.user?.email)
     
     const [data, setData] = useState({
             id: UserId,
@@ -94,7 +97,30 @@ const handleSubmit = (e:any,id:any) => {
            
     
 } 
-    console.log(user)
+    
+const handleCategory = (email:any) => {
+       
+    console.log(selected)
+    const formData = new FormData();
+    formData.append('email', email);
+   
+    for (let i = 0; i < selected.length; i++) {
+      formData.append('category', selected[i].value);
+      console.log(selected[i].value)
+    }
+    axios.post('/api/category/user', formData).then((res) => {
+      console.log(res);
+      Swal.fire({
+        icon: 'success',
+        title: 'Change information success',
+        showConfirmButton: false,
+        timer: 1500
+        })
+      setModalCate(false)
+   
+    });
+  }
+
     
     const fetchUser = async () => {
         const formData = new FormData()
@@ -118,6 +144,8 @@ const handleSubmit = (e:any,id:any) => {
        if (session) {
         fetchCategory()
         fetchUser()
+        setUserId(session?.user?.id)
+        setUserEmail(session?.user?.email)
         
         setUserId(session?.user?.id)
         if (user !== undefined || user !== null) {
@@ -149,7 +177,7 @@ const handleSubmit = (e:any,id:any) => {
     <div className='w-[1140px] flex flex-col gap-6 p-3 min-h-screen'>
        <div className='flex justify-between'>
             <h1 className='text-3xl text-[#202192] font-bold'>Information</h1>
-         <button onClick={() => setOpenModal(true)} className='rounded-md border-2 bg-[#fff] border-[#202192] text-lg py-2 px-3 hover:bg-[#202192] hover:text-white text-[#202192]'>Edit</button>
+         <button onClick={() => setOpenModal(true)} className='rounded-md border-2 bg-[#fff] border-[#202192] text-lg py-2 px-3 hover:bg-[#202192] hover:text-white text-[#202192]'>Edit information</button>
        </div>
         
         <hr className='border-[#202192] mt-2'/> 
@@ -196,15 +224,23 @@ const handleSubmit = (e:any,id:any) => {
             </div>
            
         </div>
-             <label className='text-[#202192] font-bold'>Experience</label>
-             <div className="flex flex-row gap-3 flex-wrap ">
-                     {
-                         user?.experience.map((item,index) => {
-                             return( <div key={index} className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">{item.category.name || ''}</div>
-                         )
-                         })
-                     }                
-             </div>
+            <div>
+                
+                   <div className='flex justify-between'>
+                        <label className='text-[#202192] font-bold'>Experience</label>
+                        <button onClick={() => setModalCate(true)}>Edit</button>
+                   </div>
+                    <div className="flex flex-row gap-3 flex-wrap ">
+                            {
+                                user?.experience.map((item,index) => {
+                                    return( <div key={index} className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">{item.category.name || ''}</div>
+                                )
+                                })
+                            }                
+                    </div>
+                
+               
+            </div>
              </div> : <div>
              <div className='flex justify-between'>
             <h1 className='my-auto text-5xl text-[#202192] font-bold w-3/4 max-sm:text-2xl'>{user.username}</h1>
@@ -520,6 +556,24 @@ const handleSubmit = (e:any,id:any) => {
   
     </div>
    }
+    <Modal  show={modalCate} onClose={() =>  setModalCate(false)} >
+        <Modal.Header>Change experience</Modal.Header>
+        <Modal.Body>
+    <div className='flex flex-col gap-3'>
+    <MultiSelect
+                                    
+                                    options={Option}
+                                    value={selected}
+                                    onChange={setSelected}
+                                    labelledBy="Select"
+                                />
+            <button onClick={()=> handleCategory(UserEmail)} className="w-full text-white bg-[#202192] hover:bg-[#202192]/90 focus:ring-3 focus:ring-[#202192]/60 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#202192]/60 dark:hover:bg-[#202192]/70 focus:outline-none dark:focus:ring-[#202192]/80">Update</button>
+
+    </div>
+        
+        </Modal.Body>
+      
+      </Modal>
     </div>
    
   )

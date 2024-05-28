@@ -26,7 +26,7 @@ export default function Home() {
   const [CheckUser,setCheckUser] = useState('')
   const [ShowRecommend,setShowRecommend] = useState(false)
   const [Recommended, setRecommended] = useState<{ recommend: any[] }>({ recommend: [] });
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   //////////////////////////////
 
@@ -81,7 +81,7 @@ export default function Home() {
 
   if (isLoading){
     return (
-      <div className='flex justify-center h-[500px] items-center'>
+      <div className='flex justify-center h-[1000px] items-center'>
         <Loader size="md" color='black'/>
       </div>
     )
@@ -163,43 +163,7 @@ export default function Home() {
                </div>
                  
                </div>
-               <div className="flex flex-col gap-2">
-               <div className="flex justify-between">
-                 <h1 className="text-3xl text-[#202192]">Recommended for you</h1>
-                 <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
-   
-                 </div>
-                 <div className='flex justify-center'>
-                   <div className=' gap-5 flex overflow-auto max-sm:w-[400px] '>
-                           {/* {
-                               MockData.map((item:any, index) => {
-                                   return (
-                                      <div className="">
-                                        <CardWorkRec key={index} props={item} />
-                                      </div>
-                                       
-                                   )
-                               })
-                           } */}
-                       </div>
-                  </div>
-               </div>
-               {/* <div>
-                 <div className="flex justify-between">
-                 <h1 className="text-3xl text-[#202192]">Categories for services</h1>
-                 <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
-   
-                 </div>
-                 <div className="grid grid-cols-4 gap-3 max-sm:grid-cols-2">
-                   {
-                     Categories.map((cate, index) => {
-                       return (
-                         <CategoryBox key={index} data={cate}/>
-                       )
-                     })
-                   }
-                 </div>
-               </div> */}
+               
                <div className="flex gap-3 flex-col">
                <div className="flex justify-between">
                  <h1 className="text-3xl text-[#202192]">Sportlight job</h1>

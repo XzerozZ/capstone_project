@@ -78,7 +78,7 @@ const page = (props: Props) => {
    
   return (
     <>
-    <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
+    <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] min-h-screen'>
         <div className='w-[440px] flex flex-col gap-6 p-3'>
                
                 <div className="flex gap-3 flex-col">
