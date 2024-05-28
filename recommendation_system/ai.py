@@ -79,7 +79,7 @@ async def process_data(data: dict):
         
         recommendations_dict = {}
         for i in range(exp_size):
-            index_recomm = cos_sim_data.loc[i][exp_size:].sort_values(ascending=False).index.tolist()[:3]
+            index_recomm = cos_sim_data.loc[i][exp_size:].sort_values(ascending=False).index.tolist()[:2]
             recomm = [x - exp_size for x in index_recomm]
             exp_data = [filtered_jobs[idx] for idx in recomm]
             
