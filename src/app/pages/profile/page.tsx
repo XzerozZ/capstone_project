@@ -11,6 +11,8 @@ import { Modal } from 'flowbite-react'
 import { FaCloudUploadAlt } from 'react-icons/fa'
 import Swal from 'sweetalert2'
 import { link } from 'fs'
+import { MultiSelect } from 'react-multi-select-component'
+import Option from '@/app/components/Options';
 
 
 
@@ -24,7 +26,8 @@ const page = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [UserId, setUserId] = useState(session?.user?.id)
     const [category, setCate] = useState<Category[]>([] as Category[])
-    
+    const [ModalCategory, setModalCate] = useState(false)
+    const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
     const [data, setData] = useState({
             id: UserId,
             first_name: '',
@@ -94,7 +97,7 @@ const handleSubmit = (e:any,id:any) => {
            
     
 } 
-    console.log(user)
+    
     
     const fetchUser = async () => {
         const formData = new FormData()
@@ -110,11 +113,11 @@ const handleSubmit = (e:any,id:any) => {
             setCate(res.data)
         })
     }
+
+
+
    
     useEffect(() => {
-        
-       
-
        if (session) {
         fetchCategory()
         fetchUser()
@@ -196,15 +199,22 @@ const handleSubmit = (e:any,id:any) => {
             </div>
            
         </div>
-             <label className='text-[#202192] font-bold'>Experience</label>
-             <div className="flex flex-row gap-3 flex-wrap ">
-                     {
-                         user?.experience.map((item,index) => {
-                             return( <div key={index} className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">{item.category.name || ''}</div>
-                         )
-                         })
-                     }                
-             </div>
+            <div className='flex gap-3'>
+                <div>
+                    <label className='text-[#202192] font-bold'>Experience</label>
+                    <div className="flex flex-row gap-3 flex-wrap ">
+                            {
+                                user?.experience.map((item,index) => {
+                                    return( <div key={index} className="px-2 py-1 border font-bold rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]">{item.category.name || ''}</div>
+                                )
+                                })
+                            }                
+                    </div>
+                </div>
+                <div>
+                    <button onClick={() => setModalCate(true)}>edit</button>
+                </div>
+            </div>
              </div> : <div>
              <div className='flex justify-between'>
             <h1 className='my-auto text-5xl text-[#202192] font-bold w-3/4 max-sm:text-2xl'>{user.username}</h1>
@@ -520,6 +530,25 @@ const handleSubmit = (e:any,id:any) => {
   
     </div>
    }
+    <Modal show={ModalCategory} onClose={() => setModalCate(false)}>
+        <Modal.Header>Edit experience</Modal.Header>
+        <Modal.Body>
+        <div className='w-full flex flex-col gap-2'>
+                                <label className="block mb-2 text-xl font-medium text-[#202192] dark:text-white">Experience</label>
+                                <MultiSelect
+                                 
+                                    options={Option}
+                                    value={selected}
+                                    onChange={setSelected}
+                                    labelledBy="Select"
+                                />
+                                <button className="w-full text-white bg-[#202192] hover:bg-[#202192]/90 focus:ring-3 focus:ring-[#202192]/60 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-[#202192]/60 dark:hover:bg-[#202192]/70 focus:outline-none dark:focus:ring-[#202192]/80">Update</button>
+
+                            </div>
+
+        </Modal.Body>
+      
+      </Modal>
     </div>
    
   )
