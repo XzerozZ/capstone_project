@@ -48,11 +48,7 @@ export async function POST(req : Request) {
           },
           post: {
               create: {
-<<<<<<< HEAD
                 user_id: 2
-=======
-                user_id: 6
->>>>>>> main
               }
           }
         }

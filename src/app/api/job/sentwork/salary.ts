@@ -57,7 +57,7 @@ export const sentSalary = async (UserId: number, money: number) => {
                         <div
                           style="color:#FFFFFF;font-size:16px;font-weight:normal;text-align:center;padding:16px 24px 16px 24px"
                         >
-                          Here is your one-time passcode:
+                          Your payment of the work:
                         </div>
                         <h1
                           style='font-weight:bold;text-align:center;margin:0;font-family:"Nimbus Mono PS", "Courier New", "Cutive Mono", monospace;font-size:32px;padding:16px 24px 16px 24px'
