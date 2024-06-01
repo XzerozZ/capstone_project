@@ -35,24 +35,6 @@ const page = () => {
 
   
    
-   
-   
-
-    // const deleteRestaurant = (id:any) => {
-    //     const formData = new FormData();
-    //     formData.append('id',id)
-    //     axios.delete(`/api/user`, { data: formData })
-    //     .then((res) => {
-    //         Swal.fire({
-    //             icon: 'success',
-    //             title: 'Delete Success',
-    //             showConfirmButton: false,
-    //             timer: 1500
-    //         })
-    //     });
-    // }
-   
-
 
    
 
