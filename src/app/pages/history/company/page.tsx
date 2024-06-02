@@ -49,7 +49,7 @@ const page = (props: Props) => {
   return (
     <>
        <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#f9fafa]'>
-        <div className='w-[1140px] flex flex-col gap-4 p-3'>
+        <div className='w-[1140px] flex flex-col gap-4 p-3 min-h-screen'>
             <h1 className='text-3xl text-[#202192] font-bold'>Work history</h1>
            
             <div className='flex flex-col gap-3'>

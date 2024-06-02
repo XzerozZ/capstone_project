@@ -70,8 +70,8 @@ const page = (props: Props) => {
   else {
     if (status === 'Completed' || status === 'Considering' || status === 'Rejected' ) {
       return (
-        <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] h-[500px]'>
-        <div className='w-[1140px] flex flex-col gap-4 p-3'>
+        <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] h-[1000px]'>
+        <div className='w-[1140px] flex flex-col gap-4 p-3  min-h-screen'>
           <h1 className='text-3xl text-[#202192] font-bold'>สถานะของงาน</h1>
        <div className=''>
       <StatusTimeline data={dataJob}/>
@@ -85,8 +85,8 @@ const page = (props: Props) => {
 
 return (
   <>
-   <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] min-h-screen'>
-      <div className='w-[1140px] flex flex-col gap-4 p-3'>
+   <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px]'>
+      <div className='w-[1140px] flex flex-col gap-4 p-3  min-h-screen'>
         <h1 className='text-3xl text-[#202192] font-bold'>สถานะของงาน</h1>
      <div className=''>
     <StatusTimeline data={dataJob}/>

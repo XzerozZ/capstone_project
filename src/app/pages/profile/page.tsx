@@ -188,7 +188,7 @@ const handleCategory = (email:any) => {
              checkFree ?   <div className='flex flex-col gap-3'>
 
 <div className='flex justify-between '>
-            <h1 className='my-auto text-5xl text-[#202192] font-bold w-3/4 max-sm:text-2xl'>{user.first_name} {user.last_name} ( {user.username} )</h1>
+            <h1 className='my-auto text-5xl text-[#202192] font-bold w-3/4 max-sm:text-2xl'>{user.first_name} {user.last_name}  <br/>( {user.username} )</h1>
             <div className=''>
                 <img src={user?.image}    
                 className='w-[120px] h-[150px] rounded-md'
@@ -205,7 +205,7 @@ const handleCategory = (email:any) => {
         </div>
         <div className='flex gap-5'>
             <div className='w-1/2'>
-                <label className='text-[#202192] font-bold'>บัตรประชาชน</label>
+                <label className='text-[#202192] font-bold'>Personal card</label>
                 <p className='p-2 border border-[#202192] rounded-md'>{user?.id_card}</p>
             </div>
             <div className='w-1/2'>

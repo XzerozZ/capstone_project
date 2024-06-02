@@ -18,6 +18,7 @@ const HistoryCardCom = ({data} : {data: any}) => {
         <div className='p-3'>
             <h3 className='text-2xl'>{data.job.title}</h3>
             <p className='text-lg'>Status : {data.job.status}</p>
+          
         </div>
     </div>
       </Link>

@@ -144,7 +144,7 @@ const page = (props: Props) => {
             </div>
              
             <div className='flex justify-center'>
-                <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleCompany(UserEmail,params.id)}>submiy</button> 
+                <button className='w-full  py-3 bg-[#202192] text-white rounded-md' onClick={() => handleCompany(UserEmail,params.id)}>submit</button> 
             </div>
             
         

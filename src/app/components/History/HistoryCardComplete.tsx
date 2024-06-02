@@ -26,12 +26,12 @@ const DateFormatter = ({ timestamp }:any) => {
      <Link href={`/pages/history/comment/${data?.job_id}`} className='text-black  hover:no-underline hover:text-black'>
        <div className='flex gap-3 rounded-lg bg-[#f5f5f5]'>
         <div className='w-1/4'>
-            <img className='aspect-square rounded-l-lg' src={data?.post[0]?.user?.image || ''} alt="" />
+            <img className='aspect-square rounded-l-lg w-full object-fill' src={data?.post[0]?.user?.image || ''} alt="" />
         </div>
         <div className='p-3 flex flex-col'>
             <h3 className='text-2xl'>{data?.title}</h3>
             <p className=''><DateFormatter timestamp={data?.submitted_date}/></p>
-            <p className=''> <Rate max={1} defaultValue={1} color='yellow' size='sm'/>{data?.averageRating}</p>
+            <p className=''> <Rate max={1} defaultValue={1} color='yellow' size='sm'/>{data?.averageRating.toFixed(2)}</p>
          
         </div>
     </div>

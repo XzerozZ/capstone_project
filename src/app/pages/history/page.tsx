@@ -68,7 +68,7 @@ const page = (props: Props) => {
     },[session])
   
     if (isLoading) {
-        return  <div className='flex justify-center h-[500px] items-center'>
+        return  <div className='flex justify-center h-[1000px] items-center'>
           <Loader size="md"  color='black'/>
         </div>
       }
@@ -79,7 +79,7 @@ const page = (props: Props) => {
 
   return (
     <>
-       <div className='w-full flex justify-center mt-[50px] max-sm:mt-[10px] '>
+       <div className='w-full flex justify-center pt-[50px] max-sm:pt-[10px] bg-[#f9fafa]'>
         <div className='w-[1140px] flex flex-col gap-4 p-3 min-h-screen '>
             <h1 className='text-3xl text-[#202192] font-bold'>Work history</h1>
             <div className="flex flex-col gap-1">
