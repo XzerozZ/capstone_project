@@ -61,9 +61,9 @@ const page = (props: Props) => {
         <div className='w-[440px] flex flex-col gap-6 p-3'>
                
                 <div className="flex gap-3 flex-col">
-              <h1 className='text-3xl text-[#202192]'>เพิ่มข้อมูลโปรไฟล์</h1>
+              <h1 className='text-3xl text-[#202192]'>Add profile</h1>
             <div className='w-full'>
-                    <label  className="block mb-2 text-xl font-medium text-[#202192] dark:text-white">อาชีพ</label>
+                    <label  className="block mb-2 text-xl font-medium text-[#202192] dark:text-white">Job</label>
                     <input 
                     type="text" 
                     id="job" 
@@ -72,7 +72,7 @@ const page = (props: Props) => {
                   
                    
                     required
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="อาชีพ"  />
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="job"  />
             </div>
             <div className='w-full'>
                     <label  className="block mb-2 text-xl font-medium text-[#202192] dark:text-white">Facebook</label>
@@ -110,7 +110,7 @@ const page = (props: Props) => {
                     required
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" placeholder="your linkedin link"  />
             </div>
-            <button type='submit' className='border border-[#202192] py-2 w-full rounded-md bg-[#202192] text-white' onClick={()=> {handleSubmit(idUser)}}>ต่อไป</button>
+            <button type='submit' className='border border-[#202192] py-2 w-full rounded-md bg-[#202192] text-white' onClick={()=> {handleSubmit(idUser)}}>submit</button>
     </div>
                
           

@@ -27,6 +27,7 @@ const page = (props: Props) => {
   
     console.log(history)
     useEffect(() => {
+        setEmailUser(session?.user?.email)
         fetchHistoryCompany(emailUser)
         if (history !== undefined || history !== null && session !== undefined || session !== null) {
             setIsLoading(false)

@@ -65,7 +65,7 @@ const page = () => {
                     <div className="">
                         <div className="flex flex-col gap-1">
                             <h1 className='text-[#202192] font-bold text-3xl '>Bookmark</h1>
-                            <label>รูปแบบของงาน</label>
+                            <label>Job type</label>
                             <div className="flex flex-row gap-3 flex-wrap ">
                                 <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" onClick={() => setFilter('All')}>All</button>
                                 <button className="px-2 py-1 border border-1 rounded-full hover:border-[#202192] hover:text-[#202192] hover:font-bold hover:bg-[#dde8fe]" onClick={() => setFilter('Fulltime')}>Fulltime</button>

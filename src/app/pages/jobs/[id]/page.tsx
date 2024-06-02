@@ -187,12 +187,12 @@ const page = () => {
                 <div className='flex gap-3 flex-col'>
                     <h1 className='text-[#202192] font-bold text-3xl '>{jobData?.title}   <span className='text-black text-xl'>โดย {jobData?.post[0]?.user?.username}</span> </h1>
                     <h3 className='text-lg text-black'>Publish <DateFormatter timestamp={jobData?.posted_date}/></h3>
-                    <h3 className='text-lg text-[#202192] '>งบประมาณ : {jobData?.budget} THB</h3>
+                    <h3 className='text-lg text-[#202192] '>Budget : {jobData?.budget} THB</h3>
                     <h3 className='text-lg text-black'>สถานะ : {jobData?.status}</h3>
                 </div>
                 <div className=''>
                     <div className='flex  gap-2'>
-                    <button className='bg-[#202192] px-3 py-1 rounded-md text-white text-xl' onClick={()=> handleJob(userid,params.id,CheckCreditCard,role)}>สมัครงาน</button>
+                    <button className='bg-[#202192] px-3 py-1 rounded-md text-white text-xl' onClick={()=> handleJob(userid,params.id,CheckCreditCard,role)}>Recruit</button>
                     {isFav ? (
                       <FaHeart onClick={() => deleteFav(userid,params.id)} className='text-[#ff0000]' size={35} />
                     ) : (

@@ -4,6 +4,8 @@ import Link from 'next/link'
 type Props = {}
 
 const HistoryCard = ({data} : {data: History}) => {
+  console.log(data);
+  
 
   const CheckColorStatus = (status: string) => {
     let color = '';

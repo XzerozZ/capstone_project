@@ -47,7 +47,7 @@ const page = () => {
           console.log(res);
           Swal.fire({
             icon: 'success',
-            title: 'เพิ่มข้อมูลโปรไฟล์สำเร็จ',
+            title: 'Add profile success',
             showConfirmButton: false,
             timer: 1500
             })
@@ -64,12 +64,12 @@ const page = () => {
         <div className='w-[440px] flex flex-col gap-6 p-3'>
 
             <div className="flex gap-3 flex-col">
-              <h1 className='text-3xl text-[#202192]'>เพิ่มข้อมูลโปรไฟล์</h1>
+              <h1 className='text-3xl text-[#202192]'>Add profile</h1>
            
            
             
                 <div className='w-full '>
-                                <label className="block mb-2 text-xl font-medium text-[#202192] dark:text-white">ความถนัด</label>
+                                <label className="block mb-2 text-xl font-medium text-[#202192] dark:text-white">Experience</label>
                                 <MultiSelect
                                     // options={Cate.map((cate)=>({label:cate.name,value:cate.name}))}
                                     options={Option}
@@ -80,7 +80,7 @@ const page = () => {
                             </div>
 
                           
-                <button  type='submit' className='border border-[#202192] py-2 w-full rounded-md bg-[#202192] text-white' onClick={()=> {handleSubmit(idUser)}} >ต่อไป</button>
+                <button  type='submit' className='border border-[#202192] py-2 w-full rounded-md bg-[#202192] text-white' onClick={()=> {handleSubmit(idUser)}} >submit</button>
               
     </div>
         </div>
