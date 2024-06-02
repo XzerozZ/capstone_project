@@ -24,7 +24,7 @@ const footer = (props: Props) => {
             <h1 className='text-[25px] font-bold text-[#fff]'>Useful links</h1>
                 <ul>
                    <Link href="/" className='hover:text-[#fff] no-underline text-white hover:no-underline'> <li className='text-[15px]'>About</li></Link>
-                   <Link href='/restaurant' className='hover:text-[#fff] no-underline text-white hover:no-underline'> <li className='text-[15px]'>Restaurant</li></Link>
+                   <Link href='/restaurant' className='hover:text-[#fff] no-underline text-white hover:no-underline'> <li className='text-[15px]'>Job</li></Link>
                     <Link href='/blog' className='hover:text-[#fff] no-underline text-white hover:no-underline'><li className='text-[15px]'>Blog</li></Link>
 
                 </ul>
@@ -32,16 +32,16 @@ const footer = (props: Props) => {
             <div>
             <h1 className='text-[25px] font-bold text-[#fff]'>Main menu</h1>
                 <ul>
-                     <Link href='/restaurant' className='hover:text-[#fff] no-underline text-white hover:no-underline'> <li className='text-[15px]'>Restaurant</li></Link>
+                     <Link href='/restaurant' className='hover:text-[#fff] no-underline text-white hover:no-underline'> <li className='text-[15px]'>Job</li></Link>
                      <Link href='/blog' className='hover:text-[#fff] no-underline text-white hover:no-underline'><li className='text-[15px]'>Blog</li></Link>
                 </ul>
             </div>
             <div>
             <h1 className='text-[25px] font-bold text-[#fff]'>Contact us</h1>
                 <ul>
-                    <li className='text-[15px] text-white'>wongnok@company.ac.th</li>
+                    <li className='text-[15px] text-white'>Slowwork@company.ac.th</li>
                     <li className='text-[15px] text-white'>087-1234567</li>
-                    <li className='text-[15px] text-white'>Wongnok Community</li>       
+                    <li className='text-[15px] text-white'>Slowwork Community</li>       
                 </ul>
             </div>
 
