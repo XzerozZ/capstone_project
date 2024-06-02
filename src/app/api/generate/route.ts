@@ -33,7 +33,7 @@ export async function POST(req : Request) {
       const budget = Math.floor(Math.random() * (500000 - 20000 + 1)) + 20000;
       const job = await prisma.job.create({
         data :{
-          title : data[i]["Name"] + 'Prject',
+          title : data[i]["Name"],
           description : data[i]["Description"],
           budget : budget,
           type: 'Full-time',

@@ -65,11 +65,6 @@ export const sentSalary = async (UserId: number, money: number) => {
                           ${money} THB
                         </h1>
                         <div
-                          style="color:#FFFFFF;font-size:16px;font-weight:normal;text-align:center;padding:16px 24px 16px 24px"
-                        >
-                          This code will expire in 5 minutes.
-                        </div>
-                        <div
                           style="font-size:12px;font-weight:bold;color:white;padding:16px 24px 16px 24px"
                         >
                           Thank you,
