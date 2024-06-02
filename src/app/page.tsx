@@ -1,5 +1,8 @@
 "use client"
 import Image from "next/image";
+import postimage1 from '@/app/assets/postimage1.png';
+import postimage2 from '@/app/assets/postimage2.png';
+import postimage3 from '@/app/assets/postimage3.png';
 import CategoryBox from "./components/CategoryBox";
 import JobRecommend from "./components/JobRecommend";
 import CardWorkRec from "./components/card/CardWorkRec";
@@ -95,12 +98,12 @@ export default function Home() {
            <div>
            <div className="h-[600px] max-sm:h-[250px]">
              <Carousel slideInterval={5000}>
-             <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-             <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-             <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-             <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-             <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-             <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
              </Carousel>
            </div>
              
@@ -153,12 +156,10 @@ export default function Home() {
                <div>
                <div className="h-[600px] max-sm:h-[250px]">
                  <Carousel slideInterval={5000}>
-                 <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                 <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                 <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                 <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                 <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                 <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+                  {/* https://www.canva.com/design/DAGHAgP7o7I/Gy5NqqHdz5Ijl0MPaa3cnA/edit */}
+                  <img src={postimage1.src} alt="Post Image 1" />
+                  <img src={postimage2.src} alt="Post Image 2" />
+                  <img src={postimage3.src} alt="Post Image 3" />
                  </Carousel>
                </div>
                  
@@ -167,7 +168,7 @@ export default function Home() {
                <div className="flex gap-3 flex-col">
                <div className="flex justify-between">
                  <h1 className="text-3xl text-[#202192]">Sportlight job</h1>
-                 <Link href={`/pages/jobs`} className="text-[#202192]">ดูทั้งหมด</Link>
+                 <Link href={`/pages/jobs`} className="text-[#202192]">view all</Link>
    
                  </div>
                  <div className="grid grid-cols-4 gap-4 max-sm:grid-cols-2">
