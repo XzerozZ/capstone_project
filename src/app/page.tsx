@@ -3,6 +3,7 @@ import Image from "next/image";
 import postimage1 from '@/app/assets/postimage1.png';
 import postimage2 from '@/app/assets/postimage2.png';
 import postimage3 from '@/app/assets/postimage3.png';
+import postimage4 from '@/app/assets/postimage4.png';
 import CategoryBox from "./components/CategoryBox";
 import JobRecommend from "./components/JobRecommend";
 import CardWorkRec from "./components/card/CardWorkRec";
@@ -160,6 +161,7 @@ export default function Home() {
                   <img src={postimage1.src} alt="Post Image 1" />
                   <img src={postimage2.src} alt="Post Image 2" />
                   <img src={postimage3.src} alt="Post Image 3" />
+                  <img src={postimage4.src} alt="Post Image 4" />
                  </Carousel>
                </div>
                  
