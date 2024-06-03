@@ -157,7 +157,6 @@ export default function Home() {
                <div>
                <div className="h-[600px] max-sm:h-[250px]">
                  <Carousel slideInterval={5000}>
-                  {/* https://www.canva.com/design/DAGHAgP7o7I/Gy5NqqHdz5Ijl0MPaa3cnA/edit */}
                   <img src={postimage1.src} alt="Post Image 1" />
                   <img src={postimage2.src} alt="Post Image 2" />
                   <img src={postimage3.src} alt="Post Image 3" />
