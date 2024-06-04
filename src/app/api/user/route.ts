@@ -158,7 +158,7 @@ export async function DELETE( req : Request ){
                     user_id : user.user_id
                   }
                 }),
-                prisma.digitalwal.deleteMany({
+                prisma.wallet.deleteMany({
                     where : {
                         user_id : user.user_id
                       }
@@ -212,7 +212,7 @@ export async function DELETE( req : Request ){
                       user_id : user.user_id
                     }
                 }),
-                prisma.digitalwal.deleteMany({
+                prisma.wallet.deleteMany({
                     where : {
                         user_id : user.user_id
                       }
