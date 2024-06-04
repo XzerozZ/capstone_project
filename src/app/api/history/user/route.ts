@@ -21,7 +21,15 @@ export async function POST(req : Request) {
             },
             include : {
                 user : true ,
-                job : true
+                job : {
+                    include : {
+                        post : {
+                            include : {
+                                user : true
+                            }
+                        }
+                    }
+                }
             }
         })
         await prisma.$disconnect();
@@ -45,3 +53,4 @@ export async function POST(req : Request) {
         )
     }
 }
+﻿

@@ -62,7 +62,7 @@ else {
                   <Link href='/'><Logo /></Link>
                 
                       <ul className='text-2xl text-white my-auto'>
-                        <li ><Link href="/pages/jobs" className='hover:text-white no-underline text-white hover:no-underline'>Job</Link></li>
+                        <li ><Link href="/pages/jobs" className='hover:text-white no-underline text-white hover:no-underline'>Job announcement board</Link></li>
                       </ul>
                    
               </div>
@@ -105,7 +105,7 @@ else {
                 <Link href='/'><Logo /></Link>
               
                     <ul className='text-2xl text-white my-auto'>
-                      <li ><Link href="/pages/jobs" className='hover:text-white no-underline text-white hover:no-underline'>Job</Link></li>
+                      <li ><Link href="/pages/jobs" className='hover:text-white no-underline text-white hover:no-underline'>Job announcement board</Link></li>
                     </ul>
                  
             </div>

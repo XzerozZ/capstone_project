@@ -106,24 +106,26 @@ export interface History {
     job_id:  number;
     status:  string;
     user:    User;
-    job:     JobHis;
+    job:     Job;
 }
 
-export interface JobHis {
+export interface Job {
     job_id:         number;
     title:          string;
     description:    string;
     budget:         number;
     type:           string;
-    posted_date:    Date;
-    submitted_date: Date;
+    posted_date:    string;
+    submitted_date: string;
     status:         string;
     mass:           number;
+    post:           Post[];
 }
 
-export interface Category {
-    category_id: number;
-    name:        string;
+export interface Post {
+    job_id:  number;
+    user_id: number;
+    user:    User;
 }
 
 

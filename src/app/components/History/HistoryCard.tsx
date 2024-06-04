@@ -29,7 +29,7 @@ const HistoryCard = ({data} : {data: History}) => {
      <Link href={`/pages/history/status/${data.job_id}`} className='text-black'>
        <div className='flex gap-3 rounded-lg bg-[#f5f5f5]'>
         <div className='w-1/4'>
-            <img className='aspect-square rounded-l-lg' src={data.user.image} alt="" />
+            <img className='aspect-square rounded-l-lg' src={data?.job?.post[0]?.user?.image} alt="" />
         </div>
         <div className='p-3'>
             <h3 className='text-2xl'>{data.job.title}</h3>
