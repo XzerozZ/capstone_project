@@ -1,5 +1,4 @@
 'use client'
-import JobComponent from "@/app/components/JobComponent";
 import CardWork from "@/app/components/card/CardWork";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,7 +7,6 @@ import { Loader } from "rsuite";
 import 'rsuite/dist/rsuite.min.css';
 import { log } from "console";
 import { useSession } from "next-auth/react";
-import { set } from "rsuite/esm/utils/dateUtils";
 
 
 export default function Jobs(){
@@ -85,7 +83,7 @@ export default function Jobs(){
       
          <div className="flex justify-center bg-[#f9fafa]">
               
-              <div className="flex flex-col w-[1140px] mt-[20px] max-sm:p-1">
+              <div className="flex flex-col w-[1140px] pt-[20px] max-sm:p-1 min-h-screen">
                 <p className="text-3xl font-bold text-[#202192]">บอร์ดประกาศหางาน</p>
                 <div className="flex flex-col"> {/* Filter */}
                     <div>
@@ -119,7 +117,9 @@ export default function Jobs(){
                 </div>
                 <div className="grid mx-auto grid-cols-4 gap-7 my-8 max-sm:grid-cols-2 max-sm:p-1"> {/* ชุดผลลัพธ์ */}
                     {FilterData.map((props:any,index)=>
-                    <CardWork props={props} key={index} />
+                    <div className="">
+                        <CardWork props={props} key={index} />
+                    </div>
                    )}
                 </div>
             </div>

@@ -13,6 +13,8 @@ type Props = {}
 
 const page = (props: Props) => {
   const Router = useRouter()
+  
+  
   const [category, setCategory] = useState([] as any[])
   const [selected, setSelected] = useState<{ label: string; value: string }[]>([]);
   const {data:session,status} = useSession()
@@ -20,14 +22,14 @@ const page = (props: Props) => {
   const [work, setWork] = useState({
     title: '',
     budget: '',
-    type: '',
+    type: 'Full-time',
     description: '',
     submitted_date: '',
   
   })
 
  
-
+ 
   // const fetchCategory = async () => {
   //   axios.get('/api/category').then((res) => {
        
@@ -113,9 +115,9 @@ const page = (props: Props) => {
                    
                     name='type'
                     onChange={handleChange}
-                    
+                    value={work.type}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#202192] focus:border-[#202192] block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#202192] dark:focus:border-[#202192]" required >
-                        <option value="Fulltime">Fulltime</option>
+                        <option value="Full-time">Full-time</option>
                         <option value="Freelance">Freelance</option>
                     </select>
                  </div>

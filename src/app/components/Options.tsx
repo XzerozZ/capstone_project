@@ -15,7 +15,7 @@
     { label: "Azure", value: "Azure" },
     { label: "Google Cloud Platform", value: "Google Cloud Platform" },
     { label: "Software Testing", value: "Software Testing" },
-    { label: "QA", value: "QA" },
+    { label: "QA & Testing", value: "QA & Testing" },
     { label: "iOS Development", value: "iOS Development" },
     { label: "Android Development", value: "Android Development" },
     { label: "Swift", value: "Swift" },
@@ -90,5 +90,8 @@
     { label: "NLP", value: "NLP" },
     { label: "Social Media Analysis", value: "Social Media Analysis" },
     { label: "React", value: "React" },
+    { label: "Cybersecurity", value: "Cybersecurity" },
+    { label: "Data analytics", value:"Data analytics" },
+    { label: "Software Development", value:"Software Development" },
   ];
   export default options;

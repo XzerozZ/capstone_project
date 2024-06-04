@@ -201,6 +201,16 @@ export async function DELETE( req: Request ) {
             job_id : jobId
           }
         }),
+        prisma.transfer.deleteMany({
+          where : {
+            job_id : jobId
+          }
+        }),
+        prisma.order.deleteMany({
+          where : {
+            job_id : jobId
+          }
+        }),
         prisma.work.deleteMany({
           where : {
             job_id : jobId

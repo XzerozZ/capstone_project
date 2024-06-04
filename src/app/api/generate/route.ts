@@ -12,7 +12,7 @@ export async function POST(req : Request) {
     for(let i = 0; i < data.length; i++){
       specializations = [];
       categoryNames = [];
-      const specs = data[i]["Specialization"].split('/').map((spec: string) => spec.trim());
+      const specs = data[i]["Specialization"].split(',').map((spec: string) => spec.trim());
       specializations.push(...specs);
       const categories = await Promise.all(categoryNames.map(async (categoryName) => {
         let category = await prisma.category.findFirst({
@@ -30,13 +30,17 @@ export async function POST(req : Request) {
         return category;
     }));
     const categoryIds = categories.map(category => category.category_id);
-      const budget = Math.floor(Math.random() * (500000 - 20000 + 1)) + 20000;
+      const mass = Math.floor(Math.random() * 1);
+      const num = Math.floor(Math.random() * (12-2+1)) + 2;
       const job = await prisma.job.create({
         data :{
-          title : data[i]["Name"],
+          title : data[i]["Project"],
           description : data[i]["Description"],
-          budget : budget,
-          type: 'Full-time',
+          budget : parseInt(data[i]["budget"]),
+          type: data[i]["type"],
+          mass : mass ,
+          submitted_date : new Date(data[i]["submitted_date"]),
+          status : "Open",
           job_exp: {
             create: categoryIds.map(category_id => ({
                 category: {
@@ -48,14 +52,13 @@ export async function POST(req : Request) {
           },
           post: {
               create: {
-                user_id: 2
+                user_id: num
               }
           }
         }
       })
     }
     await prisma.$disconnect();
-
     return Response.json("FINISH");
   } catch (error) {
     await prisma.$disconnect();
