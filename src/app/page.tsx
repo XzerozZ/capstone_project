@@ -21,7 +21,7 @@ import { JobPosting } from "@/interface";
 
 export default function Home() {
 
-
+  
   const {data:session,status} = useSession()
   
   
@@ -36,7 +36,10 @@ export default function Home() {
 
   //////////////////////////////
 
-
+  console.log(Sportlight);
+  console.log(session, 'session');
+  
+  
 
   const fetchSportlight = async () => {
     try {
@@ -80,7 +83,7 @@ export default function Home() {
 
       }
     }
-  },[session,Sportlight,CheckUser])
+  },[session])
 
 
   if (isLoading){
@@ -99,12 +102,10 @@ export default function Home() {
            <div>
            <div className="h-[600px] max-sm:h-[250px]">
              <Carousel slideInterval={5000}>
-                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
-                <img src="https://via.placeholder.com/1440x1000" alt="Post Image" />
+                  <img src={postimage1.src} alt="Post Image 1" />
+                  <img src={postimage2.src} alt="Post Image 2" />
+                  <img src={postimage3.src} alt="Post Image 3" />
+                  <img src={postimage4.src} alt="Post Image 4" />
              </Carousel>
            </div>
              

@@ -62,9 +62,9 @@ const page = (props: Props) => {
     if (value === true) {
       axios.post('/api/card/user', formData).then((res) => {
         console.log(res.data)
-        if (res.data === 'Add Banking Successfully') {
+       
           setCheckCredit(true)
-          setIsLoading(true)
+          setIsLoading(false)
 
           Swal.fire({
             icon: 'success',
@@ -72,7 +72,7 @@ const page = (props: Props) => {
             showConfirmButton: false,
             timer: 1500
           })
-        }
+        
       })
     }else {
       Swal.fire({

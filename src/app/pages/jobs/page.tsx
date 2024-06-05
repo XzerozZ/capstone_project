@@ -5,7 +5,7 @@ import axios from "axios";
 import { Job } from "@/interface";
 import { Loader } from "rsuite";
 import 'rsuite/dist/rsuite.min.css';
-import { log } from "console";
+
 import { useSession } from "next-auth/react";
 
 
@@ -20,10 +20,8 @@ export default function Jobs(){
 
     const fetchCategory = async () => {
         try {
-            axios.get('/api/category').then((res) => {
-                
+            await axios.get('/api/category').then((res) => {    
                 setCategory(res.data)
-                console.log(res.data)
             })
         } catch (error) {
          
@@ -33,8 +31,8 @@ export default function Jobs(){
 
     const fetchJob = async () => {
         try {
-            axios.get('/api/job').then((res) => {
-                console.log(res.data)
+            await axios.get('/api/job').then((res) => {
+                
                 setJob(res.data)
             })
         } catch (error) {
@@ -50,7 +48,7 @@ export default function Jobs(){
     useEffect(() => {
    
        
-        if (job !== undefined || job !== null && category !== undefined || category !== null) {
+        if (job !== undefined || job !== null) {
             fetchJob()
             fetchCategory()
             let updatedJobs = job;
@@ -68,7 +66,7 @@ export default function Jobs(){
            setFilterData(updatedJobs);
            }
      
-    }, [filter,job,category,categoryFilter])
+    }, [job])
     const uniqueCategories = Array.from(new Set(job?.flatMap(job => job?.categories)));
 
 
